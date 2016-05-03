@@ -31,7 +31,7 @@ public class KPSmart_GUI {
 	}
 
 	private void initialize() {
-		frame = new JFrame("Invasion");
+		frame = new JFrame("KPSmart");
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(0, 0, 1500, 1120);
@@ -54,12 +54,12 @@ public class KPSmart_GUI {
 		menu = new JMenu("File");
 		menuBar.add(menu);
 
-		mntmStatgame = new JMenuItem("Start Game");
+		mntmStatgame = new JMenuItem("Start System");
 		menu.add(mntmStatgame);
-		mntmSavegame = new JMenuItem("Save Game");
+		mntmSavegame = new JMenuItem("Log Out");
 		menu.add(mntmSavegame);
 
-		mnGame = new JMenu("Game");
+		mnGame = new JMenu("System");
 		menuBar.add(mnGame);
 
 		mntmExit = new JMenuItem("Exit");
