@@ -1,6 +1,11 @@
 package storage;
 
 import model.*;
+import model.events.CustPriceChangeEvent;
+import model.events.MailProcessEvent;
+import model.events.RouteAdditionEvent;
+import model.events.RouteDiscEvent;
+import model.events.TransportCostChangeEvent;
 
 public class ValidationSystem {
 

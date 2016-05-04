@@ -1,13 +1,16 @@
-package model;
+package model.events;
 
-public class CustPriceChangeEvent extends BusinessEvent {
+import model.Route;
+import model.Staff;
+
+public class TransportCostChangeEvent extends BusinessEvent {
 	private Route affectedRoute;
 	private double oldPerWeight;
 	private double oldPerVolume;
 	private double newPerWeight;
 	private double newPerVolume;
 
-	public CustPriceChangeEvent(int date, double time, Staff staff, Route affectedRoute, double oldPerWeight,
+	public TransportCostChangeEvent(int date, double time, Staff staff, Route affectedRoute, double oldPerWeight,
 			double oldPerVolume, double newPerWeight, double newPerVolume) {
 		super(date, time, staff);
 		this.affectedRoute = affectedRoute;

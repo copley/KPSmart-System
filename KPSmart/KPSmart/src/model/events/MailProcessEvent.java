@@ -1,4 +1,7 @@
-package model;
+package model.events;
+
+import model.Package;
+import model.Staff;
 
 public class MailProcessEvent extends BusinessEvent {
 	private Package mailItem;

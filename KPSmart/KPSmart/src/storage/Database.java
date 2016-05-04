@@ -3,7 +3,7 @@ package storage;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.BusinessEvent;
+import model.events.BusinessEvent;
 
 public class Database {
 

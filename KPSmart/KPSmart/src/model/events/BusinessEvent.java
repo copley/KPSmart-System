@@ -1,4 +1,6 @@
-package model;
+package model.events;
+
+import model.Staff;
 
 public class BusinessEvent {
 	private int date;

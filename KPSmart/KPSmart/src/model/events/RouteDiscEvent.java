@@ -1,4 +1,7 @@
-package model;
+package model.events;
+
+import model.Route;
+import model.Staff;
 
 public class RouteDiscEvent extends BusinessEvent {
 	private Route discontinuedRoute;
