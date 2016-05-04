@@ -103,13 +103,19 @@ public class KPSmart_Controller {
 	/**
 	 * Action listener class for the menu.
 	 */
-	public class MenuActionListener implements ActionListener {
+	class MenuActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			System.out.println(ListenerCount + 107);
+			System.out.println("You have acted on the Log in button");
 			if (actionEvent.getActionCommand().equalsIgnoreCase("Exit")) {
 				System.exit(1);
-			} else if (actionEvent.getActionCommand().equalsIgnoreCase("Save Game")) {
+
+			} else if (actionEvent.getActionCommand().equalsIgnoreCase("Log In")) {
+				System.out.println("Bobo You have acted on the Log in button 2");
+				kpsmartModel.Database_Do_Something_With_String("String passed from Controller");
+				//KPSmartGUI.Redraw() OR Update Method.
+
 			} else if (actionEvent.getActionCommand().equalsIgnoreCase("Start Game")) {
 				kpsmartGUI.setVisiblity(true);
 			}

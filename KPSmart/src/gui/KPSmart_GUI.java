@@ -54,7 +54,7 @@ public class KPSmart_GUI {
 		menu = new JMenu("File");
 		menuBar.add(menu);
 
-		mntmStatgame = new JMenuItem("Start System");
+		mntmStatgame = new JMenuItem("Log In");
 		menu.add(mntmStatgame);
 		mntmSavegame = new JMenuItem("Log Out");
 		menu.add(mntmSavegame);
