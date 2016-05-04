@@ -7,14 +7,26 @@ import org.jdom2.input.*;
 
 import model.*;
 import model.events.BusinessEvent;
+import model.events.CustPriceChangeEvent;
 import model.events.IllegalEventError;
+import model.events.MailProcessEvent;
+import model.events.RouteAdditionEvent;
+import model.events.RouteDiscEvent;
+import model.events.TransportCostChangeEvent;
 
 public class Parser {
 
 	public static final File FILE = new File("src/KPSmart_log.xml");
 
-	private Parser(){}
+	private Parser() {
+	}
 
+	/**
+	 * Reads the data from the log file, into business events and stores them
+	 * into a list
+	 *
+	 * @return List of all the business events from the log file
+	 */
 	public static List<BusinessEvent> readData() {
 		// Read data from xml file
 		List<BusinessEvent> businessEvents = new ArrayList<BusinessEvent>();
@@ -30,7 +42,7 @@ public class Parser {
 			// get all the children elements
 			List<Element> eventList = systemElement.getChildren();
 
-			for(int i = 0; i < eventList.size(); i++){
+			for (int i = 0; i < eventList.size(); i++) {
 				Element event = eventList.get(i);
 				// read business event and add to list
 				businessEvents.add(readEvent(event));
@@ -49,36 +61,68 @@ public class Parser {
 		// get the eventType
 		String eventType = event.getName();
 		// read event based on the element type
-		switch(eventType){
+		switch (eventType) {
 		case "price":
-			return readPrice(event);
+			CustPriceChangeEvent priceEvent = readPrice(event);
+			if(!ValidationSystem.ValidateCustPriceEvent(priceEvent)){
+				throw new IllegalEventError("Event contains incorrect information");
+			}
+			businessEvent = priceEvent;
+			break;
 		case "mail":
-			return readMail(event);
+			MailProcessEvent mailEvent = readMail(event);
+			if(!ValidationSystem.ValidateMailProcessEvent(mailEvent)){
+				throw new IllegalEventError("Event contains incorrect information");
+			}
+			businessEvent = mailEvent;
+			break;
+		case "add":
+			RouteAdditionEvent addEvent = readAdd(event);
+			if(!ValidationSystem.ValidateRouteAdditionEvent(addEvent)){
+			}
+			businessEvent =  addEvent;
+			break;
 		case "discontinue":
-			return readDiscontinue(event);
+			RouteDiscEvent discEvent = readDiscontinue(event);
+			if(!ValidationSystem.ValidateRouteDiscEvent(discEvent)){
+				throw new IllegalEventError("Event contains incorrect information");
+			}
+			businessEvent = discEvent;
+			break;
 		case "cost":
-			return readCost(event);
+			TransportCostChangeEvent costEvent = readCost(event);
+			if(!ValidationSystem.ValidateTransportCostEvent(costEvent)){
+				throw new IllegalEventError("Event contains incorrect information");
+			}
+			businessEvent = costEvent;
+			break;
 		default:
 			throw new IllegalEventError("Invalid Event Type");
 		}
+		return businessEvent;
 	}
 
-	private static BusinessEvent readCost(Element event) {
+	private static TransportCostChangeEvent readCost(Element event) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private static BusinessEvent readDiscontinue(Element event) {
+	private static RouteDiscEvent readDiscontinue(Element event) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private static BusinessEvent readMail(Element event) {
+	private static RouteAdditionEvent readAdd(Element event) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private static BusinessEvent readPrice(Element event) {
+	private static MailProcessEvent readMail(Element event) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static CustPriceChangeEvent readPrice(Element event) {
 		// TODO Auto-generated method stub
 		return null;
 	}
