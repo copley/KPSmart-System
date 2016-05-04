@@ -37,12 +37,12 @@ public class KPSmart_GUI {
 		frame.setBounds(0, 0, 1500, 1120);
 
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.PINK);
+		contentPane.setBackground(Color.BLUE);
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		lowerPanel = new JPanel();
-		lowerPanel.setBackground(new Color(14, 34, 0));
+		lowerPanel.setBackground(Color.LIGHT_GRAY);
 		lowerPanel.setBounds(0, 820, 1500, 200);
 		contentPane.add(lowerPanel);
 		lowerPanel.setLayout(null);
