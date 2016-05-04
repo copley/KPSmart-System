@@ -11,7 +11,7 @@ public class Database {
 
 	public Database() {
 		businessEvents = new ArrayList<BusinessEvent>();
-		DataReader.readData();
+		businessEvents = Parser.readData();
 	}
 
 	/**
