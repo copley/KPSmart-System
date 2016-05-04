@@ -7,17 +7,17 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import gui.KPSmart_GUI;
+import gui.KPSmartGUI;
 import model.KPSmart_Model;
 
-public class KPSmart_Controller {
+public class KPSmartController {
 
-	private KPSmart_GUI kpsmartGUI;
+	private KPSmartGUI kpsmartGUI;
 	private KPSmart_Model kpsmartModel;
 	private int ListenerCount = 1; // used to print where in the code the
 									// listener was called.
 
-	public KPSmart_Controller(KPSmart_GUI gui, KPSmart_Model model) {
+	public KPSmartController(KPSmartGUI gui, KPSmart_Model model) {
 		kpsmartGUI = gui;
 		kpsmartModel = model;
 		this.init_KPSmartGuiListeners();

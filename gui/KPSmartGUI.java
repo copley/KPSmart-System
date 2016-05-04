@@ -12,7 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.event.MenuListener;
 
-public class KPSmart_GUI {
+public class KPSmartGUI {
 
 	private JFrame frame;
 	private JPanel contentPane;
@@ -24,7 +24,7 @@ public class KPSmart_GUI {
 	private JMenu mnGame;
 	private JMenuItem mntmExit;
 
-	public KPSmart_GUI() { // package protected
+	public KPSmartGUI() { // package protected
 		// we can pass in fields to the GUI
 		// this.field = passedinFiedld;
 		this.initialize();
