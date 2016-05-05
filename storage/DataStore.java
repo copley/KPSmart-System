@@ -5,11 +5,11 @@ import java.util.List;
 
 import model.events.BusinessEvent;
 
-public class Database {
+public class DataStore {
 
 	private List<BusinessEvent> businessEvents;
 
-	public Database() {
+	public DataStore() {
 		businessEvents = new ArrayList<BusinessEvent>();
 		businessEvents = Parser.readData();
 	}
@@ -21,6 +21,10 @@ public class Database {
 	 */
 	public boolean addEvent(BusinessEvent be){
 		return businessEvents.add(be);
+	}
+
+	public static void main(String[] args){
+		new DataStore();
 	}
 
 }

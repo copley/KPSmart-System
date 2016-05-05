@@ -103,7 +103,18 @@ public class Parser {
 	}
 
 	private static TransportCostChangeEvent readCost(Element event) {
-		// TODO Auto-generated method stub
+		String company = event.getChild("company").getText();
+		String to = event.getChild("to").getText();
+		String from = event.getChild("from").getText();
+		String type = event.getChild("type").getText();
+		int weightCost = Integer.parseInt(event.getChild("weightcost").getText());
+		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
+		int maxWeight = Integer.parseInt(event.getChild("maxWeight").getText());
+		int maxVolume = Integer.parseInt(event.getChild("maxVolume").getText());
+		int duration = Integer.parseInt(event.getChild("duration").getText());
+		int frequency = Integer.parseInt(event.getChild("frequency").getText());
+		String day = event.getChild("day").getText();
+		// return new event
 		return null;
 	}
 
