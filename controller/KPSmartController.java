@@ -8,16 +8,18 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import gui.KPSmartGUI;
-import model.KPSmart_Model;
+import model.KPSmartModel;
 
 public class KPSmartController {
-
+	private int loggedInID;// unique ID of staff member currently logged in, -1
+							// if no-one is logged in
 	private KPSmartGUI kpsmartGUI;
-	private KPSmart_Model kpsmartModel;
+	private KPSmartModel kpsmartModel;
 	private int ListenerCount = 1; // used to print where in the code the
 									// listener was called.
 
-	public KPSmartController(KPSmartGUI gui, KPSmart_Model model) {
+	public KPSmartController(KPSmartGUI gui, KPSmartModel model) {
+		loggedInID = -1;// initially no-one is logged in!
 		kpsmartGUI = gui;
 		kpsmartModel = model;
 		this.init_KPSmartGuiListeners();
@@ -107,18 +109,22 @@ public class KPSmartController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			System.out.println(ListenerCount + 107);
-			System.out.println("You have acted on the Log in button");
-			if (actionEvent.getActionCommand().equalsIgnoreCase("Exit")) {
-				System.exit(1);
-
-			} else if (actionEvent.getActionCommand().equalsIgnoreCase("Log In")) {
-				System.out.println("Bobo You have acted on the Log in button 2");
-				kpsmartModel.Database_Do_Something_With_String("String passed from Controller");
-				//KPSmartGUI.Redraw() OR Update Method.
-
-			} else if (actionEvent.getActionCommand().equalsIgnoreCase("Start Game")) {
-				kpsmartGUI.setVisiblity(true);
+			if (actionEvent.getActionCommand().equalsIgnoreCase("LogOut")) {
+				System.out.println("Log out requested - to be implemented");				
+				// KPSmartGUI.requestLogOutConfirmation();
+			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogOutConfirmed")) {
+				System.out.println("Log out confirmed - to be implemented");
+				loggedInID = -1;
+				// KPSmartModel.saveData();
+				// KPSmartGUI.logInView();
+			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogIn")) {
+				System.out.println("Log in requested - to be implemented");
+				// KPSmartGUI.requestLoginDetails();
+			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogInDetailsProvided")) {
+				System.out.println("Log in details provided - to be implemented");				
+				//KPSmartModel.Employees.confirmDetails(somehowGetValues...);
 			}
+			
 		}
 	}
 }
