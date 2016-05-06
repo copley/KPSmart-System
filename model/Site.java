@@ -3,12 +3,13 @@ package model;
 import java.util.List;
 
 public class Site {
-	private String Location;
+	private int id;
+	private String location;
 	private SiteMap siteMap;
 
-	public Site(String location, SiteMap siteMap) {
-		super();
-		Location = location;
+	public Site(int id, String location, SiteMap siteMap) {
+		this.id = id;
+		this.location = location;
 		this.siteMap = siteMap;
 	}
 

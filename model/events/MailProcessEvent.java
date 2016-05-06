@@ -6,8 +6,8 @@ import model.Staff;
 public class MailProcessEvent extends BusinessEvent {
 	private Package mailItem;
 
-	public MailProcessEvent(int date, double time, Staff staff, Package mailItem) {
-		super(date, time, staff);
+	public MailProcessEvent(int date, double time, int staffID, Package mailItem) {
+		super(date, time, staffID);
 		this.mailItem = mailItem;
 	}
 

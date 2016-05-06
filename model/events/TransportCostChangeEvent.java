@@ -4,16 +4,16 @@ import model.Route;
 import model.Staff;
 
 public class TransportCostChangeEvent extends BusinessEvent {
-	private Route affectedRoute;
+	private int affectedRouteID;
 	private double oldPerWeight;
 	private double oldPerVolume;
 	private double newPerWeight;
 	private double newPerVolume;
 
-	public TransportCostChangeEvent(int date, double time, Staff staff, Route affectedRoute, double oldPerWeight,
+	public TransportCostChangeEvent(int date, double time, int staffID, int affectedRouteID, double oldPerWeight,
 			double oldPerVolume, double newPerWeight, double newPerVolume) {
-		super(date, time, staff);
-		this.affectedRoute = affectedRoute;
+		super(date, time, staffID);
+		this.affectedRouteID = affectedRouteID;
 		this.oldPerWeight = oldPerWeight;
 		this.oldPerVolume = oldPerVolume;
 		this.newPerWeight = newPerWeight;

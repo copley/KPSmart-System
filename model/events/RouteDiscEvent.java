@@ -4,11 +4,11 @@ import model.Route;
 import model.Staff;
 
 public class RouteDiscEvent extends BusinessEvent {
-	private Route discontinuedRoute;
+	private int discontinuedRouteID;
 
-	public RouteDiscEvent(int date, double time, Staff staff, Route discontinuedRoute) {
-		super(date, time, staff);
-		this.discontinuedRoute = discontinuedRoute;
+	public RouteDiscEvent(int date, double time, int staffID, int discontinuedRouteID) {
+		super(date, time, staffID);
+		this.discontinuedRouteID = discontinuedRouteID;
 	}
 
 }

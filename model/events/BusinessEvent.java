@@ -5,13 +5,13 @@ import model.Staff;
 public class BusinessEvent {
 	private int date;
 	private double time;
-	private Staff staff;
+	private int staffID;
 
-	public BusinessEvent(int date, double time, Staff staff) {
+	public BusinessEvent(int date, double time, int staffID) {
 		super();
 		this.date = date;
 		this.time = time;
-		this.staff = staff;
+		this.staffID = staffID;
 	}
 
 }
