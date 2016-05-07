@@ -1,14 +1,18 @@
 package model.events;
 
-import model.Route;
-import model.Staff;
-
 public class RouteDiscEvent extends BusinessEvent {
-	private int discontinuedRouteID;
+	private String origin;
+	private String destination;
+	private String company;
+	private String type;
 
-	public RouteDiscEvent(int date, double time, int staffID, int discontinuedRouteID) {
-		super(date, time, staffID);
-		this.discontinuedRouteID = discontinuedRouteID;
+	public RouteDiscEvent(int day, int month, int year, double time, int staffID, String origin, String destination,
+			String company, String type) {
+		super(day, month, year, time, staffID);
+		this.origin = origin;
+		this.destination = destination;
+		this.company = company;
+		this.type = type;
 	}
 
 }

@@ -11,8 +11,9 @@ public class TransportCostChangeEvent extends BusinessEvent {
 	private int frequency;
 	private int duration;
 
-	public TransportCostChangeEvent(int year, int month, int day, double time, int staffID, String origin, String destination,
-			String company, String type, int newWeightCost, int newVolumeCost, String departureDay, int frequency, int duration) {
+	public TransportCostChangeEvent(int year, int month, int day, double time, int staffID, String origin,
+			String destination, String company, String type, int newWeightCost, int newVolumeCost, String departureDay,
+			int frequency, int duration) {
 		super(year, month, day, time, staffID);
 		this.origin = origin;
 		this.destination = destination;

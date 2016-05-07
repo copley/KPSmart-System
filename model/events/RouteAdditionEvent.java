@@ -1,11 +1,29 @@
 package model.events;
 
 public class RouteAdditionEvent extends BusinessEvent {
-	private int addedRouteID;
+	private String origin;
+	private String destination;
+	private String company;
+	private String type;
+	private int newWeightCost;
+	private int newVolumeCost;
+	private String departureDay;
+	private int frequency;
+	private int duration;
 
-	public RouteAdditionEvent(int year, int month, int day, double time, int staffID, int addedRouteID) {
+	public RouteAdditionEvent(int year, int month, int day, double time, int staffID, String origin, String destination,
+			String company, String type, int newWeightCost, int newVolumeCost, String departureDay, int frequency,
+			int duration) {
 		super(year, month, day, time, staffID);
-		this.addedRouteID = addedRouteID;
+		this.origin = origin;
+		this.destination = destination;
+		this.company = company;
+		this.type = type;
+		this.newWeightCost = newWeightCost;
+		this.newVolumeCost = newVolumeCost;
+		this.departureDay = departureDay;
+		this.frequency = frequency;
+		this.duration = duration;
 	}
 
 }

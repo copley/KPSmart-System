@@ -29,40 +29,43 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<year>2016</year>
 		<month>5</month>
 		<day>15</day>
-		<time>1400</time>
+		<time>1330</time>
 		<staffid>1</staffid>
-		<routeid>1</routeid>
+		<origin>Rome</origin>
+		<destination>Wellington</destination>
+		<company>Air NZ</company>
+		<type>Air</type>
+		<weightcost>6</weightcost>
+		<volumecost>6</volumecost>
+		<departure>Thursday</departure>
+		<frequency>6</frequency>
+		<duration>16</duration>
 	</add>
 	<cost>
+		<year>2016</year>
+		<month>5</month>
+		<day>15</day>
+		<time>1330</time>
+		<staffid>1</staffid>
+		<origin>Rome</origin>
+		<destination>Wellington</destination>
 		<company>Air NZ</company>
-		<to>Rome</to>
-		<from>Wellington</from>
 		<type>Air</type>
 		<weightcost>6</weightcost>
 		<volumecost>6</volumecost>
-		<maxWeight>350</maxWeight>
-		<maxVolume>50</maxVolume>
+		<departure>Thursday</departure>
+		<frequency>6</frequency>
 		<duration>16</duration>
-		<frequency>36</frequency>
-		<day>Thursday</day>
 	</cost>
 	<discontinue>
+		<year>2016</year>
+		<month>5</month>
+		<day>15</day>
+		<time>1330</time>
+		<staffid>1</staffid>
+		<origin>Rome</origin>
+		<destination>Wellington</destination>
 		<company>Kelburn Airways</company>
-		<to>Sydney</to>
-		<from>Wellington</from>
 		<type>Air</type>
 	</discontinue>	
-	<cost>
-		<company>Air NZ</company>
-		<to>Rome</to>
-		<from>Wellington</from>
-		<type>Air</type>
-		<weightcost>6</weightcost>
-		<volumecost>6</volumecost>
-		<maxWeight>350</maxWeight>
-		<maxVolume>50</maxVolume>
-		<duration>16</duration>
-		<frequency>36</frequency>
-		<day>Thursday</day>
-	</cost>
 </log>
