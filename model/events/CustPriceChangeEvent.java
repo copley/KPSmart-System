@@ -17,4 +17,10 @@ public class CustPriceChangeEvent extends BusinessEvent {
 		this.newVolumeCost = newVolumeCost;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+
+	}
+
 }

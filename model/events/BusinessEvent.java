@@ -1,6 +1,6 @@
 package model.events;
 
-public class BusinessEvent {
+public abstract class BusinessEvent {
 	private int year;
 	private int month;
 	private int day;
@@ -15,5 +15,7 @@ public class BusinessEvent {
 		this.time = time;
 		this.staffID = staffID;
 	}
+
+	public abstract String toString();
 
 }

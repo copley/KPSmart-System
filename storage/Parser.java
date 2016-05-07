@@ -28,6 +28,8 @@ public class Parser {
 	 * @return List of all the business events from the log file
 	 */
 	public static List<BusinessEvent> readData() {
+		System.out.println("Reading data from 'KPSmart_log.xml'");
+
 		// Read data from xml file
 		List<BusinessEvent> businessEvents = new ArrayList<BusinessEvent>();
 
@@ -44,6 +46,7 @@ public class Parser {
 
 			for (int i = 0; i < eventList.size(); i++) {
 				Element event = eventList.get(i);
+
 				// read business event and add to list
 				businessEvents.add(readEvent(event));
 			}
@@ -52,6 +55,8 @@ public class Parser {
 		} catch (IllegalEventError e) {
 			e.printStackTrace();
 		}
+
+		System.out.println("Finished reading data");
 
 		return businessEvents;
 	}
