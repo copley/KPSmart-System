@@ -1,1 +1,5 @@
 *.jar
+bin
+.modifiers
+.directory
+.bin

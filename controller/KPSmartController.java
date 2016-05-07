@@ -11,15 +11,13 @@ import gui.KPSmartGUI;
 import model.KPSmartModel;
 
 public class KPSmartController {
-	private int loggedInID;// unique ID of staff member currently logged in, -1
-							// if no-one is logged in
+
 	private KPSmartGUI kpsmartGUI;
 	private KPSmartModel kpsmartModel;
-	private int ListenerCount = 1; // used to print where in the code the
+	private int ListenerCount = 1; // debugging purposes // used to print where in the code the
 									// listener was called.
 
 	public KPSmartController(KPSmartGUI gui, KPSmartModel model) {
-		loggedInID = -1;// initially no-one is logged in!
 		kpsmartGUI = gui;
 		kpsmartModel = model;
 		this.init_KPSmartGuiListeners();
@@ -40,18 +38,18 @@ public class KPSmartController {
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			System.out.println(ListenerCount + 42);
+			//System.out.println(ListenerCount + 42); // debugging purposes - mc
 		}
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			System.out.println(ListenerCount + 46);
+			//System.out.println(ListenerCount + 46);  // debugging purposes - mc
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// example implementation.
-			System.out.println(ListenerCount + 49);
+			//System.out.println(ListenerCount + 49); // debugging purposes - mc
 			if (e.getKeyCode() == KeyEvent.VK_A) {
 			} else if (e.getKeyCode() == KeyEvent.VK_D) {
 			}
@@ -64,27 +62,27 @@ public class KPSmartController {
 	public class MyMouseAction implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			System.out.println(ListenerCount + 65);
+			//System.out.println(ListenerCount + 65); // debugging purposes - mc
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			System.out.println(ListenerCount + 69);
+			//System.out.println(ListenerCount + 69); // debugging purposes - mc
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			System.out.println(ListenerCount + 74);
+			//System.out.println(ListenerCount + 74); // debugging purposes - mc
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			System.out.println(ListenerCount + 78);
+			//System.out.println(ListenerCount + 78); // debugging purposes - mc
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			System.out.println(ListenerCount + 82);
+			//System.out.println(ListenerCount + 82); // debugging purposes - mc
 		}
 	}
 
@@ -98,7 +96,7 @@ public class KPSmartController {
 	public class ButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println(ListenerCount + 97);
+
 		}
 	}
 
@@ -109,22 +107,24 @@ public class KPSmartController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			System.out.println(ListenerCount + 107);
+
 			if (actionEvent.getActionCommand().equalsIgnoreCase("LogOut")) {
-				System.out.println("Log out requested - to be implemented");				
+				System.out.println("Log out requested - to be implemented");
 				// KPSmartGUI.requestLogOutConfirmation();
+
 			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogOutConfirmed")) {
 				System.out.println("Log out confirmed - to be implemented");
-				loggedInID = -1;
+
 				// KPSmartModel.saveData();
 				// KPSmartGUI.logInView();
 			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogIn")) {
 				System.out.println("Log in requested - to be implemented");
 				// KPSmartGUI.requestLoginDetails();
 			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogInDetailsProvided")) {
-				System.out.println("Log in details provided - to be implemented");				
+				System.out.println("Log in details provided - to be implemented");
 				//KPSmartModel.Employees.confirmDetails(somehowGetValues...);
 			}
-			
+
 		}
 	}
 }
