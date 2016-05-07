@@ -2,7 +2,7 @@ package model;
 
 public class Site {
 	private final int ID;
-	private String location;
+	private final String location;
 
 	public Site(int id, String location) {
 		this.ID = id;
