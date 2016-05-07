@@ -8,11 +8,13 @@ import org.jdom2.input.*;
 import model.*;
 import model.events.BusinessEvent;
 import model.events.CustPriceChangeEvent;
-import model.events.IllegalEventError;
 import model.events.MailProcessEvent;
 import model.events.RouteAdditionEvent;
 import model.events.RouteDiscEvent;
 import model.events.TransportCostChangeEvent;
+import model.exceptions.IllegalEventException;
+import model.exceptions.IllegalRouteException;
+import model.exceptions.IllegalSiteException;
 
 /**
  * Class responsible for reading the data from the log file
@@ -21,7 +23,9 @@ import model.events.TransportCostChangeEvent;
  */
 public class Parser {
 
-	public static final File FILE = new File("src/KPSmart_log.xml");
+	public static final File DATA_FILE = new File("src/KPSmart_log.xml");
+	public static final File SITES_FILE = new File("src/sites.txt");
+	public static final File ROUTES_FILE = new File("src/routes.txt");
 
 	private Parser() {
 	}
@@ -33,7 +37,7 @@ public class Parser {
 	 * @return List of all the business events from the log file
 	 */
 	public static List<BusinessEvent> readBusinessEvents() {
-		System.out.println("Reading data from 'KPSmart_log.xml'");
+		System.out.println("Reading data...'");
 
 		// Read data from xml file
 		List<BusinessEvent> businessEvents = new ArrayList<BusinessEvent>();
@@ -42,7 +46,7 @@ public class Parser {
 			// create the SAX builder
 			SAXBuilder saxBuilder = new SAXBuilder();
 			// create document
-			Document document = saxBuilder.build(FILE);
+			Document document = saxBuilder.build(DATA_FILE);
 			// get root element
 			Element systemElement = document.getRootElement();
 
@@ -57,7 +61,7 @@ public class Parser {
 			}
 		} catch (JDOMException | IOException e) {
 			e.printStackTrace();
-		} catch (IllegalEventError e) {
+		} catch (IllegalEventException e) {
 			e.printStackTrace();
 		}
 
@@ -66,11 +70,77 @@ public class Parser {
 		return businessEvents;
 	}
 
-
-
+	/**
+	 * Creates a Site map object and and reads and stores the sites and routes
+	 * @return Site map object with all sites and routes
+	 */
 	public static SiteMap readMap() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Reading map...");
+		SiteMap map = new SiteMap();
+
+		readSites(map);
+		readRoutes(map);
+
+		System.out.println("Finished reading map");
+		return map;
+	}
+
+	/**
+	 * Read the sites from the file sites.txt and adds it to the map
+	 * @param map Site map of the sites
+	 */
+	private static void readSites(SiteMap map) {
+		try {
+			Scanner sc = new Scanner(new FileReader(SITES_FILE));
+			sc.useDelimiter("\\t|\n");
+			while(sc.hasNext()){
+				Site s = readSite(sc);
+				if(!ValidationSystem.validateSite(s)){
+					throw new IllegalSiteException("Invalid site!");
+				}
+				map.addSite(s);
+			}
+		} catch (FileNotFoundException | IllegalSiteException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Reads a site from the scanner
+	 * @param sc Scanner for the file
+	 * @return Site object
+	 */
+	private static Site readSite(Scanner sc) {
+		int id = sc.nextInt();
+		String location = sc.next();
+		return new Site(id, location);
+	}
+
+	private static void readRoutes(SiteMap map) {
+		try {
+			Scanner sc = new Scanner(new FileReader(ROUTES_FILE));
+			sc.useDelimiter("\\t|\n");
+			while(sc.hasNext()){
+				Route r = readRoute(sc);
+				if(!ValidationSystem.validateRoute(r)){
+					throw new IllegalRouteException("Invalid Route!");
+				}
+				map.addRoute(r);
+			}
+		} catch (FileNotFoundException | IllegalRouteException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private static Route readRoute(Scanner sc) {
+		int id = sc.nextInt();
+		int dest = sc.nextInt();
+		int origin = sc.nextInt();
+		String company = sc.next();
+		int duration = sc.nextInt();
+		boolean inService = sc.nextBoolean();
+		return new Route(id, dest, origin, company, duration, inService);
 	}
 
 	/**
@@ -80,10 +150,10 @@ public class Parser {
 	 * @param event
 	 *            Event to be parsed
 	 * @return A business event
-	 * @throws IllegalEventError
+	 * @throws IllegalEventException
 	 *             If the event is invalid
 	 */
-	private static BusinessEvent readEvent(Element event) throws IllegalEventError {
+	private static BusinessEvent readEvent(Element event) throws IllegalEventException {
 		BusinessEvent businessEvent = null;
 
 		// get the eventType
@@ -100,40 +170,40 @@ public class Parser {
 		switch (eventType) {
 		case "price":
 			CustPriceChangeEvent priceEvent = readPrice(event, day, month, year, time, staff);
-			if (!ValidationSystem.ValidateCustPriceEvent(priceEvent)) {
-				throw new IllegalEventError("Event contains incorrect information");
+			if (!ValidationSystem.validateCustPriceEvent(priceEvent)) {
+				throw new IllegalEventException("Event contains incorrect information");
 			}
 			businessEvent = priceEvent;
 			break;
 		case "mail":
 			MailProcessEvent mailEvent = readMail(event, day, month, year, time, staff);
-			if (!ValidationSystem.ValidateMailProcessEvent(mailEvent)) {
-				throw new IllegalEventError("Event contains incorrect information");
+			if (!ValidationSystem.validateMailProcessEvent(mailEvent)) {
+				throw new IllegalEventException("Event contains incorrect information");
 			}
 			businessEvent = mailEvent;
 			break;
 		case "add":
 			RouteAdditionEvent addEvent = readAdd(event, day, month, year, time, staff);
-			if (!ValidationSystem.ValidateRouteAdditionEvent(addEvent)) {
+			if (!ValidationSystem.validateRouteAdditionEvent(addEvent)) {
 			}
 			businessEvent = addEvent;
 			break;
 		case "discontinue":
 			RouteDiscEvent discEvent = readDiscontinue(event, day, month, year, time, staff);
-			if (!ValidationSystem.ValidateRouteDiscEvent(discEvent)) {
-				throw new IllegalEventError("Event contains incorrect information");
+			if (!ValidationSystem.validateRouteDiscEvent(discEvent)) {
+				throw new IllegalEventException("Event contains incorrect information");
 			}
 			businessEvent = discEvent;
 			break;
 		case "cost":
 			TransportCostChangeEvent costEvent = readCost(event, day, month, year, time, staff);
-			if (!ValidationSystem.ValidateTransportCostEvent(costEvent)) {
-				throw new IllegalEventError("Event contains incorrect information");
+			if (!ValidationSystem.validateTransportCostEvent(costEvent)) {
+				throw new IllegalEventException("Event contains incorrect information");
 			}
 			businessEvent = costEvent;
 			break;
 		default:
-			throw new IllegalEventError("Invalid Event Type");
+			throw new IllegalEventException("Invalid Event Type");
 		}
 		return businessEvent;
 	}

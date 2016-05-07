@@ -27,8 +27,8 @@ public class CustPriceChangeEvent extends BusinessEvent {
 		string.append("Origin: " + origin + "\n");
 		string.append("Destination: " + destination + "\n");
 		string.append("Priority: " + priority + "\n");
-		string.append("Weight Cost per gram: " + newWeightCost + "\n");
-		string.append("Volume Cost per gram: " + newVolumeCost);
+		string.append("Weight Cost: " + newWeightCost + "\n");
+		string.append("Volume Cost: " + newVolumeCost);
 		return string.toString();
 	}
 

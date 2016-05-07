@@ -5,25 +5,30 @@ public class Route {
 	private final int toSiteID;
 	private final int fromSiteID;
 	private String carrier;
-	private double duration;
-	private double custPriceWeight;
-	private double custPriceVolume;
-	private double transPriceWeight;
-	private double transPriceVolume;
+	private int duration;
+
+	// Not sure if necessary
+//	private double custPriceWeight;
+//	private double custPriceVolume;
+//	private double transPriceWeight;
+//	private double transPriceVolume;
+
 	private boolean inService;
 
-	public Route(int id, int toSiteID, int fromSiteID, String carrier, double duration, double custPriceWeight, double custPriceVolume,
-			double transPriceWeight, double transPriceVolume) {
+	public Route(int id, int toSiteID, int fromSiteID, String carrier, int duration, boolean inService
+//			, double custPriceWeight, double custPriceVolume,
+//			double transPriceWeight, double transPriceVolume
+			) {
 		super();
 		this.id = id;
 		this.toSiteID = toSiteID;
 		this.fromSiteID = fromSiteID;
 		this.carrier = carrier;
 		this.duration = duration;
-		this.custPriceWeight = custPriceWeight;
-		this.custPriceVolume = custPriceVolume;
-		this.transPriceWeight = transPriceWeight;
-		this.transPriceVolume = transPriceVolume;
+//		this.custPriceWeight = custPriceWeight;
+//		this.custPriceVolume = custPriceVolume;
+//		this.transPriceWeight = transPriceWeight;
+//		this.transPriceVolume = transPriceVolume;
 		this.inService = true;
 	}
 

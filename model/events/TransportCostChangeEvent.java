@@ -37,8 +37,8 @@ public class TransportCostChangeEvent extends BusinessEvent {
 		string.append("Destination: " + destination + "\n");
 		string.append("Company: " + company + "\n");
 		string.append("Type: " + type + "\n");
-		string.append("Weight Cost per gram: " + newWeightCost + "\n");
-		string.append("Volume Cost per gram: " + newVolumeCost + "\n");
+		string.append("Weight Cost: " + newWeightCost + "\n");
+		string.append("Volume Cost: " + newVolumeCost);
 		string.append("Day pf Departure: " + departureDay + "\n");
 		string.append("Frequency: " + frequency + "\n");
 		string.append("Duration: " + duration);
