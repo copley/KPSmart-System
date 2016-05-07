@@ -11,10 +11,10 @@ public class TransportCostChangeEvent extends BusinessEvent {
 	private int frequency;
 	private int duration;
 
-	public TransportCostChangeEvent(int year, int month, int day, double time, int staffID, String origin,
+	public TransportCostChangeEvent(int year, int month, int day, double time, String staff, String origin,
 			String destination, String company, String type, int newWeightCost, int newVolumeCost, String departureDay,
 			int frequency, int duration) {
-		super(year, month, day, time, staffID);
+		super(year, month, day, time, staff);
 		this.origin = origin;
 		this.destination = destination;
 		this.company = company;
@@ -24,6 +24,12 @@ public class TransportCostChangeEvent extends BusinessEvent {
 		this.departureDay = departureDay;
 		this.frequency = frequency;
 		this.duration = duration;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -30,7 +30,7 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<month>5</month>
 		<year>2016</year>
 		<time>1330</time>
-		<staffid>1</staffid>
+		<staff>Bonnie</staff>
 		<origin>Rome</origin>
 		<destination>Wellington</destination>
 		<company>Air NZ</company>
@@ -46,7 +46,7 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<month>5</month>
 		<year>2016</year>
 		<time>1330</time>
-		<staffid>1</staffid>
+		<staff>Bonnie</staff>
 		<origin>Rome</origin>
 		<destination>Wellington</destination>
 		<company>Kelburn Airways</company>
@@ -57,7 +57,7 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<month>5</month>
 		<year>2016</year>
 		<time>1330</time>
-		<staffid>1</staffid>
+		<staff>Bonnie</staff>
 		<origin>Rome</origin>
 		<destination>Wellington</destination>
 		<company>Air NZ</company>

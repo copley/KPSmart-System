@@ -1,19 +1,19 @@
 package model.events;
 
 public abstract class BusinessEvent {
-	private int year;
-	private int month;
-	private int day;
-	private double time;
-	private int staffID;
+	protected int year;
+	protected int month;
+	protected int day;
+	protected double time;
+	protected String staff;
 
-	public BusinessEvent(int year, int month, int day, double time, int staffID) {
+	public BusinessEvent(int year, int month, int day, double time, String staff) {
 		super();
 		this.year = year;
 		this.month = month;
 		this.day = day;
 		this.time = time;
-		this.staffID = staffID;
+		this.staff = staff;
 	}
 
 	public abstract String toString();

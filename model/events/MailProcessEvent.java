@@ -7,14 +7,20 @@ public class MailProcessEvent extends BusinessEvent {
 	private int volume;
 	private String priority;
 
-	public MailProcessEvent(int year, int month, int day, double time, int staffID, String origin, String destination,
+	public MailProcessEvent(int year, int month, int day, double time, String staff, String origin, String destination,
 			int weight, int volume, String priority) {
-		super(year, month, day, time, staffID);
+		super(year, month, day, time, staff);
 		this.origin = origin;
 		this.destination = destination;
 		this.weight = weight;
 		this.volume = volume;
 		this.priority = priority;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
