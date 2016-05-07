@@ -1,11 +1,25 @@
 package view;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class KPSmartCanvas extends AbstractCanvas {
+@SuppressWarnings("serial")
+public class KPSmartCanvas extends JPanel {
+
+	/**
+	 * represents the canvas width
+	 */
+	private final int canvasWidth;
+
+	/**
+	 * represents the canvas height
+	 */
+	private final int canvasHeight;
+
 	/**
 	 * the parent frame
 	 */
@@ -13,33 +27,32 @@ public class KPSmartCanvas extends AbstractCanvas {
 
 	/**
 	 * construct an empty cluedo canvas
+	 *
 	 * @param frame
 	 */
 	public KPSmartCanvas(JFrame frame) {
-		super(frame);
+		canvasWidth = frame.getWidth();
+		canvasHeight = frame.getHeight();
 		this.frame = frame;
+		setBackground(new Color(77, 115, 166));
 	}
 
-	@Override
-	protected void redraw() {
+	public void redraw() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	protected void onClick(MouseEvent e) {
+	public void onClick(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	protected void onKeyboard(KeyEvent e) {
+	public void onKeyboard(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	protected void validateButtons() {
+	public void validateButtons() {
 		// TODO Auto-generated method stub
 
 	}
