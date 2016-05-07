@@ -23,7 +23,18 @@ public class KPSmartModel {
 		// ***activate the data loader*****
 	}
 
-	// ****what does this bit do?***
+
+
+
+
+
+
+	// ****what does this bit do?*** - Nic Comment
+	// Note: this method is for demonstration purposes
+
+	// Because the controller has exclusive access to the Model! Controller can act on this class as it is stored as a field in the controller class.
+	// this class is stored as a field in the controller class.
+	// the controller class can then say KPSmartModel.Database_Do_Something_With_String(String str)
 	public void Database_Do_Something_With_String(String str) {
 		// database.ActonString(str);
 		System.out.println("You have reached the Model, printing :" + str);
