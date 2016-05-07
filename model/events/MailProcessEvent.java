@@ -1,14 +1,22 @@
 package model.events;
 
-import model.Package;
-import model.Staff;
-
 public class MailProcessEvent extends BusinessEvent {
-	private Package mailItem;
+	private int originSiteID;
+	private int destSiteID;
+	private double price;
+	private double weight;
+	private double volume;
+	private int priority;
 
-	public MailProcessEvent(int date, double time, int staffID, Package mailItem) {
-		super(date, time, staffID);
-		this.mailItem = mailItem;
+	public MailProcessEvent(int year, int month, int day, double time, int staffID, int originSiteID, int destSiteID,
+			double price, double weight, double volume, int priority) {
+		super(year, month, day, time, staffID);
+		this.originSiteID = originSiteID;
+		this.destSiteID = destSiteID;
+		this.price = price;
+		this.weight = weight;
+		this.volume = volume;
+		this.priority = priority;
 	}
 
 }
