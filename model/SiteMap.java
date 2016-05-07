@@ -1,16 +1,16 @@
 package model;
 
-import java.util.List;
+import java.util.Map;
 
 public class SiteMap {
-	private List<Site> sites;
-	private List<Route> routes;
+	private Map<Integer, Site> sites; // maps site to its id
+	private Map<Integer, Route> routes; // maps route to its id
 
 	public void addNewRoute(int toSiteID, int fromSiteID, String carrier, double duration, double custPriceWeight,
 			double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// not yet implemented
 		// should work out a unique int id during creation - eg routes.size()
-		// should update routes 
+		// should update routes
 		System.out.println("add new route not yet implemented");
 
 	};
@@ -27,11 +27,11 @@ public class SiteMap {
 		// not yet implemented
 		System.out.println("change route not yet implemented");
 	};
-	
+
 	public void addNewSite(String location) {
 		// not yet implemented
 		// should work out a unique int id during creation - eg sites.size()
-		// should update sites 
+		// should update sites
 		System.out.println("add new site not yet implemented");
 	};
 }

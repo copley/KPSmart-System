@@ -102,6 +102,26 @@ public class Parser {
 		return businessEvent;
 	}
 
+	private static CustPriceChangeEvent readPrice(Element event) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static MailProcessEvent readMail(Element event) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static RouteAdditionEvent readAdd(Element event) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static RouteDiscEvent readDiscontinue(Element event) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private static TransportCostChangeEvent readCost(Element event) {
 		String company = event.getChild("company").getText();
 		String to = event.getChild("to").getText();
@@ -115,26 +135,6 @@ public class Parser {
 		int frequency = Integer.parseInt(event.getChild("frequency").getText());
 		String day = event.getChild("day").getText();
 		// return new event
-		return null;
-	}
-
-	private static RouteDiscEvent readDiscontinue(Element event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private static RouteAdditionEvent readAdd(Element event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private static MailProcessEvent readMail(Element event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private static CustPriceChangeEvent readPrice(Element event) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
