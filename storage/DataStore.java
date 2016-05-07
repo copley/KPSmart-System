@@ -3,15 +3,23 @@ package storage;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.SiteMap;
 import model.events.BusinessEvent;
 
+/**
+ * The Data store of the system. Responsible for storing all the data in the database
+ * @author Bonnie Liao
+ *
+ */
 public class DataStore {
 
 	private List<BusinessEvent> businessEvents;
+	private SiteMap map;
 
 	public DataStore() {
 		businessEvents = new ArrayList<BusinessEvent>();
-		businessEvents = Parser.readData();
+		businessEvents = Parser.readBusinessEvents();
+		map = Parser.readMap();
 	}
 
 	/**

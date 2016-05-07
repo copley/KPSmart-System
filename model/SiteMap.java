@@ -5,6 +5,7 @@ import java.util.Map;
 public class SiteMap {
 	private Map<Integer, Site> sites; // maps site to its id
 	private Map<Integer, Route> routes; // maps route to its id
+	private Map<Site, Route> siteToRoutes; // maps sites to routes
 
 	public void addNewRoute(int toSiteID, int fromSiteID, String carrier, double duration, double custPriceWeight,
 			double custPriceVolume, double transPriceWeight, double transPriceVolume) {
