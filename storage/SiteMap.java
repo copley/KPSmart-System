@@ -1,6 +1,9 @@
-package model;
+package storage;
 
 import java.util.Map;
+
+import model.Route;
+import model.Site;
 
 public class SiteMap {
 	private Map<Integer, Site> sites; // maps site to its id

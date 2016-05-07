@@ -46,4 +46,9 @@ public class ValidationSystem {
 		return true;
 	}
 
+	public static boolean validateStaff(Staff s) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }

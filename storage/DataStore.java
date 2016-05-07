@@ -3,7 +3,7 @@ package storage;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.SiteMap;
+import model.Staff;
 import model.events.BusinessEvent;
 
 /**
@@ -14,11 +14,12 @@ import model.events.BusinessEvent;
 public class DataStore {
 
 	private List<BusinessEvent> businessEvents;
+	private List<Staff> staffList;
 	private SiteMap map;
 
 	public DataStore() {
-		businessEvents = new ArrayList<BusinessEvent>();
 		businessEvents = Parser.readBusinessEvents();
+		staffList = Parser.readStaff();
 		map = Parser.readMap();
 	}
 

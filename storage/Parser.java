@@ -15,6 +15,7 @@ import model.events.TransportCostChangeEvent;
 import model.exceptions.IllegalEventException;
 import model.exceptions.IllegalRouteException;
 import model.exceptions.IllegalSiteException;
+import model.exceptions.IllegalStaffException;
 
 /**
  * Class responsible for reading the data from the log file
@@ -23,9 +24,10 @@ import model.exceptions.IllegalSiteException;
  */
 public class Parser {
 
-	public static final File DATA_FILE = new File("src/KPSmart_log.xml");
-	public static final File SITES_FILE = new File("src/sites.txt");
-	public static final File ROUTES_FILE = new File("src/routes.txt");
+	private static final File DATA_FILE = new File("src/KPSmart_log.xml");
+	private static final File SITES_FILE = new File("src/sites.txt");
+	private static final File ROUTES_FILE = new File("src/routes.txt");
+	private static final File STAFF_FILE = new File("src/staff.txt");
 
 	private Parser() {
 	}
@@ -68,6 +70,33 @@ public class Parser {
 		System.out.println("Finished reading data");
 
 		return businessEvents;
+	}
+
+
+
+	public static List<Staff> readStaff() {
+		System.out.println("Reading Staff...");
+		List<Staff> staffList = new ArrayList<Staff>();
+		try {
+			Scanner sc = new Scanner(new FileReader(STAFF_FILE));
+			sc.useDelimiter("\\t|\n");
+			while(sc.hasNext()){
+				int id = sc.nextInt();
+				String name = sc.next();
+				String password = sc.next();
+				boolean isManager = sc.nextBoolean();
+				Staff s = new Staff(id, name, password, isManager);
+				if(!ValidationSystem.validateStaff(s)){
+					throw new IllegalStaffException("Invalid staff!");
+				}
+				staffList.add(s);
+			}
+		} catch (FileNotFoundException | IllegalStaffException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Finished reading staff");
+		return staffList;
 	}
 
 	/**
