@@ -14,13 +14,26 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<newvolume>20</newvolume>
 	</price>
 	<mail>
-		<day>Monday</day>
-		<to>Rome</to>
-		<from>Wellington</from>
-		<weight>100</weight>
-		<volume>5</volume>
-		<priority>International Air</priority>
+		<year>2016</year>
+		<month>5</month>
+		<day>15</day>
+		<time>1330</time>
+		<staffid>1</staffid>
+		<originid>1</originid>
+		<destid>2</destid>
+		<price>13</price>
+		<weight>500</weight>
+		<volume>20</volume>
+		<priority>1</priority>
 	</mail>
+	<add>
+		<year>2016</year>
+		<month>5</month>
+		<day>15</day>
+		<time>1400</time>
+		<staffid>1</staffid>
+		<routeid>1</routeid>
+	</add>
 	<cost>
 		<company>Air NZ</company>
 		<to>Rome</to>

@@ -1,14 +1,11 @@
 package model.events;
 
-import model.Route;
-import model.Staff;
-
 public class RouteAdditionEvent extends BusinessEvent {
-	private Route addedRoute;
+	private int addedRouteID;
 
-	public RouteAdditionEvent(int date, double time, int staffID, int addedRouteID) {
-		super(date, time, staffID);
-		this.addedRoute = addedRoute;
+	public RouteAdditionEvent(int year, int month, int day, double time, int staffID, int addedRouteID) {
+		super(year, month, day, time, staffID);
+		this.addedRouteID = addedRouteID;
 	}
 
 }
