@@ -3,14 +3,14 @@ package model;
 public class Staff {
 
 	private final int ID;
-	private String Name;
-	private String Password;
+	private String name;
+	private String password;
 	private boolean isManager;
 
-	public Staff(int iD, String name, String password, boolean isManager) {
-		ID = iD;
-		Name = name;
-		Password = password;
+	public Staff(int id, String name, String password, boolean isManager) {
+		ID = id;
+		this.name = name;
+		this.password = password;
 		this.isManager = isManager;
 	}
 
@@ -19,4 +19,12 @@ public class Staff {
 		return true;
 	}
 
+	public String toString(){
+		StringBuilder string = new StringBuilder();
+		string.append("ID: " + ID + "\n");
+		string.append("Name: " + name + "\n");
+		string.append("Password: " + password + "\n");
+		string.append("Manager: " + isManager);
+		return string.toString();
+	}
 }

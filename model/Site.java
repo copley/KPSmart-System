@@ -1,12 +1,22 @@
 package model;
 
 public class Site {
-	private int id;
+	private final int ID;
 	private String location;
 
 	public Site(int id, String location) {
-		this.id = id;
+		this.ID = id;
 		this.location = location;
 	}
 
+	public Integer getID() {
+		return ID;
+	}
+
+	public String toString(){
+		StringBuilder string = new StringBuilder();
+		string.append("ID: " + ID + "\n");
+		string.append("Location: " + location);
+		return string.toString();
+	}
 }

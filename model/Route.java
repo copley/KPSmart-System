@@ -1,10 +1,10 @@
 package model;
 
 public class Route {
-	private final int id;
-	private final int toSiteID;
-	private final int fromSiteID;
-	private String carrier;
+	private final int ID;
+	private final int destinationID;
+	private final int originID;
+	private String company;
 	private int duration;
 
 	// Not sure if necessary
@@ -15,15 +15,14 @@ public class Route {
 
 	private boolean inService;
 
-	public Route(int id, int toSiteID, int fromSiteID, String carrier, int duration, boolean inService
+	public Route(int id, int destinationID, int originID, String company, int duration, boolean inService
 //			, double custPriceWeight, double custPriceVolume,
 //			double transPriceWeight, double transPriceVolume
 			) {
-		super();
-		this.id = id;
-		this.toSiteID = toSiteID;
-		this.fromSiteID = fromSiteID;
-		this.carrier = carrier;
+		this.ID = id;
+		this.destinationID = destinationID;
+		this.originID = originID;
+		this.company = company;
 		this.duration = duration;
 //		this.custPriceWeight = custPriceWeight;
 //		this.custPriceVolume = custPriceVolume;
@@ -40,5 +39,28 @@ public class Route {
 	public void changeTransportCost(double perWeight, double perVolume) {
 		// not yet implemented
 		System.out.println("Change Transport Cost is not yet implemented");
+	}
+
+	public Integer getID() {
+		return ID;
+	}
+
+	public int getOrigin() {
+		return originID;
+	}
+
+	public Object getDestination() {
+		return destinationID;
+	}
+
+	public String toString(){
+		StringBuilder string = new StringBuilder();
+		string.append("ID: " + ID + "\n");
+		string.append("Destination: " + destinationID + "\n");
+		string.append("Origin: " + originID + "\n");
+		string.append("Company: " + company + "\n");
+		string.append("duration: " + duration + "\n");
+		string.append("In service: " + inService);
+		return string.toString();
 	}
 }
