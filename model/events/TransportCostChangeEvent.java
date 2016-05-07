@@ -1,23 +1,28 @@
 package model.events;
 
-import model.Route;
-import model.Staff;
-
 public class TransportCostChangeEvent extends BusinessEvent {
-	private int affectedRouteID;
-	private double oldPerWeight;
-	private double oldPerVolume;
-	private double newPerWeight;
-	private double newPerVolume;
+	private String origin;
+	private String destination;
+	private String company;
+	private String type;
+	private int newWeightCost;
+	private int newVolumeCost;
+	private String departureDay;
+	private int frequency;
+	private int duration;
 
-	public TransportCostChangeEvent(int date, double time, int staffID, int affectedRouteID, double oldPerWeight,
-			double oldPerVolume, double newPerWeight, double newPerVolume) {
-		super(date, time, staffID);
-		this.affectedRouteID = affectedRouteID;
-		this.oldPerWeight = oldPerWeight;
-		this.oldPerVolume = oldPerVolume;
-		this.newPerWeight = newPerWeight;
-		this.newPerVolume = newPerVolume;
+	public TransportCostChangeEvent(int year, int month, int day, double time, int staffID, String origin, String destination,
+			String company, String type, int newWeightCost, int newVolumeCost, String departureDay, int frequency, int duration) {
+		super(year, month, day, time, staffID);
+		this.origin = origin;
+		this.destination = destination;
+		this.company = company;
+		this.type = type;
+		this.newWeightCost = newWeightCost;
+		this.newVolumeCost = newVolumeCost;
+		this.departureDay = departureDay;
+		this.frequency = frequency;
+		this.duration = duration;
 	}
 
 }
