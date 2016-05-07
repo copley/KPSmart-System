@@ -6,7 +6,7 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<month>5</month>
 		<year>2016</year>
 		<time>1300</time>
-		<staffid>1</staffid>
+		<staff>Bonnie</staff>
 	    <origin>Suva</origin>
 	    <destination>New Zealand</destination>
 	    <priority>International Air</priority>
@@ -18,7 +18,7 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<month>5</month>
 		<year>2016</year>
 		<time>1330</time>
-		<staffid>1</staffid>
+		<staff>Bonnie</staff>
 	    <origin>Rome</origin>
 	    <destination>Wellington</destination>
 	    <weight>100</weight>

@@ -11,10 +11,10 @@ public class TransportCostChangeEvent extends BusinessEvent {
 	private int frequency;
 	private int duration;
 
-	public TransportCostChangeEvent(int year, int month, int day, double time, String staff, String origin,
+	public TransportCostChangeEvent(int day, int month, int year, int time, String staff, String origin,
 			String destination, String company, String type, int newWeightCost, int newVolumeCost, String departureDay,
 			int frequency, int duration) {
-		super(year, month, day, time, staff);
+		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
 		this.company = company;
@@ -28,8 +28,21 @@ public class TransportCostChangeEvent extends BusinessEvent {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder string = new StringBuilder();
+		string.append("TRANSPORT COST CHANGE EVENT\n");
+		string.append("Date: " + day + ", " + month + ", " + year + "\n");
+		string.append("Time: " + time + "\n");
+		string.append("Staff responsible: " + staff + "\n");
+		string.append("Origin: " + origin + "\n");
+		string.append("Destination: " + destination + "\n");
+		string.append("Company: " + company + "\n");
+		string.append("Type: " + type + "\n");
+		string.append("Weight Cost per gram: " + newWeightCost + "\n");
+		string.append("Volume Cost per gram: " + newVolumeCost + "\n");
+		string.append("Day pf Departure: " + departureDay + "\n");
+		string.append("Frequency: " + frequency + "\n");
+		string.append("Duration: " + duration);
+		return string.toString();
 	}
 
 }

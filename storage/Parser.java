@@ -133,7 +133,7 @@ public class Parser {
 		int volume = Integer.parseInt(event.getChild("volume").getText());
 		String priority = event.getChild("priority").getText();
 
-		return new MailProcessEvent(year, month, day, time, staff, origin, destination, weight, volume, priority);
+		return new MailProcessEvent(day, month, year, time, staff, origin, destination, weight, volume, priority);
 	}
 
 	private static RouteAdditionEvent readAdd(Element event, int day, int month, int year, int time, String staff) {
@@ -147,7 +147,7 @@ public class Parser {
 		int frequency = Integer.parseInt(event.getChild("frequency").getText());
 		int duration = Integer.parseInt(event.getChild("duration").getText());
 
-		return new RouteAdditionEvent(year, month, day, time, staff, origin, destination, company, type, weightcost, volumecost, departure, frequency, duration);
+		return new RouteAdditionEvent(day, month, year, time, staff, origin, destination, company, type, weightcost, volumecost, departure, frequency, duration);
 	}
 
 	private static RouteDiscEvent readDiscontinue(Element event, int day, int month, int year, int time, String staff) {
@@ -170,6 +170,6 @@ public class Parser {
 		int frequency = Integer.parseInt(event.getChild("frequency").getText());
 		int duration = Integer.parseInt(event.getChild("duration").getText());
 
-		return new TransportCostChangeEvent(year, month, day, time, staff, origin, destination, company, type, weightcost, volumecost, departure, frequency, duration);
+		return new TransportCostChangeEvent(day, month, year, time, staff, origin, destination, company, type, weightcost, volumecost, departure, frequency, duration);
 	}
 }

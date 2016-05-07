@@ -7,9 +7,9 @@ public class MailProcessEvent extends BusinessEvent {
 	private int volume;
 	private String priority;
 
-	public MailProcessEvent(int year, int month, int day, double time, String staff, String origin, String destination,
+	public MailProcessEvent(int day, int month, int year, int time, String staff, String origin, String destination,
 			int weight, int volume, String priority) {
-		super(year, month, day, time, staff);
+		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
 		this.weight = weight;
@@ -19,8 +19,17 @@ public class MailProcessEvent extends BusinessEvent {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder string = new StringBuilder();
+		string.append("MAIL PROCESS EVENT\n");
+		string.append("Date: " + day + ", " + month + ", " + year + "\n");
+		string.append("Time: " + time + "\n");
+		string.append("Staff responsible: " + staff + "\n");
+		string.append("Origin: " + origin + "\n");
+		string.append("Destination: " + destination + "\n");
+		string.append("Weight: " + weight + "\n");
+		string.append("Volume: " + volume + "\n");
+		string.append("Priority: " + priority);
+		return string.toString();
 	}
 
 }

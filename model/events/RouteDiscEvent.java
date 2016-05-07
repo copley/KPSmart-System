@@ -6,7 +6,7 @@ public class RouteDiscEvent extends BusinessEvent {
 	private String company;
 	private String type;
 
-	public RouteDiscEvent(int day, int month, int year, double time, String staff, String origin, String destination,
+	public RouteDiscEvent(int day, int month, int year, int time, String staff, String origin, String destination,
 			String company, String type) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
@@ -17,8 +17,16 @@ public class RouteDiscEvent extends BusinessEvent {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder string = new StringBuilder();
+		string.append("ROUTE DISCONTINUED EVENT\n");
+		string.append("Date: " + day + ", " + month + ", " + year + "\n");
+		string.append("Time: " + time + "\n");
+		string.append("Staff responsible: " + staff + "\n");
+		string.append("Origin: " + origin + "\n");
+		string.append("Destination: " + destination + "\n");
+		string.append("Company: " + company + "\n");
+		string.append("Type: " + type);
+		return string.toString();
 	}
 
 }
