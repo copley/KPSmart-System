@@ -1,7 +1,6 @@
 package model.events;
 
 public class BusinessEvent {
-<<<<<<< HEAD
 	private int year;
 	private int month;
 	private int day;
@@ -13,7 +12,6 @@ public class BusinessEvent {
 		this.year = year;
 		this.month = month;
 		this.day = day;
->>>>>>> e80170bbc636b362e535b2b35caaa13bf0ba0959
 		this.time = time;
 		this.staffID = staffID;
 	}

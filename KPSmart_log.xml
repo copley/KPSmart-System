@@ -7,24 +7,23 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<day>15</day>
 		<time>1300</time>
 		<staffid>1</staffid>
-		<routeid>1</route>
-		<oldweight>10</oldweight>
-		<oldvolume>10</oldvolume>
-		<newweight>12</newweight>
-		<newvolume>20</newvolume>
-	</price>
+	    <origin>Suva</origin>
+	    <destination>New Zealand</destination>
+	    <priority>International Air</priority>
+	    <weightcost>4</weightcost>
+	    <volumecost>4</volumecost>
+		</price>
 	<mail>
 		<year>2016</year>
 		<month>5</month>
 		<day>15</day>
 		<time>1330</time>
 		<staffid>1</staffid>
-		<originid>1</originid>
-		<destid>2</destid>
-		<price>13</price>
-		<weight>500</weight>
-		<volume>20</volume>
-		<priority>1</priority>
+	    <origin>Rome</origin>
+	    <destination>Wellington</destination>
+	    <weight>100</weight>
+	    <volume>5</volume>
+	    <priority>International Air</priority>
 	</mail>
 	<add>
 		<year>2016</year>
