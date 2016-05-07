@@ -1,8 +1,5 @@
 package model.events;
 
-import model.Route;
-import model.Staff;
-
 public class CustPriceChangeEvent extends BusinessEvent {
 	private int affectedRouteID;
 	private double oldPerWeight;
@@ -10,9 +7,9 @@ public class CustPriceChangeEvent extends BusinessEvent {
 	private double newPerWeight;
 	private double newPerVolume;
 
-	public CustPriceChangeEvent(int date, double time, int staffID, int affectedRouteID, double oldPerWeight,
+	public CustPriceChangeEvent(int year, int month, int day, double time, int staffID, int affectedRouteID, double oldPerWeight,
 			double oldPerVolume, double newPerWeight, double newPerVolume) {
-		super(date, time, staffID);
+		super(year, month, day, time, staffID);
 		this.affectedRouteID = affectedRouteID;
 		this.oldPerWeight = oldPerWeight;
 		this.oldPerVolume = oldPerVolume;

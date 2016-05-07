@@ -2,11 +2,16 @@
 <log xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="postal.xsd">
 	<price>
-		<route>1234</to>
-		<from>New Zealand</from>
-		<priority>International Air</priority>
-		<weightcost>6</weightcost>
-		<volumecost>8</volumecost>
+		<year>2016</year>
+		<month>5</month>
+		<day>15</day>
+		<time>1300</time>
+		<staffid>1</staffid>
+		<routeid>1</route>
+		<oldweight>10</oldweight>
+		<oldvolume>10</oldvolume>
+		<newweight>12</newweight>
+		<newvolume>20</newvolume>
 	</price>
 	<mail>
 		<day>Monday</day>
