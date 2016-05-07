@@ -2,9 +2,9 @@
 <log xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="postal.xsd">
 	<price>
-		<year>2016</year>
-		<month>5</month>
 		<day>15</day>
+		<month>5</month>
+		<year>2016</year>
 		<time>1300</time>
 		<staffid>1</staffid>
 	    <origin>Suva</origin>
@@ -14,9 +14,9 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 	    <volumecost>4</volumecost>
 		</price>
 	<mail>
-		<year>2016</year>
-		<month>5</month>
 		<day>15</day>
+		<month>5</month>
+		<year>2016</year>
 		<time>1330</time>
 		<staffid>1</staffid>
 	    <origin>Rome</origin>
@@ -26,9 +26,9 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 	    <priority>International Air</priority>
 	</mail>
 	<add>
-		<year>2016</year>
-		<month>5</month>
 		<day>15</day>
+		<month>5</month>
+		<year>2016</year>
 		<time>1330</time>
 		<staffid>1</staffid>
 		<origin>Rome</origin>
@@ -41,10 +41,21 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<frequency>6</frequency>
 		<duration>16</duration>
 	</add>
-	<cost>
-		<year>2016</year>
-		<month>5</month>
+	<discontinue>
 		<day>15</day>
+		<month>5</month>
+		<year>2016</year>
+		<time>1330</time>
+		<staffid>1</staffid>
+		<origin>Rome</origin>
+		<destination>Wellington</destination>
+		<company>Kelburn Airways</company>
+		<type>Air</type>
+	</discontinue>	
+	<cost>
+		<day>15</day>
+		<month>5</month>
+		<year>2016</year>
 		<time>1330</time>
 		<staffid>1</staffid>
 		<origin>Rome</origin>
@@ -57,15 +68,4 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 		<frequency>6</frequency>
 		<duration>16</duration>
 	</cost>
-	<discontinue>
-		<year>2016</year>
-		<month>5</month>
-		<day>15</day>
-		<time>1330</time>
-		<staffid>1</staffid>
-		<origin>Rome</origin>
-		<destination>Wellington</destination>
-		<company>Kelburn Airways</company>
-		<type>Air</type>
-	</discontinue>	
 </log>
