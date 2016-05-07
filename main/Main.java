@@ -1,8 +1,8 @@
 package main;
 
 import controller.KPSmartController;
-import gui.KPSmartGUI;
 import model.KPSmartModel;
+import view.KPSmartGUI;
 
 /**
  *
@@ -18,7 +18,7 @@ import model.KPSmartModel;
  *
  */
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 		KPSmartModel kpsmartModel = new KPSmartModel();

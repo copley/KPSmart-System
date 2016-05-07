@@ -7,8 +7,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import gui.KPSmartGUI;
 import model.KPSmartModel;
+import view.KPSmartGUI;
 
 public class KPSmartController {
 
