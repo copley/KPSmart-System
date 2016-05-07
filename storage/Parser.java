@@ -58,39 +58,48 @@ public class Parser {
 
 	private static BusinessEvent readEvent(Element event) throws IllegalEventError {
 		BusinessEvent businessEvent = null;
+
 		// get the eventType
 		String eventType = event.getName();
+
+		// read the timestamp and staff responsible
+		int day = Integer.parseInt(event.getChild("day").getText());
+		int month = Integer.parseInt(event.getChild("month").getText());
+		int year = Integer.parseInt(event.getChild("year").getText());
+		int time = Integer.parseInt(event.getChild("time").getText());
+		int staffID = Integer.parseInt(event.getChild("staffid").getText());
+
 		// read event based on the element type
 		switch (eventType) {
 		case "price":
-			CustPriceChangeEvent priceEvent = readPrice(event);
+			CustPriceChangeEvent priceEvent = readPrice(event, day, month, year, time, staffID);
 			if(!ValidationSystem.ValidateCustPriceEvent(priceEvent)){
 				throw new IllegalEventError("Event contains incorrect information");
 			}
 			businessEvent = priceEvent;
 			break;
 		case "mail":
-			MailProcessEvent mailEvent = readMail(event);
+			MailProcessEvent mailEvent = readMail(event, day, month, year, time, staffID);
 			if(!ValidationSystem.ValidateMailProcessEvent(mailEvent)){
 				throw new IllegalEventError("Event contains incorrect information");
 			}
 			businessEvent = mailEvent;
 			break;
 		case "add":
-			RouteAdditionEvent addEvent = readAdd(event);
+			RouteAdditionEvent addEvent = readAdd(event, day, month, year, time, staffID);
 			if(!ValidationSystem.ValidateRouteAdditionEvent(addEvent)){
 			}
 			businessEvent =  addEvent;
 			break;
 		case "discontinue":
-			RouteDiscEvent discEvent = readDiscontinue(event);
+			RouteDiscEvent discEvent = readDiscontinue(event, day, month, year, time, staffID);
 			if(!ValidationSystem.ValidateRouteDiscEvent(discEvent)){
 				throw new IllegalEventError("Event contains incorrect information");
 			}
 			businessEvent = discEvent;
 			break;
 		case "cost":
-			TransportCostChangeEvent costEvent = readCost(event);
+			TransportCostChangeEvent costEvent = readCost(event, day, month, year, time, staffID);
 			if(!ValidationSystem.ValidateTransportCostEvent(costEvent)){
 				throw new IllegalEventError("Event contains incorrect information");
 			}
@@ -102,39 +111,60 @@ public class Parser {
 		return businessEvent;
 	}
 
-	private static CustPriceChangeEvent readPrice(Element event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private static MailProcessEvent readMail(Element event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private static RouteAdditionEvent readAdd(Element event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private static RouteDiscEvent readDiscontinue(Element event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private static TransportCostChangeEvent readCost(Element event) {
-		String company = event.getChild("company").getText();
-		String to = event.getChild("to").getText();
-		String from = event.getChild("from").getText();
-		String type = event.getChild("type").getText();
-		int weightCost = Integer.parseInt(event.getChild("weightcost").getText());
+	private static CustPriceChangeEvent readPrice(Element event, int day, int month, int year, int time, int staffID) {
+		String origin = event.getChild("origin").getText();
+		String destination = event.getChild("destination").getText();
+		String priority = event.getChild("priority").getText();
+		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
 		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
-		int maxWeight = Integer.parseInt(event.getChild("maxWeight").getText());
-		int maxVolume = Integer.parseInt(event.getChild("maxVolume").getText());
-		int duration = Integer.parseInt(event.getChild("duration").getText());
+
+		return new CustPriceChangeEvent(day, month, year, time, staffID, origin, destination, priority, weightcost, volumecost);
+	}
+
+	private static MailProcessEvent readMail(Element event, int day, int month, int year, int time, int staffID) {
+		String origin = event.getChild("origin").getText();
+		String destination = event.getChild("destination").getText();
+		int weight = Integer.parseInt(event.getChild("weight").getText());
+		int volume = Integer.parseInt(event.getChild("volume").getText());
+		String priority = event.getChild("priority").getText();
+
+		return new MailProcessEvent(year, month, day, time, staffID, origin, destination, weight, volume, priority);
+	}
+
+	private static RouteAdditionEvent readAdd(Element event, int day, int month, int year, int time, int staffID) {
+		String origin = event.getChild("origin").getText();
+		String destination = event.getChild("destination").getText();
+		String company = event.getChild("company").getText();
+		String type = event.getChild("type").getText();
+		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
+		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
+		String departure = event.getChild("departure").getText();
 		int frequency = Integer.parseInt(event.getChild("frequency").getText());
-		String day = event.getChild("day").getText();
-		// return new event
-		return null;
+		int duration = Integer.parseInt(event.getChild("duration").getText());
+
+		return new RouteAdditionEvent(year, month, day, time, staffID, origin, destination, company, type, weightcost, volumecost, departure, frequency, duration);
+	}
+
+	private static RouteDiscEvent readDiscontinue(Element event, int day, int month, int year, int time, int staffID) {
+		String origin = event.getChild("origin").getText();
+		String destination = event.getChild("destination").getText();
+		String company = event.getChild("company").getText();
+		String type = event.getChild("type").getText();
+
+		return new RouteDiscEvent(day, month, year, time, staffID, origin, destination, company, type);
+	}
+
+	private static TransportCostChangeEvent readCost(Element event, int day, int month, int year, int time, int staffID) {
+		String origin = event.getChild("origin").getText();
+		String destination = event.getChild("destination").getText();
+		String company = event.getChild("company").getText();
+		String type = event.getChild("type").getText();
+		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
+		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
+		String departure = event.getChild("departure").getText();
+		int frequency = Integer.parseInt(event.getChild("frequency").getText());
+		int duration = Integer.parseInt(event.getChild("duration").getText());
+
+		return new TransportCostChangeEvent(year, month, day, time, staffID, origin, destination, company, type, weightcost, volumecost, departure, frequency, duration);
 	}
 }
