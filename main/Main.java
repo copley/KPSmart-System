@@ -8,11 +8,7 @@ import view.KPSmartGUI;
  *
  * SWEN301 KPSmart
  *
- * Format all code in the repo with, Ctrl + Shift + F
- * Comments for ammendment. 03/May
- *
- * 	From Max Copley, please read my commit comments. Thank you.
- *
+ * Welcome to KPSmart
  *
  * @author Max, Bonnie, Joely, Nic, Bobo
  *
