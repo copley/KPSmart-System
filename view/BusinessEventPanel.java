@@ -1,0 +1,52 @@
+package view;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.JComboBox;
+import javax.swing.GroupLayout.Alignment;
+
+@SuppressWarnings("serial")
+public class BusinessEventPanel extends AbstractPanel {
+
+	private JComboBox businessEventcomboBox;
+
+	@Override
+	protected void initialise() {
+
+		businessEventcomboBox = new JComboBox();
+
+		GroupLayout groupLayout = new GroupLayout(this);
+
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
+				groupLayout.createSequentialGroup().addContainerGap()
+						.addComponent(businessEventcomboBox, 0, 98, Short.MAX_VALUE).addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
+				groupLayout.createSequentialGroup()
+						.addContainerGap(97, Short.MAX_VALUE).addComponent(businessEventcomboBox,
+								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(83)));
+
+		setLayout(groupLayout);
+	}
+
+	@Override
+	protected void redraw() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onClick(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onKeyboard(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

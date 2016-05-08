@@ -13,8 +13,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import main.Main;
-
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
 
@@ -42,11 +40,9 @@ public final class KPSmartFrame extends JFrame {
 			public void windowClosing(WindowEvent we) {
 				String[] options = { "YES", "Cancel" };
 				JPanel panel = new JPanel();
-				JLabel label = new JLabel(
-						"Are you sure you want to quit the system?");
+				JLabel label = new JLabel("Are you sure you want to quit the system?");
 				panel.add(label);
-				int selectedOption = JOptionPane.showOptionDialog(null, panel,
-						"Warning!!!", JOptionPane.DEFAULT_OPTION,
+				int selectedOption = JOptionPane.showOptionDialog(null, panel, "Warning!!!", JOptionPane.DEFAULT_OPTION,
 						JOptionPane.WARNING_MESSAGE, null, options, options[1]);
 				if (selectedOption == 0) {
 					System.exit(0);
