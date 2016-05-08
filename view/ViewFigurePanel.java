@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -10,12 +12,12 @@ import javax.swing.GroupLayout.Alignment;
 @SuppressWarnings("serial")
 public class ViewFigurePanel extends AbstractPanel {
 
-	private JComboBox viewFigurecomboBox;
+	private JComboBox<String> viewFigurecomboBox;
 
 	@Override
 	protected void initialise() {
 
-		viewFigurecomboBox = new JComboBox();
+		initComboBox();
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
@@ -29,6 +31,24 @@ public class ViewFigurePanel extends AbstractPanel {
 						.addContainerGap(63, Short.MAX_VALUE)));
 
 		setLayout(groupLayout);
+	}
+
+	private void initComboBox() {
+		String[] options = new String[] { "Total Revenue", "Total Expenditure", "Total No. of Events", "Amount of Mail",
+				"Average Delivery Times", "Cxxx Routes" };
+
+		viewFigurecomboBox = new JComboBox<String>(options);
+
+		viewFigurecomboBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+
 	}
 
 	@Override

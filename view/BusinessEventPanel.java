@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -10,12 +12,12 @@ import javax.swing.GroupLayout.Alignment;
 @SuppressWarnings("serial")
 public class BusinessEventPanel extends AbstractPanel {
 
-	private JComboBox businessEventcomboBox;
+	private JComboBox<String> businessEventcomboBox;
 
 	@Override
 	protected void initialise() {
 
-		businessEventcomboBox = new JComboBox();
+		initComboBox();
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
@@ -29,6 +31,23 @@ public class BusinessEventPanel extends AbstractPanel {
 						.addGap(83)));
 
 		setLayout(groupLayout);
+	}
+
+	private void initComboBox() {
+		String[] options = new String[] { "Mail Delivery", "Route Discontinue", "Customer Price Update",
+				"Transport Cost Update" };
+
+		businessEventcomboBox = new JComboBox<String>(options);
+
+		businessEventcomboBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
 	}
 
 	@Override

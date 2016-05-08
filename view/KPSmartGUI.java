@@ -14,7 +14,8 @@ import javax.swing.event.MenuListener;
 
 public class KPSmartGUI {
 
-	// BOBO these field can hold other GUI Objects that are stored in the gui package.
+	// BOBO these field can hold other GUI Objects that are stored in the gui
+	// package.
 
 	private JFrame frame;
 	private JPanel contentPane;
@@ -71,10 +72,9 @@ public class KPSmartGUI {
 
 	}
 
-	// FOR every single component inside the main GUI class we can act on it through the controller class
+	// FOR every single component inside the main GUI class we can act on it
+	// through the controller class
 	// by the getter methods here.
-
-
 
 	public JPanel getContentPane() {
 		return contentPane;
@@ -112,13 +112,15 @@ public class KPSmartGUI {
 	 * Initailization method to add listeners to individual components. This is
 	 */
 	public void initializeMenuListeners(MenuListener maction, KeyListener saction) {
-		//not implemented - for demonstration purposes
+		// not implemented - for demonstration purposes
 	}
 
 	/**
 	 * Initailization method to add listeners to individual components. This is
-	 *  set from the controller class.
-	 *	This allows the controller to init the listeners, then every action that a component executes is send to the controller.
+	 * set from the controller class. This allows the controller to init the
+	 * listeners, then every action that a component executes is send to the
+	 * controller.
+	 *
 	 * @param ma
 	 *            ActionListener
 	 */
@@ -127,6 +129,7 @@ public class KPSmartGUI {
 		mntmStatgame.addActionListener(ma);
 		mntmSavegame.addActionListener(ma);
 	}
+
 	// redraw methods can be here for the GUI controlled by controller class.
 	public void setVisiblity(boolean bool) {
 		frame.setVisible(bool);

@@ -78,4 +78,20 @@ public class OperationPanel extends AbstractPanel {
 
 	}
 
+	public JPanel getBusinessEventPanel() {
+		return businessEventPanel;
+	}
+
+	public JPanel getViewFigurePanel() {
+		return viewFigurePanel;
+	}
+
+	public JPanel getEmptyPanel() {
+		return emptyPanel;
+	}
+
+	public JPanel getLogOutPanel() {
+		return logOutPanel;
+	}
+
 }
