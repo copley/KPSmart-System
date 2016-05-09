@@ -8,9 +8,11 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class LogOutPanel extends AbstractPanel {
 
+	private JButton logOutButton;
+
 	@Override
 	protected void initialise() {
-		JButton logOutButton = new JButton("Log Out");
+		logOutButton = new JButton("Log Out");
 		add(logOutButton);
 	}
 

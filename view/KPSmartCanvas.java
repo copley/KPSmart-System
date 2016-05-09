@@ -45,23 +45,24 @@ public class KPSmartCanvas extends JPanel {
 
 	protected void initialise() {
 
+		// debug
 		mainDisplayPanel.setBackground(Color.BLACK);
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
-				groupLayout.createSequentialGroup().addContainerGap()
-						.addComponent(mainDisplayPanel, GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE).addGap(18)
-						.addComponent(operationPanel, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+						.addComponent(mainDisplayPanel, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE).addGap(18)
+						.addComponent(operationPanel, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
 
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(mainDisplayPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 297,
+								.addComponent(mainDisplayPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 506,
 										Short.MAX_VALUE)
-								.addComponent(operationPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 297,
-										Short.MAX_VALUE))
+								.addComponent(operationPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addContainerGap()));
 
 		setLayout(groupLayout);

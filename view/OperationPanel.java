@@ -30,29 +30,33 @@ public class OperationPanel extends AbstractPanel {
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup().addContainerGap(81, Short.MAX_VALUE)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE)
 						.addComponent(logOutPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addContainerGap())
-				.addGroup(Alignment.LEADING,
-						groupLayout.createSequentialGroup().addGap(13)
-								.addComponent(emptyPanel, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(13, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup().addGap(10)
-						.addComponent(viewFigurePanel, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE).addGap(14))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup().addGap(10)
-						.addComponent(businessEventPanel, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE).addGap(14)));
+				.addGroup(groupLayout.createSequentialGroup().addGap(10)
+						.addComponent(businessEventPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)
+						.addGap(14))
+				.addGroup(groupLayout.createSequentialGroup().addGap(10)
+						.addComponent(viewFigurePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)
+						.addGap(14))
+				.addGroup(groupLayout.createSequentialGroup().addGap(13)
+						.addComponent(emptyPanel, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(48, Short.MAX_VALUE)));
+
 		groupLayout
 				.setVerticalGroup(
 						groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup().addGap(10)
-										.addComponent(businessEventPanel, GroupLayout.PREFERRED_SIZE, 204,
+										.addComponent(businessEventPanel, GroupLayout.PREFERRED_SIZE, 186,
 												GroupLayout.PREFERRED_SIZE)
-								.addGap(17)
-								.addComponent(viewFigurePanel, GroupLayout.PREFERRED_SIZE, 141,
-										GroupLayout.PREFERRED_SIZE).addGap(12)
-				.addComponent(emptyPanel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(viewFigurePanel, GroupLayout.PREFERRED_SIZE, 224,
+										GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(emptyPanel, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED, 9, Short.MAX_VALUE).addComponent(logOutPanel,
 						GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 				.addContainerGap()));
