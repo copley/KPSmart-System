@@ -9,7 +9,7 @@ public class SiteMap {
 	private Map<Integer, Route> routes; // maps route to its id
 	private Map<Site, List<Route>> siteToRoutes; // maps sites to routes
 
-	public SiteMap(){
+	public SiteMap() {
 		sites = new HashMap<Integer, Site>();
 		routes = new HashMap<Integer, Route>();
 		siteToRoutes = new HashMap<Site, List<Route>>();
@@ -37,7 +37,7 @@ public class SiteMap {
 		routes.put(route.getID(), route);
 		Site s1 = sites.get(route.getOrigin());
 		Site s2 = sites.get(route.getDestination());
-		if(siteToRoutes.get(s1) == null || siteToRoutes.get(s2) == null){
+		if (siteToRoutes.get(s1) == null || siteToRoutes.get(s2) == null) {
 			throw new IllegalRouteException("Invalid Route! Can't find site");
 		}
 		siteToRoutes.get(s1).add(route);

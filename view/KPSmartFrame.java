@@ -20,6 +20,8 @@ public final class KPSmartFrame extends JFrame {
 	private static final int FRAME_WIDTH = 1600;
 	private static final int FRAME_HEIGHT = 900;
 
+	//TODO New constructor takes 3 listeners
+
 	public KPSmartFrame() {
 		super("KPSmart");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

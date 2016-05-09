@@ -13,7 +13,7 @@ public class Site {
 		return ID;
 	}
 
-	public String toString(){
+	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("ID: " + ID + "\n");
 		string.append("Location: " + location);

@@ -6,7 +6,7 @@ public class KPSmartModel {
 
 	// Fields containing all Model components e.g database, map etc.
 	// map
-	// database
+	// datastore
 	BusinessEventProcessor busEventProcessor;
 	FigureGenerator figGen;
 	SiteMap siteMap;
