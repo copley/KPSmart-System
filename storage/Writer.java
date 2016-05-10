@@ -3,6 +3,7 @@ package storage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import org.jdom2.*;
 import org.jdom2.output.Format;
@@ -190,12 +191,16 @@ public class Writer {
 		return event;
 	}
 
+	/**
+	 * Writes the list of employees to file
+	 * @param employees list of all the employees
+	 */
 	public static void writeEmployees(List<Employee> employees) {
 		// make a new jdom document
 		Document doc = new Document();
 		// set the root element of the document
 		doc.setRootElement(new Element("employees"));
-		// write each business event to the document
+		// write each employee to the document
 		for (Employee employee : employees) {
 			doc.getRootElement().addContent(writeEmployee(employee));
 		}
@@ -208,6 +213,11 @@ public class Writer {
 		}
 	}
 
+	/**
+	 * Makes an element object from the employee
+	 * @param employee employee to be saved
+	 * @return Element object with the employee information
+	 */
 	private static Element writeEmployee(Employee employee) {
 		Element emp = new Element("employee");
 		emp.addContent(new Element("id").setText("" + employee.getID()));
@@ -218,8 +228,61 @@ public class Writer {
 	}
 
 	public static void writeMap(SiteMap map) {
-		// TODO Auto-generated method stub
+		// make a new jdom document
+		Document doc = new Document();
+		// set the root element of the document
+		doc.setRootElement(new Element("sitemap"));
 
+		// write each site to the document
+		doc.getRootElement().addContent(writeSites(map.getSites()));
+		// write each route to the document
+		doc.getRootElement().addContent(writeRoutes(map.getRoutes()));
+
+		// write the document to the file
+		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
+		try {
+			outputter.output(doc, new FileOutputStream(DataStore.MAP_FILE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static Element writeRoutes(Set<Route> routes) {
+		Element routesElement = new Element("routes");
+		for (Route route : routes) {
+			routesElement.addContent(writeRoute(route));
+		}
+		return routesElement;
+	}
+
+	private static Element writeSites(Set<Site> sites) {
+		Element sitesElement = new Element("sites");
+		for (Site site : sites) {
+			sitesElement.addContent(writeSite(site));
+		}
+		return sitesElement;
+	}
+
+	private static Element writeRoute(Route route) {
+		Element r = new Element("route");
+		r.addContent(new Element("id").setText("" + route.getID()));
+		r.addContent(new Element("destination").setText("" + route.getDestination()));
+		r.addContent(new Element("origin").setText("" + route.getOrigin()));
+		r.addContent(new Element("company").setText(route.getCompany()));
+		r.addContent(new Element("duration").setText("" + route.getDuration()));
+		r.addContent(new Element("custPriceWeight").setText("" + route.getCustPriceWeight()));
+		r.addContent(new Element("custPriceVolume").setText("" + route.getCustPriceVolume()));
+		r.addContent(new Element("transPriceWeight").setText("" + route.getTransPriceWeight()));
+		r.addContent(new Element("transPriceVolume").setText("" + route.getTransPriceVolume()));
+		r.addContent(new Element("inService").setText("" + route.isInService()));
+		return r;
+	}
+
+	private static Element writeSite(Site site) {
+		Element s = new Element("site");
+		s.addContent(new Element("id").setText("" + site.getID()));
+		s.addContent(new Element("location").setText(site.getLocation()));
+		return s;
 	}
 
 }

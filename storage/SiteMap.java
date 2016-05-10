@@ -43,4 +43,12 @@ public class SiteMap {
 		siteToRoutes.get(s1).add(route);
 		siteToRoutes.get(s2).add(route);
 	}
+
+	public Set<Site> getSites() {
+		return new HashSet<Site>(sites.values());
+	}
+
+	public Set<Route> getRoutes() {
+		return new HashSet<Route>(routes.values());
+	}
 }

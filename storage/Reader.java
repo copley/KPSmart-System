@@ -190,7 +190,7 @@ public class Reader {
 		String company = sc.next();
 		int duration = sc.nextInt();
 		boolean inService = sc.nextBoolean();
-		return new Route(id, dest, origin, company, duration, inService);
+		return new Route(id, dest, origin, company, duration, inService, 0.0, 0.0, 0.0, 0.0);
 	}
 
 	/**
