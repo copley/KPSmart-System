@@ -16,6 +16,26 @@ public abstract class BusinessEvent {
 		this.staff = staff;
 	}
 
+	public int getDay() {
+		return day;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public String getStaff() {
+		return staff;
+	}
+
 	public abstract String toString();
 
 }

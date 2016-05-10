@@ -13,7 +13,7 @@ public class KPSmartModel {
 	Employees employees;
 	storage.DataStore dataStore;// ***is this how we access the data
 								// loader/saver?
-	storage.Parser parser;// ***or is this how we access the data loader/saver?
+	storage.Reader parser;// ***or is this how we access the data loader/saver?
 
 	public KPSmartModel() {
 		// make the utility objects needed (objects that make/modify other objects)

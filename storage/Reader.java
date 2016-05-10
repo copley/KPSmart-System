@@ -18,18 +18,13 @@ import model.exceptions.IllegalSiteException;
 import model.exceptions.IllegalStaffException;
 
 /**
- * Class responsible for reading the data from the log file
+ * Class responsible for reading the data from the log file and data files
  *
  * @author Bonnie Liao
  */
-public class Parser {
+public class Reader {
 
-	private static final File DATA_FILE = new File("src/KPSmart_log.xml");
-	private static final File SITES_FILE = new File("src/sites.txt");
-	private static final File ROUTES_FILE = new File("src/routes.txt");
-	private static final File STAFF_FILE = new File("src/staff.txt");
-
-	private Parser() {
+	private Reader() {
 	}
 
 	/**
@@ -47,8 +42,8 @@ public class Parser {
 		try {
 			// create the SAX builder
 			SAXBuilder saxBuilder = new SAXBuilder();
-			// create document
-			Document document = saxBuilder.build(DATA_FILE);
+			// create jdom document
+			Document document = saxBuilder.build(DataStore.EVENT_FILE);
 			// get root element
 			Element systemElement = document.getRootElement();
 
@@ -78,7 +73,7 @@ public class Parser {
 		System.out.println("Reading Staff...");
 		List<Staff> staffList = new ArrayList<Staff>();
 		try {
-			Scanner sc = new Scanner(new FileReader(STAFF_FILE));
+			Scanner sc = new Scanner(new FileReader(DataStore.STAFF_FILE));
 			sc.useDelimiter("\\t|\n");
 			while(sc.hasNext()){
 				int id = sc.nextInt();
@@ -116,11 +111,11 @@ public class Parser {
 
 	/**
 	 * Read the sites from the file sites.txt and adds it to the map
-	 * @param map Site map of the sites
+	 * @param map Site map of the sites and routes
 	 */
 	private static void readSites(SiteMap map) {
 		try {
-			Scanner sc = new Scanner(new FileReader(SITES_FILE));
+			Scanner sc = new Scanner(new FileReader(DataStore.SITES_FILE));
 			sc.useDelimiter("\\t|\n");
 			while(sc.hasNext()){
 				Site s = readSite(sc);
@@ -145,9 +140,13 @@ public class Parser {
 		return new Site(id, location);
 	}
 
+	/**
+	 * Reads sites from 'routes.txt' and adds each route into the map
+	 * @param map Site map of the sites and routes
+	 */
 	private static void readRoutes(SiteMap map) {
 		try {
-			Scanner sc = new Scanner(new FileReader(ROUTES_FILE));
+			Scanner sc = new Scanner(new FileReader(DataStore.ROUTES_FILE));
 			sc.useDelimiter("\\t|\n");
 			while(sc.hasNext()){
 				Route r = readRoute(sc);
@@ -162,6 +161,11 @@ public class Parser {
 
 	}
 
+	/**
+	 * Reads a route and makes a route object
+	 * @param sc Scanner of the route information
+	 * @return Route object
+	 */
 	private static Route readRoute(Scanner sc) {
 		int id = sc.nextInt();
 		int dest = sc.nextInt();

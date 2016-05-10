@@ -12,7 +12,7 @@ xsi:noNamespaceSchemaLocation="postal.xsd">
 	    <priority>International Air</priority>
 	    <weightcost>4</weightcost>
 	    <volumecost>4</volumecost>
-		</price>
+	</price>
 	<mail>
 		<day>15</day>
 		<month>5</month>

@@ -32,4 +32,26 @@ public class CustPriceChangeEvent extends BusinessEvent {
 		return string.toString();
 	}
 
+	public String getOrigin() {
+		return origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public int getNewWeightCost() {
+		return newWeightCost;
+	}
+
+	public int getNewVolumeCost() {
+		return newVolumeCost;
+	}
+
+
+
 }
