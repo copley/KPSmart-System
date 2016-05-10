@@ -125,9 +125,28 @@ public class Writer {
 		return event;
 	}
 
+	/**
+	 * Takes a base business event element and adds the route addition attributes
+	 * to it
+	 *
+	 * @param be
+	 *            Route addition event
+	 * @param event
+	 *            general business event element
+	 * @return element with the route addition event information
+	 */
 	private static Element writeRouteAdditionEvent(RouteAdditionEvent be, Element event) {
-		// TODO Auto-generated method stub
-		return null;
+		event.setName("add");
+		event.addContent(new Element("origin").setText(be.getOrigin()));
+		event.addContent(new Element("destination").setText(be.getDestination()));
+		event.addContent(new Element("company").setText(be.getCompany()));
+		event.addContent(new Element("type").setText(be.getType()));
+		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
+		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
+		event.addContent(new Element("departure").setText(be.getDepartureDay()));
+		event.addContent(new Element("frequency").setText("" + be.getFrequency()));
+		event.addContent(new Element("duration").setText("" + be.getDuration()));
+		return event;
 	}
 
 	private static Element writeRouteDiscEvent(RouteDiscEvent be, Element event) {

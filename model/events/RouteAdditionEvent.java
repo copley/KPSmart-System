@@ -26,6 +26,42 @@ public class RouteAdditionEvent extends BusinessEvent {
 		this.duration = duration;
 	}
 
+	public String getOrigin() {
+		return origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public int getNewWeightCost() {
+		return newWeightCost;
+	}
+
+	public int getNewVolumeCost() {
+		return newVolumeCost;
+	}
+
+	public String getDepartureDay() {
+		return departureDay;
+	}
+
+	public int getFrequency() {
+		return frequency;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
