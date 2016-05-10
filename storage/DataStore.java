@@ -18,13 +18,13 @@ public class DataStore {
 	public static final File EVENT_FILE = new File("src/KPSmart_log.xml");
 	public static final File SITES_FILE = new File("src/sites.txt");
 	public static final File ROUTES_FILE = new File("src/routes.txt");
-	public static final File EMPLOYEE_FILE = new File("src/staff.txt");
+	public static final File EMPLOYEE_FILE = new File("src/staff.xml");
 
 	// TEST FILES FOR DEBUGGING PURPOSES
 //	public static final File EVENT_FILE_TEST = new File("src/KPSmart_logTEST.xml");
 	public static final File SITES_FILE_TEST = new File("src/sitesTEST.txt");
 	public static final File ROUTES_FILE_TEST = new File("src/routesTEST.txt");
-	public static final File EMPLOYEE_FILE_TEST = new File("src/staffTEST.xml");
+//	public static final File EMPLOYEE_FILE_TEST = new File("src/staffTEST.xml");
 
 	private List<BusinessEvent> businessEvents;
 	private List<Employee> employees;

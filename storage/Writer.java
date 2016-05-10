@@ -202,7 +202,7 @@ public class Writer {
 		// write the document to the file
 		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 		try {
-			outputter.output(doc, new FileOutputStream(DataStore.EMPLOYEE_FILE_TEST));
+			outputter.output(doc, new FileOutputStream(DataStore.EMPLOYEE_FILE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

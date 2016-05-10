@@ -72,26 +72,43 @@ public class Reader {
 	public static List<Employee> readEmployee() {
 		System.out.println("Reading Employees...");
 		List<Employee> employees = new ArrayList<Employee>();
+
 		try {
-			Scanner sc = new Scanner(new FileReader(DataStore.EMPLOYEE_FILE));
-			sc.useDelimiter("\\t|\n");
-			while(sc.hasNext()){
-				int id = sc.nextInt();
-				String name = sc.next();
-				String password = sc.next();
-				boolean isManager = sc.nextBoolean();
-				Employee emp = new Employee(id, name, password, isManager);
-				if(!ValidationSystem.validateEmployee(emp)){
-					throw new IllegalEmployeeException("Invalid employee!");
-				}
-				employees.add(emp);
+			// create the SAX builder
+			SAXBuilder saxBuilder = new SAXBuilder();
+			// create jdom document
+			Document document = saxBuilder.build(DataStore.EMPLOYEE_FILE);
+			// get root element
+			Element systemElement = document.getRootElement();
+
+			// get all the children elements
+			List<Element> employeeList = systemElement.getChildren();
+
+			for (int i = 0; i < employeeList.size(); i++) {
+				Element event = employeeList.get(i);
+				// read business event and add to list
+				employees.add(readEmployee(event));
 			}
-		} catch (FileNotFoundException | IllegalEmployeeException e) {
+		} catch (JDOMException | IOException e) {
+			e.printStackTrace();
+		} catch (IllegalEmployeeException e) {
 			e.printStackTrace();
 		}
 
 		System.out.println("Finished reading employees");
 		return employees;
+	}
+
+	private static Employee readEmployee(Element event) throws IllegalEmployeeException {
+		int id = Integer.parseInt(event.getChild("id").getText());
+		String name = event.getChild("name").getText();
+		String password = event.getChild("password").getText();
+		boolean isManager = Boolean.parseBoolean(event.getChild("isManager").getText());
+		Employee emp = new Employee(id, name, password, isManager);
+		if(!ValidationSystem.validateEmployee(emp)){
+			throw new IllegalEmployeeException("Invalid employee!");
+		}
+		return emp;
 	}
 
 	/**
@@ -197,7 +214,7 @@ public class Reader {
 		int month = Integer.parseInt(event.getChild("month").getText());
 		int year = Integer.parseInt(event.getChild("year").getText());
 		int time = Integer.parseInt(event.getChild("time").getText());
-		String employee = event.getChild("staff").getText(); //TODO: change staff to employee
+		String employee = event.getChild("employee").getText();
 
 		// read event based on the element type
 		switch (eventType) {
