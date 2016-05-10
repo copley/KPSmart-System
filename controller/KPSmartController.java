@@ -8,33 +8,30 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import model.KPSmartModel;
-import view.KPSmartGUI;
+import view.KPSmartFrame;
 
 public class KPSmartController {
 
-	private KPSmartGUI kpsmartGUI;
+	private KPSmartFrame kpsmartGUI;
 	private KPSmartModel kpsmartModel;
 	private int ListenerCount = 1; // debugging purposes // used to print where in the code the
 									// listener was called.
 
-	public KPSmartController(KPSmartGUI gui, KPSmartModel model) {
+	public KPSmartController(KPSmartFrame gui, KPSmartModel model) {
 		kpsmartGUI = gui;
 		kpsmartModel = model;
 		this.init_KPSmartGuiListeners();
 	}
 
 	public void init_KPSmartGuiListeners() {
-		ButtonListener bl = new ButtonListener();
-		KeyListener saction = new KeyAction();
-		MyMouseAction maction = new MyMouseAction();
-		MenuActionListener ma = new MenuActionListener();
-		this.kpsmartGUI.initializeMenuListeners(ma);
+		KeyAction keyListener = new KeyAction();
+		MouseAction mouseListener =  new MouseAction();
+		ViewActionListener buttonListener = new KeyListener();
 
-		// this.setUpGui.setListener(bl);
-		kpsmartGUI.getFrame().addKeyListener(saction);
+		this.kpsmartGUI.addListeners(keyListener, mouseListener, buttonListener);
 	}
 
-	public class KeyAction implements KeyListener {
+	 class KeyAction implements KeyListener {
 
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -50,16 +47,14 @@ public class KPSmartController {
 		public void keyReleased(KeyEvent e) {
 			// example implementation.
 			//System.out.println(ListenerCount + 49); // debugging purposes - mc
-			if (e.getKeyCode() == KeyEvent.VK_A) {
-			} else if (e.getKeyCode() == KeyEvent.VK_D) {
-			}
+
 		}
 	}
 
 	/**
 	 * MouseAction class to set actionListeners to components inside the GUI.
 	 */
-	public class MyMouseAction implements MouseListener {
+	 class MouseAction implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			//System.out.println(ListenerCount + 65); // debugging purposes - mc
@@ -86,45 +81,15 @@ public class KPSmartController {
 		}
 	}
 
-	public void setGameGUIVisible(boolean bool) {
-		this.kpsmartGUI.setVisiblity(bool);
-	}
-
-	/**
-	 * Button Listener for the Setup
-	 */
-	public class ButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-		}
-	}
-
 	/**
 	 * Action listener class for the menu.
 	 */
-	class MenuActionListener implements ActionListener {
+	class ViewActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			System.out.println(ListenerCount + 107);
-
-			if (actionEvent.getActionCommand().equalsIgnoreCase("LogOut")) {
-				System.out.println("Log out requested - to be implemented");
-				// KPSmartGUI.requestLogOutConfirmation();
-
-			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogOutConfirmed")) {
-				System.out.println("Log out confirmed - to be implemented");
-
-				// KPSmartModel.saveData();
-				// KPSmartGUI.logInView();
-			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogIn")) {
-				System.out.println("Log in requested - to be implemented");
-				// KPSmartGUI.requestLoginDetails();
-			} else if (actionEvent.getActionCommand().equalsIgnoreCase("LogInDetailsProvided")) {
-				System.out.println("Log in details provided - to be implemented");
-				//KPSmartModel.Employees.confirmDetails(somehowGetValues...);
-			}
-
+			// if actionEvent ==
+			// else if ...
 		}
 	}
 }

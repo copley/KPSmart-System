@@ -2,7 +2,7 @@ package main;
 
 import controller.KPSmartController;
 import model.KPSmartModel;
-import view.KPSmartGUI;
+import view.KPSmartFrame;
 
 /**
  *
@@ -18,7 +18,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		KPSmartModel kpsmartModel = new KPSmartModel();
-		KPSmartGUI kpsmartGui = new KPSmartGUI();
-		KPSmartController cont = new KPSmartController(kpsmartGui, kpsmartModel);
+		// KPSmartGUI kpsmartGui = new KPSmartGUI();
+		KPSmartFrame view = new KPSmartFrame();
+		KPSmartController cont = new KPSmartController(view, kpsmartModel);
 	}
 }
