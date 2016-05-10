@@ -15,6 +15,22 @@ public class RouteDiscEvent extends BusinessEvent {
 		this.type = type;
 	}
 
+	public String getOrigin() {
+		return origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public String getType() {
+		return type;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();

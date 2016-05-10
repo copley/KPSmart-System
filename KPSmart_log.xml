@@ -1,71 +1,70 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<log xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="postal.xsd">
-	<price>
-		<day>15</day>
-		<month>5</month>
-		<year>2016</year>
-		<time>1300</time>
-		<staff>Bonnie</staff>
-	    <origin>Suva</origin>
-	    <destination>New Zealand</destination>
-	    <priority>International Air</priority>
-	    <weightcost>4</weightcost>
-	    <volumecost>4</volumecost>
-	</price>
-	<mail>
-		<day>15</day>
-		<month>5</month>
-		<year>2016</year>
-		<time>1330</time>
-		<staff>Bonnie</staff>
-	    <origin>Rome</origin>
-	    <destination>Wellington</destination>
-	    <weight>100</weight>
-	    <volume>5</volume>
-	    <priority>International Air</priority>
-	</mail>
-	<add>
-		<day>15</day>
-		<month>5</month>
-		<year>2016</year>
-		<time>1330</time>
-		<staff>Bonnie</staff>
-		<origin>Rome</origin>
-		<destination>Wellington</destination>
-		<company>Air NZ</company>
-		<type>Air</type>
-		<weightcost>6</weightcost>
-		<volumecost>6</volumecost>
-		<departure>Thursday</departure>
-		<frequency>6</frequency>
-		<duration>16</duration>
-	</add>
-	<discontinue>
-		<day>15</day>
-		<month>5</month>
-		<year>2016</year>
-		<time>1330</time>
-		<staff>Bonnie</staff>
-		<origin>Rome</origin>
-		<destination>Wellington</destination>
-		<company>Kelburn Airways</company>
-		<type>Air</type>
-	</discontinue>	
-	<cost>
-		<day>15</day>
-		<month>5</month>
-		<year>2016</year>
-		<time>1330</time>
-		<staff>Bonnie</staff>
-		<origin>Rome</origin>
-		<destination>Wellington</destination>
-		<company>Air NZ</company>
-		<type>Air</type>
-		<weightcost>6</weightcost>
-		<volumecost>6</volumecost>
-		<departure>Thursday</departure>
-		<frequency>6</frequency>
-		<duration>16</duration>
-	</cost>
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+  <price>
+    <day>15</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>1300</time>
+    <staff>Bonnie</staff>
+    <origin>Suva</origin>
+    <destination>New Zealand</destination>
+    <priority>International Air</priority>
+    <weightcost>4</weightcost>
+    <volumecost>4</volumecost>
+  </price>
+  <mail>
+    <day>15</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>1330</time>
+    <staff>Bonnie</staff>
+    <origin>Rome</origin>
+    <destination>Wellington</destination>
+    <weight>100</weight>
+    <volume>5</volume>
+    <priority>International Air</priority>
+  </mail>
+  <add>
+    <day>15</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>1330</time>
+    <staff>Bonnie</staff>
+    <origin>Rome</origin>
+    <destination>Wellington</destination>
+    <company>Air NZ</company>
+    <type>Air</type>
+    <weightcost>6</weightcost>
+    <volumecost>6</volumecost>
+    <departure>Thursday</departure>
+    <frequency>6</frequency>
+    <duration>16</duration>
+  </add>
+  <discontinue>
+    <day>15</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>1330</time>
+    <staff>Bonnie</staff>
+    <origin>Rome</origin>
+    <destination>Wellington</destination>
+    <company>Kelburn Airways</company>
+    <type>Air</type>
+  </discontinue>
+  <cost>
+    <day>15</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>1330</time>
+    <staff>Bonnie</staff>
+    <origin>Rome</origin>
+    <destination>Wellington</destination>
+    <company>Air NZ</company>
+    <type>Air</type>
+    <weightcost>6</weightcost>
+    <volumecost>6</volumecost>
+    <departure>Thursday</departure>
+    <frequency>6</frequency>
+    <duration>16</duration>
+  </cost>
 </log>

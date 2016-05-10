@@ -47,7 +47,7 @@ public class Writer {
 		// write the document to the file
 		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 		try {
-			outputter.output(doc, new FileOutputStream(DataStore.EVENT_FILE_TEST));
+			outputter.output(doc, new FileOutputStream(DataStore.EVENT_FILE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -67,7 +67,7 @@ public class Writer {
 		event.addContent(new Element("day").setText("" + be.getDay()));
 		event.addContent(new Element("month").setText("" + be.getMonth()));
 		event.addContent(new Element("year").setText("" + be.getYear()));
-		event.addContent(new Element("time").setText("" + be.getDay()));
+		event.addContent(new Element("time").setText("" + be.getTime()));
 		event.addContent(new Element("staff").setText(be.getStaff()));
 
 		// write appropriate event based on instance type
@@ -126,8 +126,8 @@ public class Writer {
 	}
 
 	/**
-	 * Takes a base business event element and adds the route addition attributes
-	 * to it
+	 * Takes a base business event element and adds the route addition
+	 * attributes to it
 	 *
 	 * @param be
 	 *            Route addition event
@@ -149,14 +149,47 @@ public class Writer {
 		return event;
 	}
 
+	/**
+	 * Takes a base business event element and adds the route discontinuation
+	 * attributes to it
+	 *
+	 * @param be
+	 *            route discontinuation event
+	 * @param event
+	 *            general business event element
+	 * @return element with the route discontinuation event information
+	 */
 	private static Element writeRouteDiscEvent(RouteDiscEvent be, Element event) {
-		// TODO Auto-generated method stub
-		return null;
+		event.setName("discontinue");
+		event.addContent(new Element("origin").setText(be.getOrigin()));
+		event.addContent(new Element("destination").setText(be.getDestination()));
+		event.addContent(new Element("company").setText(be.getCompany()));
+		event.addContent(new Element("type").setText(be.getType()));
+		return event;
 	}
 
+	/**
+	 * Takes a base business event element and adds the Transport cost
+	 * attributes to it
+	 *
+	 * @param be
+	 *            Transport cost event
+	 * @param event
+	 *            general business event element
+	 * @return element with the Transport cost event information
+	 */
 	private static Element writeTransportCostChangeEvent(TransportCostChangeEvent be, Element event) {
-		// TODO Auto-generated method stub
-		return null;
+		event.setName("cost");
+		event.addContent(new Element("origin").setText(be.getOrigin()));
+		event.addContent(new Element("destination").setText(be.getDestination()));
+		event.addContent(new Element("company").setText(be.getCompany()));
+		event.addContent(new Element("type").setText(be.getType()));
+		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
+		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
+		event.addContent(new Element("departure").setText(be.getDepartureDay()));
+		event.addContent(new Element("frequency").setText("" + be.getFrequency()));
+		event.addContent(new Element("duration").setText("" + be.getDuration()));
+		return event;
 	}
 
 	public static void writeStaff(List<Staff> staffList) {

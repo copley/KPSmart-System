@@ -21,7 +21,7 @@ public class DataStore {
 	public static final File STAFF_FILE = new File("src/staff.txt");
 
 	// TEST FILES FOR DEBUGGING PURPOSES
-	public static final File EVENT_FILE_TEST = new File("src/KPSmart_logTEST.xml");
+//	public static final File EVENT_FILE_TEST = new File("src/KPSmart_logTEST.xml");
 	public static final File SITES_FILE_TEST = new File("src/sitesTEST.txt");
 	public static final File ROUTES_FILE_TEST = new File("src/routesTEST.txt");
 	public static final File STAFF_FILE_TEST = new File("src/staffTEST.txt");
@@ -32,6 +32,7 @@ public class DataStore {
 
 	public DataStore() {
 		load();
+		save();
 	}
 
 	/**
