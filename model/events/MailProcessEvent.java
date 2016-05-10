@@ -17,6 +17,26 @@ public class MailProcessEvent extends BusinessEvent {
 		this.priority = priority;
 	}
 
+	public String getOrigin() {
+		return origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public int getVolume() {
+		return volume;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();

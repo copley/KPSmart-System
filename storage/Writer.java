@@ -105,9 +105,24 @@ public class Writer {
 		return event;
 	}
 
+	/**
+	 * Takes a base business event element and adds the mail process attributes
+	 * to it
+	 *
+	 * @param be
+	 *            mail process event
+	 * @param event
+	 *            general business event element
+	 * @return element with the mail process event information
+	 */
 	private static Element writeMailProcessEvent(MailProcessEvent be, Element event) {
-		// TODO Auto-generated method stub
-		return null;
+		event.setName("mail");
+		event.addContent(new Element("origin").setText(be.getOrigin()));
+		event.addContent(new Element("destination").setText(be.getDestination()));
+		event.addContent(new Element("weight").setText("" + be.getWeight()));
+		event.addContent(new Element("volume").setText("" + be.getVolume()));
+		event.addContent(new Element("priority").setText(be.getPriority()));
+		return event;
 	}
 
 	private static Element writeRouteAdditionEvent(RouteAdditionEvent be, Element event) {
