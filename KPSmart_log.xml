@@ -5,7 +5,7 @@
     <month>5</month>
     <year>2016</year>
     <time>1300</time>
-    <staff>Bonnie</staff>
+    <employee>Bonnie</employee>
     <origin>Suva</origin>
     <destination>New Zealand</destination>
     <priority>International Air</priority>
@@ -17,7 +17,7 @@
     <month>5</month>
     <year>2016</year>
     <time>1330</time>
-    <staff>Bonnie</staff>
+    <employee>Bonnie</employee>
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <weight>100</weight>
@@ -29,7 +29,7 @@
     <month>5</month>
     <year>2016</year>
     <time>1330</time>
-    <staff>Bonnie</staff>
+    <employee>Bonnie</employee>
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <company>Air NZ</company>
@@ -45,7 +45,7 @@
     <month>5</month>
     <year>2016</year>
     <time>1330</time>
-    <staff>Bonnie</staff>
+    <employee>Bonnie</employee>
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <company>Kelburn Airways</company>
@@ -56,7 +56,7 @@
     <month>5</month>
     <year>2016</year>
     <time>1330</time>
-    <staff>Bonnie</staff>
+    <employee>Bonnie</employee>
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <company>Air NZ</company>

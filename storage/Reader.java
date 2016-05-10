@@ -15,7 +15,7 @@ import model.events.TransportCostChangeEvent;
 import model.exceptions.IllegalEventException;
 import model.exceptions.IllegalRouteException;
 import model.exceptions.IllegalSiteException;
-import model.exceptions.IllegalStaffException;
+import model.exceptions.IllegalEmployeeException;
 
 /**
  * Class responsible for reading the data from the log file and data files
@@ -69,29 +69,29 @@ public class Reader {
 
 
 
-	public static List<Staff> readStaff() {
-		System.out.println("Reading Staff...");
-		List<Staff> staffList = new ArrayList<Staff>();
+	public static List<Employee> readEmployee() {
+		System.out.println("Reading Employees...");
+		List<Employee> employees = new ArrayList<Employee>();
 		try {
-			Scanner sc = new Scanner(new FileReader(DataStore.STAFF_FILE));
+			Scanner sc = new Scanner(new FileReader(DataStore.EMPLOYEE_FILE));
 			sc.useDelimiter("\\t|\n");
 			while(sc.hasNext()){
 				int id = sc.nextInt();
 				String name = sc.next();
 				String password = sc.next();
 				boolean isManager = sc.nextBoolean();
-				Staff s = new Staff(id, name, password, isManager);
-				if(!ValidationSystem.validateStaff(s)){
-					throw new IllegalStaffException("Invalid staff!");
+				Employee emp = new Employee(id, name, password, isManager);
+				if(!ValidationSystem.validateEmployee(emp)){
+					throw new IllegalEmployeeException("Invalid employee!");
 				}
-				staffList.add(s);
+				employees.add(emp);
 			}
-		} catch (FileNotFoundException | IllegalStaffException e) {
+		} catch (FileNotFoundException | IllegalEmployeeException e) {
 			e.printStackTrace();
 		}
 
-		System.out.println("Finished reading staff");
-		return staffList;
+		System.out.println("Finished reading employees");
+		return employees;
 	}
 
 	/**
@@ -192,44 +192,44 @@ public class Reader {
 		// get the eventType
 		String eventType = event.getName();
 
-		// read the timestamp and staff responsible
+		// read the timestamp and employee responsible
 		int day = Integer.parseInt(event.getChild("day").getText());
 		int month = Integer.parseInt(event.getChild("month").getText());
 		int year = Integer.parseInt(event.getChild("year").getText());
 		int time = Integer.parseInt(event.getChild("time").getText());
-		String staff = event.getChild("staff").getText();
+		String employee = event.getChild("staff").getText(); //TODO: change staff to employee
 
 		// read event based on the element type
 		switch (eventType) {
 		case "price":
-			CustPriceChangeEvent priceEvent = readPrice(event, day, month, year, time, staff);
+			CustPriceChangeEvent priceEvent = readPrice(event, day, month, year, time, employee);
 			if (!ValidationSystem.validateCustPriceEvent(priceEvent)) {
 				throw new IllegalEventException("Event contains incorrect information");
 			}
 			businessEvent = priceEvent;
 			break;
 		case "mail":
-			MailProcessEvent mailEvent = readMail(event, day, month, year, time, staff);
+			MailProcessEvent mailEvent = readMail(event, day, month, year, time, employee);
 			if (!ValidationSystem.validateMailProcessEvent(mailEvent)) {
 				throw new IllegalEventException("Event contains incorrect information");
 			}
 			businessEvent = mailEvent;
 			break;
 		case "add":
-			RouteAdditionEvent addEvent = readAdd(event, day, month, year, time, staff);
+			RouteAdditionEvent addEvent = readAdd(event, day, month, year, time, employee);
 			if (!ValidationSystem.validateRouteAdditionEvent(addEvent)) {
 			}
 			businessEvent = addEvent;
 			break;
 		case "discontinue":
-			RouteDiscEvent discEvent = readDiscontinue(event, day, month, year, time, staff);
+			RouteDiscEvent discEvent = readDiscontinue(event, day, month, year, time, employee);
 			if (!ValidationSystem.validateRouteDiscEvent(discEvent)) {
 				throw new IllegalEventException("Event contains incorrect information");
 			}
 			businessEvent = discEvent;
 			break;
 		case "cost":
-			TransportCostChangeEvent costEvent = readCost(event, day, month, year, time, staff);
+			TransportCostChangeEvent costEvent = readCost(event, day, month, year, time, employee);
 			if (!ValidationSystem.validateTransportCostEvent(costEvent)) {
 				throw new IllegalEventException("Event contains incorrect information");
 			}
@@ -254,18 +254,18 @@ public class Reader {
 	 *            Year the event was created
 	 * @param time
 	 *            Time the event was created
-	 * @param staff
-	 *            The staff responsible for the event
+	 * @param employee
+	 *            The employee responsible for the event
 	 * @return A Customer price change event
 	 */
-	private static CustPriceChangeEvent readPrice(Element event, int day, int month, int year, int time, String staff) {
+	private static CustPriceChangeEvent readPrice(Element event, int day, int month, int year, int time, String employee) {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String priority = event.getChild("priority").getText();
 		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
 		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
 
-		return new CustPriceChangeEvent(day, month, year, time, staff, origin, destination, priority, weightcost,
+		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, priority, weightcost,
 				volumecost);
 	}
 
@@ -282,18 +282,18 @@ public class Reader {
 	 *            Year the event was created
 	 * @param time
 	 *            Time the event was created
-	 * @param staff
-	 *            The staff responsible for the event
+	 * @param employee
+	 *            The employee responsible for the event
 	 * @return A Mail process event
 	 */
-	private static MailProcessEvent readMail(Element event, int day, int month, int year, int time, String staff) {
+	private static MailProcessEvent readMail(Element event, int day, int month, int year, int time, String employee) {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		int weight = Integer.parseInt(event.getChild("weight").getText());
 		int volume = Integer.parseInt(event.getChild("volume").getText());
 		String priority = event.getChild("priority").getText();
 
-		return new MailProcessEvent(day, month, year, time, staff, origin, destination, weight, volume, priority);
+		return new MailProcessEvent(day, month, year, time, employee, origin, destination, weight, volume, priority);
 	}
 
 	/**
@@ -309,11 +309,11 @@ public class Reader {
 	 *            Year the event was created
 	 * @param time
 	 *            Time the event was created
-	 * @param staff
-	 *            The staff responsible for the event
+	 * @param employee
+	 *            The employee responsible for the event
 	 * @return A Route Addition event
 	 */
-	private static RouteAdditionEvent readAdd(Element event, int day, int month, int year, int time, String staff) {
+	private static RouteAdditionEvent readAdd(Element event, int day, int month, int year, int time, String employee) {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();
@@ -324,7 +324,7 @@ public class Reader {
 		int frequency = Integer.parseInt(event.getChild("frequency").getText());
 		int duration = Integer.parseInt(event.getChild("duration").getText());
 
-		return new RouteAdditionEvent(day, month, year, time, staff, origin, destination, company, type, weightcost,
+		return new RouteAdditionEvent(day, month, year, time, employee, origin, destination, company, type, weightcost,
 				volumecost, departure, frequency, duration);
 	}
 
@@ -341,17 +341,17 @@ public class Reader {
 	 *            Year the event was created
 	 * @param time
 	 *            Time the event was created
-	 * @param staff
-	 *            The staff responsible for the event
+	 * @param employee
+	 *            The employee responsible for the event
 	 * @return A Route discontinued event
 	 */
-	private static RouteDiscEvent readDiscontinue(Element event, int day, int month, int year, int time, String staff) {
+	private static RouteDiscEvent readDiscontinue(Element event, int day, int month, int year, int time, String employee) {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();
 		String type = event.getChild("type").getText();
 
-		return new RouteDiscEvent(day, month, year, time, staff, origin, destination, company, type);
+		return new RouteDiscEvent(day, month, year, time, employee, origin, destination, company, type);
 	}
 
 	/**
@@ -367,12 +367,12 @@ public class Reader {
 	 *            Year the event was created
 	 * @param time
 	 *            Time the event was created
-	 * @param staff
-	 *            The staff responsible for the event
+	 * @param employee
+	 *            The employee responsible for the event
 	 * @return A Transport cost change event
 	 */
 	private static TransportCostChangeEvent readCost(Element event, int day, int month, int year, int time,
-			String staff) {
+			String employee) {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();
@@ -383,7 +383,7 @@ public class Reader {
 		int frequency = Integer.parseInt(event.getChild("frequency").getText());
 		int duration = Integer.parseInt(event.getChild("duration").getText());
 
-		return new TransportCostChangeEvent(day, month, year, time, staff, origin, destination, company, type,
+		return new TransportCostChangeEvent(day, month, year, time, employee, origin, destination, company, type,
 				weightcost, volumecost, departure, frequency, duration);
 	}
 }

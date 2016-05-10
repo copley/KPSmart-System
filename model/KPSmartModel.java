@@ -9,8 +9,6 @@ public class KPSmartModel {
 	// datastore
 	BusinessEventProcessor busEventProcessor;
 	FigureGenerator figGen;
-	SiteMap siteMap;
-	Employees employees;
 	storage.DataStore dataStore;// ***is this how we access the data
 								// loader/saver?
 	storage.Reader parser;// ***or is this how we access the data loader/saver?

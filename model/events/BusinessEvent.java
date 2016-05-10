@@ -5,15 +5,15 @@ public abstract class BusinessEvent {
 	protected int month;
 	protected int year;
 	protected int time;
-	protected String staff;
+	protected String employee;
 
-	public BusinessEvent(int day, int month, int year, int time, String staff) {
+	public BusinessEvent(int day, int month, int year, int time, String employee) {
 		super();
 		this.day = day;
 		this.month = month;
 		this.year = year;
 		this.time = time;
-		this.staff = staff;
+		this.employee = employee;
 	}
 
 	public int getDay() {
@@ -32,8 +32,8 @@ public abstract class BusinessEvent {
 		return time;
 	}
 
-	public String getStaff() {
-		return staff;
+	public String getEmployee() {
+		return employee;
 	}
 
 	public abstract String toString();

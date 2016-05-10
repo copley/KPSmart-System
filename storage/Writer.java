@@ -34,7 +34,6 @@ public class Writer {
 		Document doc = new Document();
 		// set the root element of the document
 		doc.setRootElement(new Element("log"));
-
 		// write each business event to the document
 		for (BusinessEvent be : businessEvents) {
 			try {
@@ -43,7 +42,6 @@ public class Writer {
 				e.printStackTrace();
 			}
 		}
-
 		// write the document to the file
 		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 		try {
@@ -68,7 +66,7 @@ public class Writer {
 		event.addContent(new Element("month").setText("" + be.getMonth()));
 		event.addContent(new Element("year").setText("" + be.getYear()));
 		event.addContent(new Element("time").setText("" + be.getTime()));
-		event.addContent(new Element("staff").setText(be.getStaff()));
+		event.addContent(new Element("employee").setText(be.getEmployee()));
 
 		// write appropriate event based on instance type
 		if (be instanceof CustPriceChangeEvent) {
@@ -192,9 +190,31 @@ public class Writer {
 		return event;
 	}
 
-	public static void writeStaff(List<Staff> staffList) {
-		// TODO Auto-generated method stub
+	public static void writeEmployees(List<Employee> employees) {
+		// make a new jdom document
+		Document doc = new Document();
+		// set the root element of the document
+		doc.setRootElement(new Element("employees"));
+		// write each business event to the document
+		for (Employee employee : employees) {
+			doc.getRootElement().addContent(writeEmployee(employee));
+		}
+		// write the document to the file
+		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
+		try {
+			outputter.output(doc, new FileOutputStream(DataStore.EMPLOYEE_FILE_TEST));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
+	private static Element writeEmployee(Employee employee) {
+		Element emp = new Element("employee");
+		emp.addContent(new Element("id").setText("" + employee.getID()));
+		emp.addContent(new Element("name").setText(employee.getName()));
+		emp.addContent(new Element("password").setText(employee.getPassword()));
+		emp.addContent(new Element("isManager").setText("" + employee.isManager()));
+		return emp;
 	}
 
 	public static void writeMap(SiteMap map) {

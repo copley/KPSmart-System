@@ -43,7 +43,7 @@ public class MailProcessEvent extends BusinessEvent {
 		string.append("MAIL PROCESS EVENT\n");
 		string.append("Date: " + day + ", " + month + ", " + year + "\n");
 		string.append("Time: " + time + "\n");
-		string.append("Staff responsible: " + staff + "\n");
+		string.append("Staff responsible: " + employee + "\n");
 		string.append("Origin: " + origin + "\n");
 		string.append("Destination: " + destination + "\n");
 		string.append("Weight: " + weight + "\n");
