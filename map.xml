@@ -2,38 +2,38 @@
 <sitemap>
   <sites>
     <site>
-      <id>4</id>
-      <location>New Something</location>
-    </site>
-    <site>
-      <id>3</id>
-      <location>Sydney</location>
-    </site>
-    <site>
       <id>1</id>
       <location>Wellington</location>
+    </site>
+    <site>
+      <id>4</id>
+      <location>New Something</location>
     </site>
     <site>
       <id>2</id>
       <location>Auckland</location>
     </site>
+    <site>
+      <id>3</id>
+      <location>Sydney</location>
+    </site>
   </sites>
   <routes>
     <route>
-      <id>1</id>
-      <destination>1</destination>
+      <id>2</id>
+      <destination>3</destination>
       <origin>2</origin>
       <company>Kelburn Airways</company>
       <duration>20</duration>
       <custPriceWeight>0.0</custPriceWeight>
-      <custPriceVolume>0.0</custPriceVolume>
+      <custPriceVolume>12.6</custPriceVolume>
       <transPriceWeight>0.0</transPriceWeight>
       <transPriceVolume>0.0</transPriceVolume>
       <inService>true</inService>
     </route>
     <route>
-      <id>2</id>
-      <destination>3</destination>
+      <id>1</id>
+      <destination>1</destination>
       <origin>2</origin>
       <company>Kelburn Airways</company>
       <duration>20</duration>

@@ -1,4 +1,0 @@
-1	Wellington
-2	Auckland
-3	Sydney
-4	New Something

@@ -67,8 +67,6 @@ public class Reader {
 		return businessEvents;
 	}
 
-
-
 	public static List<Employee> readEmployee() {
 		System.out.println("Reading Employees...");
 		List<Employee> employees = new ArrayList<Employee>();
@@ -105,7 +103,7 @@ public class Reader {
 		String password = event.getChild("password").getText();
 		boolean isManager = Boolean.parseBoolean(event.getChild("isManager").getText());
 		Employee emp = new Employee(id, name, password, isManager);
-		if(!ValidationSystem.validateEmployee(emp)){
+		if (!ValidationSystem.validateEmployee(emp)) {
 			throw new IllegalEmployeeException("Invalid employee!");
 		}
 		return emp;
@@ -113,14 +111,36 @@ public class Reader {
 
 	/**
 	 * Creates a Site map object and and reads and stores the sites and routes
+	 *
 	 * @return Site map object with all sites and routes
 	 */
 	public static SiteMap readMap() {
 		System.out.println("Reading map...");
 		SiteMap map = new SiteMap();
 
-		readSites(map);
-		readRoutes(map);
+		try {
+			// create the SAX builder
+			SAXBuilder saxBuilder = new SAXBuilder();
+			// create jdom document
+			Document document = saxBuilder.build(DataStore.MAP_FILE);
+			// get root element
+			Element systemElement = document.getRootElement();
+
+			// get all the site elements
+			List<Element> sitesList = systemElement.getChild("sites").getChildren();
+			// get all the routes elements
+			List<Element> routesList = systemElement.getChild("routes").getChildren();
+
+			readSites(map, sitesList);
+			readRoutes(map, routesList);
+
+		} catch (JDOMException | IOException e) {
+			e.printStackTrace();
+		} catch (IllegalSiteException e) {
+			e.printStackTrace();
+		} catch (IllegalRouteException e) {
+			e.printStackTrace();
+		}
 
 		System.out.println("Finished reading map");
 		return map;
@@ -128,69 +148,77 @@ public class Reader {
 
 	/**
 	 * Read the sites from the file sites.txt and adds it to the map
-	 * @param map Site map of the sites and routes
+	 *
+	 * @param map
+	 *            Site map of the sites and routes
+	 * @param sitesList
+	 * @throws IllegalSiteException
 	 */
-	private static void readSites(SiteMap map) {
-		try {
-			Scanner sc = new Scanner(new FileReader(DataStore.SITES_FILE));
-			sc.useDelimiter("\\t|\n");
-			while(sc.hasNext()){
-				Site s = readSite(sc);
-				if(!ValidationSystem.validateSite(s)){
-					throw new IllegalSiteException("Invalid site!");
-				}
-				map.addSite(s);
+	private static void readSites(SiteMap map, List<Element> sitesList) throws IllegalSiteException {
+		for (int i = 0; i < sitesList.size(); i++) {
+			Element site = sitesList.get(i);
+			// read business event and add to list
+			Site s = readSite(site);
+			if (!ValidationSystem.validateSite(s)) {
+				throw new IllegalSiteException("Invalid site!");
 			}
-		} catch (FileNotFoundException | IllegalSiteException e) {
-			e.printStackTrace();
+			map.addSite(s);
 		}
 	}
 
 	/**
-	 * Reads a site from the scanner
-	 * @param sc Scanner for the file
-	 * @return Site object
+	 * Makes a site object from the site element
+	 *
+	 * @param site
+	 *            element with the site information
+	 * @return site object
 	 */
-	private static Site readSite(Scanner sc) {
-		int id = sc.nextInt();
-		String location = sc.next();
+	private static Site readSite(Element site) {
+		int id = Integer.parseInt(site.getChild("id").getText());
+		String location = site.getChild("location").getText();
 		return new Site(id, location);
 	}
 
 	/**
 	 * Reads sites from 'routes.txt' and adds each route into the map
-	 * @param map Site map of the sites and routes
+	 *
+	 * @param map
+	 *            Site map of the sites and routes
+	 * @param routesList
+	 * @throws IllegalRouteException
 	 */
-	private static void readRoutes(SiteMap map) {
-		try {
-			Scanner sc = new Scanner(new FileReader(DataStore.ROUTES_FILE));
-			sc.useDelimiter("\\t|\n");
-			while(sc.hasNext()){
-				Route r = readRoute(sc);
-				if(!ValidationSystem.validateRoute(r)){
-					throw new IllegalRouteException("Invalid Route!");
-				}
-				map.addRoute(r);
+	private static void readRoutes(SiteMap map, List<Element> routesList) throws IllegalRouteException {
+		for (int i = 0; i < routesList.size(); i++) {
+			Element route = routesList.get(i);
+			// read business event and add to list
+			Route r = readRoute(route);
+			if (!ValidationSystem.validateRoute(r)) {
+				throw new IllegalRouteException("Invalid route!");
 			}
-		} catch (FileNotFoundException | IllegalRouteException e) {
-			e.printStackTrace();
+			map.addRoute(r);
 		}
-
 	}
 
 	/**
 	 * Reads a route and makes a route object
-	 * @param sc Scanner of the route information
+	 *
+	 * @param route
+	 *            Scanner of the route information
 	 * @return Route object
 	 */
-	private static Route readRoute(Scanner sc) {
-		int id = sc.nextInt();
-		int dest = sc.nextInt();
-		int origin = sc.nextInt();
-		String company = sc.next();
-		int duration = sc.nextInt();
-		boolean inService = sc.nextBoolean();
-		return new Route(id, dest, origin, company, duration, inService, 0.0, 0.0, 0.0, 0.0);
+	private static Route readRoute(Element route) {
+		int id = Integer.parseInt(route.getChild("id").getText());
+		int destination = Integer.parseInt(route.getChild("destination").getText());
+		int origin = Integer.parseInt(route.getChild("origin").getText());
+		String company = route.getChild("company").getText();
+		int duration = Integer.parseInt(route.getChild("duration").getText());
+		double custPriceWeight = Double.parseDouble(route.getChild("custPriceWeight").getText());
+		double custPriceVolume = Double.parseDouble(route.getChild("custPriceVolume").getText());
+		double transPriceWeight = Double.parseDouble(route.getChild("transPriceWeight").getText());
+		double transPriceVolume = Double.parseDouble(route.getChild("transPriceVolume").getText());
+		boolean inService = Boolean.parseBoolean(route.getChild("inService").getText());
+		return new Route(id, destination, origin, company, duration, inService, custPriceWeight, custPriceVolume,
+				transPriceWeight, transPriceVolume);
 	}
 
 	/**
@@ -275,7 +303,8 @@ public class Reader {
 	 *            The employee responsible for the event
 	 * @return A Customer price change event
 	 */
-	private static CustPriceChangeEvent readPrice(Element event, int day, int month, int year, int time, String employee) {
+	private static CustPriceChangeEvent readPrice(Element event, int day, int month, int year, int time,
+			String employee) {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String priority = event.getChild("priority").getText();
@@ -362,7 +391,8 @@ public class Reader {
 	 *            The employee responsible for the event
 	 * @return A Route discontinued event
 	 */
-	private static RouteDiscEvent readDiscontinue(Element event, int day, int month, int year, int time, String employee) {
+	private static RouteDiscEvent readDiscontinue(Element event, int day, int month, int year, int time,
+			String employee) {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();

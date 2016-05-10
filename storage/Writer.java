@@ -247,6 +247,11 @@ public class Writer {
 		}
 	}
 
+	/**
+	 * Writes routes to the file
+	 * @param routes list of all the routes
+	 * @return element with all the route information
+	 */
 	private static Element writeRoutes(Set<Route> routes) {
 		Element routesElement = new Element("routes");
 		for (Route route : routes) {
@@ -255,6 +260,11 @@ public class Writer {
 		return routesElement;
 	}
 
+	/**
+	 * Writes sites to the file
+	 * @param sites list of all the sites
+	 * @return element with all the site information
+	 */
 	private static Element writeSites(Set<Site> sites) {
 		Element sitesElement = new Element("sites");
 		for (Site site : sites) {
@@ -263,6 +273,11 @@ public class Writer {
 		return sitesElement;
 	}
 
+	/**
+	 * Makes an element with the route information
+	 * @param route route to be saved
+	 * @return element with route information
+	 */
 	private static Element writeRoute(Route route) {
 		Element r = new Element("route");
 		r.addContent(new Element("id").setText("" + route.getID()));
@@ -278,6 +293,11 @@ public class Writer {
 		return r;
 	}
 
+	/**
+	 * Makes an element with the site information
+	 * @param site site to be saved
+	 * @return element with site information
+	 */
 	private static Element writeSite(Site site) {
 		Element s = new Element("site");
 		s.addContent(new Element("id").setText("" + site.getID()));

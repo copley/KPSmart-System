@@ -1,2 +1,0 @@
-1	1	2	Kelburn Airways	20	true
-2	3	2	Kelburn Airways	20	true
