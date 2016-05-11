@@ -6,6 +6,14 @@ import org.junit.Test;
 
 import model.Route;
 
+/*
+ * Route should be able to be created, information retrieved via getters, print to string
+ * customer prices should be changeable
+ * transport costs should be changeable
+ * inService status should be changeable
+ * duration,company,ID, origin and destination should be fixed (changed to these are 
+ * enacted by new route creation)s  
+ */
 public class RouteTests {
 	//test creation
 	@Test
@@ -30,7 +38,6 @@ public class RouteTests {
 	//test route creation fail scenarios
 	@Test(expected=Exception.class)
 	public void testBadClassNUllCompany() throws Exception {
-		//test route creation positive
 				int routeID = 0;
 				int originID = 1;
 				int destnID = 2;
