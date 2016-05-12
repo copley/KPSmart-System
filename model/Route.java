@@ -2,8 +2,8 @@ package model;
 
 public class Route {
 	private final int ID;
-	private final int destination;
 	private final int origin;
+	private final int destination;
 	private String company;
 	private int duration;
 	private double custPriceWeight;
@@ -12,11 +12,11 @@ public class Route {
 	private double transPriceVolume;
 	private boolean inService;
 
-	public Route(int id, int destination, int origin, String company, int duration, boolean inService,
+	public Route(int id, int origin, int destination, String company, int duration, boolean inService,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		this.ID = id;
-		this.destination = destination;
 		this.origin = origin;
+		this.destination = destination;
 		this.company = company;
 		this.duration = duration;
 		this.custPriceWeight = custPriceWeight;
@@ -25,6 +25,8 @@ public class Route {
 		this.transPriceVolume = transPriceVolume;
 		this.inService = true;
 	}
+	
+	
 
 	public int getID() {
 		return ID;
@@ -75,5 +77,21 @@ public class Route {
 		string.append("duration: " + duration + "\n");
 		string.append("In service: " + inService);
 		return string.toString();
+	}
+
+
+
+	public void discontinue() {
+		this.inService = false;
+	}
+
+
+
+	public void updatePrices(double newCustPriceWeight, double newCustPriceVolume, double newTransPriceWeight,
+			double newTransPriceVolume) {
+		this.custPriceWeight = newCustPriceWeight;
+		this.custPriceVolume = newCustPriceVolume;
+		this.transPriceWeight = newTransPriceWeight;
+		this.transPriceVolume = newTransPriceVolume;
 	}
 }

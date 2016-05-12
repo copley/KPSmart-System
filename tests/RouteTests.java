@@ -31,8 +31,8 @@ public class RouteTests {
 		double transVolPrice =35.99;
 		boolean inService = true;
 
-		Route newRoute = new Route(routeID, destnID, originID, company,
-				duration, custWeightPrice, custVolPrice, transWeightPrice, transVolPrice, inService);
+		Route newRoute = new Route(routeID, destnID, originID, company,	duration, inService, 
+				custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
 }
 
 	//test route creation fail scenarios
@@ -50,8 +50,8 @@ public class RouteTests {
 				double transVolPrice =35.99;
 				boolean inService = true;
 
-				Route newRoute = new Route(routeID, destnID, originID, company,
-						duration, custWeightPrice, custVolPrice, transWeightPrice, transVolPrice, inService);
+				Route newRoute = new Route(routeID, destnID, originID, company,	duration, inService, 
+						custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
 	}
 
 	//test changeCustomerPrice
