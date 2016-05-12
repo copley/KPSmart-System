@@ -25,7 +25,6 @@ public class DataStore {
 
 	public DataStore() {
 		load();
-		save();
 	}
 
 	/**

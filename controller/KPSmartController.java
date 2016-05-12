@@ -20,16 +20,19 @@ public class KPSmartController {
 	public KPSmartController(KPSmartFrame gui, KPSmartModel model) {
 		kpsmartGUI = gui;
 		kpsmartModel = model;
-		this.init_KPSmartGuiListeners();
+		//TODO: Just commented this out for now - Bonnie
+		//this.init_KPSmartGuiListeners();
 	}
 
-	public void init_KPSmartGuiListeners() {
-		KeyAction keyListener = new KeyAction();
-		MouseAction mouseListener =  new MouseAction();
-		ViewActionListener buttonListener = new KeyListener();
 
-		this.kpsmartGUI.addListeners(keyListener, mouseListener, buttonListener);
-	}
+	//TODO: Just commented this out for now - Bonnie
+//	public void init_KPSmartGuiListeners() {
+//		KeyAction keyListener = new KeyAction();
+//		MouseAction mouseListener =  new MouseAction();
+//		ViewActionListener buttonListener = new KeyListener();
+//
+//		this.kpsmartGUI.addListeners(keyListener, mouseListener, buttonListener);
+//	}
 
 	 class KeyAction implements KeyListener {
 

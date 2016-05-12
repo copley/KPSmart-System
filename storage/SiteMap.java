@@ -20,9 +20,9 @@ public class SiteMap {
 	/*
 	 * returns true if route successfully discontinued returns false if not
 	 * successful (eg the ID was invalid) [supporting soft failure]
-	 * 
+	 *
 	 * ****does not take route out of routes or siteToRoutes******
-	 * 
+	 *
 	 */
 	public boolean discontinueRoute(int toDiscontinueID) {
 		// check route is valid
@@ -35,10 +35,12 @@ public class SiteMap {
 		return true;
 	}
 
+
+	//TODO: Not quite sure if we'll need this method here
 	/*
 	 * returns true if route successfully changed returns false if not
 	 * successful (eg the ID was invalid) [supporting soft failure]
-	 * 
+	 *
 	 * Only the following may be changed: customer prices, transit prices.
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
@@ -63,7 +65,7 @@ public class SiteMap {
 	/*
 	 * returns true if route successfully made returns false if not successful
 	 * [supporting soft failure]
-	 * 
+	 *
 	 * Only the following may be changed: customer prices, transit prices.
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
@@ -95,13 +97,13 @@ public class SiteMap {
 			}
 		}
 		if (originID == -1){//origin site does not exist yet... make it!
-			originID = sites.size();//size is number of values already existing.. 
+			originID = sites.size();//size is number of values already existing..
 			// IDs made sequentially from 0 so size should be free!
 			Site originSite = new Site(originID,origin);
 			addSite(originSite);
 		}
 		if (destinationID == -1){//destination site does not exist yet... make it!
-			destinationID = sites.size();//size is number of values already existing.. 
+			destinationID = sites.size();//size is number of values already existing..
 			// IDs made sequentially from 0 so size should be free!
 			Site destinationSite = new Site(destinationID,destination);
 			addSite(destinationSite);
@@ -114,12 +116,12 @@ public class SiteMap {
 					&& route.getOrigin() == originID
 					&& route.getCompany().equals(company)
 					&& route.getDuration() == duration
-					){				
+					){
 				return false;//may need to do a price update instead
 			}
 		}
 		// find the next available ID (current length of routes list!)
-		int newRouteID = routes.size();//size is number of values already existing.. 
+		int newRouteID = routes.size();//size is number of values already existing..
 				// IDs made sequentially from 0 so size should be free!
 		// make route object
 		Route newRoute = new Route(newRouteID, originID, destinationID, company, duration, true,

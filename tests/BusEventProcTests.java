@@ -4,12 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.BusinessEventProcessor;
+import model.EventProcessor;
 
 public class BusEventProcTests {
-	//set up for testing
-BusinessEventProcessor bep = new BusinessEventProcessor();
-	
+
 //changeRoute
 	@Test
 	public void testChangeRoute() {
@@ -20,9 +18,9 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = 5.0;
 		double transPriceWeight = 2.0;
 		double transPriceVolume = 3.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
-	
+
 	@Test(expected=Exception.class)
 	public void testChangeRouteNegativeRouteID() throws Exception{
 		int routeID = -1;
@@ -32,7 +30,7 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = 5.0;
 		double transPriceWeight = 2.0;
 		double transPriceVolume = 3.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
 	@Test(expected=Exception.class)
 	public void testChangeRouteEmptyStringCarrier() throws Exception{
@@ -43,7 +41,7 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = 5.0;
 		double transPriceWeight = 2.0;
 		double transPriceVolume = 3.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
 	@Test(expected=Exception.class)
 	public void testChangeRouteNullCarrier() throws Exception{
@@ -54,7 +52,7 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = 5.0;
 		double transPriceWeight = 2.0;
 		double transPriceVolume = 3.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
 	@Test(expected=Exception.class)
 	public void testChangeRouteNonPositivePriceWeight() throws Exception{
@@ -65,7 +63,7 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = 5.0;
 		double transPriceWeight = 2.0;
 		double transPriceVolume = 3.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
 	@Test(expected=Exception.class)
 	public void testChangeRouteNonPositivePriceVolume() throws Exception{
@@ -76,7 +74,7 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = -.002;
 		double transPriceWeight = 2.0;
 		double transPriceVolume = 3.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
 	@Test(expected=Exception.class)
 	public void testChangeRouteNonPositiveTransPriceWeight() throws Exception{
@@ -87,7 +85,7 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = 5.0;
 		double transPriceWeight = -12;
 		double transPriceVolume = 3.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
 	@Test(expected=Exception.class)
 	public void testChangeRouteNonPositiveTransCostVolume() throws Exception{
@@ -98,19 +96,19 @@ BusinessEventProcessor bep = new BusinessEventProcessor();
 		double custPriceVolume = 5.0;
 		double transPriceWeight = 2.0;
 		double transPriceVolume = 0.0;
-		bep.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);	
+		EventProcessor.changeRoute(routeID, updatedCarrier, updatedDuration, updatedCustPriceWeight, custPriceVolume, transPriceWeight, transPriceVolume);
 	}
-	
+
 	//addRoute
-	
+
 	//changePrice
-	
+
 	//processMail
-	
+
 	//disconRoute
-	
+
 	//pushEvent
-	
+
 	//createEvent
 
 }
