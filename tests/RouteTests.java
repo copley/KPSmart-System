@@ -25,13 +25,14 @@ public class RouteTests {
 
 		String company = "Bogus";
 		int duration = 10;
+		Route.Mode mode = Route.Mode.AIR;
 		double custWeightPrice = 2.30;
 		double custVolPrice = 3.00;
 		double transWeightPrice = 1;
 		double transVolPrice =35.99;
 		boolean inService = true;
 
-		Route newRoute = new Route(routeID, destnID, originID, company,	duration, inService, 
+		Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService, 
 				custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
 }
 
@@ -44,13 +45,14 @@ public class RouteTests {
 
 				String company = null;
 				int duration = 10;
+				Route.Mode mode = Route.Mode.AIR;
 				double custWeightPrice = 2.30;
 				double custVolPrice = 3.00;
 				double transWeightPrice = 1;
 				double transVolPrice =35.99;
 				boolean inService = true;
 
-				Route newRoute = new Route(routeID, destnID, originID, company,	duration, inService, 
+				Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService, 
 						custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
 	}
 

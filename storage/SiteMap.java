@@ -153,11 +153,8 @@ public class SiteMap {
 	 *         from "from" to "to"
 	 */
 	public List<Route> findCompoundRoute(Site from, Site to, int priority) {
-		if (priority == 1) {
-			return new P1DijkstraSearch(from,to,siteToRoutes).findShortestRoute(); 
-			}
-		if (priority == 2) {
-			return new P2DijkstraSearch(from,to,siteToRoutes).findShortestRoute(); 
+		if (priority == 1 || priority == 2) {
+			return new DijkstraSearchWithPriority(from,to,siteToRoutes,priority).findShortestRoute(); 
 		}
 		// priority was not recognised!
 		return null;

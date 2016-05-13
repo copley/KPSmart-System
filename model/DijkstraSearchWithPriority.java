@@ -7,15 +7,17 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class P2DijkstraSearch {
+public class DijkstraSearchWithPriority {
 	private Site start;
 	private Site finish;
 	private final Map<Site, List<Route>> siteToRoutes;
+	private int priority;
 	
-	public P2DijkstraSearch(Site start, Site finish, Map<Site, List<Route>> siteToRoutes) {
+	public DijkstraSearchWithPriority(Site start, Site finish, Map<Site, List<Route>> siteToRoutes, int priority) {
 		this.start = start;
 		this.finish = finish;
 		this.siteToRoutes = siteToRoutes;
+		this.priority = priority;
 	}
 
 	public List<Route> findShortestRoute() {
@@ -48,8 +50,8 @@ public class P2DijkstraSearch {
 					if(!route.isInService()){
 						break;
 					}
-					//if the route is of type AIR, do not consider
-					if(route.getMode() == Route.Mode.AIR){
+					//if the priority is 2, then AIR mode routes cannot be used
+					if(this.priority == 2 && route.getMode() == Route.Mode.AIR){
 						break;
 					}
 					// work out what the next site is along this route
