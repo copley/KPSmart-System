@@ -1,20 +1,24 @@
 package model;
 
 
+
 public class Route {
 	private final int ID;
 	private final int origin;
 	private final int destination;
 	private final String company;
 	private final int duration;
-	private final String mode;
+	private final Mode mode;
 	private double custPriceWeight;
 	private double custPriceVolume;
 	private double transPriceWeight;
 	private double transPriceVolume;
 	private boolean inService;
 
-	public Route(int id, int origin, int destination, String company, int duration, String mode, boolean inService,
+	public enum Mode{SEA, LAND, AIR};
+	
+	
+	public Route(int id, int origin, int destination, String company, int duration, Mode mode, boolean inService,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		this.ID = id;
 		this.origin = origin;
@@ -51,7 +55,7 @@ public class Route {
 		return duration;
 	}
 
-	public String getMode() {
+	public Mode getMode() {
 		return mode;
 	}
 	
@@ -82,7 +86,7 @@ public class Route {
 		string.append("Origin: " + origin + "\n");
 		string.append("Company: " + company + "\n");
 		string.append("duration: " + duration + "\n");
-		string.append("Mode: " + mode + "\n");
+		string.append("Mode: " + mode.name() + "\n");
 		string.append("In service: " + inService);
 		return string.toString();
 	}

@@ -70,7 +70,7 @@ public class SiteMap {
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
 	 */
-	public boolean makeNewRoute(String origin, String destination, String company, int duration, String mode, double custPriceWeight,
+	public boolean makeNewRoute(String origin, String destination, String company, int duration, Route.Mode mode, double custPriceWeight,
 			double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// check all input for values in correct format
 		if (duration <= 0 || custPriceWeight <= 0 || custPriceVolume <= 0 || transPriceWeight <= 0

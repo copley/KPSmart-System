@@ -285,7 +285,7 @@ public class Writer {
 		r.addContent(new Element("destination").setText("" + route.getDestination()));
 		r.addContent(new Element("company").setText(route.getCompany()));
 		r.addContent(new Element("duration").setText("" + route.getDuration()));
-		r.addContent(new Element("mode").setText("" + route.getMode()));
+		r.addContent(new Element("mode").setText("" + route.getMode().name()));
 		r.addContent(new Element("custPriceWeight").setText("" + route.getCustPriceWeight()));
 		r.addContent(new Element("custPriceVolume").setText("" + route.getCustPriceVolume()));
 		r.addContent(new Element("transPriceWeight").setText("" + route.getTransPriceWeight()));

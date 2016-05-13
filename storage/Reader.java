@@ -212,7 +212,7 @@ public class Reader {
 		int origin = Integer.parseInt(route.getChild("origin").getText());
 		String company = route.getChild("company").getText();
 		int duration = Integer.parseInt(route.getChild("duration").getText());
-		String mode = route.getChild("mode").getText();
+		Route.Mode mode = Route.Mode.valueOf(route.getChild("mode").getText());
 		double custPriceWeight = Double.parseDouble(route.getChild("custPriceWeight").getText());
 		double custPriceVolume = Double.parseDouble(route.getChild("custPriceVolume").getText());
 		double transPriceWeight = Double.parseDouble(route.getChild("transPriceWeight").getText());
