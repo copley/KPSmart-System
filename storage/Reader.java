@@ -212,12 +212,13 @@ public class Reader {
 		int origin = Integer.parseInt(route.getChild("origin").getText());
 		String company = route.getChild("company").getText();
 		int duration = Integer.parseInt(route.getChild("duration").getText());
+		String mode = route.getChild("mode").getText();
 		double custPriceWeight = Double.parseDouble(route.getChild("custPriceWeight").getText());
 		double custPriceVolume = Double.parseDouble(route.getChild("custPriceVolume").getText());
 		double transPriceWeight = Double.parseDouble(route.getChild("transPriceWeight").getText());
 		double transPriceVolume = Double.parseDouble(route.getChild("transPriceVolume").getText());
 		boolean inService = Boolean.parseBoolean(route.getChild("inService").getText());
-		return new Route(id, destination, origin, company, duration, inService, custPriceWeight, custPriceVolume,
+		return new Route(id, origin, destination, company, duration, mode, inService, custPriceWeight, custPriceVolume,
 				transPriceWeight, transPriceVolume);
 	}
 

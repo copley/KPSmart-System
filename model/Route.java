@@ -1,24 +1,27 @@
 package model;
 
+
 public class Route {
 	private final int ID;
 	private final int origin;
 	private final int destination;
-	private String company;
-	private int duration;
+	private final String company;
+	private final int duration;
+	private final String mode;
 	private double custPriceWeight;
 	private double custPriceVolume;
 	private double transPriceWeight;
 	private double transPriceVolume;
 	private boolean inService;
 
-	public Route(int id, int origin, int destination, String company, int duration, boolean inService,
+	public Route(int id, int origin, int destination, String company, int duration, String mode, boolean inService,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		this.ID = id;
 		this.origin = origin;
 		this.destination = destination;
 		this.company = company;
 		this.duration = duration;
+		this.mode = mode;
 		this.custPriceWeight = custPriceWeight;
 		this.custPriceVolume = custPriceVolume;
 		this.transPriceWeight = transPriceWeight;
@@ -48,6 +51,10 @@ public class Route {
 		return duration;
 	}
 
+	public String getMode() {
+		return mode;
+	}
+	
 	public double getCustPriceWeight() {
 		return custPriceWeight;
 	}
@@ -75,6 +82,7 @@ public class Route {
 		string.append("Origin: " + origin + "\n");
 		string.append("Company: " + company + "\n");
 		string.append("duration: " + duration + "\n");
+		string.append("Mode: " + mode + "\n");
 		string.append("In service: " + inService);
 		return string.toString();
 	}

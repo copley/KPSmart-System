@@ -281,10 +281,11 @@ public class Writer {
 	private static Element writeRoute(Route route) {
 		Element r = new Element("route");
 		r.addContent(new Element("id").setText("" + route.getID()));
-		r.addContent(new Element("destination").setText("" + route.getDestination()));
 		r.addContent(new Element("origin").setText("" + route.getOrigin()));
+		r.addContent(new Element("destination").setText("" + route.getDestination()));
 		r.addContent(new Element("company").setText(route.getCompany()));
 		r.addContent(new Element("duration").setText("" + route.getDuration()));
+		r.addContent(new Element("mode").setText("" + route.getMode()));
 		r.addContent(new Element("custPriceWeight").setText("" + route.getCustPriceWeight()));
 		r.addContent(new Element("custPriceVolume").setText("" + route.getCustPriceVolume()));
 		r.addContent(new Element("transPriceWeight").setText("" + route.getTransPriceWeight()));
