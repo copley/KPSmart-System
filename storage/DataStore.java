@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Employee;
 import model.events.BusinessEvent;
+import model.map.SiteMap;
 
 /**
  * The Data store of the system. Responsible for storing all the data in the
@@ -25,6 +26,7 @@ public class DataStore {
 
 	public DataStore() {
 		load();
+		save();
 	}
 
 	/**

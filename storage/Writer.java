@@ -12,6 +12,9 @@ import org.jdom2.output.XMLOutputter;
 import model.*;
 import model.events.*;
 import model.exceptions.*;
+import model.map.Route;
+import model.map.Site;
+import model.map.SiteMap;
 
 /**
  * Class responsible for writing all the data into the log file and data files
@@ -285,7 +288,7 @@ public class Writer {
 		r.addContent(new Element("destination").setText("" + route.getDestination()));
 		r.addContent(new Element("company").setText(route.getCompany()));
 		r.addContent(new Element("duration").setText("" + route.getDuration()));
-		r.addContent(new Element("mode").setText("" + route.getMode().name()));
+		r.addContent(new Element("type").setText("" + route.getType().name()));
 		r.addContent(new Element("custPriceWeight").setText("" + route.getCustPriceWeight()));
 		r.addContent(new Element("custPriceVolume").setText("" + route.getCustPriceVolume()));
 		r.addContent(new Element("transPriceWeight").setText("" + route.getTransPriceWeight()));

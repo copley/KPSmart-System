@@ -6,6 +6,8 @@ import model.events.MailProcessEvent;
 import model.events.RouteAdditionEvent;
 import model.events.RouteDiscEvent;
 import model.events.TransportCostChangeEvent;
+import model.map.Route;
+import model.map.Site;
 
 public class ValidationSystem {
 

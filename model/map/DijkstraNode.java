@@ -1,4 +1,4 @@
-package model;
+package model.map;
 
 public class DijkstraNode {
 	int siteID;

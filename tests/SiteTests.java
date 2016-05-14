@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Site;
+import model.map.Site;
 
 /*
  * Site should be able to be created, information retrieved via getters, print to string

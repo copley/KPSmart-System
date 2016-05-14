@@ -1,4 +1,4 @@
-package model;
+package model.map;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,7 +12,7 @@ public class DijkstraSearchWithPriority {
 	private Site finish;
 	private final Map<Site, List<Route>> siteToRoutes;
 	private int priority;
-	
+
 	public DijkstraSearchWithPriority(Site start, Site finish, Map<Site, List<Route>> siteToRoutes, int priority) {
 		this.start = start;
 		this.finish = finish;
@@ -51,7 +51,7 @@ public class DijkstraSearchWithPriority {
 						break;
 					}
 					//if the priority is 2, then AIR mode routes cannot be used
-					if(this.priority == 2 && route.getMode() == Route.Mode.AIR){
+					if(this.priority == 2 && route.getType() == Type.AIR){
 						break;
 					}
 					// work out what the next site is along this route

@@ -4,15 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.Route;
+import model.map.Route;
+import model.map.Type;
 
 /*
  * Route should be able to be created, information retrieved via getters, print to string
  * customer prices should be changeable
  * transport costs should be changeable
  * inService status should be changeable
- * duration,company,ID, origin and destination should be fixed (changed to these are 
- * enacted by new route creation)s  
+ * duration,company,ID, origin and destination should be fixed (changed to these are
+ * enacted by new route creation)s
  */
 public class RouteTests {
 	//test creation
@@ -25,14 +26,14 @@ public class RouteTests {
 
 		String company = "Bogus";
 		int duration = 10;
-		Route.Mode mode = Route.Mode.AIR;
+		Type mode = Type.AIR;
 		double custWeightPrice = 2.30;
 		double custVolPrice = 3.00;
 		double transWeightPrice = 1;
 		double transVolPrice =35.99;
 		boolean inService = true;
 
-		Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService, 
+		Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService,
 				custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
 }
 
@@ -45,14 +46,14 @@ public class RouteTests {
 
 				String company = null;
 				int duration = 10;
-				Route.Mode mode = Route.Mode.AIR;
+				Type mode = Type.AIR;
 				double custWeightPrice = 2.30;
 				double custVolPrice = 3.00;
 				double transWeightPrice = 1;
 				double transVolPrice =35.99;
 				boolean inService = true;
 
-				Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService, 
+				Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService,
 						custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
 	}
 

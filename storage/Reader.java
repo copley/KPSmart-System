@@ -6,16 +6,12 @@ import org.jdom2.*;
 import org.jdom2.input.*;
 
 import model.*;
-import model.events.BusinessEvent;
-import model.events.CustPriceChangeEvent;
-import model.events.MailProcessEvent;
-import model.events.RouteAdditionEvent;
-import model.events.RouteDiscEvent;
-import model.events.TransportCostChangeEvent;
-import model.exceptions.IllegalEventException;
-import model.exceptions.IllegalRouteException;
-import model.exceptions.IllegalSiteException;
-import model.exceptions.IllegalEmployeeException;
+import model.events.*;
+import model.exceptions.*;
+import model.map.Route;
+import model.map.Site;
+import model.map.SiteMap;
+import model.map.Type;
 
 /**
  * Class responsible for reading the data from the log file and data files
@@ -212,13 +208,13 @@ public class Reader {
 		int origin = Integer.parseInt(route.getChild("origin").getText());
 		String company = route.getChild("company").getText();
 		int duration = Integer.parseInt(route.getChild("duration").getText());
-		Route.Mode mode = Route.Mode.valueOf(route.getChild("mode").getText());
+		Type type = Type.valueOf(route.getChild("type").getText());
 		double custPriceWeight = Double.parseDouble(route.getChild("custPriceWeight").getText());
 		double custPriceVolume = Double.parseDouble(route.getChild("custPriceVolume").getText());
 		double transPriceWeight = Double.parseDouble(route.getChild("transPriceWeight").getText());
 		double transPriceVolume = Double.parseDouble(route.getChild("transPriceVolume").getText());
 		boolean inService = Boolean.parseBoolean(route.getChild("inService").getText());
-		return new Route(id, origin, destination, company, duration, mode, inService, custPriceWeight, custPriceVolume,
+		return new Route(id, origin, destination, company, duration, type, inService, custPriceWeight, custPriceVolume,
 				transPriceWeight, transPriceVolume);
 	}
 

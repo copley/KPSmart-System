@@ -2,6 +2,8 @@ package model;
 
 import java.util.List;
 
+import model.map.Route;
+
 public class FigureGenerator {
 
 	public FigureGenerator() {

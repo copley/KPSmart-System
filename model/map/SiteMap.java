@@ -1,4 +1,4 @@
-package storage;
+package model.map;
 
 import java.util.*;
 import model.*;
@@ -69,7 +69,7 @@ public class SiteMap {
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
 	 */
-	public boolean makeNewRoute(String origin, String destination, String company, int duration, Route.Mode mode,
+	public boolean makeNewRoute(String origin, String destination, String company, int duration, Type mode,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// check all input for values in correct format
 		if (duration <= 0 || custPriceWeight <= 0 || custPriceVolume <= 0 || transPriceWeight <= 0
@@ -142,7 +142,7 @@ public class SiteMap {
 	 * the shortest path from "from" to "to". Priority 1 searches may use SEA,
 	 * LAND and AIR routes whereas priority 2 searches may only use SEA and
 	 * LAND.
-	 * 
+	 *
 	 * @param from:
 	 *            site that the compound route must start
 	 * @param to:
@@ -154,7 +154,7 @@ public class SiteMap {
 	 */
 	public List<Route> findCompoundRoute(Site from, Site to, int priority) {
 		if (priority == 1 || priority == 2) {
-			return new DijkstraSearchWithPriority(from,to,siteToRoutes,priority).findShortestRoute(); 
+			return new DijkstraSearchWithPriority(from,to,siteToRoutes,priority).findShortestRoute();
 		}
 		// priority was not recognised!
 		return null;

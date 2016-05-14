@@ -1,4 +1,4 @@
-package model;
+package model.map;
 
 
 
@@ -8,32 +8,30 @@ public class Route {
 	private final int destination;
 	private final String company;
 	private final int duration;
-	private final Mode mode;
+	private final Type type;
 	private double custPriceWeight;
 	private double custPriceVolume;
 	private double transPriceWeight;
 	private double transPriceVolume;
 	private boolean inService;
 
-	public enum Mode{SEA, LAND, AIR};
-	
-	
-	public Route(int id, int origin, int destination, String company, int duration, Mode mode, boolean inService,
+
+	public Route(int id, int origin, int destination, String company, int duration, Type type, boolean inService,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		this.ID = id;
 		this.origin = origin;
 		this.destination = destination;
 		this.company = company;
 		this.duration = duration;
-		this.mode = mode;
+		this.type = type;
 		this.custPriceWeight = custPriceWeight;
 		this.custPriceVolume = custPriceVolume;
 		this.transPriceWeight = transPriceWeight;
 		this.transPriceVolume = transPriceVolume;
 		this.inService = true;
 	}
-	
-	
+
+
 
 	public int getID() {
 		return ID;
@@ -55,10 +53,10 @@ public class Route {
 		return duration;
 	}
 
-	public Mode getMode() {
-		return mode;
+	public Type getType() {
+		return type;
 	}
-	
+
 	public double getCustPriceWeight() {
 		return custPriceWeight;
 	}
@@ -86,7 +84,7 @@ public class Route {
 		string.append("Origin: " + origin + "\n");
 		string.append("Company: " + company + "\n");
 		string.append("duration: " + duration + "\n");
-		string.append("Mode: " + mode.name() + "\n");
+		string.append("Type: " + type.name() + "\n");
 		string.append("In service: " + inService);
 		return string.toString();
 	}

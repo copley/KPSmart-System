@@ -1,4 +1,4 @@
-package model;
+package model.map;
 
 public class Site {
 	private final int ID;
