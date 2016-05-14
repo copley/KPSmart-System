@@ -99,7 +99,7 @@ public class KPSmartController {
 				System.out.println(ListenerCount++);//debugging - mc
 				//kpsmartModel.someAction(); //TODO:
 
-			}else if (e.getActionCommand().equals("Average Delivery Times")){
+			}else if (e.getActionCommand().equals("AVG Delivery Times")){
 				System.out.println(ListenerCount++);//debugging - mc
 				//kpsmartModel.someAction(); //TODO:
 
@@ -115,7 +115,7 @@ public class KPSmartController {
 				System.out.println(ListenerCount++);//debugging - mc
 				//kpsmartModel.someAction(); //TODO:
 
-			}else if (e.getActionCommand().equals("Cutomer Price Update")){
+			}else if (e.getActionCommand().equals("Customer Price Update")){
 				System.out.println(ListenerCount++);//debugging - mc
 				//kpsmartModel.someAction(); //TODO:
 
