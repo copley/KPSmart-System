@@ -113,4 +113,9 @@ public final class KPSmartFrame extends JFrame {
 	public Dimension getPreferredSize() {
 		return new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
 	}
+
+	public KPSmartCanvas getCanvas() {
+		return canvas;
+	}
+
 }

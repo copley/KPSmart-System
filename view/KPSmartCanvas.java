@@ -85,11 +85,12 @@ public class KPSmartCanvas extends JPanel {
 		// TODO Auto-generated method stub
 	}
 
-	public void onClick(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public JPanel getMainDisplayPanel() {
+		return mainDisplayPanel;
 	}
 
-	public void onKeyboard(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public JPanel getOperationPanel() {
+		return operationPanel;
 	}
+
 }
