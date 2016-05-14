@@ -17,9 +17,6 @@ import view.KPSmartFrame;
 public class Main {
 
 	public static void main(String[] args) {
-		KPSmartModel kpsmartModel = new KPSmartModel();
-		// KPSmartGUI kpsmartGui = new KPSmartGUI();
-		KPSmartFrame view = new KPSmartFrame();
-		KPSmartController cont = new KPSmartController(view, kpsmartModel);
+		KPSmartController cont = new KPSmartController();
 	}
 }

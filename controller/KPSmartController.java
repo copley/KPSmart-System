@@ -17,9 +17,10 @@ public class KPSmartController {
 	private int ListenerCount = 1; // debugging purposes // used to print where in the code the
 									// listener was called.
 
-	public KPSmartController(KPSmartFrame gui, KPSmartModel model) {
-		kpsmartGUI = gui;
-		kpsmartModel = model;
+	public KPSmartController() {
+		//TODO: make new gui here and pass the listeners through the constructor
+		kpsmartGUI = new gui(listener 1, listener 2, listener 3);
+		kpsmartModel = new model;
 		//TODO: Just commented this out for now - Bonnie
 		//this.init_KPSmartGuiListeners();
 	}
@@ -88,6 +89,7 @@ public class KPSmartController {
 	 * Action listener class for the menu.
 	 */
 	class ViewActionListener implements ActionListener {
+		// TODO: add some stuff here to get input from gui and tell model to do something then output back to gui
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			System.out.println(ListenerCount + 107);
