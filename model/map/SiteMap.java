@@ -203,4 +203,8 @@ public class SiteMap {
 		}
 		return -1;
 	}
+
+	public Route getRouteFromID(int routeID) {
+		return this.routes.get(routeID);
+	}
 }
