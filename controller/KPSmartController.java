@@ -105,7 +105,7 @@ public class KPSmartController {
 				kpsmartModel.getTotalMail(); //TODO: could this return INT, STRING
 				kpsmartGui.renderTotalMail();//TODO: Could pass in STRING , INT
 
-			}else if (e.getActionCommand().equals("Average Delivery Times")){
+			}else if (e.getActionCommand().equals("AVG Delivery Times")){
 				System.out.println(ListenerCount++);//debugging - mc
 				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
@@ -128,7 +128,7 @@ public class KPSmartController {
 				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
-			}else if (e.getActionCommand().equals("Cutomer Price Update")){
+			}else if (e.getActionCommand().equals("Customer Price Update")){
 				System.out.println(ListenerCount++);//debugging - mc
 				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT

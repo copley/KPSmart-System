@@ -1,8 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.JPanel;
@@ -29,11 +27,11 @@ public class OperationPanel extends AbstractPanel {
 		emptyPanel = new JPanel();
 		logOutPanel = new LogOutPanel(keyAction, mouseAction, viewActionListener);
 
-		initialise();
+		initialiseLayout();
 	}
 
 	@Override
-	protected void initialise() {
+	protected void initialiseLayout() {
 
 		// debug
 		setBackground(Color.GREEN);
@@ -77,18 +75,6 @@ public class OperationPanel extends AbstractPanel {
 
 	@Override
 	protected void redraw() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onClick(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onKeyboard(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}

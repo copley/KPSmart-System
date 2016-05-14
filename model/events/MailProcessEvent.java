@@ -1,14 +1,16 @@
 package model.events;
 
+import model.Priority;
+
 public class MailProcessEvent extends BusinessEvent {
 	private String origin;
 	private String destination;
 	private int weight;
 	private int volume;
-	private String priority;
+	private Priority priority;
 
 	public MailProcessEvent(int day, int month, int year, int time, String staff, String origin, String destination,
-			int weight, int volume, String priority) {
+			int weight, int volume, Priority priority) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
@@ -34,7 +36,7 @@ public class MailProcessEvent extends BusinessEvent {
 	}
 
 	public String getPriority() {
-		return priority;
+		return priority.toString();
 	}
 
 	@Override

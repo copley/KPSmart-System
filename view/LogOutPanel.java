@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-
 import javax.swing.JButton;
 
 import controller.KPSmartController.KeyAction;
@@ -24,28 +21,16 @@ public class LogOutPanel extends AbstractPanel {
 
 		logOutButton.addActionListener(viewActionListener);
 
-		initialise();
+		initialiseLayout();
 	}
 
 	@Override
-	protected void initialise() {
+	protected void initialiseLayout() {
 		add(logOutButton);
 	}
 
 	@Override
 	protected void redraw() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onClick(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onKeyboard(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <log>
   <price>
+    <day>21</day>
+    <month>9</month>
+    <year>2016</year>
+    <time>1300</time>
+    <employee>Bonnie</employee>
+    <origin>Suva</origin>
+    <destination>New Zealand</destination>
+    <priority>International Air</priority>
+    <weightcost>4</weightcost>
+    <volumecost>4</volumecost>
+  </price>
+  <price>
     <day>15</day>
     <month>5</month>
     <year>2016</year>

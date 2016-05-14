@@ -56,6 +56,8 @@ public class Reader {
 			e.printStackTrace();
 		} catch (IllegalEventException e) {
 			e.printStackTrace();
+		} catch (IllegalPriorityException e) {
+			e.printStackTrace();
 		}
 
 		System.out.println("Finished reading data");
@@ -227,8 +229,9 @@ public class Reader {
 	 * @return A business event
 	 * @throws IllegalEventException
 	 *             If the event is invalid
+	 * @throws IllegalPriorityException
 	 */
-	private static BusinessEvent readEvent(Element event) throws IllegalEventException {
+	private static BusinessEvent readEvent(Element event) throws IllegalEventException, IllegalPriorityException {
 		BusinessEvent businessEvent = null;
 
 		// get the eventType
@@ -299,12 +302,13 @@ public class Reader {
 	 * @param employee
 	 *            The employee responsible for the event
 	 * @return A Customer price change event
+	 * @throws IllegalPriorityException
 	 */
 	private static CustPriceChangeEvent readPrice(Element event, int day, int month, int year, int time,
-			String employee) {
+			String employee) throws IllegalPriorityException {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
-		String priority = event.getChild("priority").getText();
+		Priority priority = readPriority(event.getChild("priority").getText());
 		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
 		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
 
@@ -328,13 +332,14 @@ public class Reader {
 	 * @param employee
 	 *            The employee responsible for the event
 	 * @return A Mail process event
+	 * @throws IllegalPriorityException
 	 */
-	private static MailProcessEvent readMail(Element event, int day, int month, int year, int time, String employee) {
+	private static MailProcessEvent readMail(Element event, int day, int month, int year, int time, String employee) throws IllegalPriorityException {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		int weight = Integer.parseInt(event.getChild("weight").getText());
 		int volume = Integer.parseInt(event.getChild("volume").getText());
-		String priority = event.getChild("priority").getText();
+		Priority priority = readPriority(event.getChild("priority").getText());
 
 		return new MailProcessEvent(day, month, year, time, employee, origin, destination, weight, volume, priority);
 	}
@@ -429,5 +434,20 @@ public class Reader {
 
 		return new TransportCostChangeEvent(day, month, year, time, employee, origin, destination, company, type,
 				weightcost, volumecost, departure, frequency, duration);
+	}
+
+	private static Priority readPriority(String text) throws IllegalPriorityException {
+		switch(text){
+		case "International Air":
+			return Priority.INTERNATIONAL_AIR;
+		case "International Standard":
+			return Priority.INTERNATIONAL_STANDARD;
+		case "Domestic Air":
+			return Priority.DOMESTIC_AIR;
+		case "Domestic Standard":
+			return Priority.DOMESTIC_STANDARD;
+			default:
+				throw new IllegalPriorityException("Invalid Priority!");
+		}
 	}
 }
