@@ -19,7 +19,7 @@ public class KPSmartController {
 
 	public KPSmartController() {
 		//TODO: make new gui here and pass the listeners through the constructor
-		kpsmartGUI = new gui(listener 1, listener 2, listener 3);
+		kpsmartGUI = new KPSmartFrame(new KeyAction(), new MouseAction() ,new ViewActionListener());
 		kpsmartModel = new model;
 		//TODO: Just commented this out for now - Bonnie
 		//this.init_KPSmartGuiListeners();
