@@ -1,7 +1,6 @@
 package model.map;
 
 import java.util.*;
-import model.*;
 import model.exceptions.*;
 
 public class SiteMap {
@@ -86,11 +85,12 @@ public class SiteMap {
 		// find the site ids... make new sites if necessary
 		int originID = -1;// value indicates not yet found
 		int destinationID = -1;// value indicates not yet found
-		Set<Site> sites = getSites();
-		for (Site site : sites) {
-			if (site.getLocation().equals(origin)) {
+		for (Site site : sites.values()) {
+			String location = site.getLocation();
+			if (location.equals(origin)) {
 				originID = site.getID();
-			} else if (site.getLocation().equals(destination)) {
+			} 
+			if (location.equals(destination)) {
 				destinationID = site.getID();
 			}
 		}
@@ -149,11 +149,11 @@ public class SiteMap {
 	 *            site that the compound route must finish
 	 * @param priority:
 	 *            allowable values are 1 and 2
-	 * @return an ordered list of Route objects that compound to create a path
+	 * @return an ordered list of Route IDs that identify routes that compound to create a path
 	 *         from "from" to "to"
 	 */
-	public List<Route> findCompoundRoute(Site from, Site to, model.Priority priority) {
-		return new DijkstraSearchWithPriority(from,to,siteToRoutes,priority).findShortestRoute();
+	public List<Integer> findCompoundRoute(int fromSiteID, int toSiteID, model.Priority priority) {
+		return new DijkstraSearchWithPriority(fromSiteID,toSiteID,this,priority).findShortestRoute();
 	}
 
 
@@ -172,8 +172,12 @@ public class SiteMap {
 		if (siteToRoutes.get(s1) == null || siteToRoutes.get(s2) == null) {
 			throw new IllegalRouteException("Invalid Route! Can't find site");
 		}
-		siteToRoutes.get(s1).add(route);
-		siteToRoutes.get(s2).add(route);
+		List<Route> s1Routes = siteToRoutes.get(s1);
+		s1Routes.add(route);
+		siteToRoutes.put(s1,s1Routes);
+		List<Route> s2Routes = siteToRoutes.get(s2);
+		s2Routes.add(route);
+		siteToRoutes.put(s2,s2Routes);
 	}
 
 	public Set<Site> getSites() {
@@ -182,5 +186,21 @@ public class SiteMap {
 
 	public Set<Route> getRoutes() {
 		return new HashSet<Route>(routes.values());
+	}
+
+	public List<Route> getRoutesOn(int siteID) {
+		Site site = this.sites.get(siteID);
+		return siteToRoutes.get(site);
+	}
+	
+	public int getSiteIDfromLocation(String location){
+		Set<Site> sites = getSites();
+		for (Site site : sites) {
+			if (site.getLocation().equals(location)) {
+				return site.getID();
+				
+			}
+		}
+		return -1;
 	}
 }

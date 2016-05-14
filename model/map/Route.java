@@ -80,8 +80,8 @@ public class Route {
 	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("ID: " + ID + "\n");
-		string.append("Destination: " + destination + "\n");
 		string.append("Origin: " + origin + "\n");
+		string.append("Destination: " + destination + "\n");
 		string.append("Company: " + company + "\n");
 		string.append("duration: " + duration + "\n");
 		string.append("Type: " + type.name() + "\n");

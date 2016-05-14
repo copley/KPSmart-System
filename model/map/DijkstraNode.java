@@ -1,9 +1,9 @@
 package model.map;
 
-public class DijkstraNode {
+public class DijkstraNode implements Comparable<DijkstraNode>{
 	int siteID;
 	int previousSiteID;//-1 if there is no previous site!
-	Route previousRoute;//null if there is no previous site!
+	int previousRouteID;//-1 if no previous site!
 	double durationFromStart;
 
 	/** 
@@ -12,11 +12,11 @@ public class DijkstraNode {
 	 * @param route - Route used to get from previous site
 	 * @param durationFromStart - total duration to get from start site to this site during the Dijkstra search
 	 */
-	 public DijkstraNode(int siteID, int prevSiteID, Route prevRoute, double durationFromStart) {
+	 public DijkstraNode(int siteID, int prevSiteID, int prevRouteID, double durationFromStart) {
 		this.siteID = siteID;
 		this.previousSiteID = prevSiteID;
 		this.durationFromStart = durationFromStart;
-		this.previousRoute = prevRoute;
+		this.previousRouteID = prevRouteID;
 	}
 
 	public int getSiteID() {
@@ -31,8 +31,14 @@ public class DijkstraNode {
 		return durationFromStart;
 	}
 
-	public Route getPrevRoute() {
-		return previousRoute;
+	public int getPrevRouteID() {
+		return previousRouteID;
 	}
-
+	@Override
+	public int compareTo(DijkstraNode other) {
+		double diffETC = this.durationFromStart - other.getDurationFromStart();
+		if (diffETC >0){return 1;}
+		if (diffETC <0){return -1;}
+		return 0;	
+	}
 }
