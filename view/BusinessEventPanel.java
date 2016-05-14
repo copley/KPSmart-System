@@ -30,16 +30,23 @@ public class BusinessEventPanel extends AbstractPanel {
 	public BusinessEventPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
 		super(keyAction, mouseAction, viewActionListener);
 
+		this.addKeyListener(keyAction);
+		this.addMouseListener(mouseAction);
+
 		mailDeliveryBt = new JButton("Mail Delivery");
+		mailDeliveryBt.addActionListener(viewActionListener);
 
 		routeDiscontinueBt = new JButton("Route Discontinue");
 		routeDiscontinueBt.setFont(new Font("Dialog", Font.BOLD, 10));
+		routeDiscontinueBt.addActionListener(viewActionListener);
 
 		customerPriceUpdateBt = new JButton("Customer Price Update");
 		customerPriceUpdateBt.setFont(new Font("Dialog", Font.BOLD, 9));
+		customerPriceUpdateBt.addActionListener(viewActionListener);
 
 		transportCostUpdateBt = new JButton("Transport Cost Update");
 		transportCostUpdateBt.setFont(new Font("Dialog", Font.BOLD, 9));
+		transportCostUpdateBt.addActionListener(viewActionListener);
 
 		txtpnBusinessEvents = new JTextPane();
 		txtpnBusinessEvents.setEditable(false);
