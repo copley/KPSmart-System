@@ -11,9 +11,9 @@ public class DijkstraSearchWithPriority {
 	private Site start;
 	private Site finish;
 	private final Map<Site, List<Route>> siteToRoutes;
-	private int priority;
+	private model.Priority priority;
 
-	public DijkstraSearchWithPriority(Site start, Site finish, Map<Site, List<Route>> siteToRoutes, int priority) {
+	public DijkstraSearchWithPriority(Site start, Site finish, Map<Site, List<Route>> siteToRoutes, model.Priority priority) {
 		this.start = start;
 		this.finish = finish;
 		this.siteToRoutes = siteToRoutes;
@@ -51,7 +51,9 @@ public class DijkstraSearchWithPriority {
 						break;
 					}
 					//if the priority is 2, then AIR mode routes cannot be used
-					if(this.priority == 2 && route.getType() == Type.AIR){
+					if(((this.priority == model.Priority.DOMESTIC_STANDARD) || 
+							(this.priority == model.Priority.INTERNATIONAL_STANDARD)) 
+							&& route.getType() == Type.AIR){
 						break;
 					}
 					// work out what the next site is along this route

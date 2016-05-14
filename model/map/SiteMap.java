@@ -152,12 +152,8 @@ public class SiteMap {
 	 * @return an ordered list of Route objects that compound to create a path
 	 *         from "from" to "to"
 	 */
-	public List<Route> findCompoundRoute(Site from, Site to, int priority) {
-		if (priority == 1 || priority == 2) {
-			return new DijkstraSearchWithPriority(from,to,siteToRoutes,priority).findShortestRoute();
-		}
-		// priority was not recognised!
-		return null;
+	public List<Route> findCompoundRoute(Site from, Site to, model.Priority priority) {
+		return new DijkstraSearchWithPriority(from,to,siteToRoutes,priority).findShortestRoute();
 	}
 
 
