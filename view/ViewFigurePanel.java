@@ -1,8 +1,6 @@
 package view;
 
 import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -58,11 +56,11 @@ public class ViewFigurePanel extends AbstractPanel {
 		criticalRoutesBt = new JButton("Critical Routes");
 		criticalRoutesBt.addActionListener(viewActionListener);
 
-		initialise();
+		initialiseLayout();
 	}
 
 	@Override
-	protected void initialise() {
+	protected void initialiseLayout() {
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
@@ -101,18 +99,6 @@ public class ViewFigurePanel extends AbstractPanel {
 
 	@Override
 	protected void redraw() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onClick(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onKeyboard(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
