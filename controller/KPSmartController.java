@@ -18,19 +18,11 @@ public class KPSmartController {
 									// listener was called.
 	public KPSmartController() {
 		kpsmartGUI = new KPSmartFrame(new KeyAction(), new MouseAction() ,new ViewActionListener());
-		kpsmartModel = new model;
+		System.out.println("Calling from Controller"); //debugging
 	}
 
-	//TODO: Just commented this out for now - Bonnie
-//	public void init_KPSmartGuiListeners() {
-//		KeyAction keyListener = new KeyAction();
-//		MouseAction mouseListener =  new MouseAction();
-//		ViewActionListener buttonListener = new KeyListener();
-//
-//		this.kpsmartGUI.addListeners(keyListener, mouseListener, buttonListener);
-//	}
-
 	public class KeyAction implements KeyListener {
+		//System.out.println("Calling from KeyAction");
 
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -54,7 +46,9 @@ public class KPSmartController {
 	 * MouseAction class to set actionListeners to components inside the GUI.
 	 */
 	 public class MouseAction implements MouseListener {
-		@Override
+		 //System.out.println("Calling from MouseAction");
+
+		 @Override
 		public void mouseClicked(MouseEvent e) {
 			//System.out.println(ListenerCount + 65); // debugging purposes - mc
 		}
@@ -87,29 +81,51 @@ public class KPSmartController {
 		// TODO: add some stuff here to get input from gui and tell model to do something then output back to gui
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			System.out.println("Calling from ActionListener");
 			// View Figures Control
 			if (e.getActionCommand().equals("Total Revenue")){
+				System.out.println(ListenerCount++); //debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Total Expenditure")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Total No. of Events")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Amount of Mails")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Average Delivery Times")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Critical Routes")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Mail Delivery")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Route Discontinue")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Cutomer Price Update")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Transport Cost Update")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}else if (e.getActionCommand().equals("Critical Routes")){
+				System.out.println(ListenerCount++);//debugging - mc
+				//kpsmartModel.someAction(); //TODO:
 
 			}
 
