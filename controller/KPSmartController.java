@@ -7,6 +7,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JTextField;
+
 import model.KPSmartModel;
 import view.KPSmartFrame;
 
@@ -85,58 +87,81 @@ public class KPSmartController {
 			// View Figures Panel
 			if (e.getActionCommand().equals("Total Revenue")){
 				System.out.println(ListenerCount++); //debugging - mc
-				kpsmartModel.getTotalRevenue(); //TODO: could this return INT, STRING
-				kpsmartGui.renderTotalRevenue();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getTotalRevenue(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderTotalRevenue();//TODO: Could pass in STRING , INT
 
 
 
 			}else if (e.getActionCommand().equals("Total Expenditure")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getTotalExpenditure(); //TODO: could this return INT, STRING
-				kpsmartGui.renderTotalExpenditure();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getTotalExpenditure(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderTotalExpenditure();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Total No. of Events")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getTotalEvents(); //TODO: could this return INT, STRING
-				kpsmartGui.renderTotalEvents();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getTotalEvents(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderTotalEvents();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Amount of Mails")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getTotalMail(); //TODO: could this return INT, STRING
-				kpsmartGui.renderTotalMail();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getTotalMail(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderTotalMail();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("AVG Delivery Times")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
-				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Critical Routes")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getCriticalRoutes(); //TODO: could this return INT, STRING
-				kpsmartGui.renderCriticalRoutes();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getCriticalRoutes(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderCriticalRoutes();//TODO: Could pass in STRING , INT
 
 			}
 
 			// Business Events Panel
 			else if (e.getActionCommand().equals("Mail Delivery")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getMailDelivery(); //TODO: could this return INT, STRING
-				kpsmartGui.renderMailDelivery();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getMailDelivery(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderMailDelivery();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Route Discontinue")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
-				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Customer Price Update")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
-				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Transport Cost Update")){
 				System.out.println(ListenerCount++);//debugging - mc
-				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
-				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+
+			}
+			else if(e.getActionCommand().equals("Weight:")){
+				System.out.println(ListenerCount++);
+			}
+			else if(e.getActionCommand().equals("Volume:")){
+				System.out.println(ListenerCount++);
+			}
+			//Submit on Mail Delivery
+			else if (e.getActionCommand().equals("Submit")){
+			System.out.println("Submit");//debugging - mc
+			//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+			//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+			// getter methods set inside
+			//String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getActionCommand();
+			//String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox();
+			Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
+			String  volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel()).getVolumeTextField().getText();
+			e.getActionCommand("Weight:");
+			// prioritySelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getPriorityComboBox();
+
+			//System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
+			System.out.println(volumeSelection + weightSelection);
 
 			}
 		}
