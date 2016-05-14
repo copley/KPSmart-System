@@ -35,7 +35,7 @@ public class KPSmartController {
 //		this.kpsmartGUI.addListeners(keyListener, mouseListener, buttonListener);
 //	}
 
-	 class KeyAction implements KeyListener {
+	 public class KeyAction implements KeyListener {
 
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -58,7 +58,7 @@ public class KPSmartController {
 	/**
 	 * MouseAction class to set actionListeners to components inside the GUI.
 	 */
-	 class MouseAction implements MouseListener {
+	 public class MouseAction implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			//System.out.println(ListenerCount + 65); // debugging purposes - mc
@@ -88,7 +88,7 @@ public class KPSmartController {
 	/**
 	 * Action listener class for the menu.
 	 */
-	class ViewActionListener implements ActionListener {
+	public class ViewActionListener implements ActionListener {
 		// TODO: add some stuff here to get input from gui and tell model to do something then output back to gui
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {

@@ -13,6 +13,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import controller.KPSmartController.*;
+
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
 
@@ -20,10 +22,49 @@ public final class KPSmartFrame extends JFrame {
 	private static final int FRAME_WIDTH = 1600;
 	private static final int FRAME_HEIGHT = 900;
 
-	//TODO New constructor takes 3 listeners
+	private KeyAction keyAction;
+	private MouseAction mouseAction;
+	private ViewActionListener viewActionListener;
 
-	public KPSmartFrame() {
+//	public KPSmartFrame() {
+//		super("KPSmart");
+//		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//		setResizable(true);
+//
+//		setLayout(new BorderLayout());
+//
+//		canvas = new KPSmartCanvas(this);
+//		add(canvas);
+//
+//		createMenu();
+//		pack();
+//
+//		setVisible(true);
+//
+//		this.addWindowListener(new WindowAdapter() {
+//			@Override
+//			public void windowClosing(WindowEvent we) {
+//				String[] options = { "YES", "Cancel" };
+//				JPanel panel = new JPanel();
+//				JLabel label = new JLabel("Are you sure you want to quit the system?");
+//				panel.add(label);
+//				int selectedOption = JOptionPane.showOptionDialog(null, panel, "Warning!!!", JOptionPane.DEFAULT_OPTION,
+//						JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+//				if (selectedOption == 0) {
+//					System.exit(0);
+//				}
+//			}
+//		});
+//	}
+
+	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+
 		super("KPSmart");
+
+		this.keyAction = keyAction;
+		this.mouseAction = mouseAction;
+		this.viewActionListener = viewActionListener;
+
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setResizable(true);
 
@@ -36,21 +77,6 @@ public final class KPSmartFrame extends JFrame {
 		pack();
 
 		setVisible(true);
-
-		this.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent we) {
-				String[] options = { "YES", "Cancel" };
-				JPanel panel = new JPanel();
-				JLabel label = new JLabel("Are you sure you want to quit the system?");
-				panel.add(label);
-				int selectedOption = JOptionPane.showOptionDialog(null, panel, "Warning!!!", JOptionPane.DEFAULT_OPTION,
-						JOptionPane.WARNING_MESSAGE, null, options, options[1]);
-				if (selectedOption == 0) {
-					System.exit(0);
-				}
-			}
-		});
 	}
 
 	public void removeOldCanvas() {
