@@ -1,14 +1,16 @@
 package model.events;
 
+import model.Priority;
+
 public class CustPriceChangeEvent extends BusinessEvent {
 	private String origin;
 	private String destination;
-	private String priority;
+	private Priority priority;
 	private int newWeightCost;
 	private int newVolumeCost;
 
 	public CustPriceChangeEvent(int day, int month, int year, int time, String staff, String origin,
-			String destination, String priority, int newWeightCost, int newVolumeCost) {
+			String destination, Priority priority, int newWeightCost, int newVolumeCost) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
@@ -41,7 +43,7 @@ public class CustPriceChangeEvent extends BusinessEvent {
 	}
 
 	public String getPriority() {
-		return priority;
+		return priority.toString();
 	}
 
 	public int getNewWeightCost() {
