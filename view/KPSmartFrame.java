@@ -22,10 +22,6 @@ public final class KPSmartFrame extends JFrame {
 	private static final int FRAME_WIDTH = 1600;
 	private static final int FRAME_HEIGHT = 900;
 
-	private KeyAction keyAction;
-	private MouseAction mouseAction;
-	private ViewActionListener viewActionListener;
-
 //	public KPSmartFrame() {
 //		super("KPSmart");
 //		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -61,16 +57,12 @@ public final class KPSmartFrame extends JFrame {
 
 		super("KPSmart");
 
-		this.keyAction = keyAction;
-		this.mouseAction = mouseAction;
-		this.viewActionListener = viewActionListener;
-
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setResizable(true);
 
 		setLayout(new BorderLayout());
 
-		canvas = new KPSmartCanvas(this);
+		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener);
 		add(canvas);
 
 		createMenu();

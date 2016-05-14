@@ -7,6 +7,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import controller.KPSmartController.KeyAction;
+import controller.KPSmartController.MouseAction;
+import controller.KPSmartController.ViewActionListener;
+
 import javax.swing.GroupLayout.Alignment;
 
 @SuppressWarnings("serial")
@@ -27,19 +32,24 @@ public class KPSmartCanvas extends JPanel {
 	 */
 	private final JFrame frame;
 
-	private JPanel mainDisplayPanel = new JPanel();
-	private JPanel operationPanel = new OperationPanel();
+	private JPanel mainDisplayPanel;
+	private JPanel operationPanel;
 
 	/**
 	 * construct an empty KPSmart canvas
 	 *
 	 * @param frame
+	 * @param viewActionListener
+	 * @param mouseAction
+	 * @param keyAction
 	 */
-	public KPSmartCanvas(JFrame frame) {
+	public KPSmartCanvas(JFrame frame, KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
 		canvasWidth = frame.getWidth();
 		canvasHeight = frame.getHeight();
 		this.frame = frame;
 		setBackground(new Color(77, 115, 166));
+		mainDisplayPanel = new JPanel();
+		operationPanel = new OperationPanel(keyAction, mouseAction, viewActionListener);
 		initialise();
 	}
 

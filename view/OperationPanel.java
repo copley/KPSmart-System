@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import controller.KPSmartController.KeyAction;
+import controller.KPSmartController.MouseAction;
+import controller.KPSmartController.ViewActionListener;
+
 @SuppressWarnings("serial")
 public class OperationPanel extends AbstractPanel {
 
@@ -17,13 +21,17 @@ public class OperationPanel extends AbstractPanel {
 	private JPanel emptyPanel;
 	private JPanel logOutPanel;
 
+	public OperationPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+		super(keyAction, mouseAction, viewActionListener);
+
+		businessEventPanel = new BusinessEventPanel(keyAction, mouseAction, viewActionListener);
+		viewFigurePanel = new ViewFigurePanel(keyAction, mouseAction, viewActionListener);
+		emptyPanel = new JPanel();
+		logOutPanel = new LogOutPanel(keyAction, mouseAction, viewActionListener);
+	}
+
 	@Override
 	protected void initialise() {
-
-		businessEventPanel = new BusinessEventPanel();
-		viewFigurePanel = new ViewFigurePanel();
-		emptyPanel = new JPanel();
-		logOutPanel = new LogOutPanel();
 
 		// debug
 		setBackground(Color.GREEN);

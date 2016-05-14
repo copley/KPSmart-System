@@ -5,14 +5,28 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
+import controller.KPSmartController.KeyAction;
+import controller.KPSmartController.MouseAction;
+import controller.KPSmartController.ViewActionListener;
+
 @SuppressWarnings("serial")
 public class LogOutPanel extends AbstractPanel {
 
 	private JButton logOutButton;
 
+	public LogOutPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+		super(keyAction, mouseAction, viewActionListener);
+
+		logOutButton = new JButton("Log Out");
+
+		this.addKeyListener(keyAction);
+		this.addMouseListener(mouseAction);
+
+		logOutButton.addActionListener(viewActionListener);
+	}
+
 	@Override
 	protected void initialise() {
-		logOutButton = new JButton("Log Out");
 		add(logOutButton);
 	}
 

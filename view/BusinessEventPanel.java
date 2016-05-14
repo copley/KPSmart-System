@@ -11,6 +11,11 @@ import javax.swing.JComboBox;
 import javax.swing.JTextPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import controller.KPSmartController.KeyAction;
+import controller.KPSmartController.MouseAction;
+import controller.KPSmartController.ViewActionListener;
+
 import javax.swing.JButton;
 
 @SuppressWarnings("serial")
@@ -22,8 +27,9 @@ public class BusinessEventPanel extends AbstractPanel {
 	private JButton transportCostUpdateBt;
 	private JTextPane txtpnBusinessEvents;
 
-	@Override
-	protected void initialise() {
+	public BusinessEventPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+		super(keyAction, mouseAction, viewActionListener);
+
 		mailDeliveryBt = new JButton("Mail Delivery");
 
 		routeDiscontinueBt = new JButton("Route Discontinue");
@@ -39,6 +45,10 @@ public class BusinessEventPanel extends AbstractPanel {
 		txtpnBusinessEvents.setEditable(false);
 		txtpnBusinessEvents.setFont(new Font("DejaVu Serif Condensed", Font.BOLD | Font.ITALIC, 13));
 		txtpnBusinessEvents.setText("Business Events");
+	}
+
+	@Override
+	protected void initialise() {
 
 		GroupLayout groupLayout = new GroupLayout(this);
 

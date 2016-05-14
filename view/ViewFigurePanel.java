@@ -10,6 +10,10 @@ import javax.swing.JTextPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import controller.KPSmartController.KeyAction;
+import controller.KPSmartController.MouseAction;
+import controller.KPSmartController.ViewActionListener;
+
 @SuppressWarnings("serial")
 public class ViewFigurePanel extends AbstractPanel {
 
@@ -21,8 +25,11 @@ public class ViewFigurePanel extends AbstractPanel {
 	private JButton averageDeleveryTimesBt;
 	private JButton criticalRoutesBt;
 
-	@Override
-	protected void initialise() {
+	public ViewFigurePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+		super(keyAction, mouseAction, viewActionListener);
+
+		this.addKeyListener(keyAction);
+		this.addMouseListener(mouseAction);
 
 		txtpnViewFigures = new JTextPane();
 		txtpnViewFigures.setEditable(false);
@@ -30,20 +37,30 @@ public class ViewFigurePanel extends AbstractPanel {
 		txtpnViewFigures.setFont(new Font("DejaVu Serif Condensed", Font.BOLD | Font.ITALIC, 13));
 
 		totalRevenueBt = new JButton("Total Revenue");
+		totalRevenueBt.addActionListener(viewActionListener);
 
 		totalExpenditureBt = new JButton("Total Expenditure");
 		totalExpenditureBt.setFont(new Font("Dialog", Font.BOLD, 10));
+		totalExpenditureBt.addActionListener(viewActionListener);
 
 		totalNbEventsBt = new JButton("Total No. of Events");
 		totalNbEventsBt.setFont(new Font("Dialog", Font.BOLD, 10));
+		totalNbEventsBt.addActionListener(viewActionListener);
 
 		totalAmountMailsBt = new JButton("Amount of Mails");
 		totalAmountMailsBt.setFont(new Font("Dialog", Font.BOLD, 11));
+		totalAmountMailsBt.addActionListener(viewActionListener);
 
 		averageDeleveryTimesBt = new JButton("Average Delivery Times");
 		averageDeleveryTimesBt.setFont(new Font("Dialog", Font.BOLD, 8));
+		averageDeleveryTimesBt.addActionListener(viewActionListener);
 
 		criticalRoutesBt = new JButton("Critical Routes");
+		criticalRoutesBt.addActionListener(viewActionListener);
+	}
+
+	@Override
+	protected void initialise() {
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
