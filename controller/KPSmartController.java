@@ -16,15 +16,10 @@ public class KPSmartController {
 	private KPSmartModel kpsmartModel;
 	private int ListenerCount = 1; // debugging purposes // used to print where in the code the
 									// listener was called.
-
 	public KPSmartController() {
-		//TODO: make new gui here and pass the listeners through the constructor
 		kpsmartGUI = new KPSmartFrame(new KeyAction(), new MouseAction() ,new ViewActionListener());
 		kpsmartModel = new model;
-		//TODO: Just commented this out for now - Bonnie
-		//this.init_KPSmartGuiListeners();
 	}
-
 
 	//TODO: Just commented this out for now - Bonnie
 //	public void init_KPSmartGuiListeners() {
@@ -35,7 +30,7 @@ public class KPSmartController {
 //		this.kpsmartGUI.addListeners(keyListener, mouseListener, buttonListener);
 //	}
 
-	 public class KeyAction implements KeyListener {
+	public class KeyAction implements KeyListener {
 
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -91,10 +86,37 @@ public class KPSmartController {
 	public class ViewActionListener implements ActionListener {
 		// TODO: add some stuff here to get input from gui and tell model to do something then output back to gui
 		@Override
-		public void actionPerformed(ActionEvent actionEvent) {
-			System.out.println(ListenerCount + 107);
-			// if actionEvent ==
-			// else if ...
+		public void actionPerformed(ActionEvent e) {
+
+			// View Figures Control
+			if (e.getActionCommand().equals("Total Revenue")){
+
+			}else if (e.getActionCommand().equals("Total Expenditure")){
+
+			}else if (e.getActionCommand().equals("Total No. of Events")){
+
+			}else if (e.getActionCommand().equals("Amount of Mails")){
+
+			}else if (e.getActionCommand().equals("Average Delivery Times")){
+
+			}else if (e.getActionCommand().equals("Critical Routes")){
+
+			}else if (e.getActionCommand().equals("Mail Delivery")){
+
+			}else if (e.getActionCommand().equals("Route Discontinue")){
+
+			}else if (e.getActionCommand().equals("Cutomer Price Update")){
+
+			}else if (e.getActionCommand().equals("Transport Cost Update")){
+
+			}else if (e.getActionCommand().equals("Critical Routes")){
+
+			}
+
+
+
+
+
 		}
 	}
 }
