@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
+import view.eventsView.MailDeliveryPanel;
 
 import javax.swing.GroupLayout.Alignment;
 
@@ -43,20 +44,22 @@ public class KPSmartCanvas extends JPanel {
 	 * @param mouseAction
 	 * @param keyAction
 	 */
-	public KPSmartCanvas(JFrame frame, KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+	public KPSmartCanvas(JFrame frame, KeyAction keyAction, MouseAction mouseAction,
+			ViewActionListener viewActionListener) {
 		canvasWidth = frame.getWidth();
 		canvasHeight = frame.getHeight();
 		this.frame = frame;
 		setBackground(new Color(77, 115, 166));
 		mainDisplayPanel = new JPanel();
 		operationPanel = new OperationPanel(keyAction, mouseAction, viewActionListener);
+
+		// debug
+		mainDisplayPanel.add(new MailDeliveryPanel(keyAction, mouseAction, viewActionListener));
+
 		initialise();
 	}
 
 	protected void initialise() {
-
-		// debug
-		mainDisplayPanel.setBackground(Color.BLACK);
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
