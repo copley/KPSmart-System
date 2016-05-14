@@ -2,8 +2,8 @@
 <sitemap>
   <sites>
     <site>
-      <id>4</id>
-      <location>New Something</location>
+      <id>2</id>
+      <location>Auckland</location>
     </site>
     <site>
       <id>3</id>
@@ -14,8 +14,8 @@
       <location>Wellington</location>
     </site>
     <site>
-      <id>2</id>
-      <location>Auckland</location>
+      <id>4</id>
+      <location>New Something</location>
     </site>
   </sites>
   <routes>
