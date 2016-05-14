@@ -81,58 +81,64 @@ public class KPSmartController {
 		// TODO: add some stuff here to get input from gui and tell model to do something then output back to gui
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Calling from ActionListener");
-			// View Figures Control
+
+			// View Figures Panel
 			if (e.getActionCommand().equals("Total Revenue")){
 				System.out.println(ListenerCount++); //debugging - mc
-				//kpsmartModel.someAction(); //TODO:
+				kpsmartModel.getTotalRevenue(); //TODO: could this return INT, STRING
+				kpsmartGui.renderTotalRevenue();//TODO: Could pass in STRING , INT
+
+
 
 			}else if (e.getActionCommand().equals("Total Expenditure")){
 				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
+				kpsmartModel.getTotalExpenditure(); //TODO: could this return INT, STRING
+				kpsmartGui.renderTotalExpenditure();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Total No. of Events")){
 				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
+				kpsmartModel.getTotalEvents(); //TODO: could this return INT, STRING
+				kpsmartGui.renderTotalEvents();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Amount of Mails")){
 				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
+				kpsmartModel.getTotalMail(); //TODO: could this return INT, STRING
+				kpsmartGui.renderTotalMail();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Average Delivery Times")){
 				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
+				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Critical Routes")){
 				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
-
-			}else if (e.getActionCommand().equals("Mail Delivery")){
-				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
-
-			}else if (e.getActionCommand().equals("Route Discontinue")){
-				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
-
-			}else if (e.getActionCommand().equals("Cutomer Price Update")){
-				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
-
-			}else if (e.getActionCommand().equals("Transport Cost Update")){
-				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
-
-			}else if (e.getActionCommand().equals("Critical Routes")){
-				System.out.println(ListenerCount++);//debugging - mc
-				//kpsmartModel.someAction(); //TODO:
+				kpsmartModel.getCriticalRoutes(); //TODO: could this return INT, STRING
+				kpsmartGui.renderCriticalRoutes();//TODO: Could pass in STRING , INT
 
 			}
 
+			// Business Events Panel
+			else if (e.getActionCommand().equals("Mail Delivery")){
+				System.out.println(ListenerCount++);//debugging - mc
+				kpsmartModel.getMailDelivery(); //TODO: could this return INT, STRING
+				kpsmartGui.renderMailDelivery();//TODO: Could pass in STRING , INT
 
+			}else if (e.getActionCommand().equals("Route Discontinue")){
+				System.out.println(ListenerCount++);//debugging - mc
+				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
+			}else if (e.getActionCommand().equals("Cutomer Price Update")){
+				System.out.println(ListenerCount++);//debugging - mc
+				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
+			}else if (e.getActionCommand().equals("Transport Cost Update")){
+				System.out.println(ListenerCount++);//debugging - mc
+				kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
+			}
 		}
 	}
 }
