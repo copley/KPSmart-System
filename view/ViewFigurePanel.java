@@ -51,8 +51,8 @@ public class ViewFigurePanel extends AbstractPanel {
 		totalAmountMailsBt.setFont(new Font("Dialog", Font.BOLD, 11));
 		totalAmountMailsBt.addActionListener(viewActionListener);
 
-		averageDeleveryTimesBt = new JButton("Average Delivery Times");
-		averageDeleveryTimesBt.setFont(new Font("Dialog", Font.BOLD, 8));
+		averageDeleveryTimesBt = new JButton("AVG Delivery Times");
+		averageDeleveryTimesBt.setFont(new Font("Dialog", Font.BOLD, 9));
 		averageDeleveryTimesBt.addActionListener(viewActionListener);
 
 		criticalRoutesBt = new JButton("Critical Routes");
