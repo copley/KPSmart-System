@@ -23,6 +23,8 @@ public class LogOutPanel extends AbstractPanel {
 		this.addMouseListener(mouseAction);
 
 		logOutButton.addActionListener(viewActionListener);
+
+		initialise();
 	}
 
 	@Override

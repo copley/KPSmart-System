@@ -13,7 +13,6 @@ import controller.KPSmartController.ViewActionListener;
 public abstract class AbstractPanel extends JPanel {
 
 	public AbstractPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
-		initialise();
 	}
 
 	protected abstract void initialise();

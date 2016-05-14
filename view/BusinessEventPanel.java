@@ -52,6 +52,8 @@ public class BusinessEventPanel extends AbstractPanel {
 		txtpnBusinessEvents.setEditable(false);
 		txtpnBusinessEvents.setFont(new Font("DejaVu Serif Condensed", Font.BOLD | Font.ITALIC, 13));
 		txtpnBusinessEvents.setText("Business Events");
+
+		initialise();
 	}
 
 	@Override

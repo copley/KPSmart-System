@@ -28,6 +28,8 @@ public class OperationPanel extends AbstractPanel {
 		viewFigurePanel = new ViewFigurePanel(keyAction, mouseAction, viewActionListener);
 		emptyPanel = new JPanel();
 		logOutPanel = new LogOutPanel(keyAction, mouseAction, viewActionListener);
+
+		initialise();
 	}
 
 	@Override

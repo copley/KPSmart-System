@@ -57,6 +57,8 @@ public class ViewFigurePanel extends AbstractPanel {
 
 		criticalRoutesBt = new JButton("Critical Routes");
 		criticalRoutesBt.addActionListener(viewActionListener);
+
+		initialise();
 	}
 
 	@Override
