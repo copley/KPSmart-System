@@ -17,7 +17,7 @@ public class Package {
 	
 	private SiteMap sitemap;
 	
-	public Package(int originSiteID, int destSiteID, double price, double weight, double volume, Priority priority) {
+	public Package(int originSiteID, int destSiteID, double price, double weight, double volume, Priority priority, SiteMap sitemap) {
 		super();
 		this.originSiteID = originSiteID;
 		this.destSiteID = destSiteID;
@@ -25,6 +25,7 @@ public class Package {
 		this.weight = weight;
 		this.volume = volume;
 		this.priority = priority;
+		this.sitemap = sitemap;
 		findCompoundRoute();
 		calculateExpectedTravelTime();
 	}
@@ -32,7 +33,6 @@ public class Package {
 	private void findCompoundRoute() {
 		//need access to the one SiteMap somehow
 		this.compoundRoute = sitemap.findCompoundRoute(originSiteID, destSiteID, priority);
-		// TODO work out how to access the sitemap	
 	}
 	
 	private void calculateExpectedTravelTime() {
