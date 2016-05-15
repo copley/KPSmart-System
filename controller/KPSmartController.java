@@ -150,12 +150,13 @@ public class KPSmartController {
 			//Submit on Mail Delivery
 			else if (e.getActionCommand().equals("Submit")){
 			System.out.println("Submit");//debugging - mc
-			//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
-			//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+			//	kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+			//	kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
+
 			// getter methods set inside
-			//String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getActionCommand();
-			//String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox();
-			//Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
+			//	String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getActionCommand();
+			//	String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox();
+			//	Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
 
 			String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
 			String  volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
@@ -164,6 +165,14 @@ public class KPSmartController {
 
 			//System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
 			System.out.println(volumeSelection + weightSelection);
+			//TODO:
+			//	kpsmartModel.passOriginSelection("originSelection");
+			//	kpsmartModel.passDestinationSelection("destinationSelection");
+			//	kpsmartModel.passWeightSelection("weigthSelection");
+
+
+
+
 			kpsmartModel.passWeightSelection("weightSelection");
 			kpsmartModel.passVolumeSelection("volumeSelection");
 
