@@ -142,10 +142,10 @@ public class KPSmartController {
 
 			}
 			else if(e.getActionCommand().equals("Weight:")){
-				System.out.println(ListenerCount++);
+				//	System.out.println(ListenerCount++); // able to be implemented if JTextField componenets have listeners.
 			}
 			else if(e.getActionCommand().equals("Volume:")){
-				System.out.println(ListenerCount++);
+				//	System.out.println(ListenerCount++); // able to be implemented if JTextField componenets have listeners.
 			}
 			//Submit on Mail Delivery
 			else if (e.getActionCommand().equals("Submit")){
@@ -155,9 +155,11 @@ public class KPSmartController {
 			// getter methods set inside
 			//String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getActionCommand();
 			//String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox();
-			Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
-			String  volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel()).getVolumeTextField().getText();
-			e.getActionCommand("Weight:");
+			//Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
+
+			String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
+			String  volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
+
 			// prioritySelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getPriorityComboBox();
 
 			//System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
