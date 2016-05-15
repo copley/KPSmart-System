@@ -33,7 +33,7 @@ public class KPSmartCanvas extends JPanel {
 	 */
 	private final JFrame frame;
 
-	private JPanel mainDisplayPanel;
+	private MailDeliveryPanel mainDisplayPanel;
 	private JPanel operationPanel;
 
 	/**
@@ -50,11 +50,11 @@ public class KPSmartCanvas extends JPanel {
 		canvasHeight = frame.getHeight();
 		this.frame = frame;
 		setBackground(new Color(77, 115, 166));
-		mainDisplayPanel = new JPanel();
+		mainDisplayPanel = new MailDeliveryPanel(keyAction, mouseAction, viewActionListener);
 		operationPanel = new OperationPanel(keyAction, mouseAction, viewActionListener);
 
 		// debug
-		mainDisplayPanel.add(new MailDeliveryPanel(keyAction, mouseAction, viewActionListener));
+		//mainDisplayPanel.add(new MailDeliveryPanel(keyAction, mouseAction, viewActionListener));
 
 		initialise();
 	}
@@ -85,7 +85,7 @@ public class KPSmartCanvas extends JPanel {
 		// TODO Auto-generated method stub
 	}
 
-	public JPanel getMainDisplayPanel() {
+	public MailDeliveryPanel getMainDisplayPanel() {
 		return mainDisplayPanel;
 	}
 
