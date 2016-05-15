@@ -164,6 +164,9 @@ public class KPSmartController {
 
 			//System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
 			System.out.println(volumeSelection + weightSelection);
+			kpsmartModel.passWeightSelection("weightSelection");
+			kpsmartModel.passVolumeSelection("volumeSelection");
+
 
 			}
 		}
