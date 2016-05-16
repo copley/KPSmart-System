@@ -178,11 +178,37 @@ public class KPSmartController {
 //			kpsmartModel.addRoute(weightSelection, volumeSelection)
 
 
+			/**
+			 * TODO: Customer price change
+			 * Parameters:
+			 * origin, destination, priority, new weight cost, new volume cost
+			 */
 
 
-			//TODO: For Controller
-			// if process mail:
-			// give us volume, weight, origin, destination, priority
+			/**
+			 * TODO: Process mail
+			 * Parameters:
+			 * origin, destination, weight, volume, priority
+			 */
+
+			/**
+			 * TODO: Transport cost change
+			 * Parameters:
+			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
+			 */
+
+			/**
+			 * TODO: Route addition
+			 * Parameters:
+			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
+			 */
+
+			/**
+			 * TODO: Route discontinue
+			 * Parameters:
+			 * origin, destination,company, type
+			 */
+
 			}
 		}
 	}
