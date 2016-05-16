@@ -34,8 +34,8 @@ public class OperationPanel extends AbstractPanel {
 	protected void initialiseLayout() {
 
 		// debug
-		setBackground(Color.GREEN);
-		emptyPanel.setBackground(Color.GREEN);
+		setBackground(Color.DARK_GRAY);
+		emptyPanel.setBackground(Color.DARK_GRAY);
 
 		GroupLayout groupLayout = new GroupLayout(this);
 

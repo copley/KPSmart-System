@@ -159,7 +159,7 @@ public class KPSmartController {
 			//	Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
 
 			String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
-			String  volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
+			String volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
 
 			// prioritySelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getPriorityComboBox();
 
@@ -172,9 +172,9 @@ public class KPSmartController {
 
 
 
-
-			kpsmartModel.passWeightSelection("weightSelection");
-			kpsmartModel.passVolumeSelection("volumeSelection");
+//
+//			kpsmartModel.passWeightSelection("weightSelection");
+//			kpsmartModel.passVolumeSelection("volumeSelection");
 
 
 			}
