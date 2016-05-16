@@ -175,8 +175,14 @@ public class KPSmartController {
 //
 //			kpsmartModel.passWeightSelection("weightSelection");
 //			kpsmartModel.passVolumeSelection("volumeSelection");
+//			kpsmartModel.addRoute(weightSelection, volumeSelection)
 
 
+
+
+			//TODO: For Controller
+			// if process mail:
+			// give us volume, weight, origin, destination, priority
 			}
 		}
 	}
