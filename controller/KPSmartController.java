@@ -81,6 +81,28 @@ public class KPSmartController {
 	 */
 	public class ViewActionListener implements ActionListener {
 		// TODO: add some stuff here to get input from gui and tell model to do something then output back to gui
+		/**
+		 * For ammendment, Created Public Strings for pre implementation.
+		 * Necessary before GUI allows controller to access View Strings.
+		 *
+		 *
+		 */
+
+		private String originSelection = "" ;
+		private String destinationSelection = "" ;
+		private String weightSelection = "" ;
+		private String volumeSelection = "" ;
+		private String prioritySelection = "" ;
+
+		// Bobo please add these fields into the forms.
+		private String newWeightCostSelection = "" ;
+		private String newVolumeSelection = "" ;
+		private String companySelection = "" ;
+		private String typeSelection = "" ;
+		private String departureDay = "" ;
+		private String frequencySelection = "" ;
+		private String durationSelection = "" ;
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
@@ -158,13 +180,13 @@ public class KPSmartController {
 			//	String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox();
 			//	Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
 
-			String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
-			String volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
+			//String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
+			//String volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
 
 			// prioritySelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getPriorityComboBox();
 
 			//System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
-			System.out.println(volumeSelection + weightSelection);
+			//System.out.println(volumeSelection + weightSelection);
 			//TODO:
 			//	kpsmartModel.passOriginSelection("originSelection");
 			//	kpsmartModel.passDestinationSelection("destinationSelection");
@@ -176,40 +198,56 @@ public class KPSmartController {
 //			kpsmartModel.passWeightSelection("weightSelection");
 //			kpsmartModel.passVolumeSelection("volumeSelection");
 //			kpsmartModel.addRoute(weightSelection, volumeSelection)
+			/**
+			 * Current Fields available from GUI,
+			 *
+			 * Origin 		// BLANK!! NEED FIELDS ADDED TO JCOMBOBOX SELECTION
+			 * Destination  // BLANK!! NEED FIELDS ADDED TO JCOMBOBOX SELECTION
+			 * Weight
+			 * Volume
+			 * Priority	    // BLANK!! NEED FIELDS ADDED TO JCOMBOBOX SELECTION
+			 *
+			 * BOBO implement these fields to the FORMS - max copley
+			 *
+			 * New Weight Cost -newWeightCostSelection
+			 * New Volume Cost - newVolumeSelection
+			 * Company - companySelection
+			 * Type - typeSelection
+			 * Departure Day - departureDay
+			 *
+			 */
+
 
 
 			/**
 			 * TODO: Customer price change
 			 * Parameters:
 			 * origin, destination, priority, new weight cost, new volume cost
-			 *
 			 */
 
+			// waiting on GUI form implementation to return the parameters to the KPSmartMODEL
+			//kpsmartModel.ChangeCustomerPrice(originSelection, destinationSelection, prioritySelection, newWeightCostSelection, newVolumeSelection);
 
 			/**
 			 * TODO: Process mail
-			 * Parameters:
 			 * origin, destination, weight, volume, priority
 			 */
-
+			//kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
 			/**
 			 * TODO: Transport cost change
-			 * Parameters:
 			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
 			 */
-
+			//kpsmartModel.ChangeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay ,frequencySelection, durationSelection);
 			/**
 			 * TODO: Route addition
-			 * Parameters:
 			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
 			 */
-
+			//kpsmartModel.AddRoute(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay,  frequencySelection, durationSelection);
 			/**
 			 * TODO: Route discontinue
-			 * Parameters:
 			 * origin, destination,company, type
 			 */
-
+			//kpsmartModel.RemoveRoute(originSelection, destinationSelection, companySelection, typeSelection);
 			}
 		}
 	}
