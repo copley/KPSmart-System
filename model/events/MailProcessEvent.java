@@ -3,28 +3,28 @@ package model.events;
 import model.Priority;
 
 public class MailProcessEvent extends BusinessEvent {
-	private int originID;
-	private int destinationID;
+	private String origin;
+	private String destination;
 	private double weight;
 	private double volume;
 	private Priority priority;
 
-	public MailProcessEvent(int day, int month, int year, int time, String staff, int originID, int destinationID,
+	public MailProcessEvent(int day, int month, int year, int time, String staff, String origin, String destination,
 			double weight, double volume, Priority priority) {
 		super(day, month, year, time, staff);
-		this.originID = originID;
-		this.destinationID = destinationID;
+		this.origin = origin;
+		this.destination = destination;
 		this.weight = weight;
 		this.volume = volume;
 		this.priority = priority;
 	}
 
-	public int getOriginID() {
-		return originID;
+	public String getOriginID() {
+		return origin;
 	}
 
-	public int getDestinationID() {
-		return destinationID;
+	public String getDestinationID() {
+		return destination;
 	}
 
 	public double getWeight() {
@@ -46,8 +46,8 @@ public class MailProcessEvent extends BusinessEvent {
 		string.append("Date: " + day + ", " + month + ", " + year + "\n");
 		string.append("Time: " + time + "\n");
 		string.append("Staff responsible: " + employee + "\n");
-		string.append("Origin: " + originID + "\n");
-		string.append("Destination: " + destinationID + "\n");
+		string.append("Origin: " + origin + "\n");
+		string.append("Destination: " + destination + "\n");
 		string.append("Weight: " + weight + "\n");
 		string.append("Volume: " + volume + "\n");
 		string.append("Priority: " + priority);

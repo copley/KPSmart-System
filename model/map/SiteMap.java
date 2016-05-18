@@ -89,7 +89,7 @@ public class SiteMap {
 			String location = site.getLocation();
 			if (location.equals(origin)) {
 				originID = site.getID();
-			} 
+			}
 			if (location.equals(destination)) {
 				destinationID = site.getID();
 			}
@@ -113,7 +113,7 @@ public class SiteMap {
 		// does
 		Set<Route> routes = getRoutes();
 		for (Route route : routes) {
-			if (route.getDestination() == destinationID && route.getOrigin() == originID
+			if (route.getDestination() == destination && route.getOrigin() == origin
 					&& route.getCompany().equals(company) && route.getDuration() == duration) {
 				return false;// may need to do a price update instead
 			}
@@ -123,7 +123,7 @@ public class SiteMap {
 										// existing..
 		// IDs made sequentially from 0 so size should be free!
 		// make route object
-		Route newRoute = new Route(newRouteID, originID, destinationID, company, duration, mode, true, custPriceWeight,
+		Route newRoute = new Route(newRouteID, origin, destination, company, duration, mode, true, custPriceWeight,
 				custPriceVolume, transPriceWeight, transPriceVolume);
 		// add new route to the map
 		try {
@@ -167,8 +167,8 @@ public class SiteMap {
 
 	public void addRoute(Route route) throws IllegalRouteException {
 		routes.put(route.getID(), route);
-		Site s1 = sites.get(route.getOrigin());
-		Site s2 = sites.get(route.getDestination());
+		Site s1 = sites.get(getSiteIDfromLocation(route.getOrigin()));
+		Site s2 = sites.get(getSiteIDfromLocation(route.getDestination()));
 		if (siteToRoutes.get(s1) == null || siteToRoutes.get(s2) == null) {
 			throw new IllegalRouteException("Invalid Route! Can't find site");
 		}
@@ -192,13 +192,13 @@ public class SiteMap {
 		Site site = this.sites.get(siteID);
 		return siteToRoutes.get(site);
 	}
-	
+
 	public int getSiteIDfromLocation(String location){
 		Set<Site> sites = getSites();
 		for (Site site : sites) {
 			if (site.getLocation().equals(location)) {
 				return site.getID();
-				
+
 			}
 		}
 		return -1;
@@ -217,12 +217,17 @@ public class SiteMap {
 		if(destinationID == -1) return -1;//destination does not exist in map
 		//look through routes and find one whose details match! return first found
 		for(Route route : this.siteToRoutes.get(originID)){
-			if (route.getCompany().equalsIgnoreCase(carrier) 
-					&& route.getDestination() == destinationID
+			if (route.getCompany().equalsIgnoreCase(carrier)
+					&& route.getDestination() == destination
 					&& route.getType().equals(type)){
 				return route.getID();
 			}
 		};
 		return -1;//route was not found
+	}
+
+	public String getSitefromID(int id) {
+		if(sites.containsKey(id)) return sites.get(id).getLocation();
+		return null;
 	}
 }

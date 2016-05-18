@@ -37,6 +37,7 @@ public class DijkstraSearchWithPriority {
 			// otherwise add all the sites that it is related to onto the stack
 			if (!visitedNodes.containsKey(currentNode.getSiteID())) {
 				int currentSiteID = currentNode.getSiteID();
+				String currentSite = siteMap.getSitefromID(currentSiteID);
 				visitedNodes.put(currentSiteID, currentNode);
 				if (currentSiteID == finishSiteID) {
 					// found the shortest path yay!
@@ -48,7 +49,7 @@ public class DijkstraSearchWithPriority {
 					for (Route route : routesOn) {
 						// if the site is not the origin of the route, do not
 						// consider
-						if (route.getOrigin() != currentSiteID) {
+						if (route.getOrigin() != currentSite) {
 							continue;
 						}
 						// if the route is not in service, do not consider
@@ -63,7 +64,7 @@ public class DijkstraSearchWithPriority {
 							continue;
 						}
 						// work out what the next site is along this route
-						int nextSiteID = route.getDestination();
+						int nextSiteID = siteMap.getSiteIDfromLocation(route.getDestination());
 						// check if next site has already been visited - do not
 						// add
 						// to the priority queue if it has!
@@ -78,7 +79,7 @@ public class DijkstraSearchWithPriority {
 				}
 			}
 		}
-		
+
 
 		// at this point the search has finished...
 		// might not have found _any_ path between the points because they are

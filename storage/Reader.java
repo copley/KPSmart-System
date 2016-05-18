@@ -208,8 +208,8 @@ public class Reader {
 	 */
 	private static Route readRoute(Element route) {
 		int id = Integer.parseInt(route.getChild("id").getText());
-		int destination = Integer.parseInt(route.getChild("destination").getText());
-		int origin = Integer.parseInt(route.getChild("origin").getText());
+		String destination = route.getChild("destination").getText();
+		String origin = route.getChild("origin").getText();
 		String company = route.getChild("company").getText();
 		int duration = Integer.parseInt(route.getChild("duration").getText());
 		Type type = Type.valueOf(route.getChild("type").getText());
@@ -337,8 +337,8 @@ public class Reader {
 	 * @throws IllegalPriorityException
 	 */
 	private static MailProcessEvent readMail(Element event, int day, int month, int year, int time, String employee) throws IllegalPriorityException {
-		int origin = Integer.parseInt(event.getChild("origin").getText());
-		int destination = Integer.parseInt(event.getChild("destination").getText());
+		String origin = event.getChild("origin").getText();
+		String destination = event.getChild("destination").getText();
 		double weight = Double.parseDouble(event.getChild("weight").getText());
 		double volume = Double.parseDouble(event.getChild("volume").getText());
 		Priority priority = readPriority(event.getChild("priority").getText());

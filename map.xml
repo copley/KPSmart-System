@@ -21,8 +21,8 @@
   <routes>
     <route>
       <id>1</id>
-      <origin>2</origin>
-      <destination>1</destination>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
       <company>Kelburn Airways</company>
       <duration>20</duration>
       <type>SEA</type>
@@ -34,8 +34,8 @@
     </route>
     <route>
       <id>2</id>
-      <origin>2</origin>
-      <destination>3</destination>
+      <origin>Auckland</origin>
+      <destination>Wellington</destination>
       <company>Kelburn Airways</company>
       <duration>20</duration>
       <type>AIR</type>

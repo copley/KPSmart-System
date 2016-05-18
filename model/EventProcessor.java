@@ -51,7 +51,9 @@ public class EventProcessor {
 		int year = now.getYear();
 		int time = now.getHour()*10 + now.getMinute();
 		String employee = db.getEmployees().getEmployeeFromID(processorStaffID).getName();
-		BusinessEvent pmBusinessEvent = new MailProcessEvent(day, month, year, time, employee, originSiteID, destSiteID,
+		String origin = db.getSiteMap().getSitefromID(originSiteID);
+		String destination =  db.getSiteMap().getSitefromID(destSiteID);
+		BusinessEvent pmBusinessEvent = new MailProcessEvent(day, month, year, time, employee, origin, destination,
 				weight, volume, priority);
 		db.addEvent(pmBusinessEvent);
 	}

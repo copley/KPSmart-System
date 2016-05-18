@@ -6,7 +6,7 @@ public class DijkstraNode implements Comparable<DijkstraNode>{
 	int previousRouteID;//-1 if no previous site!
 	double durationFromStart;
 
-	/** 
+	/**
 	 * @param siteID - id of current site represented by this node
 	 * @param prevSiteID - id of site from which this node was reached (-1 if this is the start node)
 	 * @param route - Route used to get from previous site
@@ -39,6 +39,6 @@ public class DijkstraNode implements Comparable<DijkstraNode>{
 		double diffETC = this.durationFromStart - other.getDurationFromStart();
 		if (diffETC >0){return 1;}
 		if (diffETC <0){return -1;}
-		return 0;	
+		return 0;
 	}
 }

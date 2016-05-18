@@ -4,8 +4,8 @@ package model.map;
 
 public class Route {
 	private final int ID;
-	private final int origin;
-	private final int destination;
+	private final String origin;
+	private final String destination;
 	private final String company;
 	private final int duration;
 	private final Type type;
@@ -16,7 +16,7 @@ public class Route {
 	private boolean inService;
 
 
-	public Route(int id, int origin, int destination, String company, int duration, Type type, boolean inService,
+	public Route(int id, String origin, String destination, String company, int duration, Type type, boolean inService,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		this.ID = id;
 		this.origin = origin;
@@ -37,11 +37,11 @@ public class Route {
 		return ID;
 	}
 
-	public int getDestination() {
+	public String getDestination() {
 		return destination;
 	}
 
-	public int getOrigin() {
+	public String getOrigin() {
 		return origin;
 	}
 

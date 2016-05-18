@@ -20,6 +20,7 @@ public class KPSmartController {
 									// listener was called.
 	public KPSmartController() {
 		kpsmartGUI = new KPSmartFrame(new KeyAction(), new MouseAction() ,new ViewActionListener());
+		kpsmartModel = new KPSmartModel();
 		System.out.println("Calling from Controller"); //debugging
 	}
 

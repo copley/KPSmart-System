@@ -39,9 +39,9 @@ public class KPSmartModel {
 		// call event processor on that route
 		eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
 	}
-	
+
 	// called from controller class - mc
-	public void ProcessMail(String origin, String destination, 
+	public void ProcessMail(String origin, String destination,
 			String weightString, String volumeString, String priorityString) {
 		//work out the origin ID
 		int originSiteID = this.sitemap.getSiteIDfromLocation(origin);
@@ -52,12 +52,27 @@ public class KPSmartModel {
 		//convert volume string into a double
 		double volume = Double.parseDouble(volumeString);
 		//convert prority string into a priority type
-		model.Priority priority = model.Priority.valueOf(priorityString);
-		
-		
+		Priority priority = getPriority(priorityString);
+
+
 		//call event processor to make up the package
-		eventProcessor.processMail(originSiteID, destSiteID, weight, volume, priority, this.loggedInStaffID); 
-					
+		eventProcessor.processMail(originSiteID, destSiteID, weight, volume, priority, this.loggedInStaffID);
+
+	}
+
+	private Priority getPriority(String priorityString) {
+		switch(priorityString){
+		case "International Air":
+			return Priority.INTERNATIONAL_AIR;
+		case "International Standard":
+			return Priority.INTERNATIONAL_STANDARD;
+		case "Domestic Air":
+			return Priority.DOMESTIC_AIR;
+		case "Domestic Standard":
+			return Priority.DOMESTIC_STANDARD;
+			default:
+				return null;
+		}
 	}
 
 	// called from controller class - mc
