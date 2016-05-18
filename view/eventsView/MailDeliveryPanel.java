@@ -1,6 +1,7 @@
 package view.eventsView;
 
 import java.awt.Font;
+import java.beans.DesignMode;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -54,10 +55,20 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		lblPriority.setFont(new Font("Dialog", Font.BOLD, 15));
 
 		originComboBox = new JComboBox<String>();
+		originComboBox.addItem("Wellington");
+		originComboBox.addItem("Auckland");
+		originComboBox.addItem("Beijing");
 
 		destinationComboBox = new JComboBox<String>();
+		destinationComboBox.addItem("Wellington");
+		destinationComboBox.addItem("Auckland");
+		destinationComboBox.addItem("Beijing");
 
 		priorityComboBox = new JComboBox<String>();
+		priorityComboBox.addItem("International Air");
+		priorityComboBox.addItem("International Standard");
+		priorityComboBox.addItem("Domestic Air");
+		priorityComboBox.addItem("Domestic Standard");
 
 		weightTextField = new JTextField();
 		weightTextField.setColumns(10);
