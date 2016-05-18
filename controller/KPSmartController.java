@@ -176,16 +176,16 @@ public class KPSmartController {
 			//	kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			// getter methods set inside
-			//	String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getActionCommand();
-			//	String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox();
-			//	Object weightSelection = ((Object) kpsmartGUI.getCanvas().getMainDisplayPanel()).getWeightTextField().getText();
+			String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getSelectedItem().toString();
+			String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox().getSelectedItem().toString();
 
-			//String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
-			//String volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
+			String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
+			String volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
 
-			// prioritySelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getPriorityComboBox();
+			String prioritySelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getPriorityComboBox().getSelectedItem().toString();
 
-			//System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
+			System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
+
 			//System.out.println(volumeSelection + weightSelection);
 			//TODO:
 			//	kpsmartModel.passOriginSelection("originSelection");
@@ -232,7 +232,7 @@ public class KPSmartController {
 			 * TODO: Process mail
 			 * origin, destination, weight, volume, priority
 			 */
-			//kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
+			kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
 			/**
 			 * TODO: Transport cost change
 			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration

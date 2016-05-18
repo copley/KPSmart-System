@@ -4,7 +4,7 @@ package model;
 	 *
 	 * If this current implementation does not work,
 	 * We are always able to copy functionality methods INSIDE EventProcessor into the KPSmartModel
-	 * @author copleyquen
+	 *
 	 *
 	 */
 public class EventProcessor {
