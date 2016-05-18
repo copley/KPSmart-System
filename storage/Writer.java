@@ -10,6 +10,8 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import model.*;
+import model.employees.Employee;
+import model.employees.Employees;
 import model.events.*;
 import model.exceptions.*;
 import model.map.Route;
@@ -119,8 +121,8 @@ public class Writer {
 	 */
 	private static Element writeMailProcessEvent(MailProcessEvent be, Element event) {
 		event.setName("mail");
-		event.addContent(new Element("origin").setText(be.getOrigin()));
-		event.addContent(new Element("destination").setText(be.getDestination()));
+		event.addContent(new Element("origin").setText("" + be.getOriginID()));
+		event.addContent(new Element("destination").setText("" + be.getDestinationID()));
 		event.addContent(new Element("weight").setText("" + be.getWeight()));
 		event.addContent(new Element("volume").setText("" + be.getVolume()));
 		event.addContent(new Element("priority").setText(be.getPriority()));
@@ -198,13 +200,13 @@ public class Writer {
 	 * Writes the list of employees to file
 	 * @param employees list of all the employees
 	 */
-	public static void writeEmployees(List<Employee> employees) {
+	public static void writeEmployees(Employees employees) {
 		// make a new jdom document
 		Document doc = new Document();
 		// set the root element of the document
 		doc.setRootElement(new Element("employees"));
 		// write each employee to the document
-		for (Employee employee : employees) {
+		for (Employee employee : employees.toSet()) {
 			doc.getRootElement().addContent(writeEmployee(employee));
 		}
 		// write the document to the file

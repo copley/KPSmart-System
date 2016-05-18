@@ -1,6 +1,7 @@
 package model;
 
 import model.*;
+import model.employees.Employee;
 import model.events.BusinessEvent;
 import model.events.CustPriceChangeEvent;
 import model.events.MailProcessEvent;

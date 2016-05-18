@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-import model.Employee;
+import model.employees.Employee;
 
 public class EmployeeTests {
 	@Test

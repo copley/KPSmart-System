@@ -1,5 +1,11 @@
 package model;
 
+import java.time.LocalDateTime;
+
+import model.events.BusinessEvent;
+import model.events.MailProcessEvent;
+import storage.DataStore;
+
 /**
  * Implement Class Methods.
  *
@@ -13,31 +19,41 @@ public class EventProcessor {
 	public static String debuggingString = "Class EventProcessor";
 	public static int debuggingInt = 0;
 
-	public EventProcessor() {
+	public final DataStore db;
 
+	public EventProcessor(DataStore db) {
+		this.db = db;
 	}
 
-	//the only things that can be changed on the route are the prices
-	//if changes to the carrier, mode, or duration are needed, the route should be discontinued, 
-	//and a new one made
-	
-	public void changeCustomerPrice(int routeID, double newCustPriceWeight,	double newCustPriceVolume) {
+	// the only things that can be changed on the route are the prices
+	// if changes to the carrier, mode, or duration are needed, the route should
+	// be discontinued,
+	// and a new one made
+	public void changeCustomerPrice(int routeID, double newCustPriceWeight, double newCustPriceVolume, int processorStaffID) {
 		System.out.println(debuggingString + debuggingInt + 1);
 	};
-	
-	public void changeTransportCost(int routeID, double newTransCostWeight,	double newTransCostVolume) {
+
+	public void changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume, int processorStaffID) {
 		System.out.println(debuggingString + debuggingInt + 2);
 	};
-	
+
 	public void addRoute(int toSiteID, int fromSiteID, String carrier, double duration, double custPriceWeight,
-			double custPriceVolume, double transPriceWeight, double transPriceVolume) {
+			double custPriceVolume, double transPriceWeight, double transPriceVolume, int processorStaffID) {
 		System.out.println(debuggingString + debuggingInt + 3);
 	};
 
 	// 1
-	public void processMail(int originSiteID, int destSiteID, double weight, double volume,
-			model.Priority priority) {
-		System.out.println(debuggingString + debuggingInt + 4);
+	public void processMail(int originSiteID, int destSiteID, double weight, double volume, model.Priority priority, int processorStaffID) {
+		Package thepackage = new Package(originSiteID, destSiteID, weight, volume, priority, db.getSiteMap());
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour()*10 + now.getMinute();
+		String employee = db.getEmployees().getEmployeeFromID(processorStaffID).getName();
+		BusinessEvent pmBusinessEvent = new MailProcessEvent(day, month, year, time, employee, originSiteID, destSiteID,
+				weight, volume, priority);
+		db.addEvent(pmBusinessEvent);
 	}
 
 	public static void disconRoute(int routeID) {

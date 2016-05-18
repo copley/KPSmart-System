@@ -6,6 +6,8 @@ import org.jdom2.*;
 import org.jdom2.input.*;
 
 import model.*;
+import model.employees.Employee;
+import model.employees.Employees;
 import model.events.*;
 import model.exceptions.*;
 import model.map.Route;
@@ -65,9 +67,9 @@ public class Reader {
 		return businessEvents;
 	}
 
-	public static List<Employee> readEmployee() {
+	public static Employees readEmployee() {
 		System.out.println("Reading Employees...");
-		List<Employee> employees = new ArrayList<Employee>();
+		Employees employees = new Employees();
 
 		try {
 			// create the SAX builder
@@ -83,7 +85,7 @@ public class Reader {
 			for (int i = 0; i < employeeList.size(); i++) {
 				Element event = employeeList.get(i);
 				// read business event and add to list
-				employees.add(readEmployee(event));
+				employees.addEmployee(readEmployee(event));
 			}
 		} catch (JDOMException | IOException e) {
 			e.printStackTrace();
@@ -335,10 +337,10 @@ public class Reader {
 	 * @throws IllegalPriorityException
 	 */
 	private static MailProcessEvent readMail(Element event, int day, int month, int year, int time, String employee) throws IllegalPriorityException {
-		String origin = event.getChild("origin").getText();
-		String destination = event.getChild("destination").getText();
-		int weight = Integer.parseInt(event.getChild("weight").getText());
-		int volume = Integer.parseInt(event.getChild("volume").getText());
+		int origin = Integer.parseInt(event.getChild("origin").getText());
+		int destination = Integer.parseInt(event.getChild("destination").getText());
+		double weight = Double.parseDouble(event.getChild("weight").getText());
+		double volume = Double.parseDouble(event.getChild("volume").getText());
 		Priority priority = readPriority(event.getChild("priority").getText());
 
 		return new MailProcessEvent(day, month, year, time, employee, origin, destination, weight, volume, priority);

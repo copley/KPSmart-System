@@ -3,7 +3,8 @@ package storage;
 import java.io.File;
 import java.util.List;
 
-import model.Employee;
+import model.employees.Employee;
+import model.employees.Employees;
 import model.events.BusinessEvent;
 import model.map.SiteMap;
 
@@ -21,7 +22,7 @@ public class DataStore {
 	public static final File EMPLOYEE_FILE = new File("src/staff.xml");
 
 	private List<BusinessEvent> businessEvents;
-	private List<Employee> employees;
+	private Employees employees;
 	private SiteMap map;
 
 	public DataStore() {
@@ -65,6 +66,10 @@ public class DataStore {
 
 	public SiteMap getSiteMap() {
 		return map;
+		}
+	
+	public Employees getEmployees() {
+		return employees;
 		}
 
 }
