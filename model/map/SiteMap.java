@@ -207,4 +207,22 @@ public class SiteMap {
 	public Route getRouteFromID(int routeID) {
 		return this.routes.get(routeID);
 	}
+
+	public int findRouteID(String origin, String destination, String carrier, Type type) {
+		//find originID
+		int originID = getSiteIDfromLocation(origin);
+		if(originID == -1) return -1;//origin does not exist in map
+		//find destinationID
+		int destinationID = getSiteIDfromLocation(destination);
+		if(destinationID == -1) return -1;//destination does not exist in map
+		//look through routes and find one whose details match! return first found
+		for(Route route : this.siteToRoutes.get(originID)){
+			if (route.getCompany().equalsIgnoreCase(carrier) 
+					&& route.getDestination() == destinationID
+					&& route.getType().equals(type)){
+				return route.getID();
+			}
+		};
+		return -1;//route was not found
+	}
 }

@@ -63,4 +63,8 @@ public class DataStore {
 		new DataStore();
 	}
 
+	public SiteMap getSiteMap() {
+		return map;
+		}
+
 }
