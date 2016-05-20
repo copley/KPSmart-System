@@ -73,8 +73,11 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		label_3 = new JLabel("$");
 
 		resetButton = new JButton("Reset");
+		resetButton.addActionListener(viewActionListener);
 		cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(viewActionListener);
 		submitButton = new JButton("Submit");
+		submitButton.addActionListener(viewActionListener);
 
 		DestinationTextField = new JTextField();
 		DestinationTextField.setColumns(10);
@@ -160,6 +163,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 										.addComponent(transportCompanyTextField)
 										.addComponent(modeComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addComponent(DestinationTextField))).addContainerGap(157, Short.MAX_VALUE)));
+
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addGap(26)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblOrigin).addComponent(

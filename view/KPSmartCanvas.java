@@ -13,6 +13,7 @@ import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 import view.eventsView.AddNewRoutePanel;
 import view.eventsView.MailDeliveryPanel;
+import view.eventsView.RouteDiscontinuePanel;
 
 import javax.swing.GroupLayout.Alignment;
 
@@ -34,7 +35,7 @@ public class KPSmartCanvas extends JPanel {
 	 */
 	private final JFrame frame;
 
-	private AddNewRoutePanel mainDisplayPanel;
+	private RouteDiscontinuePanel mainDisplayPanel;
 	private JPanel operationPanel;
 
 	/**
@@ -51,7 +52,7 @@ public class KPSmartCanvas extends JPanel {
 		canvasHeight = frame.getHeight();
 		this.frame = frame;
 		setBackground(new Color(77, 115, 166));
-		mainDisplayPanel = new AddNewRoutePanel(keyAction, mouseAction, viewActionListener);
+		mainDisplayPanel = new RouteDiscontinuePanel(keyAction, mouseAction, viewActionListener);
 		operationPanel = new OperationPanel(keyAction, mouseAction, viewActionListener);
 
 		// debug
