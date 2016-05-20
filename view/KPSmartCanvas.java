@@ -13,6 +13,7 @@ import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 import model.events.TransportCostChangeEvent;
 import view.eventsView.AddNewRoutePanel;
+import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
 import view.eventsView.RouteDiscontinuePanel;
 import view.eventsView.TransportCostChangePanel;
@@ -37,7 +38,7 @@ public class KPSmartCanvas extends JPanel {
 	 */
 	private final JFrame frame;
 
-	private TransportCostChangePanel mainDisplayPanel;
+	private CustomerPriceChangePanel mainDisplayPanel;
 	private JPanel operationPanel;
 
 	/**
@@ -54,7 +55,7 @@ public class KPSmartCanvas extends JPanel {
 		canvasHeight = frame.getHeight();
 		this.frame = frame;
 		setBackground(new Color(77, 115, 166));
-		mainDisplayPanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener);
+		mainDisplayPanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener);
 		operationPanel = new OperationPanel(keyAction, mouseAction, viewActionListener);
 
 		// debug
