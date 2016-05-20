@@ -66,10 +66,6 @@ public class MailProcessEvent extends BusinessEvent {
 		return priority.toString();
 	}
 
-//	public void addPackage(Package p){
-//		pack = p;
-//	}
-
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
