@@ -1,7 +1,6 @@
 package view.eventsView;
 
 import java.awt.Font;
-import java.beans.DesignMode;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
