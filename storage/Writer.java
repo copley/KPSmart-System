@@ -126,6 +126,11 @@ public class Writer {
 		event.addContent(new Element("weight").setText("" + be.getWeight()));
 		event.addContent(new Element("volume").setText("" + be.getVolume()));
 		event.addContent(new Element("priority").setText(be.getPriority()));
+
+		//TODO:we have added in 3 new events to store the revenue, expenditure, delivery time
+		event.addContent(new Element("revenue").setText("" + be.getRevenue()));
+		event.addContent(new Element("expenditure").setText("" + be.getDeliveryTime()));
+		event.addContent(new Element("deliveryTime").setText(""+be.getExpenditure()));
 		return event;
 	}
 

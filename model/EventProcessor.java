@@ -53,8 +53,11 @@ public class EventProcessor {
 		String employee = db.getEmployees().getEmployeeFromID(processorStaffID).getName();
 		String origin = db.getSiteMap().getSitefromID(originSiteID);
 		String destination =  db.getSiteMap().getSitefromID(destSiteID);
+		double revenue = thepackage.getPriceToCustomer();
+		double expenditure = thepackage.getTransportCost();
+		double deliveryTime = thepackage.getExpectedTravelTime();
 		BusinessEvent pmBusinessEvent = new MailProcessEvent(day, month, year, time, employee, origin, destination,
-				weight, volume, priority);
+				weight, volume, priority, revenue, expenditure, deliveryTime);
 		db.addEvent(pmBusinessEvent);
 	}
 
