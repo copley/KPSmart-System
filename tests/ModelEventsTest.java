@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
+import model.Priority;
 import model.events.*;
 
 // need to add JUnit4 library
@@ -41,7 +42,7 @@ public class ModelEventsTest {
 
 	@Test
 	public void CustPriceChange() {
-		CustPriceChangeEvent event = new CustPriceChangeEvent(8,8,2016,10,"Joely","Wellington","Auckland","Urgent",10,15);
+		CustPriceChangeEvent event = new CustPriceChangeEvent(8,8,2016,10,"Joely","Wellington","Auckland",Priority.DOMESTIC_AIR,10,15);
 
 
 		StringBuilder string = new StringBuilder();
@@ -59,7 +60,7 @@ public class ModelEventsTest {
 
 	@Test
 	public void MailProcessEvent() {
-		MailProcessEvent event = new MailProcessEvent(8,8,2016,10,"Joely","Wellington","Auckland",10,15,"Urgent");
+		MailProcessEvent event = new MailProcessEvent(8,8,2016,10,"Joely","Wellington","Auckland",10,15,Priority.DOMESTIC_AIR);
 		StringBuilder string = new StringBuilder();
 		string.append("MAIL PROCESS EVENT\n");
 		string.append("Date: 8, 8, 2016\n");

@@ -7,7 +7,7 @@ public class Route {
 	private final String origin;
 	private final String destination;
 	private final String company;
-	private final int duration;
+	private final int duration;//hours
 	private final Type type;
 	private double custPriceWeight;
 	private double custPriceVolume;

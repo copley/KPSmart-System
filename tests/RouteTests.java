@@ -21,8 +21,8 @@ public class RouteTests {
 	public void testCreate() {
 		//test route creation positive
 		int routeID = 0;
-		int originID = 1;
-		int destnID = 2;
+		String origin = "Wellington";
+		String destination = "Auckland";
 
 		String company = "Bogus";
 		int duration = 10;
@@ -33,16 +33,17 @@ public class RouteTests {
 		double transVolPrice =35.99;
 		boolean inService = true;
 
-		Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService,
+		Route newRoute = new Route(routeID, origin, destination, company, duration, mode, inService,
 				custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
-}
+		
+	}
 
 	//test route creation fail scenarios
 	@Test(expected=Exception.class)
 	public void testBadClassNUllCompany() throws Exception {
 				int routeID = 0;
-				int originID = 1;
-				int destnID = 2;
+				String origin = "Wellington";
+				String destination = "Auckland";
 
 				String company = null;
 				int duration = 10;
@@ -53,7 +54,7 @@ public class RouteTests {
 				double transVolPrice =35.99;
 				boolean inService = true;
 
-				Route newRoute = new Route(routeID, destnID, originID, company,	duration, mode, inService,
+				Route newRoute =  new Route(routeID, origin, destination, company, duration, mode, inService,
 						custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
 	}
 
