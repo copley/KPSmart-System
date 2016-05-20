@@ -17,6 +17,7 @@ import javax.swing.JButton;
 public class BusinessEventPanel extends AbstractPanel {
 
 	private JButton mailDeliveryBt;
+	private JButton addRouteBt;
 	private JButton routeDiscontinueBt;
 	private JButton customerPriceUpdateBt;
 	private JButton transportCostUpdateBt;
@@ -30,6 +31,9 @@ public class BusinessEventPanel extends AbstractPanel {
 
 		mailDeliveryBt = new JButton("Mail Delivery");
 		mailDeliveryBt.addActionListener(viewActionListener);
+
+		addRouteBt = new JButton("Add New Route");
+		addRouteBt.addActionListener(viewActionListener);
 
 		routeDiscontinueBt = new JButton("Route Discontinue");
 		routeDiscontinueBt.setFont(new Font("Dialog", Font.BOLD, 10));
@@ -57,29 +61,36 @@ public class BusinessEventPanel extends AbstractPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 
 		groupLayout
-				.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup().addGap(26)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(mailDeliveryBt, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-										.addComponent(routeDiscontinueBt, GroupLayout.DEFAULT_SIZE, 160,
+										.addComponent(mailDeliveryBt, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+										.addComponent(addRouteBt, GroupLayout.DEFAULT_SIZE, 166,
 												Short.MAX_VALUE)
-						.addComponent(customerPriceUpdateBt, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-						.addComponent(transportCostUpdateBt, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+						.addComponent(routeDiscontinueBt, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
 				.addContainerGap())
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-						.addContainerGap(48, Short.MAX_VALUE).addComponent(txtpnBusinessEvents,
-								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGap(42)));
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap(48, Short.MAX_VALUE)
+						.addComponent(txtpnBusinessEvents, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addGap(42))
+				.addGroup(groupLayout.createSequentialGroup().addGap(26)
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(customerPriceUpdateBt, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 166,
+										Short.MAX_VALUE)
+								.addComponent(transportCostUpdateBt, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 166,
+										Short.MAX_VALUE))
+						.addContainerGap()));
 
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup().addGap(10)
 						.addComponent(txtpnBusinessEvents, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(mailDeliveryBt)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(addRouteBt)
 						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(routeDiscontinueBt)
-						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(customerPriceUpdateBt)
 						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(transportCostUpdateBt)
-						.addContainerGap(15, Short.MAX_VALUE)));
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(customerPriceUpdateBt)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
 		setLayout(groupLayout);
 	}

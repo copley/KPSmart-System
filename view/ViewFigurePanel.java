@@ -50,7 +50,7 @@ public class ViewFigurePanel extends AbstractPanel {
 		totalAmountMailsBt.addActionListener(viewActionListener);
 
 		averageDeleveryTimesBt = new JButton("AVG Delivery Times");
-		averageDeleveryTimesBt.setFont(new Font("Dialog", Font.BOLD, 9));
+		averageDeleveryTimesBt.setFont(new Font("Dialog", Font.BOLD, 10));
 		averageDeleveryTimesBt.addActionListener(viewActionListener);
 
 		criticalRoutesBt = new JButton("Critical Routes");
@@ -65,7 +65,7 @@ public class ViewFigurePanel extends AbstractPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup().addGap(39)
+				.addGroup(groupLayout.createSequentialGroup().addGap(27)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(criticalRoutesBt, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
@@ -74,8 +74,9 @@ public class ViewFigurePanel extends AbstractPanel {
 								.addComponent(totalNbEventsBt, 0, 0, Short.MAX_VALUE)
 								.addComponent(totalExpenditureBt, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
-						.addComponent(totalRevenueBt, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
-				.addContainerGap(20, Short.MAX_VALUE))
+								.addComponent(totalRevenueBt, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 157,
+										GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(20, Short.MAX_VALUE))
 				.addGroup(groupLayout
 						.createSequentialGroup().addContainerGap(62, Short.MAX_VALUE).addComponent(txtpnViewFigures,
 								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -92,7 +93,7 @@ public class ViewFigurePanel extends AbstractPanel {
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(totalAmountMailsBt)
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(averageDeleveryTimesBt)
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(criticalRoutesBt)
-								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+								.addContainerGap(13, Short.MAX_VALUE)));
 
 		setLayout(groupLayout);
 	}

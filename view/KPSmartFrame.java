@@ -19,8 +19,8 @@ import controller.KPSmartController.*;
 public final class KPSmartFrame extends JFrame {
 
 	private final KPSmartCanvas canvas;
-	private static final int FRAME_WIDTH = 1600;
-	private static final int FRAME_HEIGHT = 900;
+	private static final int FRAME_WIDTH = 800;
+	private static final int FRAME_HEIGHT = 650;
 
 	// public KPSmartFrame() {
 	// super("KPSmart");
@@ -59,7 +59,7 @@ public final class KPSmartFrame extends JFrame {
 		super("KPSmart");
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setResizable(true);
+		setResizable(false);
 
 		setLayout(new BorderLayout());
 

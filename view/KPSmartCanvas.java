@@ -54,7 +54,8 @@ public class KPSmartCanvas extends JPanel {
 		operationPanel = new OperationPanel(keyAction, mouseAction, viewActionListener);
 
 		// debug
-		//mainDisplayPanel.add(new MailDeliveryPanel(keyAction, mouseAction, viewActionListener));
+		// mainDisplayPanel.add(new MailDeliveryPanel(keyAction, mouseAction,
+		// viewActionListener));
 
 		initialise();
 	}
