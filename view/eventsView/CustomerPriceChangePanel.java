@@ -132,4 +132,24 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 
 	}
 
+	public JTextField getNewWeightCostTextField() {
+		return newWeightCostTextField;
+	}
+
+	public JTextField getNewVolumeCosttextField() {
+		return newVolumeCosttextField;
+	}
+
+	public JComboBox<String> getOriginComboBox() {
+		return originComboBox;
+	}
+
+	public JComboBox<String> getDestinationComboBox() {
+		return destinationComboBox;
+	}
+
+	public JComboBox<String> getPriorityComboBox() {
+		return priorityComboBox;
+	}
+
 }

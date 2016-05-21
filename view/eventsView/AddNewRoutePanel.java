@@ -218,4 +218,40 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 
 	}
 
+	public JTextField getDestinationTextField() {
+		return DestinationTextField;
+	}
+
+	public JTextField getOriginTextField() {
+		return originTextField;
+	}
+
+	public JTextField getTransportCompanyTextField() {
+		return transportCompanyTextField;
+	}
+
+	public JTextField getHoursToDeliverTextField() {
+		return hoursToDeliverTextField;
+	}
+
+	public JTextField getCustomerPriceWeightTextField() {
+		return customerPriceWeightTextField;
+	}
+
+	public JTextField getCustomerPriceVolumeTextField() {
+		return customerPriceVolumeTextField;
+	}
+
+	public JTextField getTransportPriceWeightTextField() {
+		return transportPriceWeightTextField;
+	}
+
+	public JTextField getTransportPriceVolumeTextField() {
+		return transportPriceVolumeTextField;
+	}
+
+	public JComboBox<String> getModeComboBox() {
+		return modeComboBox;
+	}
+
 }

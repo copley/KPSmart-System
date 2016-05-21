@@ -119,4 +119,20 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 
 	}
 
+	public JComboBox<String> getOriginComboBox() {
+		return originComboBox;
+	}
+
+	public JComboBox<String> getDestinationComboBox() {
+		return destinationComboBox;
+	}
+
+	public JComboBox<String> getTransportCompanyComboBox() {
+		return transportCompanyComboBox;
+	}
+
+	public JComboBox<String> getTypeComboBox() {
+		return typeComboBox;
+	}
+
 }

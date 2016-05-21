@@ -164,40 +164,20 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		return weightTextField;
 	}
 
-	public void setWeightTextField(JTextField weightTextField) {
-		this.weightTextField = weightTextField;
-	}
-
 	public JTextField getVolumeTextField() {
 		return volumeTextField;
-	}
-
-	public void setVolumeTextField(JTextField volumeTextField) {
-		this.volumeTextField = volumeTextField;
 	}
 
 	public JComboBox<String> getOriginComboBox() {
 		return originComboBox;
 	}
 
-	public void setOriginComboBox(JComboBox<String> originComboBox) {
-		this.originComboBox = originComboBox;
-	}
-
 	public JComboBox<String> getDestinationComboBox() {
 		return destinationComboBox;
 	}
 
-	public void setDestinationComboBox(JComboBox<String> destinationComboBox) {
-		this.destinationComboBox = destinationComboBox;
-	}
-
 	public JComboBox<String> getPriorityComboBox() {
 		return priorityComboBox;
-	}
-
-	public void setPriorityComboBox(JComboBox<String> priorityComboBox) {
-		this.priorityComboBox = priorityComboBox;
 	}
 
 }
