@@ -38,8 +38,14 @@ public class KPSmartCanvas extends JPanel {
 	 */
 	private final JFrame frame;
 
-	private CustomerPriceChangePanel mainDisplayPanel;
+	private AbstractMainDisplayPanel mainDisplayPanel;
 	private JPanel operationPanel;
+
+	private AddNewRoutePanel addNewRoutePanel;
+	private CustomerPriceChangePanel customerPriceChangePanel;
+	private MailDeliveryPanel mailDeliveryPanel;
+	private RouteDiscontinuePanel routeDiscontinuePanel;
+	private TransportCostChangePanel transportCostChangePanel;
 
 	/**
 	 * construct an empty KPSmart canvas
@@ -62,10 +68,11 @@ public class KPSmartCanvas extends JPanel {
 		// mainDisplayPanel.add(new MailDeliveryPanel(keyAction, mouseAction,
 		// viewActionListener));
 
-		initialise();
+		initialisePanels(keyAction, mouseAction, viewActionListener);
+		initialiseLayout();
 	}
 
-	protected void initialise() {
+	protected void initialiseLayout() {
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
@@ -87,16 +94,46 @@ public class KPSmartCanvas extends JPanel {
 		setLayout(groupLayout);
 	}
 
+	private void initialisePanels(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+		addNewRoutePanel = new AddNewRoutePanel(keyAction, mouseAction, viewActionListener);
+		customerPriceChangePanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener);
+		mailDeliveryPanel = new MailDeliveryPanel(keyAction, mouseAction, viewActionListener);
+		routeDiscontinuePanel = new RouteDiscontinuePanel(keyAction, mouseAction, viewActionListener);
+		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener);
+	}
+
 	public void redraw() {
 		// TODO Auto-generated method stub
 	}
 
-//	public MailDeliveryPanel getMainDisplayPanel() {
-//		return mainDisplayPanel;
-//	}
+	public AbstractMainDisplayPanel getMainDisplayPanel() {
+		return mainDisplayPanel;
+	}
 
 	public JPanel getOperationPanel() {
 		return operationPanel;
+	}
+
+	public void setMainDisplayPanel(String panelName) {
+		switch (panelName) {
+		case "AddNewRoutePanel":
+			mainDisplayPanel = addNewRoutePanel;
+			break;
+		case "CustomerPriceChangePanel":
+			mainDisplayPanel = customerPriceChangePanel;
+			break;
+		case "MailDeliveryPanel":
+			mainDisplayPanel = mailDeliveryPanel;
+			break;
+		case "RouteDiscontinuePanel":
+			mainDisplayPanel = routeDiscontinuePanel;
+			break;
+		case "TransportCostChangePanel":
+			mainDisplayPanel = transportCostChangePanel;
+			break;
+		default:
+			System.out.println("Something went astray.");
+		}
 	}
 
 }
