@@ -8,7 +8,8 @@
     <employee>Bonnie</employee>
     <origin>Suva</origin>
     <destination>New Zealand</destination>
-    <priority>International Air</priority>
+    <company>Air Awesome</company>
+    <mode>AIR</mode>
     <weightcost>4</weightcost>
     <volumecost>4</volumecost>
   </price>
@@ -20,9 +21,10 @@
     <employee>Bonnie</employee>
     <origin>Suva</origin>
     <destination>New Zealand</destination>
-    <priority>International Air</priority>
-    <weightcost>4</weightcost>
-    <volumecost>4</volumecost>
+    <company>Air Awesome</company>
+    <mode>AIR</mode>
+    <weightcost>5</weightcost>
+    <volumecost>5</volumecost>
   </price>
   <mail>
     <day>15</day>
