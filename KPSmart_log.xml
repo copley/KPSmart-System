@@ -35,6 +35,9 @@
     <weight>100</weight>
     <volume>5</volume>
     <priority>International Air</priority>
+    <revenue>10</revenue>
+    <expenditure>3</expenditure>
+    <deliveryTime>24</deliveryTime>
   </mail>
   <add>
     <day>15</day>

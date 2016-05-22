@@ -343,7 +343,11 @@ public class Reader {
 		double volume = Double.parseDouble(event.getChild("volume").getText());
 		Priority priority = readPriority(event.getChild("priority").getText());
 
-		return new MailProcessEvent(day, month, year, time, employee, origin, destination, weight, volume, priority);
+		//TODO: We have also added variables here to add to the constructor
+		double revenue = Double.parseDouble(event.getChild("revenue").getText());
+		double expenditure = Double.parseDouble(event.getChild("expenditure").getText());
+		double deliveryTime = Double.parseDouble(event.getChild("deliveryTime").getText());
+		return new MailProcessEvent(day, month, year, time, employee, origin, destination, weight, volume, priority,revenue, expenditure, deliveryTime);
 	}
 
 	/**
