@@ -78,6 +78,9 @@ public class MailProcessEvent extends BusinessEvent {
 		string.append("Weight: " + weight + "\n");
 		string.append("Volume: " + volume + "\n");
 		string.append("Priority: " + priority);
+		string.append("Revenue: " + revenue);
+		string.append("Expenditure: " + expenditure);
+		string.append("Delivery time: " + deliveryTime);
 		return string.toString();
 	}
 
