@@ -227,28 +227,28 @@ public class KPSmartController {
 			 */
 
 			// waiting on GUI form implementation to return the parameters to the KPSmartMODEL
-			//kpsmartModel.ChangeCustomerPrice(originSelection, destinationSelection, prioritySelection, newWeightCostSelection, newVolumeSelection);
+			//kpsmartModel.changeCustomerPrice(originSelection, destinationSelection, prioritySelection, newWeightCostSelection, newVolumeSelection);
 
 			/**
 			 * TODO: Process mail
 			 * origin, destination, weight, volume, priority
 			 */
-			kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
+			kpsmartModel.processMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
 			/**
 			 * TODO: Transport cost change
 			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
 			 */
-			//kpsmartModel.ChangeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay ,frequencySelection, durationSelection);
+			//kpsmartModel.changeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay ,frequencySelection, durationSelection);
 			/**
 			 * TODO: Route addition
 			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
 			 */
-			//kpsmartModel.AddRoute(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay,  frequencySelection, durationSelection);
+			//kpsmartModel.addRoute(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay,  frequencySelection, durationSelection);
 			/**
 			 * TODO: Route discontinue
 			 * origin, destination,company, type
 			 */
-			//kpsmartModel.RemoveRoute(originSelection, destinationSelection, companySelection, typeSelection);
+			//kpsmartModel.removeRoute(originSelection, destinationSelection, companySelection, typeSelection);
 			}
 		}
 	}

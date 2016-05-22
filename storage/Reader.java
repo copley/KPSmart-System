@@ -19,6 +19,7 @@ import model.map.Type;
  * Class responsible for reading the data from the log file and data files
  *
  * @author Bonnie Liao
+ * changes by Nic Bonnette and Joely Huang
  */
 public class Reader {
 
@@ -59,6 +60,8 @@ public class Reader {
 		} catch (IllegalEventException e) {
 			e.printStackTrace();
 		} catch (IllegalPriorityException e) {
+			e.printStackTrace();
+		}catch (IllegalTypeException e) {
 			e.printStackTrace();
 		}
 
@@ -233,7 +236,7 @@ public class Reader {
 	 *             If the event is invalid
 	 * @throws IllegalPriorityException
 	 */
-	private static BusinessEvent readEvent(Element event) throws IllegalEventException, IllegalPriorityException {
+	private static BusinessEvent readEvent(Element event) throws IllegalEventException, IllegalPriorityException, IllegalTypeException {
 		BusinessEvent businessEvent = null;
 
 		// get the eventType
@@ -307,14 +310,17 @@ public class Reader {
 	 * @throws IllegalPriorityException
 	 */
 	private static CustPriceChangeEvent readPrice(Element event, int day, int month, int year, int time,
-			String employee) throws IllegalPriorityException {
+			String employee) throws IllegalTypeException {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
-		Priority priority = readPriority(event.getChild("priority").getText());
+		//TODO:took out priority element - priority is on a package
+		//TODO:added in company and mode - needed to uniquely identify a particular route (if we are not using ID)		
+		String company = event.getChild("company").getText();		
+		Type mode = readMode(event.getChild("mode").getText());
 		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
 		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
 
-		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, priority, weightcost,
+		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, company, mode, weightcost,
 				volumecost);
 	}
 
@@ -454,6 +460,19 @@ public class Reader {
 			return Priority.DOMESTIC_STANDARD;
 			default:
 				throw new IllegalPriorityException("Invalid Priority!");
+		}
+	}
+	
+	private static Type readMode(String text) throws IllegalTypeException {
+		switch(text){
+		case "SEA":
+			return Type.SEA;
+		case "LAND":
+			return Type.LAND;
+		case "AIR":
+			return Type.AIR;
+			default:
+				throw new IllegalTypeException("Invalid mode of transport!");
 		}
 	}
 }

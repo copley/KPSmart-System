@@ -97,11 +97,15 @@ public class Route {
 
 
 
-	public void updatePrices(double newCustPriceWeight, double newCustPriceVolume, double newTransPriceWeight,
-			double newTransPriceVolume) {
-		this.custPriceWeight = newCustPriceWeight;
-		this.custPriceVolume = newCustPriceVolume;
+	public void updateTransportCosts(double newTransPriceWeight, double newTransPriceVolume) {		
 		this.transPriceWeight = newTransPriceWeight;
 		this.transPriceVolume = newTransPriceVolume;
+	}
+
+
+
+	public void updateCustomerPrices(double newCustPriceWeight, double newCustPriceVolume) {
+		this.custPriceWeight = newCustPriceWeight;
+		this.custPriceVolume = newCustPriceVolume;	
 	}
 }

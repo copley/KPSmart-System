@@ -34,31 +34,7 @@ public class SiteMap {
 		return true;
 	}
 
-	// TODO: Not quite sure if we'll need this method here
-	/*
-	 * returns true if route successfully changed returns false if not
-	 * successful (eg the ID was invalid) [supporting soft failure]
-	 *
-	 * Only the following may be changed: customer prices, transit prices.
-	 * sites, carrier and duration are final, if they need to be changed a new
-	 * route should be made, and the old one discontinued.
-	 */
-	public boolean changeRoute(int toChangeID, double newCustPriceWeight, double newCustPriceVolume,
-			double newTransPriceWeight, double newTransPriceVolume) {
-		// check all input for correct values
-		if (!routes.containsKey(toChangeID)) {
-			return false;
-		}
-		;
-		if (newCustPriceWeight <= 0 || newCustPriceVolume <= 0 || newTransPriceWeight <= 0
-				|| newTransPriceVolume <= 0) {
-			return false;
-		}
-		// call route to change its values
-		routes.get(toChangeID).updatePrices(newCustPriceWeight, newCustPriceVolume, newTransPriceWeight,
-				newTransPriceVolume);
-		return true;
-	}
+	
 
 	/*
 	 * returns true if route successfully made returns false if not successful
