@@ -43,10 +43,22 @@ public class KPSmartModel {
 
 	// called from controller class, returns a boolean to indicate success
 	// (true) or failure (false)
-	public boolean changeCustomerPrice(String origin, String destination, String carrier, Type type,
-			double newWeightCost, double newVolumeCost) {
+	public boolean changeCustomerPrice(String origin, String destination, String carrier, String typeString,
+			String newWeightCostString, String newVolumeCostString) {
+		// convert strings into needed types
+		Type type = getType(typeString);
+		// make sure type is valid - abort and return false if not!
+		if (type == null) {
+			return false;
+		}
+		double newWeightCost = Double.parseDouble(newWeightCostString);
+		double newVolumeCost = Double.parseDouble(newVolumeCostString);
 		// identify which route
 		int routeID = sitemap.findRouteID(origin, destination, carrier, type);
+		// make sure converted data is valid - abort and return false if not!
+		if (routeID == -1) {
+			return false;
+		}
 		// call event processor on that route, event processor returns true if
 		// event was performed successfully
 		// returns false if the event was aborted
@@ -72,37 +84,58 @@ public class KPSmartModel {
 		double weight = Double.parseDouble(weightString);
 		double volume = Double.parseDouble(volumeString);
 		Priority priority = getPriority(priorityString);
+		// make sure converted data are valid - abort and return false if not!
+		if (priority == null || originSiteID == -1 || destSiteID == -1) {
+			return false;
+		}
+
 		// call event processor to make up the package and record the event
-		return eventProcessor.processMail(originSiteID, destSiteID, weight, volume, 
-				priority, this.loggedInStaffID);
+		return eventProcessor.processMail(originSiteID, destSiteID, weight, volume, priority, this.loggedInStaffID);
 	}
 
 	// called from controller class - mc
 	public boolean addRoute(String origin, String destination, String company, String durationString, String typeString,
 			String customerPriceWeight, String customerPriceVolume, String transportCostWeight,
 			String transportCostVolume) {
-		// note that we don't need to work out the origin and destination IDs, if the sites do not already exist,
+		// note that we don't need to work out the origin and destination IDs,
+		// if the sites do not already exist,
 		// they will be created during the route addition
 		// convert strings into needed types
 		Type type = getType(typeString);
+		// make sure converted data is valid - abort and return false if not!
+		if (type == null) {
+			return false;
+		}
 		double custPriceWeight = Double.parseDouble(customerPriceWeight);
 		double custPriceVolume = Double.parseDouble(customerPriceVolume);
 		double transCostWeight = Double.parseDouble(transportCostWeight);
 		double transCostVolume = Double.parseDouble(transportCostVolume);
 		double duration = Double.parseDouble(durationString);
-		
+
 		// call event processor to do the addition and record the event
 
-		return eventProcessor.addRoute(origin, destination, company, type, duration, custPriceWeight,
-				custPriceVolume, transCostWeight, transCostVolume, loggedInStaffID);
+		return eventProcessor.addRoute(origin, destination, company, type, duration, custPriceWeight, custPriceVolume,
+				transCostWeight, transCostVolume, loggedInStaffID);
 
 	}
 
 	// called from controller class - mc
-	public void removeRoute(String originSelection, String destinationSelection, String companySelection,
-			String typeSelection) {
-		// TODO Auto-generated method stub
-
+	public boolean discontinueRoute(String origin, String destination, String company, String typeString) {
+		//convert strings into needed data types
+		Type type = getType(typeString);
+		// make sure type is valid - abort and return false if not!
+		if (type == null) {
+			return false;
+		}
+		// identify which route
+		int routeID = sitemap.findRouteID(origin, destination, company, type);
+		// make sure converted data is valid - abort and return false if not!
+		if (routeID == -1) {
+			return false;
+		}
+		
+		// call event processor to do the discontinuation and record the event
+		return eventProcessor.disconRoute(routeID, loggedInStaffID);
 	}
 
 	// ===============helper methods================

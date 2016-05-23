@@ -177,7 +177,7 @@ public class Writer {
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
 		event.addContent(new Element("company").setText(be.getCompany()));
-		event.addContent(new Element("type").setText(be.getType()));
+		event.addContent(new Element("type").setText(be.getType().name()));
 		return event;
 	}
 

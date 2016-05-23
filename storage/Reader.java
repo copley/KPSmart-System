@@ -406,12 +406,12 @@ public class Reader {
 	 * @return A Route discontinued event
 	 */
 	private static RouteDiscEvent readDiscontinue(Element event, int day, int month, int year, int time,
-			String employee) {
+			String employee) throws IllegalTypeException {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();
-		String type = event.getChild("type").getText();
-
+		Type type = readType(event.getChild("type").getText());
+		
 		return new RouteDiscEvent(day, month, year, time, employee, origin, destination, company, type);
 	}
 

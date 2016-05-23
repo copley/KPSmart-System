@@ -248,7 +248,7 @@ public class KPSmartController {
 			 * TODO: Route discontinue
 			 * origin, destination,company, type
 			 */
-			//kpsmartModel.removeRoute(originSelection, destinationSelection, companySelection, typeSelection);
+			//kpsmartModel.discontinueRoute(originSelection, destinationSelection, companySelection, typeSelection);
 			}
 		}
 	}

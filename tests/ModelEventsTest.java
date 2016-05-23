@@ -84,7 +84,7 @@ public class ModelEventsTest {
 	@Test
 	public void RouteDiscEvent() {
 		RouteDiscEvent route = new RouteDiscEvent(8, 8, 2016, 10, "Joely", "Wellington", "Auckland", "KPDeliver",
-				"Air");
+				Type.AIR);
 		String string = "";
 		string += ("ROUTE DISCONTINUED EVENT\n");
 		string += ("Date: 8, 8, 2016\n");
@@ -93,7 +93,7 @@ public class ModelEventsTest {
 		string += ("Origin: Wellington\n");
 		string += ("Destination: Auckland\n");
 		string += ("Company: KPDeliver\n");
-		string += ("Type: Air");
+		string += ("Type: AIR");
 
 		assertTrue("String needs to equal", string.equals(route.toString()));
 	}

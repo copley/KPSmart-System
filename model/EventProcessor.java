@@ -111,17 +111,29 @@ public class EventProcessor {
 	};
 
 	/**
-	 * 
-	 * @param origin - string
-	 * @param destination - string
-	 * @param carrier - string
-	 * @param type - Type enum (mode of transport - AIR, SEA, LAND
-	 * @param duration - double, hours of travel time when this route is taken
-	 * @param custPriceWeight - double, price charged to customer per gram of weight
-	 * @param custPriceVolume - double, price charged to customer per cubic cm of volume
-	 * @param transCostWeight - double, cost that KPS incurs from transport company, per gram of weight
-	 * @param transCostVolume - double, cost that KPS incurs from transport company, per cubic cm of volume
-	 * @param processorStaffID - int, id of staff that was logged into the system when event was generated
+	 * @param origin
+	 *            - string
+	 * @param destination
+	 *            - string
+	 * @param carrier
+	 *            - string
+	 * @param type
+	 *            - Type enum (mode of transport - AIR, SEA, LAND
+	 * @param duration
+	 *            - double, hours of travel time when this route is taken
+	 * @param custPriceWeight
+	 *            - double, price charged to customer per gram of weight
+	 * @param custPriceVolume
+	 *            - double, price charged to customer per cubic cm of volume
+	 * @param transCostWeight
+	 *            - double, cost that KPS incurs from transport company, per
+	 *            gram of weight
+	 * @param transCostVolume
+	 *            - double, cost that KPS incurs from transport company, per
+	 *            cubic cm of volume
+	 * @param processorStaffID
+	 *            - int, id of staff that was logged into the system when event
+	 *            was generated
 	 */
 	public boolean addRoute(String origin, String destination, String company, Type type, double duration,
 			double custPriceWeight, double custPriceVolume, double transCostWeight, double transCostVolume,
@@ -168,50 +180,85 @@ public class EventProcessor {
 		int month = now.getMonthValue();
 		int year = now.getYear();
 		int time = now.getHour() * 10 + now.getMinute();
-		// try to access the referenced objects in the model
-		Employee employee = db.getEmployees().getEmployeeFromID(processorStaffID);
+		// get logged in staff name
+		Employee processor = db.getEmployees().getEmployeeFromID(processorStaffID);
+		String processorName;
+		if (processor == null) {
+			// TODO: remove this and replace with an error once log-in function
+			// is coded
+			processorName = "no-one";// should only be used while there is no
+										// proper log-in
+		} else {
+			processorName = processor.getName();
+		}
+		// try to access the other referenced objects in the model
 		String origin = db.getSiteMap().getSitefromID(originSiteID);
 		String destination = db.getSiteMap().getSitefromID(destSiteID);
 		// if any of the referenced objects don't exist in the model, the event
 		// fails, abort!
-		if (employee == null || origin == null || destination == null) {
+		if (origin == null || destination == null) {
 			return false;
 		}
 		Package thepackage = new Package(originSiteID, destSiteID, weight, volume, priority, db.getSiteMap());
 		// need to check that a compound route was available - if it wasn't, the
-		// event fails!
-		// if no route was available, compound route will be null
+		// event fails! if no route was available, compound route will be null
 		if (thepackage.getCompoundRoute() == null) {
 			return false;
 		}
-		// if we get to here, it is safe to call methods on employee, origin and
-		// destination,
-		// and also the delivery is possible!
-		String employeeName = employee.getName();
+		// package creation was successful - extract required event information
 		double revenue = thepackage.getPriceToCustomer();
 		double expenditure = thepackage.getTransportCost();
 		double deliveryTime = thepackage.getExpectedTravelTime();
-		BusinessEvent pmBusinessEvent = new MailProcessEvent(day, month, year, time, employeeName, origin, destination,
+
+		// make the event to record the action
+
+		BusinessEvent pmBusinessEvent = new MailProcessEvent(day, month, year, time, processorName, origin, destination,
 				weight, volume, priority, revenue, expenditure, deliveryTime);
+		// store the event in the data store
 		db.addEvent(pmBusinessEvent);
 		// indicate that the event was processed successfully
 		return true;
 	}
 
-	public static void disconRoute(int routeID) {
+	public boolean disconRoute(int routeID, int processorStaffID) {
 		LocalDateTime now = LocalDateTime.now();
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
 		int year = now.getYear();
 		int time = now.getHour() * 10 + now.getMinute();
-		String employee = db.getEmployees().getEmployeeFromID(processorStaffID).getName();
-		String origin;
-		String destination;
-		String company;
-		String type;
-		BusinessEvent drBusinessEvent = new RouteDiscEvent(day, month, year, time, employee, origin, destination,
+		// get logged in staff name
+		Employee processor = db.getEmployees().getEmployeeFromID(processorStaffID);
+		String processorName;
+		if (processor == null) {
+			// TODO: remove this and replace with an error once log-in function
+			// is coded
+			processorName = "no-one";// should only be used while there is no
+										// proper log-in
+		} else {
+			processorName = processor.getName();
+		}
+
+		// make the changes to the siteMap (discontinue route)
+		// if discontinueRoute returns false, then abort the event procession
+		// and
+		// report failure
+		if (!db.getSiteMap().discontinueRoute(routeID)) {
+			return false;
+		}
+		// get the data needed to fill out the event
+		Route route = db.getSiteMap().getRouteFromID(routeID);
+		String origin = route.getOrigin();
+		String destination = route.getDestination();
+		String company = route.getCompany();
+		Type type = route.getType();
+		// make the event to record the action
+
+		BusinessEvent drBusinessEvent = new RouteDiscEvent(day, month, year, time, processorName, origin, destination,
 				company, type);
+		// store the event in the data store
 		db.addEvent(drBusinessEvent);
+		// indicate that the event was processed successfully
+		return true;
 		// System.out.println(debuggingString + debuggingInt + 5);
 	}
 

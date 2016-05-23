@@ -1,13 +1,15 @@
 package model.events;
 
+import model.map.Type;
+
 public class RouteDiscEvent extends BusinessEvent {
 	private String origin;
 	private String destination;
 	private String company;
-	private String type;
+	private Type type;
 
 	public RouteDiscEvent(int day, int month, int year, int time, String staff, String origin, String destination,
-			String company, String type) {
+			String company, Type type) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
@@ -27,7 +29,7 @@ public class RouteDiscEvent extends BusinessEvent {
 		return company;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 

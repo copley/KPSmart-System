@@ -22,5 +22,5 @@ public enum Priority {
 			return "Domestic Standard";
 		}
 	};
-
+	
 }
