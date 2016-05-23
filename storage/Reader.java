@@ -314,13 +314,13 @@ public class Reader {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		//TODO:took out priority element - priority is on a package
-		//TODO:added in company and mode - needed to uniquely identify a particular route (if we are not using ID)		
+		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)		
 		String company = event.getChild("company").getText();		
-		Type mode = readMode(event.getChild("mode").getText());
-		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
-		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
+		Type type = readType(event.getChild("type").getText());
+		double weightcost = Double.parseDouble(event.getChild("weightcost").getText());
+		double volumecost = Double.parseDouble(event.getChild("volumecost").getText());
 
-		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, company, mode, weightcost,
+		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, company, type, weightcost,
 				volumecost);
 	}
 
@@ -373,19 +373,19 @@ public class Reader {
 	 *            The employee responsible for the event
 	 * @return A Route Addition event
 	 */
-	private static RouteAdditionEvent readAdd(Element event, int day, int month, int year, int time, String employee) {
+	private static RouteAdditionEvent readAdd(Element event, int day, int month, int year, int time, String employee)throws IllegalTypeException  {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();
-		String type = event.getChild("type").getText();
-		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
-		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
-		String departure = event.getChild("departure").getText();
-		int frequency = Integer.parseInt(event.getChild("frequency").getText());
-		int duration = Integer.parseInt(event.getChild("duration").getText());
+		Type type = readType(event.getChild("type").getText());
+		double duration = Double.parseDouble(event.getChild("duration").getText());
+		double custPriceWeight = Double.parseDouble(event.getChild("custPriceWeight").getText());
+		double custPriceVolume = Double.parseDouble(event.getChild("custPriceVolume").getText());
+		double transCostWeight = Double.parseDouble(event.getChild("transCostWeight").getText());
+		double transCostVolume = Double.parseDouble(event.getChild("transCostVolume").getText());
 
-		return new RouteAdditionEvent(day, month, year, time, employee, origin, destination, company, type, weightcost,
-				volumecost, departure, frequency, duration);
+		return new RouteAdditionEvent(day, month, year, time, employee, origin, destination, company, type, duration, 
+				custPriceWeight, custPriceVolume, transCostWeight,transCostVolume);
 	}
 
 	/**
@@ -463,7 +463,7 @@ public class Reader {
 		}
 	}
 	
-	private static Type readMode(String text) throws IllegalTypeException {
+	private static Type readType(String text) throws IllegalTypeException {
 		switch(text){
 		case "SEA":
 			return Type.SEA;
@@ -472,7 +472,7 @@ public class Reader {
 		case "AIR":
 			return Type.AIR;
 			default:
-				throw new IllegalTypeException("Invalid mode of transport!");
+				throw new IllegalTypeException("Invalid type of transport!");
 		}
 	}
 }

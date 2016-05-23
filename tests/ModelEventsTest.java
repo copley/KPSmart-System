@@ -18,24 +18,24 @@ public class ModelEventsTest {
 
 	@Test
 	public void RouteAddition() {
-		RouteAdditionEvent route = new RouteAdditionEvent(8, 8, 2016, 10, "Joely", "Wellington", "Auckland",
-				"KPDeliver", "Air", 10, 15, "Monday", 3, 10);
+		RouteAdditionEvent route = new RouteAdditionEvent(8, 8, 2016, 1000, "Joely", "Wellington", "Auckland",
+				"KPDeliver", Type.AIR, 10, 22,23,15,15.50);
+			
 		String string = "";
 		string += ("ROUTE ADDITION EVENT\n");
 		string += ("Date: 8, 8, 2016\n");
-		string += ("Time: 10\n");
+		string += ("Time: 1010\n");
 		string += ("Staff responsible: Joely\n");
 		string += ("Origin: Wellington\n");
 		string += ("Destination: Auckland\n");
 		string += ("Company: KPDeliver\n");
-		string += ("Type: Air\n");
-		string += ("Weight Cost: 10\n");
-		// new line here?
-		string += ("Volume Cost: 15");
-		// spelling
-		string += ("Day of Departure: Monday\n");
-		string += ("Frequency: 3\n");
-		string += ("Duration: 10");
+		string += ("Type: AIR\n");
+		string += ("Duration: 10\n");
+		string += ("Customer price per gram: 22\n");
+		string += ("Customer price per cubic cm: 23\n");
+		string += ("Transport cost per gram: 15\n");
+		string += ("Transport cost per cubic cm: 15.5\n");
+		
 
 		assertTrue("String needs to equal", string.equals(route.toString()));
 	}

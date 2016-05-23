@@ -44,7 +44,7 @@ public class SiteMap {
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
 	 */
-	public boolean makeNewRoute(String origin, String destination, String company, int duration, Type mode,
+	public boolean makeNewRoute(String origin, String destination, String company, Type type, double duration, 
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// check all input for values in correct format
 		if (duration <= 0 || custPriceWeight <= 0 || custPriceVolume <= 0 || transPriceWeight <= 0
@@ -99,7 +99,7 @@ public class SiteMap {
 										// existing..
 		// IDs made sequentially from 0 so size should be free!
 		// make route object
-		Route newRoute = new Route(newRouteID, origin, destination, company, duration, mode, true, custPriceWeight,
+		Route newRoute = new Route(newRouteID, origin, destination, company, duration, type, true, custPriceWeight,
 				custPriceVolume, transPriceWeight, transPriceVolume);
 		// add new route to the map
 		try {

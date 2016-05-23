@@ -9,7 +9,7 @@
     <origin>Suva</origin>
     <destination>New Zealand</destination>
     <company>Air Awesome</company>
-    <mode>AIR</mode>
+    <type>AIR</type>
     <weightcost>4</weightcost>
     <volumecost>4</volumecost>
   </price>
@@ -22,7 +22,7 @@
     <origin>Suva</origin>
     <destination>New Zealand</destination>
     <company>Air Awesome</company>
-    <mode>AIR</mode>
+    <type>AIR</type>
     <weightcost>5</weightcost>
     <volumecost>5</volumecost>
   </price>
@@ -51,11 +51,11 @@
     <destination>Wellington</destination>
     <company>Air NZ</company>
     <type>Air</type>
-    <weightcost>6</weightcost>
-    <volumecost>6</volumecost>
-    <departure>Thursday</departure>
-    <frequency>6</frequency>
     <duration>16</duration>
+    <custPriceWeight>2.3</custPriceWeight>
+    <custPriceVolume> 33</custPriceVolume>
+    <transCostWeight>2.0 </transCostWeight>
+    <transCostVolume>38.8 </transCostVolume>
   </add>
   <discontinue>
     <day>15</day>

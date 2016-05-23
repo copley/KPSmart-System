@@ -19,7 +19,7 @@ public class ValidationSystem {
 
 	public static boolean validateCustPriceEvent(CustPriceChangeEvent event) {
 		return validateTimestamp(event.getDay(), event.getMonth(), event.getYear(), event.getTime())
-				&& validateMode(event.getMode()) && event.getNewWeightCost() > 0 && event.getNewVolumeCost() > 0;
+				&& validateMode(event.getType()) && event.getNewWeightCost() > 0 && event.getNewVolumeCost() > 0;
 	}
 
 	public static boolean validateMailProcessEvent(MailProcessEvent event) {
