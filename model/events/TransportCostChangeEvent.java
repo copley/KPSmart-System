@@ -1,18 +1,20 @@
 package model.events;
+import model.map.Type;
+
 
 public class TransportCostChangeEvent extends BusinessEvent {
 	private String origin;
 	private String destination;
 	private String company;
-	private String type;
-	private int newWeightCost;
-	private int newVolumeCost;
+	private Type type;
+	private double newWeightCost;
+	private double newVolumeCost;
 	private String departureDay;
 	private int frequency;
 	private int duration;
 
 	public TransportCostChangeEvent(int day, int month, int year, int time, String staff, String origin,
-			String destination, String company, String type, int newWeightCost, int newVolumeCost, String departureDay,
+			String destination, String company, Type type, double newWeightCost, double newVolumeCost, String departureDay,
 			int frequency, int duration) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
@@ -38,15 +40,15 @@ public class TransportCostChangeEvent extends BusinessEvent {
 		return company;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public int getNewWeightCost() {
+	public double getNewWeightCost() {
 		return newWeightCost;
 	}
 
-	public int getNewVolumeCost() {
+	public double getNewVolumeCost() {
 		return newVolumeCost;
 	}
 

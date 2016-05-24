@@ -314,8 +314,8 @@ public class Reader {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		//TODO:took out priority element - priority is on a package
-		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)		
-		String company = event.getChild("company").getText();		
+		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)
+		String company = event.getChild("company").getText();
 		Type type = readType(event.getChild("type").getText());
 		double weightcost = Double.parseDouble(event.getChild("weightcost").getText());
 		double volumecost = Double.parseDouble(event.getChild("volumecost").getText());
@@ -384,7 +384,7 @@ public class Reader {
 		double transCostWeight = Double.parseDouble(event.getChild("transCostWeight").getText());
 		double transCostVolume = Double.parseDouble(event.getChild("transCostVolume").getText());
 
-		return new RouteAdditionEvent(day, month, year, time, employee, origin, destination, company, type, duration, 
+		return new RouteAdditionEvent(day, month, year, time, employee, origin, destination, company, type, duration,
 				custPriceWeight, custPriceVolume, transCostWeight,transCostVolume);
 	}
 
@@ -411,7 +411,7 @@ public class Reader {
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();
 		Type type = readType(event.getChild("type").getText());
-		
+
 		return new RouteDiscEvent(day, month, year, time, employee, origin, destination, company, type);
 	}
 
@@ -431,15 +431,17 @@ public class Reader {
 	 * @param employee
 	 *            The employee responsible for the event
 	 * @return A Transport cost change event
+	 * @throws IllegalTypeException
 	 */
 	private static TransportCostChangeEvent readCost(Element event, int day, int month, int year, int time,
-			String employee) {
+			String employee) throws IllegalTypeException {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
 		String company = event.getChild("company").getText();
-		String type = event.getChild("type").getText();
-		int weightcost = Integer.parseInt(event.getChild("weightcost").getText());
-		int volumecost = Integer.parseInt(event.getChild("volumecost").getText());
+		Type type = readType(event.getChild("type").getText());	//throws illegal type exception
+
+		double weightcost = Integer.parseInt(event.getChild("weightcost").getText());
+		double volumecost = Integer.parseInt(event.getChild("volumecost").getText());
 		String departure = event.getChild("departure").getText();
 		int frequency = Integer.parseInt(event.getChild("frequency").getText());
 		int duration = Integer.parseInt(event.getChild("duration").getText());
@@ -462,7 +464,7 @@ public class Reader {
 				throw new IllegalPriorityException("Invalid Priority!");
 		}
 	}
-	
+
 	private static Type readType(String text) throws IllegalTypeException {
 		switch(text){
 		case "SEA":

@@ -10,16 +10,16 @@ import model.Package;
 import model.employees.Employee;
 
 /**
- * 
+ *
  * A single instance of the model class is created by the controller class This
  * class makes an instance of the DataStore class, which reads in all the other
  * data required to populate the model with historical data - including the
  * SiteMap.
- * 
+ *
  * All direct communication with the model from the controller happens via
  * methods in this class. The methods in this class action methods in other
  * parts of the model.
- * 
+ *
  * @author Nic, Bonnie, Joely
  *
  */
@@ -69,12 +69,19 @@ public class KPSmartModel {
 	}
 
 	// called from controller class - mc
-	public void changeTransportPrice(String origin, String destination, String carrier, String typeString, String newWeightCostString,
+	public boolean changeTransportPrice(String origin, String destination, String carrier, String typeString, String newWeightCostString,
 			String newVolumeCostString) {
 		// identify which route
+		Type type = getType(typeString);
+		// make sure type is valid - abort and return false if not!
+		if (type == null) {
+			return false;
+		}
+		double newWeightCost = Double.parseDouble(newWeightCostString);
+		double newVolumeCost = Double.parseDouble(newVolumeCostString);
 		int routeID = sitemap.findRouteID(origin, destination, carrier, type);
 		// call event processor on that route
-		eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
+		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
 	}
 
 	// called from controller class - mc
@@ -136,7 +143,7 @@ public class KPSmartModel {
 		if (routeID == -1) {
 			return false;
 		}
-		
+
 		// call event processor to do the discontinuation and record the event
 		return eventProcessor.disconRoute(routeID, loggedInStaffID);
 	}
@@ -147,8 +154,8 @@ public class KPSmartModel {
 	public String[] getSiteNames(){
 		return sitemap.getSiteNames();
 	}
-	
-	
+
+
 	// ===============helper methods================
 
 	private Priority getPriority(String priorityString) {

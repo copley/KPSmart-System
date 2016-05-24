@@ -13,18 +13,18 @@ import model.map.*;
 import storage.DataStore;
 
 /**
- * 
+ *
  * This Class processes events requested by the controller, and directed through
  * the KPSmartModel Class. Any changes to the SiteMap data that are required by
  * the events are made here. The appropriate business event object is made as
  * record of each event, and these events are pushed to the DataStore for
  * storage (and retrieval if a request to review events is made from the
  * controller)
- * 
+ *
  * @author Nic, Joely
- * 
- * 
- * 
+ *
+ *
+ *
  *         Implement Class Methods.
  *
  *         If this current implementation does not work, We are always able to
@@ -50,7 +50,7 @@ public class EventProcessor {
 	// and a new one made
 
 	/**
-	 * 
+	 *
 	 * @param routeID
 	 *            --> in constructor, there is origin and destination???
 	 * @param need
@@ -89,24 +89,34 @@ public class EventProcessor {
 		// System.out.println(debuggingString + debuggingInt + 1);
 	};
 
-	public void changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume,
+	public boolean changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume,
 			int processorStaffID) {
 		LocalDateTime now = LocalDateTime.now();
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
 		int year = now.getYear();
 		int time = now.getHour() * 10 + now.getMinute();
-		String employee = db.getEmployees().getEmployeeFromID(processorStaffID).getName();
-		String origin;
-		String destination;
-		String company;
-		String type;
+		Employee employee = db.getEmployees().getEmployeeFromID(processorStaffID);
+		Route route = db.getSiteMap().getRouteFromID(routeID);
+		// if employee or route don't exist, this even fails! do not proceed!
+		if (employee == null || route == null) {
+			return false;
+		}
+		// if we got here, employee and route are safe to call methods on..
+		String employeeName = employee.getName();
+		String origin = route.getOrigin();
+		String destination = route.getDestination();
+		String company = route.getCompany();
+		Type type = route.getType();
+
+		//need these fields
 		String departureDay;
 		int frequency;
 		int duration;
-		BusinessEvent ctcBusinessEvent = new TransportCostChangeEvent(day, month, year, time, employee, origin,
+		BusinessEvent ctcBusinessEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
 				destination, company, type, newTransCostWeight, newTransCostVolume, departureDay, frequency, duration);
 		db.addEvent(ctcBusinessEvent);
+		return true;
 		// System.out.println(debuggingString + debuggingInt + 2);
 	};
 
