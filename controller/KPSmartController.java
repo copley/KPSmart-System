@@ -25,22 +25,22 @@ public class KPSmartController {
 	}
 
 	public class KeyAction implements KeyListener {
-		//System.out.println("Calling from KeyAction");
+
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			//System.out.println(ListenerCount + 42); // debugging purposes - mc
+			System.out.println(ListenerCount + 42); // debugging purposes - mc
 		}
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			//System.out.println(ListenerCount + 46);  // debugging purposes - mc
+			System.out.println(ListenerCount + 46);  // debugging purposes - mc
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// example implementation.
-			//System.out.println(ListenerCount + 49); // debugging purposes - mc
+			System.out.println(ListenerCount + 49); // debugging purposes - mc
 
 		}
 	}
@@ -49,21 +49,21 @@ public class KPSmartController {
 	 * MouseAction class to set actionListeners to components inside the GUI.
 	 */
 	 public class MouseAction implements MouseListener {
-		 //System.out.println("Calling from MouseAction");
+
 
 		 @Override
 		public void mouseClicked(MouseEvent e) {
-			//System.out.println(ListenerCount + 65); // debugging purposes - mc
+			System.out.println("mouseClicked"); // debugging purposes - mc
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			//System.out.println(ListenerCount + 69); // debugging purposes - mc
+			System.out.println("mousePressed"); // debugging purposes - mc
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			//System.out.println(ListenerCount + 74); // debugging purposes - mc
+			System.out.println("mouseReleased"); // debugging purposes - mc
 		}
 
 		@Override
@@ -109,34 +109,34 @@ public class KPSmartController {
 
 			// View Figures Panel
 			if (e.getActionCommand().equals("Total Revenue")){
-				System.out.println(ListenerCount++); //debugging - mc
+				System.out.println("Total Revenue"); //debugging - mc
 				//kpsmartModel.getTotalRevenue(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderTotalRevenue();//TODO: Could pass in STRING , INT
 
 
 
 			}else if (e.getActionCommand().equals("Total Expenditure")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Total Expenditure");//debugging - mc
 				//kpsmartModel.getTotalExpenditure(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderTotalExpenditure();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Total No. of Events")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Total No. of Events");//debugging - mc
 				//kpsmartModel.getTotalEvents(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderTotalEvents();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Amount of Mails")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Amount of Mails");//debugging - mc
 				//kpsmartModel.getTotalMail(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderTotalMail();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("AVG Delivery Times")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("AVG Delivery Times");//debugging - mc
 				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Critical Routes")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Critical Routes");//debugging - mc
 				//kpsmartModel.getCriticalRoutes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderCriticalRoutes();//TODO: Could pass in STRING , INT
 
@@ -144,31 +144,31 @@ public class KPSmartController {
 
 			// Business Events Panel
 			else if (e.getActionCommand().equals("Mail Delivery")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Mail Delivery");//debugging - mc
 				//kpsmartModel.getMailDelivery(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderMailDelivery();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Route Discontinue")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Route Discontinue");//debugging - mc
 				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Customer Price Update")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Customer Price Update");//debugging - mc
 				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Transport Cost Update")){
-				System.out.println(ListenerCount++);//debugging - mc
+				System.out.println("Transport Cost Update");//debugging - mc
 				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}
 			else if(e.getActionCommand().equals("Weight:")){
-				//	System.out.println(ListenerCount++); // able to be implemented if JTextField componenets have listeners.
+					System.out.println("Weight:"); // able to be implemented if JTextField componenets have listeners.
 			}
 			else if(e.getActionCommand().equals("Volume:")){
-				//	System.out.println(ListenerCount++); // able to be implemented if JTextField componenets have listeners.
+					System.out.println("Volume:"); // able to be implemented if JTextField componenets have listeners.
 			}
 			//Submit on Mail Delivery
 			else if (e.getActionCommand().equals("Submit")){
@@ -233,7 +233,9 @@ public class KPSmartController {
 			 * TODO: Process mail
 			 * origin, destination, weight, volume, priority
 			 */
+
 			kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
+
 			/**
 			 * TODO: Transport cost change
 			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
