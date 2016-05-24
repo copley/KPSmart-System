@@ -1,6 +1,9 @@
 package model;
 
 import storage.DataStore;
+
+import java.util.List;
+
 import model.EventProcessor;
 import model.map.*;
 import model.Package;
@@ -138,6 +141,14 @@ public class KPSmartModel {
 		return eventProcessor.disconRoute(routeID, loggedInStaffID);
 	}
 
+	/*
+	 * called by controller class to access site name strings...to pass to GUI to populate drop-downs in forms
+	 */
+	public String[] getSiteNames(){
+		return sitemap.getSiteNames();
+	}
+	
+	
 	// ===============helper methods================
 
 	private Priority getPriority(String priorityString) {

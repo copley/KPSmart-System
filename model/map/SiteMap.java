@@ -1,5 +1,6 @@
 package model.map;
 
+import java.text.Collator;
 import java.util.*;
 import model.exceptions.*;
 
@@ -205,5 +206,19 @@ public class SiteMap {
 	public String getSitefromID(int id) {
 		if(sites.containsKey(id)) return sites.get(id).getLocation();
 		return null;
+	}
+
+	public String[] getSiteNames() {
+		//find all the names
+		Collection<String> siteNames = 
+			new TreeSet<String>(Collator.getInstance());//got this from stack exchange -
+		//the collator part sets up the right sort of comparator for current location 
+		//ie English.. its supposed to sort out capitals better
+			for (Site site : sites.values()){
+			siteNames.add(site.getLocation());	
+			}
+		//order them alphabetically - done automatically  by the treeSet!
+		//put them in an array and return
+			return siteNames.toArray(new String[0]); //toArray() would return an Object array.. the "new String[0]" part forces it to return a String array
 	}
 }
