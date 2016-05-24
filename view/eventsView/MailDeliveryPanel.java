@@ -168,16 +168,16 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		return volumeTextField;
 	}
 
-	public JComboBox<String> getOriginComboBox() {
-		return originComboBox;
+	public String getOriginComboBoxString() {
+		return originComboBox.getSelectedItem().toString();
 	}
 
-	public JComboBox<String> getDestinationComboBox() {
-		return destinationComboBox;
+	public String getDestinationComboBoxString() {
+		return destinationComboBox.getSelectedItem().toString();
 	}
 
-	public JComboBox<String> getPriorityComboBox() {
-		return priorityComboBox;
+	public String getPriorityComboBoxString() {
+		return priorityComboBox.getSelectedItem().toString();
 	}
 
 }

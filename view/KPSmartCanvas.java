@@ -1,8 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -102,10 +100,6 @@ public class KPSmartCanvas extends JPanel {
 		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener);
 	}
 
-	public void redraw() {
-		// TODO Auto-generated method stub
-	}
-
 	public AbstractMainDisplayPanel getMainDisplayPanel() {
 		return mainDisplayPanel;
 	}
@@ -134,6 +128,8 @@ public class KPSmartCanvas extends JPanel {
 		default:
 			System.out.println("Something went astray.");
 		}
+
+		this.repaint();
 	}
 
 }

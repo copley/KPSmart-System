@@ -105,6 +105,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 	@Override
 	protected void initialiseLayout() {
 		GroupLayout groupLayout = new GroupLayout(this);
+
 		groupLayout
 				.setHorizontalGroup(
 						groupLayout.createParallelGroup(Alignment.LEADING)
@@ -250,8 +251,8 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		return transportPriceVolumeTextField;
 	}
 
-	public JComboBox<String> getModeComboBox() {
-		return modeComboBox;
+	public String getModeComboBoxString() {
+		return modeComboBox.getSelectedItem().toString();
 	}
 
 }
