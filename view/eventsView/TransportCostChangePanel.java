@@ -190,20 +190,20 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 
 	}
 
-	public JTextField getNewPriceWeightTextField() {
-		return newPriceWeightTextField;
+	public String getNewPriceWeightTextFieldString() {
+		return newPriceWeightTextField.getText();
 	}
 
-	public JTextField getNewPriceVolumeTextField() {
-		return newPriceVolumeTextField;
+	public String getNewPriceVolumeTextFieldString() {
+		return newPriceVolumeTextField.getText();
 	}
 
-	public JTextField getFrequencyTextField() {
-		return frequencyTextField;
+	public String getFrequencyTextFieldString() {
+		return frequencyTextField.getText();
 	}
 
-	public JTextField getHoursToDeliverTextField() {
-		return hoursToDeliverTextField;
+	public String getHoursToDeliverTextFieldString() {
+		return hoursToDeliverTextField.getText();
 	}
 
 	public String getTypeComboBoxString() {

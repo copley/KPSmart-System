@@ -210,6 +210,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(submitButton)
 						.addComponent(resetButton).addComponent(cancelButton))
 				.addContainerGap()));
+
 		setLayout(groupLayout);
 	}
 
@@ -219,36 +220,36 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 
 	}
 
-	public JTextField getDestinationTextField() {
-		return DestinationTextField;
+	public String getDestinationTextFieldString() {
+		return DestinationTextField.getText();
 	}
 
-	public JTextField getOriginTextField() {
-		return originTextField;
+	public String getOriginTextFieldString() {
+		return originTextField.getText();
 	}
 
-	public JTextField getTransportCompanyTextField() {
-		return transportCompanyTextField;
+	public String getTransportCompanyTextFieldString() {
+		return transportCompanyTextField.getText();
 	}
 
-	public JTextField getHoursToDeliverTextField() {
-		return hoursToDeliverTextField;
+	public String getHoursToDeliverTextFieldString() {
+		return hoursToDeliverTextField.getText();
 	}
 
-	public JTextField getCustomerPriceWeightTextField() {
-		return customerPriceWeightTextField;
+	public String getCustomerPriceWeightTextFieldString() {
+		return customerPriceWeightTextField.getText();
 	}
 
-	public JTextField getCustomerPriceVolumeTextField() {
-		return customerPriceVolumeTextField;
+	public String getCustomerPriceVolumeTextFieldString() {
+		return customerPriceVolumeTextField.getText();
 	}
 
-	public JTextField getTransportPriceWeightTextField() {
-		return transportPriceWeightTextField;
+	public String getTransportPriceWeightTextFieldString() {
+		return transportPriceWeightTextField.getText();
 	}
 
-	public JTextField getTransportPriceVolumeTextField() {
-		return transportPriceVolumeTextField;
+	public String getTransportPriceVolumeTextFieldString() {
+		return transportPriceVolumeTextField.getText();
 	}
 
 	public String getModeComboBoxString() {

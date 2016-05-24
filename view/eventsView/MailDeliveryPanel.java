@@ -160,12 +160,12 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 
 	}
 
-	public JTextField getWeightTextField() {
-		return weightTextField;
+	public String getWeightTextFieldString() {
+		return weightTextField.getText();
 	}
 
-	public JTextField getVolumeTextField() {
-		return volumeTextField;
+	public String getVolumeTextFieldString() {
+		return volumeTextField.getText();
 	}
 
 	public String getOriginComboBoxString() {
