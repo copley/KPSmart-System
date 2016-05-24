@@ -11,6 +11,10 @@ import javax.swing.JTextField;
 
 import model.KPSmartModel;
 import view.KPSmartFrame;
+import view.eventsView.CustomerPriceChangePanel;
+import view.eventsView.MailDeliveryPanel;
+import view.eventsView.RouteDiscontinuePanel;
+import view.eventsView.TransportCostChangePanel;
 
 public class KPSmartController {
 
@@ -81,13 +85,6 @@ public class KPSmartController {
 	 * Action listener class for the menu.
 	 */
 	public class ViewActionListener implements ActionListener {
-		// TODO: add some stuff here to get input from gui and tell model to do something then output back to gui
-		/**
-		 * For ammendment, Created Public Strings for pre implementation.
-		 * Necessary before GUI allows controller to access View Strings.
-		 *
-		 *
-		 */
 
 		private String originSelection = "" ;
 		private String destinationSelection = "" ;
@@ -142,24 +139,42 @@ public class KPSmartController {
 
 			}
 
+
+
 			// Business Events Panel
 			else if (e.getActionCommand().equals("Mail Delivery")){
 				System.out.println("Mail Delivery");//debugging - mc
+				MailDeliveryPanel originSelection = (MailDeliveryPanel) kpsmartGUI.getCanvas().getMainDisplayPanel();
+				kpsmartGUI.getCanvas().setMainDisplayPanel("MailDeliveryPanel");
+
 				//kpsmartModel.getMailDelivery(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderMailDelivery();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Route Discontinue")){
 				System.out.println("Route Discontinue");//debugging - mc
-				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
+				RouteDiscontinuePanel originSelection = (RouteDiscontinuePanel) kpsmartGUI.getCanvas().getMainDisplayPanel();
+				kpsmartGUI.getCanvas().setMainDisplayPanel("RouteDiscontinuePanel");
+
+
+				//kpsmartModel.getAveragfeTimes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Customer Price Update")){
 				System.out.println("Customer Price Update");//debugging - mc
+				CustomerPriceChangePanel originSelection = (CustomerPriceChangePanel) kpsmartGUI.getCanvas().getMainDisplayPanel();
+				kpsmartGUI.getCanvas().setMainDisplayPanel("CustomerPriceChangePanel");
+
+
 				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			}else if (e.getActionCommand().equals("Transport Cost Update")){
 				System.out.println("Transport Cost Update");//debugging - mc
+				TransportCostChangePanel originSelection = (TransportCostChangePanel) kpsmartGUI.getCanvas().getMainDisplayPanel();
+				kpsmartGUI.getCanvas().setMainDisplayPanel("TransportCostChangePanel");
+
+
+
 				//kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
@@ -176,22 +191,22 @@ public class KPSmartController {
 			//	kpsmartModel.getAverageTimes(); //TODO: could this return INT, STRING
 			//	kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
+//			"CustomerPriceChangePanel":
+//			"MailDeliveryPanel":
+//			"RouteDiscontinuePanel":
+//			"TransportCostChangePanel":
+
 			// getter methods set inside
-			String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getSelectedItem().toString();
-			String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox().getSelectedItem().toString();
 
-			String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
-			String volumeSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getVolumeTextField().getText();
+			MailDeliveryPanel panel = (MailDeliveryPanel) kpsmartGUI.getCanvas().getMainDisplayPanel();
+			String originSelection = panel.getOriginComboBoxString();
+			String destinationSelection = panel.getDestinationComboBoxString();
+			String weightSelection = panel.getWeightTextFieldString();
+			String volumeSelection = panel.getVolumeTextFieldString();
+			String prioritySelection = panel.getPriorityComboBoxString();
 
-			String prioritySelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getPriorityComboBox().getSelectedItem().toString();
+			System.out.println("Calling parameters from line 209 - Controller class" + originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
 
-			System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
-
-			//System.out.println(volumeSelection + weightSelection);
-			//TODO:
-			//	kpsmartModel.passOriginSelection("originSelection");
-			//	kpsmartModel.passDestinationSelection("destinationSelection");
-			//	kpsmartModel.passWeightSelection("weigthSelection");
 
 
 
@@ -234,7 +249,7 @@ public class KPSmartController {
 			 * origin, destination, weight, volume, priority
 			 */
 
-			kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
+			//kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
 
 			/**
 			 * TODO: Transport cost change
