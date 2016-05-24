@@ -10,7 +10,9 @@ import java.awt.event.MouseListener;
 import javax.swing.JTextField;
 
 import model.KPSmartModel;
+import view.AbstractMainDisplayPanel;
 import view.KPSmartFrame;
+import view.eventsView.MailDeliveryPanel;
 
 public class KPSmartController {
 
@@ -112,9 +114,6 @@ public class KPSmartController {
 				System.out.println(ListenerCount++); //debugging - mc
 				//kpsmartModel.getTotalRevenue(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderTotalRevenue();//TODO: Could pass in STRING , INT
-
-
-
 			}else if (e.getActionCommand().equals("Total Expenditure")){
 				System.out.println(ListenerCount++);//debugging - mc
 				//kpsmartModel.getTotalExpenditure(); //TODO: could this return INT, STRING
@@ -139,7 +138,6 @@ public class KPSmartController {
 				System.out.println(ListenerCount++);//debugging - mc
 				//kpsmartModel.getCriticalRoutes(); //TODO: could this return INT, STRING
 				//kpsmartGui.renderCriticalRoutes();//TODO: Could pass in STRING , INT
-
 			}
 
 			// Business Events Panel
@@ -177,7 +175,10 @@ public class KPSmartController {
 			//	kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING , INT
 
 			// getter methods set inside
-			String originSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getOriginComboBox().getSelectedItem().toString();
+
+			MailDeliveryPanel panel = (MailDeliveryPanel) kpsmartGUI.getCanvas().getMainDisplayPanel();
+			String originSelection = panel.getOriginComboBox().getSelectedItem().toString();// Bobo to combine two methods here to return string only.
+
 			String destinationSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getDestinationComboBox().getSelectedItem().toString();
 
 			String weightSelection = kpsmartGUI.getCanvas().getMainDisplayPanel().getWeightTextField().getText();
@@ -187,18 +188,8 @@ public class KPSmartController {
 
 			System.out.println(originSelection + destinationSelection + weightSelection + volumeSelection + prioritySelection);
 
-			//System.out.println(volumeSelection + weightSelection);
-			//TODO:
-			//	kpsmartModel.passOriginSelection("originSelection");
-			//	kpsmartModel.passDestinationSelection("destinationSelection");
-			//	kpsmartModel.passWeightSelection("weigthSelection");
 
 
-
-//
-//			kpsmartModel.passWeightSelection("weightSelection");
-//			kpsmartModel.passVolumeSelection("volumeSelection");
-//			kpsmartModel.addRoute(weightSelection, volumeSelection)
 			/**
 			 * Current Fields available from GUI,
 			 *
