@@ -69,8 +69,8 @@ public class KPSmartModel {
 	}
 
 	// called from controller class - mc
-	public void changeTransportPrice(String origin, String destination, String carrier, Type type, double newWeightCost,
-			double newVolumeCost) {
+	public void changeTransportPrice(String origin, String destination, String carrier, String typeString, String newWeightCostString,
+			String newVolumeCostString) {
 		// identify which route
 		int routeID = sitemap.findRouteID(origin, destination, carrier, type);
 		// call event processor on that route
