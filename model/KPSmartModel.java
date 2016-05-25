@@ -44,8 +44,41 @@ public class KPSmartModel {
 		db.save();
 	}
 
-	// called from controller class, returns a boolean to indicate success
-	// (true) or failure (false)
+	/*
+	 * =========================================================================
+	 * START OF Methods to process events - Called by the controller
+	 * =========================================================================
+	 */
+
+	public boolean processMail(Input input) {
+		// work out the origin and destination IDs
+		int originSiteID = this.sitemap.getSiteIDfromLocation(input.getOrigin());
+		int destSiteID = this.sitemap.getSiteIDfromLocation(input.getDestination());
+		// convert strings into a needed types
+		double weight = Double.parseDouble(input.getWeight());
+		double volume = Double.parseDouble(input.getVolume());
+		Priority priority = getPriority(input.getPriority());
+		// make sure converted data are valid - abort and return false if not!
+		if (priority == null || originSiteID == -1 || destSiteID == -1) {
+			return false;
+		}
+
+		// call event processor to make up the package and record the event
+		return eventProcessor.processMail(originSiteID, destSiteID, weight, volume, priority, this.loggedInStaffID);
+	}
+
+	/**
+	 * Takes in some information and does a customer price change. Also creates
+	 * an event and stores it into the data store
+	 *
+	 * @param origin
+	 * @param destination
+	 * @param carrier
+	 * @param typeString
+	 * @param newWeightCostString
+	 * @param newVolumeCostString
+	 * @return
+	 */
 	public boolean changeCustomerPrice(String origin, String destination, String carrier, String typeString,
 			String newWeightCostString, String newVolumeCostString) {
 		// convert strings into needed types
@@ -68,9 +101,20 @@ public class KPSmartModel {
 		return eventProcessor.changeCustomerPrice(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
 	}
 
-	// called from controller class - mc
-	public boolean changeTransportPrice(String origin, String destination, String carrier, String typeString, String newWeightCostString,
-			String newVolumeCostString) {
+	/**
+	 * Takes in some information and does a transport cost change. Also creates
+	 * an event and stores it into the data store
+	 *
+	 * @param origin
+	 * @param destination
+	 * @param carrier
+	 * @param typeString
+	 * @param newWeightCostString
+	 * @param newVolumeCostString
+	 * @return
+	 */
+	public boolean changeTransportPrice(String origin, String destination, String carrier, String typeString,
+			String newWeightCostString, String newVolumeCostString) {
 		// identify which route
 		Type type = getType(typeString);
 		// make sure type is valid - abort and return false if not!
@@ -84,7 +128,17 @@ public class KPSmartModel {
 		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
 	}
 
-	// called from controller class - mc
+	/**
+	 * Takes in some information and does a process mail delivery. Also creates
+	 * an event and stores it into the data store
+	 *
+	 * @param origin
+	 * @param destination
+	 * @param weightString
+	 * @param volumeString
+	 * @param priorityString
+	 * @return
+	 */
 	public boolean processMail(String origin, String destination, String weightString, String volumeString,
 			String priorityString) {
 		// work out the origin and destination IDs
@@ -103,7 +157,21 @@ public class KPSmartModel {
 		return eventProcessor.processMail(originSiteID, destSiteID, weight, volume, priority, this.loggedInStaffID);
 	}
 
-	// called from controller class - mc
+	/**
+	 * Takes in some information and adds a route. Also creates an event and
+	 * stores it into the data store
+	 *
+	 * @param origin
+	 * @param destination
+	 * @param company
+	 * @param durationString
+	 * @param typeString
+	 * @param customerPriceWeight
+	 * @param customerPriceVolume
+	 * @param transportCostWeight
+	 * @param transportCostVolume
+	 * @return
+	 */
 	public boolean addRoute(String origin, String destination, String company, String durationString, String typeString,
 			String customerPriceWeight, String customerPriceVolume, String transportCostWeight,
 			String transportCostVolume) {
@@ -129,9 +197,18 @@ public class KPSmartModel {
 
 	}
 
-	// called from controller class - mc
+	/**
+	 * Takes in some information and discontinues a route. Also creates an event
+	 * and stores it into the data store
+	 *
+	 * @param origin
+	 * @param destination
+	 * @param company
+	 * @param typeString
+	 * @return
+	 */
 	public boolean discontinueRoute(String origin, String destination, String company, String typeString) {
-		//convert strings into needed data types
+		// convert strings into needed data types
 		Type type = getType(typeString);
 		// make sure type is valid - abort and return false if not!
 		if (type == null) {
@@ -149,15 +226,32 @@ public class KPSmartModel {
 	}
 
 	/*
-	 * called by controller class to access site name strings...to pass to GUI to populate drop-downs in forms
+	 * =========================================================================
+	 * END OF Methods to process events - Called by the controller
+	 * =========================================================================
 	 */
-	public String[] getSiteNames(){
+
+	/*
+	 * =========================================================================
+	 * START OF Methods to provide information to the GUI - Called by the
+	 * controller
+	 * =========================================================================
+	 */
+	public List<String> getSiteNames() {
 		return sitemap.getSiteNames();
 	}
+	/*
+	 * =========================================================================
+	 * END OF Methods to provide information to the GUI - Called by the
+	 * controller
+	 * =========================================================================
+	 */
 
-
-	// ===============helper methods================
-
+	/*
+	 * =========================================================================
+	 * START OF Helper methods for the model
+	 * =========================================================================
+	 */
 	private Priority getPriority(String priorityString) {
 		switch (priorityString) {
 		case "International Air":
@@ -185,5 +279,10 @@ public class KPSmartModel {
 			return null;
 		}
 	}
+	/*
+	 * =========================================================================
+	 * END OF Helper methods for the model
+	 * =========================================================================
+	 */
 
 }

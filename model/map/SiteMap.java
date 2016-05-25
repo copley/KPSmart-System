@@ -35,8 +35,6 @@ public class SiteMap {
 		return true;
 	}
 
-	
-
 	/*
 	 * returns true if route successfully made returns false if not successful
 	 * [supporting soft failure]
@@ -45,7 +43,7 @@ public class SiteMap {
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
 	 */
-	public boolean makeNewRoute(String origin, String destination, String company, Type type, double duration, 
+	public boolean makeNewRoute(String origin, String destination, String company, Type type, double duration,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// check all input for values in correct format
 		if (duration <= 0 || custPriceWeight <= 0 || custPriceVolume <= 0 || transPriceWeight <= 0
@@ -112,13 +110,14 @@ public class SiteMap {
 		return true;
 	}
 
-	// ======Dijkstra methods... for finding a compound route given from and to=======
+	// ======Dijkstra methods... for finding a compound route given from and
+	// to=======
 
 	/**
-	 * Uses the Dijkstra search method with duration as the value to minimise, to find
-	 * the shortest path from "from" to "to". Priority 1 searches may use SEA,
-	 * LAND and AIR routes whereas priority 2 searches may only use SEA and
-	 * LAND.
+	 * Uses the Dijkstra search method with duration as the value to minimise,
+	 * to find the shortest path from "from" to "to". Priority 1 searches may
+	 * use SEA, LAND and AIR routes whereas priority 2 searches may only use SEA
+	 * and LAND.
 	 *
 	 * @param from:
 	 *            site that the compound route must start
@@ -126,13 +125,12 @@ public class SiteMap {
 	 *            site that the compound route must finish
 	 * @param priority:
 	 *            allowable values are 1 and 2
-	 * @return an ordered list of Route IDs that identify routes that compound to create a path
-	 *         from "from" to "to"
+	 * @return an ordered list of Route IDs that identify routes that compound
+	 *         to create a path from "from" to "to"
 	 */
 	public List<Integer> findCompoundRoute(int fromSiteID, int toSiteID, model.Priority priority) {
-		return new DijkstraSearchWithPriority(fromSiteID,toSiteID,this,priority).findShortestRoute();
+		return new DijkstraSearchWithPriority(fromSiteID, toSiteID, this, priority).findShortestRoute();
 	}
-
 
 	// ========== internal helper methods for dealing with the map
 	// structure=======
@@ -151,10 +149,10 @@ public class SiteMap {
 		}
 		List<Route> s1Routes = siteToRoutes.get(s1);
 		s1Routes.add(route);
-		siteToRoutes.put(s1,s1Routes);
+		siteToRoutes.put(s1, s1Routes);
 		List<Route> s2Routes = siteToRoutes.get(s2);
 		s2Routes.add(route);
-		siteToRoutes.put(s2,s2Routes);
+		siteToRoutes.put(s2, s2Routes);
 	}
 
 	public Set<Site> getSites() {
@@ -170,7 +168,7 @@ public class SiteMap {
 		return siteToRoutes.get(site);
 	}
 
-	public int getSiteIDfromLocation(String location){
+	public int getSiteIDfromLocation(String location) {
 		Set<Site> sites = getSites();
 		for (Site site : sites) {
 			if (site.getLocation().equals(location)) {
@@ -186,39 +184,67 @@ public class SiteMap {
 	}
 
 	public int findRouteID(String origin, String destination, String carrier, Type type) {
-		//find originID
+		// find originID
 		int originID = getSiteIDfromLocation(origin);
-		if(originID == -1) return -1;//origin does not exist in map
-		//find destinationID
+		if (originID == -1)
+			return -1;// origin does not exist in map
+		// find destinationID
 		int destinationID = getSiteIDfromLocation(destination);
-		if(destinationID == -1) return -1;//destination does not exist in map
-		//look through routes and find one whose details match! return first found
-		for(Route route : this.siteToRoutes.get(originID)){
-			if (route.getCompany().equalsIgnoreCase(carrier)
-					&& route.getDestination() == destination
-					&& route.getType().equals(type)){
+		if (destinationID == -1)
+			return -1;// destination does not exist in map
+		// look through routes and find one whose details match! return first
+		// found
+		for (Route route : this.siteToRoutes.get(originID)) {
+			if (route.getCompany().equalsIgnoreCase(carrier) && route.getDestination() == destination
+					&& route.getType().equals(type)) {
 				return route.getID();
 			}
-		};
-		return -1;//route was not found
+		}
+		;
+		return -1;// route was not found
 	}
 
 	public String getSitefromID(int id) {
-		if(sites.containsKey(id)) return sites.get(id).getLocation();
+		if (sites.containsKey(id))
+			return sites.get(id).getLocation();
 		return null;
 	}
 
-	public String[] getSiteNames() {
-		//find all the names
-		Collection<String> siteNames = 
-			new TreeSet<String>(Collator.getInstance());//got this from stack exchange -
-		//the collator part sets up the right sort of comparator for current location 
-		//ie English.. its supposed to sort out capitals better
-			for (Site site : sites.values()){
-			siteNames.add(site.getLocation());	
-			}
-		//order them alphabetically - done automatically  by the treeSet!
-		//put them in an array and return
-			return siteNames.toArray(new String[0]); //toArray() would return an Object array.. the "new String[0]" part forces it to return a String array
+	/*
+	 * ==============================================================================================
+	 * START OF Methods to provide information to the GUI
+	 * ==============================================================================================
+	 */
+	/**
+	 * Loops through the list of sites and adds the names of the sites into a
+	 * list. The list is then sorted alphabetically.
+	 *
+	 * @return a list of the site names
+	 */
+	public List<String> getSiteNames() {
+		List<String> siteNames = new ArrayList<String>();
+		for (Site site : sites.values()) {
+			siteNames.add(site.getLocation());
+		}
+		Collections.sort(siteNames);
+
+		// //find all the names
+		// Collection<String> siteNames =
+		// new TreeSet<String>(Collator.getInstance());//got this from stack
+		// exchange -
+		// //the collator part sets up the right sort of comparator for current
+		// location
+		// //ie English.. its supposed to sort out capitals better
+		// for (Site site : sites.values()){
+		// siteNames.add(site.getLocation());
+		// }
+		// //order them alphabetically - done automatically by the treeSet!
+		// //put them in an array and return
+		return siteNames;
 	}
+	/*
+	 * ==============================================================================================
+	 * END OF Methods to provide information to the GUI
+	 * ==============================================================================================
+	 */
 }

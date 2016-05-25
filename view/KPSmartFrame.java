@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.KPSmartController.*;
+import model.Input;
+import model.Priority;
 
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
@@ -116,6 +119,18 @@ public final class KPSmartFrame extends JFrame {
 
 	public KPSmartCanvas getCanvas() {
 		return canvas;
+	}
+
+	public void displayMailDeliveryForm(List<String> siteNames) {
+		// TODO: For Bobo, display the form for the mail delivery with the site names for the origin and destinations
+		// You can get the values of the priorities via the Priority class by doing:
+		// Priority.<Some priority>.toString()
+
+	}
+
+	public Input getInput() {
+		// TODO For Bobo: Get information required to process events
+		return null;
 	}
 
 }
