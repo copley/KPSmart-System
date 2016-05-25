@@ -60,14 +60,14 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		lblPriority.setFont(new Font("Dialog", Font.BOLD, 15));
 
 		originComboBox = new JComboBox<String>();
-		originComboBox.addItem("Wellington");
-		originComboBox.addItem("Auckland");
-		originComboBox.addItem("Beijing");
+		for(String site : siteNames){
+			originComboBox.addItem(site);
+		}
 
 		destinationComboBox = new JComboBox<String>();
-		destinationComboBox.addItem("Wellington");
-		destinationComboBox.addItem("Auckland");
-		destinationComboBox.addItem("Beijing");
+		for(String site : siteNames){
+			destinationComboBox.addItem(site);
+		}
 
 		priorityComboBox = new JComboBox<String>();
 		priorityComboBox.addItem("International Air");
@@ -173,6 +173,13 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 
 	public String getPriorityComboBoxString() {
 		return priorityComboBox.getSelectedItem().toString();
+	}
+
+	public void addSites(List<String> newSites) {
+		for(String s : newSites){
+			originComboBox.addItem(s);
+			destinationComboBox.addItem(s);
+		}
 	}
 
 }

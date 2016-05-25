@@ -1,6 +1,6 @@
 package model.events;
 
-import model.Priority;
+import model.map.Priority;
 
 public class MailProcessEvent extends BusinessEvent {
 	private String origin;

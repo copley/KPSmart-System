@@ -68,4 +68,131 @@
     <weightcost>6.0</weightcost>
     <volumecost>6.0</volumecost>
   </cost>
+  <mail>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>244</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <weight>4.0</weight>
+    <volume>4.0</volume>
+    <priority>Domestic Air</priority>
+    <revenue>0.0</revenue>
+    <expenditure>0.0</expenditure>
+    <deliveryTime>20.0</deliveryTime>
+  </mail>
+  <add>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>259</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>4.0</custPriceWeight>
+    <custPriceVolume>6.0</custPriceVolume>
+    <transCostWeight>3.0</transCostWeight>
+    <transCostVolume>3.0</transCostVolume>
+  </add>
+  <add>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>260</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>4.0</custPriceWeight>
+    <custPriceVolume>4.0</custPriceVolume>
+    <transCostWeight>4.0</transCostWeight>
+    <transCostVolume>4.0</transCostVolume>
+  </add>
+  <add>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>269</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Hastings</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>4.0</custPriceWeight>
+    <custPriceVolume>4.0</custPriceVolume>
+    <transCostWeight>6.0</transCostWeight>
+    <transCostVolume>6.0</transCostVolume>
+  </add>
+  <add>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>227</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Dunedin</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>3.0</custPriceWeight>
+    <custPriceVolume>45.0</custPriceVolume>
+    <transCostWeight>8.0</transCostWeight>
+    <transCostVolume>8.0</transCostVolume>
+  </add>
+  <add>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>250</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Taupo</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>8.0</custPriceWeight>
+    <custPriceVolume>7.0</custPriceVolume>
+    <transCostWeight>9.0</transCostWeight>
+    <transCostVolume>9.0</transCostVolume>
+  </add>
+  <add>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>253</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Rotorua</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>7.0</custPriceWeight>
+    <custPriceVolume>6.0</custPriceVolume>
+    <transCostWeight>5.0</transCostWeight>
+    <transCostVolume>5.0</transCostVolume>
+  </add>
+  <add>
+    <day>25</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>253</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Waikanae</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>7.0</custPriceWeight>
+    <custPriceVolume>6.0</custPriceVolume>
+    <transCostWeight>5.0</transCostWeight>
+    <transCostVolume>5.0</transCostVolume>
+  </add>
 </log>

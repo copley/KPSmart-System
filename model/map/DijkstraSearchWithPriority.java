@@ -11,9 +11,9 @@ public class DijkstraSearchWithPriority {
 	private final int startSiteID;
 	private final int finishSiteID;
 	private final SiteMap siteMap;
-	private final model.Priority priority;
+	private final model.map.Priority priority;
 
-	public DijkstraSearchWithPriority(int startSiteID, int finishSiteID, SiteMap siteMap, model.Priority priority) {
+	public DijkstraSearchWithPriority(int startSiteID, int finishSiteID, SiteMap siteMap, model.map.Priority priority) {
 		this.startSiteID = startSiteID;
 		this.finishSiteID = finishSiteID;
 		this.siteMap = siteMap;
@@ -58,8 +58,8 @@ public class DijkstraSearchWithPriority {
 						}
 						// if the priority is STANDARD, then AIR mode routes cannot be
 						// used
-						if (((this.priority == model.Priority.DOMESTIC_STANDARD)
-								|| (this.priority == model.Priority.INTERNATIONAL_STANDARD))
+						if (((this.priority == model.map.Priority.DOMESTIC_STANDARD)
+								|| (this.priority == model.map.Priority.INTERNATIONAL_STANDARD))
 								&& route.getType() == Type.AIR) {
 							continue;
 						}

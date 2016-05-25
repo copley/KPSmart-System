@@ -57,7 +57,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		lblTransportCompany = new JLabel("Transport Company:");
 		lblHoursToDeliver = new JLabel("Hours to Deliver:");
 		lblHoursToDeliver.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblMode = new JLabel("Mode:");
+		lblMode = new JLabel("Type:");
 		lblMode.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblCustomerPriceperGram = new JLabel("Customer Price(per gram):");
 		lblCustomerPriceperGram.setFont(new Font("Dialog", Font.BOLD, 11));
@@ -97,6 +97,9 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		transportPriceVolumeTextField.setColumns(10);
 
 		modeComboBox = new JComboBox<String>();
+		modeComboBox.addItem("LAND");
+		modeComboBox.addItem("SEA");
+		modeComboBox.addItem("AIR");
 
 		initialiseLayout();
 

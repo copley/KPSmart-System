@@ -7,6 +7,16 @@ public class MailProcessInput {
 	private String volume;
 	private String priority;
 
+
+	public MailProcessInput(String origin, String destination, String weight,
+			String volume, String priority) {
+		this.origin = origin;
+		this.destination = destination;
+		this.weight = weight;
+		this.volume = volume;
+		this.priority = priority;
+	}
+
 	public String getOrigin() {
 		return origin;
 	}
@@ -25,25 +35,5 @@ public class MailProcessInput {
 
 	public String getPriority() {
 		return priority;
-	}
-
-	public void setOrigin(String origin) {
-		this.origin = origin;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-
-	public void setWeight(String weight) {
-		this.weight = weight;
-	}
-
-	public void setVolume(String volume) {
-		this.volume = volume;
-	}
-
-	public void setPriority(String priority) {
-		this.priority = priority;
 	}
 }

@@ -10,6 +10,7 @@ import model.employees.Employee;
 import model.employees.Employees;
 import model.events.*;
 import model.exceptions.*;
+import model.map.Priority;
 import model.map.Route;
 import model.map.Site;
 import model.map.SiteMap;

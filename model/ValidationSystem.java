@@ -8,6 +8,7 @@ import model.events.MailProcessEvent;
 import model.events.RouteAdditionEvent;
 import model.events.RouteDiscEvent;
 import model.events.TransportCostChangeEvent;
+import model.map.Priority;
 import model.map.Route;
 import model.map.Site;
 import model.map.Type;

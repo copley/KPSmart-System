@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import model.Package;
-import model.Priority;
+import model.map.Priority;
 import model.map.Site;
 import model.map.SiteMap;
 import model.map.Type;
@@ -110,18 +110,18 @@ public class PackageTests {
 
 		// make the routes we need
 		// route 0
-		siteMap.makeNewRoute("A", "B", "Air Dingus", Type.AIR, 20, 100, 100, 100, 100);
+		siteMap.addNewRoute("A", "B", "Air Dingus", Type.AIR, 20, 100, 100, 100, 100);
 		siteMap.discontinueRoute(0);
 		// route 1
-		siteMap.makeNewRoute("A", "B", "Trucky McTruck", Type.LAND, 120, 10, 10, 10, 10);
+		siteMap.addNewRoute("A", "B", "Trucky McTruck", Type.LAND, 120, 10, 10, 10, 10);
 		// route 2
-		siteMap.makeNewRoute("A", "C", "Air Dingus", Type.AIR, 20,100, 100, 100, 100);
+		siteMap.addNewRoute("A", "C", "Air Dingus", Type.AIR, 20,100, 100, 100, 100);
 		// route 3
-		siteMap.makeNewRoute("B", "C", "HMS BoatFace", Type.SEA, 240, 1, 1, 1, 1);
+		siteMap.addNewRoute("B", "C", "HMS BoatFace", Type.SEA, 240, 1, 1, 1, 1);
 		// route 4
-		siteMap.makeNewRoute("C", "D", "Air Dingus", Type.AIR, 20, 100, 100, 100, 100);
+		siteMap.addNewRoute("C", "D", "Air Dingus", Type.AIR, 20, 100, 100, 100, 100);
 		// route 5
-		siteMap.makeNewRoute("C", "D", "Trucky McTruck", Type.LAND, 120, 10, 10, 10, 10);
+		siteMap.addNewRoute("C", "D", "Trucky McTruck", Type.LAND, 120, 10, 10, 10, 10);
 		siteMap.discontinueRoute(5);
 
 		System.out.println("Test Map Routes:");

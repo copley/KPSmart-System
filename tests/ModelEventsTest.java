@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-import model.Priority;
 import model.events.*;
+import model.map.Priority;
 import model.map.Type;
 
 // need to add JUnit4 library

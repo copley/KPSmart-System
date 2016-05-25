@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
+import java.util.List;
 import java.awt.event.WindowAdapter;
 
 import javax.swing.JLabel;
@@ -24,19 +25,19 @@ public class KPSmartController {
 	private int ListenerCount = 1; // debugging purposes // used to print where
 
 	private boolean mailDeliveryPanel = true;
-	private boolean newRoutePanel= false;
+	private boolean newRoutePanel = false;
 	private boolean customerPricePanel = false;
 	private boolean transportCostChangePanel = false;
 	private boolean discontinueRoutePanel = false;
 
-
 	public KPSmartController() {
 		model = new KPSmartModel();
-		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), new ViewWindowAdapter(), model.getSiteNames());
+		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), new ViewWindowAdapter(),
+				model.getSiteNames());
 		System.out.println("Calling from Controller"); // debugging
 	}
 
-	public class ViewWindowAdapter extends WindowAdapter{
+	public class ViewWindowAdapter extends WindowAdapter {
 		public void windowClosing(WindowEvent we) {
 			String[] options = { "YES", "Cancel" };
 			JPanel panel = new JPanel();
@@ -60,8 +61,8 @@ public class KPSmartController {
 			// ==========================================
 			if (e.getActionCommand().equals("Total Revenue")) {
 				System.out.println("Total Revenue"); // debugging - mc
-				//List<Double> figures = model.getTotalRevenue();
-				//gui.display(figures)
+				// List<Double> figures = model.getTotalRevenue();
+				// gui.display(figures)
 				// kpsmartModel.getTotalRevenue(); //TODO: could this return
 				// INT, STRING
 				// kpsmartGui.renderTotalRevenue();//TODO: Could pass in STRING
@@ -113,7 +114,7 @@ public class KPSmartController {
 				gui.setMainDisplayPanel("MailDeliveryPanel");
 
 				mailDeliveryPanel = true;
-				newRoutePanel= false;
+				newRoutePanel = false;
 				customerPricePanel = false;
 				transportCostChangePanel = false;
 				discontinueRoutePanel = false;
@@ -131,13 +132,12 @@ public class KPSmartController {
 				transportCostChangePanel = false;
 				discontinueRoutePanel = false;
 
-
 			} else if (e.getActionCommand().equals("Route Discontinue")) {
 				System.out.println("Route Discontinue");// debugging - mc
 				gui.setMainDisplayPanel("RouteDiscontinuePanel");
 				discontinueRoutePanel = true;
 				mailDeliveryPanel = false;
-				newRoutePanel= false;
+				newRoutePanel = false;
 				customerPricePanel = false;
 				transportCostChangePanel = false;
 				// kpsmartModel.getAveragfeTimes(); //TODO: could this return
@@ -150,7 +150,7 @@ public class KPSmartController {
 				gui.setMainDisplayPanel("CustomerPriceChangePanel");
 				customerPricePanel = true;
 				mailDeliveryPanel = false;
-				newRoutePanel= false;
+				newRoutePanel = false;
 				transportCostChangePanel = false;
 				discontinueRoutePanel = false;
 
@@ -164,7 +164,7 @@ public class KPSmartController {
 				gui.setMainDisplayPanel("TransportCostChangePanel");
 				transportCostChangePanel = true;
 				mailDeliveryPanel = false;
-				newRoutePanel= false;
+				newRoutePanel = false;
 				customerPricePanel = false;
 				discontinueRoutePanel = false;
 
@@ -186,24 +186,27 @@ public class KPSmartController {
 			// START OF Submit for forms
 			// ==========================================
 			else if (e.getActionCommand().equals("Submit")) {
-				//System.out.println("Submit");// debugging - mc
+				// System.out.println("Submit");// debugging - mc
 
-				if(mailDeliveryPanel){
+				if (mailDeliveryPanel) {
 					MailProcessInput input = gui.getMailDeliveryInput();
 					boolean done = model.processMail(input);
-					if(done){
+					if (done) {
 						System.out.println("Mail processed!!");
 					}
-				}else if(discontinueRoutePanel){
+				} else if (newRoutePanel) {
+					NewRouteInput input = gui.getNewRouteInput();
+					if(model.addNewRoute(input)){
+						System.out.println("Route added!!");
+						gui.updateSites(model.getNewSites());
+					}
+				} else if (discontinueRoutePanel) {
 					discontinueRoutePanel = false;
 					System.out.println("disCon");
-				}else if(newRoutePanel){
-					newRoutePanel= false;
-					System.out.println("newRou");
-				}else if(customerPricePanel){
+				} else if (customerPricePanel) {
 					customerPricePanel = false;
 					System.out.println("customeR");
-				}else{
+				} else {
 					transportCostChangePanel = false;
 					System.out.println("transPor");
 				}
@@ -213,6 +216,7 @@ public class KPSmartController {
 			// ==========================================
 		}
 	}
+
 	/*
 	 * =========================================================================
 	 * START OF Methods for debugging purposes
@@ -223,10 +227,12 @@ public class KPSmartController {
 		public void keyTyped(KeyEvent e) {
 			System.out.println(ListenerCount + 42);
 		}
+
 		@Override
 		public void keyPressed(KeyEvent e) {
 			System.out.println(ListenerCount + 46);
 		}
+
 		@Override
 		public void keyReleased(KeyEvent e) {
 			System.out.println(ListenerCount + 49);
@@ -238,18 +244,22 @@ public class KPSmartController {
 		public void mouseClicked(MouseEvent e) {
 			System.out.println("mouseClicked"); // debugging purposes - mc
 		}
+
 		@Override
 		public void mousePressed(MouseEvent e) {
 			System.out.println("mousePressed"); // debugging purposes - mc
 		}
+
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			System.out.println("mouseReleased"); // debugging purposes - mc
 		}
+
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// System.out.println(ListenerCount + 78); // debugging purposes -
 		}
+
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// System.out.println(ListenerCount + 82); // debugging purposes -

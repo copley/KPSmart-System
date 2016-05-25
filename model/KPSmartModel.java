@@ -2,6 +2,7 @@ package model;
 
 import storage.DataStore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.EventProcessor;
@@ -51,6 +52,7 @@ public class KPSmartModel {
 	/**
 	 * Takes in some information and does a process mail delivery. Also creates
 	 * an event and stores it into the data store
+	 *
 	 * @param input
 	 * @return
 	 */
@@ -69,7 +71,33 @@ public class KPSmartModel {
 		}
 
 		// call event processor to make up the package and record the event
-		return eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(), weight, volume, priority, this.loggedInStaffID);
+		return eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(), weight,
+				volume, priority, this.loggedInStaffID);
+	}
+
+	/**
+	 * Takes in some information and adds a route. Also creates an event and
+	 * stores it into the data store
+	 *
+	 * @param input
+	 * @return
+	 */
+	public boolean addNewRoute(NewRouteInput input) {
+		Type type = getType(input.getType());
+		// make sure converted data is valid - abort and return false if not!
+		if (type == null) {
+			return false;
+		}
+		double custPriceWeight = Double.parseDouble(input.getCustomerPriceWeight());
+		double custPriceVolume = Double.parseDouble(input.getCustomerPriceVolume());
+		double transCostWeight = Double.parseDouble(input.getTransportPriceWeight());
+		double transCostVolume = Double.parseDouble(input.getTransportPriceVolume());
+		double duration = Double.parseDouble(input.getDuration());
+
+		// call event processor to do the addition and record the event
+
+		return eventProcessor.addRoute(input.getOrigin(), input.getDestination(), input.getCompany(), type, duration, custPriceWeight, custPriceVolume,
+				transCostWeight, transCostVolume, loggedInStaffID);
 	}
 	/*
 	 * =========================================================================
@@ -139,46 +167,6 @@ public class KPSmartModel {
 	}
 
 	/**
-	 * Takes in some information and adds a route. Also creates an event and
-	 * stores it into the data store
-	 *
-	 * @param origin
-	 * @param destination
-	 * @param company
-	 * @param durationString
-	 * @param typeString
-	 * @param customerPriceWeight
-	 * @param customerPriceVolume
-	 * @param transportCostWeight
-	 * @param transportCostVolume
-	 * @return
-	 */
-	public boolean addRoute(String origin, String destination, String company, String durationString, String typeString,
-			String customerPriceWeight, String customerPriceVolume, String transportCostWeight,
-			String transportCostVolume) {
-		// note that we don't need to work out the origin and destination IDs,
-		// if the sites do not already exist,
-		// they will be created during the route addition
-		// convert strings into needed types
-		Type type = getType(typeString);
-		// make sure converted data is valid - abort and return false if not!
-		if (type == null) {
-			return false;
-		}
-		double custPriceWeight = Double.parseDouble(customerPriceWeight);
-		double custPriceVolume = Double.parseDouble(customerPriceVolume);
-		double transCostWeight = Double.parseDouble(transportCostWeight);
-		double transCostVolume = Double.parseDouble(transportCostVolume);
-		double duration = Double.parseDouble(durationString);
-
-		// call event processor to do the addition and record the event
-
-		return eventProcessor.addRoute(origin, destination, company, type, duration, custPriceWeight, custPriceVolume,
-				transCostWeight, transCostVolume, loggedInStaffID);
-
-	}
-
-	/**
 	 * Takes in some information and discontinues a route. Also creates an event
 	 * and stores it into the data store
 	 *
@@ -205,8 +193,6 @@ public class KPSmartModel {
 		// call event processor to do the discontinuation and record the event
 		return eventProcessor.disconRoute(routeID, loggedInStaffID);
 	}
-
-
 
 	/*
 	 * =========================================================================
@@ -256,10 +242,20 @@ public class KPSmartModel {
 			return null;
 		}
 	}
+
+	/**
+	 * Gets the newly added sites to update the gui
+	 * @return
+	 */
+	public List<String> getNewSites() {
+		return db.getSiteMap().getNewSites();
+	}
 	/*
 	 * =========================================================================
 	 * END OF Helper methods for the model
 	 * =========================================================================
 	 */
+
+
 
 }

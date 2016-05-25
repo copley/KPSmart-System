@@ -1,12 +1,14 @@
 package model.map;
 
 import java.util.*;
-import model.exceptions.*;
+
+import model.exceptions.IllegalRouteException;
 
 public class SiteMap {
 	private Map<Integer, Site> sites; // maps site to its id
 	private Map<Integer, Route> routes; // maps route to its id
 	private Map<Site, List<Route>> siteToRoutes; // maps sites to routes
+	private List<String> newSites;
 
 	public SiteMap() {
 		sites = new HashMap<Integer, Site>();
@@ -42,21 +44,17 @@ public class SiteMap {
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
 	 */
-	public boolean makeNewRoute(String origin, String destination, String company, Type type, double duration,
+	public boolean addNewRoute(String origin, String destination, String company, Type type, double duration,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// check all input for values in correct format
+		newSites = new ArrayList<String>();
 		if (duration <= 0 || custPriceWeight <= 0 || custPriceVolume <= 0 || transPriceWeight <= 0
-				|| transPriceVolume <= 0) {
+				|| transPriceVolume <= 0 || origin == null || destination == null || company == null
+				|| origin.equals("") || destination.equals("") || company.equals("") || origin.equals(destination)) {
 			return false;
 		}
-		if (origin == null || destination == null || company == null || origin.equals("") || destination.equals("")
-				|| company.equals("")) {
-			return false;
-		}
-		if (origin.equals(destination)) {
-			return false;
-		}
-		// find the site ids... make new sites if necessary
+
+		// find the site ids and make new sites if necessary
 		int originID = -1;// value indicates not yet found
 		int destinationID = -1;// value indicates not yet found
 		for (Site site : sites.values()) {
@@ -68,23 +66,22 @@ public class SiteMap {
 				destinationID = site.getID();
 			}
 		}
-		if (originID == -1) {// origin site does not exist yet... make it!
-			originID = sites.size();// size is number of values already
-									// existing..
-			// IDs made sequentially from 0 so size should be free!
+
+		// Make the new sites if necessary
+		if (originID == -1) {
+			originID = sites.size() + 1;
 			Site originSite = new Site(originID, origin);
 			addSite(originSite);
+			newSites.add(origin);
 		}
-		if (destinationID == -1) {// destination site does not exist yet... make
-									// it!
-			destinationID = sites.size();// size is number of values already
-											// existing..
-			// IDs made sequentially from 0 so size should be free!
+		if (destinationID == -1) {
+			destinationID = sites.size() + 1;
 			Site destinationSite = new Site(destinationID, destination);
 			addSite(destinationSite);
+			newSites.add(destination);
 		}
-		// check to see if route already exists - abort route creation if it
-		// does
+
+		// Check if route exists yet. Fail if it already does
 		Set<Route> routes = getRoutes();
 		for (Route route : routes) {
 			if (route.getDestination() == destination && route.getOrigin() == origin
@@ -92,10 +89,9 @@ public class SiteMap {
 				return false;// may need to do a price update instead
 			}
 		}
+
 		// find the next available ID (current length of routes list!)
-		int newRouteID = routes.size();// size is number of values already
-										// existing..
-		// IDs made sequentially from 0 so size should be free!
+		int newRouteID = routes.size() + 1;
 		// make route object
 		Route newRoute = new Route(newRouteID, origin, destination, company, duration, type, true, custPriceWeight,
 				custPriceVolume, transPriceWeight, transPriceVolume);
@@ -103,7 +99,6 @@ public class SiteMap {
 		try {
 			addRoute(newRoute);
 		} catch (IllegalRouteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return true;
@@ -127,7 +122,7 @@ public class SiteMap {
 	 * @return an ordered list of Route IDs that identify routes that compound
 	 *         to create a path from "from" to "to"
 	 */
-	public List<Integer> findCompoundRoute(int fromSiteID, int toSiteID, model.Priority priority) {
+	public List<Integer> findCompoundRoute(int fromSiteID, int toSiteID, model.map.Priority priority) {
 		return new DijkstraSearchWithPriority(fromSiteID, toSiteID, this, priority).findShortestRoute();
 	}
 
@@ -210,9 +205,9 @@ public class SiteMap {
 	}
 
 	/*
-	 * ==============================================================================================
+	 * =========================================================================
 	 * START OF Methods to provide information to the GUI
-	 * ==============================================================================================
+	 * =========================================================================
 	 */
 	/**
 	 * Loops through the list of sites and adds the names of the sites into a
@@ -228,9 +223,15 @@ public class SiteMap {
 		Collections.sort(siteNames);
 		return siteNames;
 	}
+
+	public List<String> getNewSites() {
+		return newSites;
+	}
 	/*
-	 * ==============================================================================================
+	 * =========================================================================
 	 * END OF Methods to provide information to the GUI
-	 * ==============================================================================================
+	 * =========================================================================
 	 */
+
+
 }

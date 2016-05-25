@@ -141,4 +141,11 @@ public class KPSmartCanvas extends JPanel {
 		initialiseLayout();
 	}
 
+	public void updateSites(List<String> newSites) {
+//		customerPriceChangePanel.addSites(newSites);
+		mailDeliveryPanel.addSites(newSites);
+		routeDiscontinuePanel.addSites(newSites);
+//		transportCostChangePanel.addSites(newSites);
+	}
+
 }

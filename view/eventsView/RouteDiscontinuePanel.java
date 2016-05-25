@@ -130,4 +130,11 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		return typeComboBox.getSelectedItem().toString();
 	}
 
+	public void addSites(List<String> newSites) {
+		for(String s : newSites){
+			originComboBox.addItem(s);
+			destinationComboBox.addItem(s);
+		}
+	}
+
 }
