@@ -9,13 +9,8 @@ public class TransportCostChangeEvent extends BusinessEvent {
 	private Type type;
 	private double newWeightCost;
 	private double newVolumeCost;
-	private String departureDay;
-	private int frequency;
-	private int duration;
-
 	public TransportCostChangeEvent(int day, int month, int year, int time, String staff, String origin,
-			String destination, String company, Type type, double newWeightCost, double newVolumeCost, String departureDay,
-			int frequency, int duration) {
+			String destination, String company, Type type, double newWeightCost, double newVolumeCost) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
@@ -23,9 +18,6 @@ public class TransportCostChangeEvent extends BusinessEvent {
 		this.type = type;
 		this.newWeightCost = newWeightCost;
 		this.newVolumeCost = newVolumeCost;
-		this.departureDay = departureDay;
-		this.frequency = frequency;
-		this.duration = duration;
 	}
 
 	public String getOrigin() {
@@ -52,18 +44,6 @@ public class TransportCostChangeEvent extends BusinessEvent {
 		return newVolumeCost;
 	}
 
-	public String getDepartureDay() {
-		return departureDay;
-	}
-
-	public int getFrequency() {
-		return frequency;
-	}
-
-	public int getDuration() {
-		return duration;
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
@@ -77,9 +57,6 @@ public class TransportCostChangeEvent extends BusinessEvent {
 		string.append("Type: " + type + "\n");
 		string.append("Weight Cost: " + newWeightCost + "\n");
 		string.append("Volume Cost: " + newVolumeCost);
-		string.append("Day pf Departure: " + departureDay + "\n");
-		string.append("Frequency: " + frequency + "\n");
-		string.append("Duration: " + duration);
 		return string.toString();
 	}
 

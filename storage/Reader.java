@@ -440,14 +440,11 @@ public class Reader {
 		String company = event.getChild("company").getText();
 		Type type = readType(event.getChild("type").getText());	//throws illegal type exception
 
-		double weightcost = Integer.parseInt(event.getChild("weightcost").getText());
-		double volumecost = Integer.parseInt(event.getChild("volumecost").getText());
-		String departure = event.getChild("departure").getText();
-		int frequency = Integer.parseInt(event.getChild("frequency").getText());
-		int duration = Integer.parseInt(event.getChild("duration").getText());
+		double weightcost = Double.parseDouble(event.getChild("weightcost").getText());
+		double volumecost = Double.parseDouble(event.getChild("volumecost").getText());
 
 		return new TransportCostChangeEvent(day, month, year, time, employee, origin, destination, company, type,
-				weightcost, volumecost, departure, frequency, duration);
+				weightcost, volumecost);
 	}
 
 	private static Priority readPriority(String text) throws IllegalPriorityException {

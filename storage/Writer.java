@@ -105,8 +105,8 @@ public class Writer {
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
 		//TODO:took out priority element - priority is on a package
-		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)		
-		event.addContent(new Element("company").setText(be.getCompany()));		
+		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)
+		event.addContent(new Element("company").setText(be.getCompany()));
 		event.addContent(new Element("type").setText(be.getType()));
 		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
 		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
@@ -196,12 +196,9 @@ public class Writer {
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
 		event.addContent(new Element("company").setText(be.getCompany()));
-		event.addContent(new Element("type").setText(be.getType()));
+		event.addContent(new Element("type").setText(be.getType().name()));
 		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
 		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
-		event.addContent(new Element("departure").setText(be.getDepartureDay()));
-		event.addContent(new Element("frequency").setText("" + be.getFrequency()));
-		event.addContent(new Element("duration").setText("" + be.getDuration()));
 		return event;
 	}
 
