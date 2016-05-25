@@ -114,6 +114,10 @@ public final class KPSmartFrame extends JFrame {
 		repaint();
 	}
 
+	public void resetTextFields() {
+		canvas.resetTextFields();
+	}
+
 	public MailProcessInput getMailDeliveryInput() {
 		MailDeliveryPanel panel = (MailDeliveryPanel) canvas.getMainDisplayPanel();
 
@@ -128,7 +132,7 @@ public final class KPSmartFrame extends JFrame {
 	}
 
 	public NewRouteInput getNewRouteInput() {
-		AddNewRoutePanel panel = (AddNewRoutePanel)canvas.getMainDisplayPanel();
+		AddNewRoutePanel panel = (AddNewRoutePanel) canvas.getMainDisplayPanel();
 
 		String origin = panel.getOriginTextFieldString();
 		String destination = panel.getDestinationTextFieldString();
@@ -140,11 +144,20 @@ public final class KPSmartFrame extends JFrame {
 		String transportPriceWeight = panel.getTransportPriceVolumeTextFieldString();
 		String transportPriceVolume = panel.getTransportPriceWeightTextFieldString();
 
-		return new NewRouteInput(origin, destination, company, duration, type, customerPriceWeight, customerPriceVolume, transportPriceWeight, transportPriceVolume);
+		return new NewRouteInput(origin, destination, company, duration, type, customerPriceWeight, customerPriceVolume,
+				transportPriceWeight, transportPriceVolume);
 	}
 
 	public void updateSites(List<String> newSites) {
 		canvas.updateSites(newSites);
+	}
+
+	public void popupMessage(boolean successful) {
+		if (successful) {
+			JOptionPane.showMessageDialog(this, "successful");
+		} else {
+			JOptionPane.showMessageDialog(this, "try again");
+		}
 	}
 
 	// public Input getAddNewRouteInput() {

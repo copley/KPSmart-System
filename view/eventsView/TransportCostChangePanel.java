@@ -217,4 +217,12 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		return transportCompanyComboBox.getSelectedItem().toString();
 	}
 
+	@Override
+	public void resetTextFields() {
+		newPriceWeightTextField.setText("");
+		newPriceVolumeTextField.setText("");
+		frequencyTextField.setText("");
+		hoursToDeliverTextField.setText("");
+	}
+
 }

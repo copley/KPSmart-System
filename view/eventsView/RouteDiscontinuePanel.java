@@ -137,4 +137,8 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		}
 	}
 
+	@Override
+	public void resetTextFields() {
+	}
+
 }

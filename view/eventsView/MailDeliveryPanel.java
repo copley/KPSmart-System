@@ -182,4 +182,10 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		}
 	}
 
+	@Override
+	public void resetTextFields() {
+		weightTextField.setText("");
+		volumeTextField.setText("");
+	}
+
 }

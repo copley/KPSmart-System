@@ -1,7 +1,5 @@
 package view;
 
-import javax.swing.JPanel;
-
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
@@ -13,4 +11,6 @@ public abstract class AbstractMainDisplayPanel extends AbstractPanel {
 			ViewActionListener viewActionListener) {
 		super(keyAction, mouseAction, viewActionListener);
 	}
+
+	public abstract void resetTextFields();
 }

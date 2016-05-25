@@ -40,6 +40,7 @@ public class KPSmartCanvas extends JPanel {
 	private AbstractMainDisplayPanel mainDisplayPanel;
 	private JPanel operationPanel;
 
+	private HomepagePanel homepagePanel;
 	private AddNewRoutePanel addNewRoutePanel;
 	private CustomerPriceChangePanel customerPriceChangePanel;
 	private MailDeliveryPanel mailDeliveryPanel;
@@ -68,16 +69,14 @@ public class KPSmartCanvas extends JPanel {
 		// viewActionListener));
 
 		initialisePanels(keyAction, mouseAction, viewActionListener, siteNames);
-		mainDisplayPanel = mailDeliveryPanel;
+		mainDisplayPanel = homepagePanel;
 
 		initialiseLayout();
 	}
 
 	protected void initialiseLayout() {
 
-		if (getLayout() != null) {
-			removeAll();
-		}
+		removeAll();
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
@@ -101,6 +100,7 @@ public class KPSmartCanvas extends JPanel {
 
 	private void initialisePanels(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
 			List<String> siteNames) {
+		homepagePanel = new HomepagePanel(keyAction, mouseAction, viewActionListener);
 		addNewRoutePanel = new AddNewRoutePanel(keyAction, mouseAction, viewActionListener);
 		customerPriceChangePanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener, siteNames);
 		mailDeliveryPanel = new MailDeliveryPanel(keyAction, mouseAction, viewActionListener, siteNames);
@@ -119,6 +119,9 @@ public class KPSmartCanvas extends JPanel {
 	public void setMainDisplayPanel(String panelName) {
 
 		switch (panelName) {
+		case "HomepagePanel":
+			mainDisplayPanel = homepagePanel;
+			break;
 		case "AddNewRoutePanel":
 			mainDisplayPanel = addNewRoutePanel;
 			break;
@@ -139,6 +142,10 @@ public class KPSmartCanvas extends JPanel {
 		}
 
 		initialiseLayout();
+	}
+
+	public void resetTextFields() {
+		mainDisplayPanel.resetTextFields();
 	}
 
 	public void updateSites(List<String> newSites) {

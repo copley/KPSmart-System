@@ -253,4 +253,16 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		return modeComboBox.getSelectedItem().toString();
 	}
 
+	@Override
+	public void resetTextFields() {
+		DestinationTextField.setText("");
+		originTextField.setText("");;
+		transportCompanyTextField.setText("");;
+		hoursToDeliverTextField.setText("");;
+		customerPriceWeightTextField.setText("");
+		customerPriceVolumeTextField.setText("");;
+		transportPriceWeightTextField.setText("");;
+		transportPriceVolumeTextField.setText("");;
+	}
+
 }

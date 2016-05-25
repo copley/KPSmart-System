@@ -36,8 +36,8 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 	private JButton cancelButton;
 	private JButton submitButton;
 
-	public CustomerPriceChangePanel(KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener, List<String> siteNames) {
+	public CustomerPriceChangePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
+			List<String> siteNames) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -145,6 +145,12 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 
 	public String getPriorityComboBoxString() {
 		return priorityComboBox.getSelectedItem().toString();
+	}
+
+	@Override
+	public void resetTextFields() {
+		newWeightCostTextField.setText("");
+		newVolumeCosttextField.setText("");
 	}
 
 }
