@@ -109,12 +109,9 @@ public class EventProcessor {
 		String company = route.getCompany();
 		Type type = route.getType();
 
-		//need these fields
-		String departureDay;
-		int frequency;
-		int duration;
+
 		BusinessEvent ctcBusinessEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, newTransCostWeight, newTransCostVolume, departureDay, frequency, duration);
+				destination, company, type, newTransCostWeight, newTransCostVolume);
 		db.addEvent(ctcBusinessEvent);
 		return true;
 		// System.out.println(debuggingString + debuggingInt + 2);
