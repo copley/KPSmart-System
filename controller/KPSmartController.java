@@ -16,8 +16,8 @@ public class KPSmartController {
 									// listener was called.
 
 	public KPSmartController() {
-		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener());
 		model = new KPSmartModel();
+		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener());
 		System.out.println("Calling from Controller"); // debugging
 	}
 
@@ -159,7 +159,7 @@ public class KPSmartController {
 			//==========================================
 			else if (e.getActionCommand().equals("Mail Delivery")) {
 				System.out.println("Mail Delivery");// debugging - mc
-				gui.displayMailDeliveryForm(model.getSiteNames());
+				gui.setMainDisplayPanel("MailDeliveryPanel");
 
 				//TODO: Commented out these lines because we can just do the above^^^ - Bonnie
 //				MailDeliveryPanel originSelection = (MailDeliveryPanel) gui.getCanvas().getMainDisplayPanel();
@@ -170,11 +170,13 @@ public class KPSmartController {
 				// kpsmartGui.renderMailDelivery();//TODO: Could pass in STRING
 				// , INT
 
+			} else if (e.getActionCommand().equals("Add New Route")) {
+				System.out.println("Add New Route");// debugging - mc
+				gui.setMainDisplayPanel("AddNewRoutePanel");
+
 			} else if (e.getActionCommand().equals("Route Discontinue")) {
 				System.out.println("Route Discontinue");// debugging - mc
-				RouteDiscontinuePanel originSelection = (RouteDiscontinuePanel) gui.getCanvas()
-						.getMainDisplayPanel();
-				gui.getCanvas().setMainDisplayPanel("RouteDiscontinuePanel");
+				gui.setMainDisplayPanel("RouteDiscontinuePanel");
 
 				// kpsmartModel.getAveragfeTimes(); //TODO: could this return
 				// INT, STRING
@@ -183,9 +185,7 @@ public class KPSmartController {
 
 			} else if (e.getActionCommand().equals("Customer Price Update")) {
 				System.out.println("Customer Price Update");// debugging - mc
-				CustomerPriceChangePanel originSelection = (CustomerPriceChangePanel) gui.getCanvas()
-						.getMainDisplayPanel();
-				gui.getCanvas().setMainDisplayPanel("CustomerPriceChangePanel");
+				gui.setMainDisplayPanel("CustomerPriceChangePanel");
 
 				// kpsmartModel.getAverageTimes(); //TODO: could this return
 				// INT, STRING
@@ -194,9 +194,7 @@ public class KPSmartController {
 
 			} else if (e.getActionCommand().equals("Transport Cost Update")) {
 				System.out.println("Transport Cost Update");// debugging - mc
-				TransportCostChangePanel originSelection = (TransportCostChangePanel) gui.getCanvas()
-						.getMainDisplayPanel();
-				gui.getCanvas().setMainDisplayPanel("TransportCostChangePanel");
+				gui.setMainDisplayPanel("TransportCostChangePanel");
 
 				// kpsmartModel.getAverageTimes(); //TODO: could this return
 				// INT, STRING
@@ -233,7 +231,7 @@ public class KPSmartController {
 
 				// getter methods set inside
 
-				Input input = gui.getInput();
+				Input input = gui.getMailDeliveryInput();
 
 				//TODO: Don't think this is a good idea so made a mailinput object which will store all the information from the gui
 //				MailDeliveryPanel panel = (MailDeliveryPanel) gui.getCanvas().getMainDisplayPanel();

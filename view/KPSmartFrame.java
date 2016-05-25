@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import controller.KPSmartController.*;
 import model.Input;
 import model.Priority;
+import view.eventsView.AddNewRoutePanel;
+import view.eventsView.MailDeliveryPanel;
 
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
@@ -121,16 +123,47 @@ public final class KPSmartFrame extends JFrame {
 		return canvas;
 	}
 
-	public void displayMailDeliveryForm(List<String> siteNames) {
-		// TODO: For Bobo, display the form for the mail delivery with the site names for the origin and destinations
-		// You can get the values of the priorities via the Priority class by doing:
-		// Priority.<Some priority>.toString()
-
+	public void setMainDisplayPanel(String panelName) {
+		canvas.setMainDisplayPanel(panelName);
+		this.repaint();
 	}
 
-	public Input getInput() {
-		// TODO For Bobo: Get information required to process events
-		return null;
+	public Input getMailDeliveryInput() {
+		MailDeliveryPanel panel = (MailDeliveryPanel) canvas.getMainDisplayPanel();
+
+		String originSelection = panel.getOriginComboBoxString();
+		String destinationSelection = panel.getDestinationComboBoxString();
+		String weightSelection = panel.getWeightTextFieldString();
+		String volumeSelection = panel.getVolumeTextFieldString();
+		String prioritySelection = panel.getPriorityComboBoxString();
+
+		Input i = new Input();
+		i.setOrigin(originSelection);
+		i.setDestination(destinationSelection);
+		i.setWeight(weightSelection);
+		i.setVolume(volumeSelection);
+		i.setPriority(prioritySelection);
+
+		return i;
 	}
+
+//	public Input getAddNewRouteInput() {
+//		AddNewRoutePanel panel = (AddNewRoutePanel) canvas.getMainDisplayPanel();
+//
+//		String originSelection = panel.getOriginComboBoxString();
+//		String destinationSelection = panel.getDestinationComboBoxString();
+//		String weightSelection = panel.getWeightTextFieldString();
+//		String volumeSelection = panel.getVolumeTextFieldString();
+//		String prioritySelection = panel.getPriorityComboBoxString();
+//
+//		Input i = new Input();
+//		i.setOrigin(originSelection);
+//		i.setDestination(destinationSelection);
+//		i.setWeight(weightSelection);
+//		i.setVolume(volumeSelection);
+//		i.setPriority(prioritySelection);
+//
+//		return i;
+//	}
 
 }

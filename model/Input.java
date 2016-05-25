@@ -28,4 +28,24 @@ public class Input {
 		return priority;
 	}
 
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+	public void setVolume(String volume) {
+		this.volume = volume;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+
 }
