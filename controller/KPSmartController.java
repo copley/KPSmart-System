@@ -199,6 +199,7 @@ public class KPSmartController {
 			// getter methods set inside
 
 			MailDeliveryPanel panel = (MailDeliveryPanel) kpsmartGUI.getCanvas().getMainDisplayPanel();
+
 			String originSelection = panel.getOriginComboBoxString();
 			String destinationSelection = panel.getDestinationComboBoxString();
 			String weightSelection = panel.getWeightTextFieldString();
@@ -249,23 +250,23 @@ public class KPSmartController {
 			 * origin, destination, weight, volume, priority
 			 */
 
-			//kpsmartModel.ProcessMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
+			//kpsmartModel.processMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
 
-			/**
-			 * TODO: Transport cost change
-			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
-			 */
-			//kpsmartModel.ChangeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay ,frequencySelection, durationSelection);
-			/**
-			 * TODO: Route addition
-			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
-			 */
-			//kpsmartModel.AddRoute(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay,  frequencySelection, durationSelection);
+			//	public boolean changeTransportPrice(String origin, String destination, String carrier, String typeString, String newWeightCostString,
+			//String newVolumeCostString)
+
+			//kpsmartModel.changeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection);
+
+//			public boolean addRoute(String origin, String destination, String company, String durationString, String typeString,
+//					String customerPriceWeight, String customerPriceVolume, String transportCostWeight,
+//					String transportCostVolume) { // add me, private String weightCost, weightPrice, volumeCost, volumePrice ; - transport Cost Panel
+
+			//kpsmartModel.addRoute(originSelection, destinationSelection, companySelection, durationSelection, typeSelection, weightCost, weightPrice, volumeCost, volumePrice );
 			/**
 			 * TODO: Route discontinue
 			 * origin, destination,company, type
 			 */
-			//kpsmartModel.RemoveRoute(originSelection, destinationSelection, companySelection, typeSelection);
+			//kpsmartModel.discontinueRoute(originSelection, destinationSelection, companySelection, typeSelection);
 			}
 		}
 	}
