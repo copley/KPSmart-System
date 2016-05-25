@@ -98,12 +98,16 @@ public class KPSmartController {
 		private String prioritySelection = "" ;
 
 		// Bobo please add these fields into the forms.
+
+		private String weightCost, weightPrice, volumeCost, volumePrice ;
+
 		private String newWeightCostSelection = "" ;
 		private String newVolumeSelection = "" ;
 		private String companySelection = "" ;
 		private String typeSelection = "" ;
-		private String departureDay = "" ;
-		private String frequencySelection = "" ;
+
+		//private String departureDay = "" ;
+		//private String frequencySelection = "" ;
 		private String durationSelection = "" ;
 
 		@Override
@@ -225,21 +229,22 @@ public class KPSmartController {
 			 * origin, destination, weight, volume, priority
 			 */
 			kpsmartModel.processMail(originSelection, destinationSelection, weightSelection, volumeSelection, prioritySelection);
-			/**
-			 * TODO: Transport cost change
-			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
-			 */
-			//kpsmartModel.changeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay ,frequencySelection, durationSelection);
-			/**
-			 * TODO: Route addition
-			 * origin, destination,company, type, new weight cost, new volume, departure day, frequency, duration
-			 */
-			//kpsmartModel.addRoute(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection, departureDay,  frequencySelection, durationSelection);
+
+			//	public boolean changeTransportPrice(String origin, String destination, String carrier, String typeString, String newWeightCostString,
+			//String newVolumeCostString)
+
+			kpsmartModel.changeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection, newWeightCostSelection, newVolumeSelection);
+
+//			public boolean addRoute(String origin, String destination, String company, String durationString, String typeString,
+//					String customerPriceWeight, String customerPriceVolume, String transportCostWeight,
+//					String transportCostVolume) { // add me, private String weightCost, weightPrice, volumeCost, volumePrice ; - transport Cost Panel
+
+			kpsmartModel.addRoute(originSelection, destinationSelection, companySelection, durationSelection, typeSelection, weightCost, weightPrice, volumeCost, volumePrice );
 			/**
 			 * TODO: Route discontinue
 			 * origin, destination,company, type
 			 */
-			//kpsmartModel.discontinueRoute(originSelection, destinationSelection, companySelection, typeSelection);
+			kpsmartModel.discontinueRoute(originSelection, destinationSelection, companySelection, typeSelection);
 			}
 		}
 	}
