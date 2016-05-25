@@ -1,6 +1,7 @@
 package view.eventsView;
 
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -36,7 +37,7 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 	private JButton submitButton;
 
 	public CustomerPriceChangePanel(KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener) {
+			ViewActionListener viewActionListener, List<String> siteNames) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -124,12 +125,6 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 				.addContainerGap()));
 
 		setLayout(groupLayout);
-	}
-
-	@Override
-	protected void redraw() {
-		// TODO Auto-generated method stub
-
 	}
 
 	public String getNewWeightCostTextFieldString() {

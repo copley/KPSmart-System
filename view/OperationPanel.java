@@ -78,12 +78,6 @@ public class OperationPanel extends AbstractPanel {
 		setLayout(groupLayout);
 	}
 
-	@Override
-	protected void redraw() {
-		// TODO Auto-generated method stub
-
-	}
-
 	public JPanel getBusinessEventPanel() {
 		return businessEventPanel;
 	}

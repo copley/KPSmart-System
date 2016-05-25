@@ -14,6 +14,4 @@ public abstract class AbstractPanel extends JPanel {
 
 	protected abstract void initialiseLayout();
 
-	protected abstract void redraw();
-
 }

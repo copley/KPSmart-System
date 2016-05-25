@@ -17,7 +17,7 @@ public class KPSmartController {
 
 	public KPSmartController() {
 		model = new KPSmartModel();
-		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener());
+		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), model.getSiteNames());
 		System.out.println("Calling from Controller"); // debugging
 	}
 
@@ -78,9 +78,9 @@ public class KPSmartController {
 	 * =========================================================================
 	 */
 
-
 	/**
 	 * Action listener class for the menu.
+	 *
 	 * @author Max Copley
 	 */
 	public class ViewActionListener implements ActionListener {
@@ -106,9 +106,9 @@ public class KPSmartController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//==========================================
+			// ==========================================
 			// START OF View Business Figures buttons
-			//==========================================
+			// ==========================================
 			if (e.getActionCommand().equals("Total Revenue")) {
 				System.out.println("Total Revenue"); // debugging - mc
 				// kpsmartModel.getTotalRevenue(); //TODO: could this return
@@ -150,20 +150,22 @@ public class KPSmartController {
 				// kpsmartGui.renderCriticalRoutes();//TODO: Could pass in
 				// STRING , INT
 			}
-			//==========================================
+			// ==========================================
 			// END OF View Business Figures buttons
-			//==========================================
+			// ==========================================
 
-			//==========================================
+			// ==========================================
 			// START OF Business Events buttons
-			//==========================================
+			// ==========================================
 			else if (e.getActionCommand().equals("Mail Delivery")) {
 				System.out.println("Mail Delivery");// debugging - mc
 				gui.setMainDisplayPanel("MailDeliveryPanel");
 
-				//TODO: Commented out these lines because we can just do the above^^^ - Bonnie
-//				MailDeliveryPanel originSelection = (MailDeliveryPanel) gui.getCanvas().getMainDisplayPanel();
-//				gui.getCanvas().setMainDisplayPanel("MailDeliveryPanel");
+				// TODO: Commented out these lines because we can just do the
+				// above^^^ - Bonnie
+				// MailDeliveryPanel originSelection = (MailDeliveryPanel)
+				// gui.getCanvas().getMainDisplayPanel();
+				// gui.getCanvas().setMainDisplayPanel("MailDeliveryPanel");
 
 				// kpsmartModel.getMailDelivery(); //TODO: could this return
 				// INT, STRING
@@ -210,13 +212,13 @@ public class KPSmartController {
 												// JTextField componenets have
 												// listeners.
 			}
-			//==========================================
+			// ==========================================
 			// END OF Business Events buttons
-			//==========================================
+			// ==========================================
 
-			//==========================================
+			// ==========================================
 			// START OF Submit for forms
-			//==========================================
+			// ==========================================
 			else if (e.getActionCommand().equals("Submit")) {
 				System.out.println("Submit");// debugging - mc
 				// kpsmartModel.getAverageTimes(); //TODO: could this return
@@ -233,14 +235,17 @@ public class KPSmartController {
 
 				Input input = gui.getMailDeliveryInput();
 
-				//TODO: Don't think this is a good idea so made a mailinput object which will store all the information from the gui
-//				MailDeliveryPanel panel = (MailDeliveryPanel) gui.getCanvas().getMainDisplayPanel();
-//
-//				String originSelection = panel.getOriginComboBoxString();
-//				String destinationSelection = panel.getDestinationComboBoxString();
-//				String weightSelection = panel.getWeightTextFieldString();
-//				String volumeSelection = panel.getVolumeTextFieldString();
-//				String prioritySelection = panel.getPriorityComboBoxString();
+				// TODO: Don't think this is a good idea so made a mailinput
+				// object which will store all the information from the gui
+				// MailDeliveryPanel panel = (MailDeliveryPanel)
+				// gui.getCanvas().getMainDisplayPanel();
+				//
+				// String originSelection = panel.getOriginComboBoxString();
+				// String destinationSelection =
+				// panel.getDestinationComboBoxString();
+				// String weightSelection = panel.getWeightTextFieldString();
+				// String volumeSelection = panel.getVolumeTextFieldString();
+				// String prioritySelection = panel.getPriorityComboBoxString();
 
 				System.out.println("Calling parameters from line 209 - Controller class" + originSelection
 						+ destinationSelection + weightSelection + volumeSelection + prioritySelection);
@@ -276,8 +281,9 @@ public class KPSmartController {
 				 * TODO: Process mail origin, destination, weight, volume,
 				 * priority
 				 */
-//				model.processMail(originSelection, destinationSelection, weightSelection, volumeSelection,
-//						prioritySelection);
+				// model.processMail(originSelection, destinationSelection,
+				// weightSelection, volumeSelection,
+				// prioritySelection);
 				model.processMail(input);
 
 				// public boolean changeTransportPrice(String origin, String
@@ -285,8 +291,8 @@ public class KPSmartController {
 				// newWeightCostString,
 				// String newVolumeCostString)
 
-				model.changeTransportPrice(originSelection, destinationSelection, companySelection,
-						typeSelection, newWeightCostSelection, newVolumeSelection);
+				model.changeTransportPrice(originSelection, destinationSelection, companySelection, typeSelection,
+						newWeightCostSelection, newVolumeSelection);
 
 				// public boolean addRoute(String origin, String destination,
 				// String company, String durationString, String typeString,
@@ -303,9 +309,9 @@ public class KPSmartController {
 				 */
 				model.discontinueRoute(originSelection, destinationSelection, companySelection, typeSelection);
 			}
-			//==========================================
+			// ==========================================
 			// END OF Submit for forms
-			//==========================================
+			// ==========================================
 		}
 	}
 }

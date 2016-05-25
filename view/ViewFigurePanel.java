@@ -98,10 +98,4 @@ public class ViewFigurePanel extends AbstractPanel {
 		setLayout(groupLayout);
 	}
 
-	@Override
-	protected void redraw() {
-		// TODO Auto-generated method stub
-
-	}
-
 }

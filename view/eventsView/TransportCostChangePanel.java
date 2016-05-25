@@ -1,6 +1,7 @@
 package view.eventsView;
 
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -44,7 +45,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 	private JComboBox<String> transportCompanyComboBox;
 
 	public TransportCostChangePanel(KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener) {
+			ViewActionListener viewActionListener, List<String> siteNames) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -182,12 +183,6 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 				.addContainerGap()));
 
 		setLayout(groupLayout);
-	}
-
-	@Override
-	protected void redraw() {
-		// TODO Auto-generated method stub
-
 	}
 
 	public String getNewPriceWeightTextFieldString() {

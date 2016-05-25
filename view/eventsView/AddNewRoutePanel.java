@@ -214,12 +214,6 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		setLayout(groupLayout);
 	}
 
-	@Override
-	protected void redraw() {
-		// TODO Auto-generated method stub
-
-	}
-
 	public String getDestinationTextFieldString() {
 		return DestinationTextField.getText();
 	}

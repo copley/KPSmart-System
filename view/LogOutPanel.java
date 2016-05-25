@@ -29,10 +29,4 @@ public class LogOutPanel extends AbstractPanel {
 		add(logOutButton);
 	}
 
-	@Override
-	protected void redraw() {
-		// TODO Auto-generated method stub
-
-	}
-
 }

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -52,25 +53,31 @@ public class KPSmartCanvas extends JPanel {
 	 * @param viewActionListener
 	 * @param mouseAction
 	 * @param keyAction
+	 * @param siteNames
 	 */
 	public KPSmartCanvas(JFrame frame, KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener) {
+			ViewActionListener viewActionListener, List<String> siteNames) {
 		canvasWidth = frame.getWidth();
 		canvasHeight = frame.getHeight();
 		this.frame = frame;
 		setBackground(new Color(77, 115, 166));
-		mainDisplayPanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener);
 		operationPanel = new OperationPanel(keyAction, mouseAction, viewActionListener);
 
 		// debug
 		// mainDisplayPanel.add(new MailDeliveryPanel(keyAction, mouseAction,
 		// viewActionListener));
 
-		initialisePanels(keyAction, mouseAction, viewActionListener);
+		initialisePanels(keyAction, mouseAction, viewActionListener, siteNames);
+		mainDisplayPanel = mailDeliveryPanel;
+
 		initialiseLayout();
 	}
 
 	protected void initialiseLayout() {
+
+		if (getLayout() != null) {
+			removeAll();
+		}
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
@@ -92,12 +99,13 @@ public class KPSmartCanvas extends JPanel {
 		setLayout(groupLayout);
 	}
 
-	private void initialisePanels(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+	private void initialisePanels(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
+			List<String> siteNames) {
 		addNewRoutePanel = new AddNewRoutePanel(keyAction, mouseAction, viewActionListener);
-		customerPriceChangePanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener);
-		mailDeliveryPanel = new MailDeliveryPanel(keyAction, mouseAction, viewActionListener);
-		routeDiscontinuePanel = new RouteDiscontinuePanel(keyAction, mouseAction, viewActionListener);
-		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener);
+		customerPriceChangePanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener, siteNames);
+		mailDeliveryPanel = new MailDeliveryPanel(keyAction, mouseAction, viewActionListener, siteNames);
+		routeDiscontinuePanel = new RouteDiscontinuePanel(keyAction, mouseAction, viewActionListener, siteNames);
+		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener, siteNames);
 	}
 
 	public AbstractMainDisplayPanel getMainDisplayPanel() {
@@ -109,6 +117,7 @@ public class KPSmartCanvas extends JPanel {
 	}
 
 	public void setMainDisplayPanel(String panelName) {
+
 		switch (panelName) {
 		case "AddNewRoutePanel":
 			mainDisplayPanel = addNewRoutePanel;
@@ -129,7 +138,7 @@ public class KPSmartCanvas extends JPanel {
 			System.out.println("Something went astray.");
 		}
 
-		this.repaint();
+		initialiseLayout();
 	}
 
 }

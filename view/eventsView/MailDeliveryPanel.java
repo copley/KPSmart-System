@@ -1,6 +1,7 @@
 package view.eventsView;
 
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -37,7 +38,7 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 	private JButton cancelButton;
 	private JButton submitButton;
 
-	public MailDeliveryPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+	public MailDeliveryPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblGrams = new JLabel("gram(s)");
@@ -152,12 +153,6 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 				.addContainerGap()));
 
 		setLayout(groupLayout);
-	}
-
-	@Override
-	protected void redraw() {
-		// TODO Auto-generated method stub
-
 	}
 
 	public String getWeightTextFieldString() {

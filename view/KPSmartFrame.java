@@ -18,12 +18,13 @@ import controller.KPSmartController.*;
 import model.Input;
 import model.Priority;
 import view.eventsView.AddNewRoutePanel;
+import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
 
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
 
-	private final KPSmartCanvas canvas;
+	private KPSmartCanvas canvas;
 	private static final int FRAME_WIDTH = 800;
 	private static final int FRAME_HEIGHT = 650;
 
@@ -59,7 +60,7 @@ public final class KPSmartFrame extends JFrame {
 	// });
 	// }
 
-	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames) {
 
 		super("KPSmart");
 
@@ -68,7 +69,7 @@ public final class KPSmartFrame extends JFrame {
 
 		setLayout(new BorderLayout());
 
-		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener);
+		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener, siteNames);
 		add(canvas);
 
 		createMenu();
@@ -90,10 +91,6 @@ public final class KPSmartFrame extends JFrame {
 				}
 			}
 		});
-	}
-
-	public void removeOldCanvas() {
-		remove(canvas);
 	}
 
 	private void createMenu() {
@@ -124,8 +121,11 @@ public final class KPSmartFrame extends JFrame {
 	}
 
 	public void setMainDisplayPanel(String panelName) {
+		remove(canvas);
 		canvas.setMainDisplayPanel(panelName);
-		this.repaint();
+		add(canvas);
+		validate();
+		repaint();
 	}
 
 	public Input getMailDeliveryInput() {
