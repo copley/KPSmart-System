@@ -7,7 +7,7 @@ public class Route {
 	private final String origin;
 	private final String destination;
 	private final String company;
-	private final int duration;//hours
+	private final double duration;//hours
 	private final Type type;
 	private double custPriceWeight;
 	private double custPriceVolume;
@@ -16,7 +16,7 @@ public class Route {
 	private boolean inService;
 
 
-	public Route(int id, String origin, String destination, String company, int duration, Type type, boolean inService,
+	public Route(int id, String origin, String destination, String company, double duration, Type type, boolean inService,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		this.ID = id;
 		this.origin = origin;
@@ -49,7 +49,7 @@ public class Route {
 		return company;
 	}
 
-	public int getDuration() {
+	public double getDuration() {
 		return duration;
 	}
 
@@ -97,11 +97,15 @@ public class Route {
 
 
 
-	public void updatePrices(double newCustPriceWeight, double newCustPriceVolume, double newTransPriceWeight,
-			double newTransPriceVolume) {
-		this.custPriceWeight = newCustPriceWeight;
-		this.custPriceVolume = newCustPriceVolume;
+	public void updateTransportCosts(double newTransPriceWeight, double newTransPriceVolume) {		
 		this.transPriceWeight = newTransPriceWeight;
 		this.transPriceVolume = newTransPriceVolume;
+	}
+
+
+
+	public void updateCustomerPrices(double newCustPriceWeight, double newCustPriceVolume) {
+		this.custPriceWeight = newCustPriceWeight;
+		this.custPriceVolume = newCustPriceVolume;	
 	}
 }

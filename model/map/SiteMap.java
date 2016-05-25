@@ -1,5 +1,6 @@
 package model.map;
 
+import java.text.Collator;
 import java.util.*;
 import model.exceptions.*;
 
@@ -34,31 +35,7 @@ public class SiteMap {
 		return true;
 	}
 
-	// TODO: Not quite sure if we'll need this method here
-	/*
-	 * returns true if route successfully changed returns false if not
-	 * successful (eg the ID was invalid) [supporting soft failure]
-	 *
-	 * Only the following may be changed: customer prices, transit prices.
-	 * sites, carrier and duration are final, if they need to be changed a new
-	 * route should be made, and the old one discontinued.
-	 */
-	public boolean changeRoute(int toChangeID, double newCustPriceWeight, double newCustPriceVolume,
-			double newTransPriceWeight, double newTransPriceVolume) {
-		// check all input for correct values
-		if (!routes.containsKey(toChangeID)) {
-			return false;
-		}
-		;
-		if (newCustPriceWeight <= 0 || newCustPriceVolume <= 0 || newTransPriceWeight <= 0
-				|| newTransPriceVolume <= 0) {
-			return false;
-		}
-		// call route to change its values
-		routes.get(toChangeID).updatePrices(newCustPriceWeight, newCustPriceVolume, newTransPriceWeight,
-				newTransPriceVolume);
-		return true;
-	}
+	
 
 	/*
 	 * returns true if route successfully made returns false if not successful
@@ -68,7 +45,7 @@ public class SiteMap {
 	 * sites, carrier and duration are final, if they need to be changed a new
 	 * route should be made, and the old one discontinued.
 	 */
-	public boolean makeNewRoute(String origin, String destination, String company, int duration, Type mode,
+	public boolean makeNewRoute(String origin, String destination, String company, Type type, double duration, 
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// check all input for values in correct format
 		if (duration <= 0 || custPriceWeight <= 0 || custPriceVolume <= 0 || transPriceWeight <= 0
@@ -123,7 +100,7 @@ public class SiteMap {
 										// existing..
 		// IDs made sequentially from 0 so size should be free!
 		// make route object
-		Route newRoute = new Route(newRouteID, origin, destination, company, duration, mode, true, custPriceWeight,
+		Route newRoute = new Route(newRouteID, origin, destination, company, duration, type, true, custPriceWeight,
 				custPriceVolume, transPriceWeight, transPriceVolume);
 		// add new route to the map
 		try {
@@ -229,5 +206,19 @@ public class SiteMap {
 	public String getSitefromID(int id) {
 		if(sites.containsKey(id)) return sites.get(id).getLocation();
 		return null;
+	}
+
+	public String[] getSiteNames() {
+		//find all the names
+		Collection<String> siteNames = 
+			new TreeSet<String>(Collator.getInstance());//got this from stack exchange -
+		//the collator part sets up the right sort of comparator for current location 
+		//ie English.. its supposed to sort out capitals better
+			for (Site site : sites.values()){
+			siteNames.add(site.getLocation());	
+			}
+		//order them alphabetically - done automatically  by the treeSet!
+		//put them in an array and return
+			return siteNames.toArray(new String[0]); //toArray() would return an Object array.. the "new String[0]" part forces it to return a String array
 	}
 }

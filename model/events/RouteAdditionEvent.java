@@ -1,66 +1,77 @@
 package model.events;
 
+import model.map.Type;
+
 public class RouteAdditionEvent extends BusinessEvent {
 	private String origin;
 	private String destination;
 	private String company;
-	private String type;
-	private int newWeightCost;
-	private int newVolumeCost;
-	private String departureDay;
-	private int frequency;
-	private int duration;
+	private Type type;
+	private double duration;
+	private double customerPriceWeight;
+	private double customerPriceVolume;
+	private double transportCostWeight;
+	private double transportCostVolume;
 
 	public RouteAdditionEvent(int day, int month, int year, int time, String staff, String origin, String destination,
-			String company, String type, int newWeightCost, int newVolumeCost, String departureDay, int frequency,
-			int duration) {
+			String company, Type type, double duration, double custPriceWeight, double custPriceVolume, double transCostWeight,
+			double transCostVolume) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
 		this.company = company;
 		this.type = type;
-		this.newWeightCost = newWeightCost;
-		this.newVolumeCost = newVolumeCost;
-		this.departureDay = departureDay;
-		this.frequency = frequency;
-		this.duration = duration;
+		this.customerPriceWeight = custPriceWeight;
+		this.customerPriceVolume = custPriceVolume;
+		this.transportCostWeight = transCostVolume;
+		this.transportCostVolume = transCostVolume;
 	}
+
 
 	public String getOrigin() {
 		return origin;
 	}
 
+
 	public String getDestination() {
 		return destination;
 	}
+
 
 	public String getCompany() {
 		return company;
 	}
 
-	public String getType() {
+
+	public Type getType() {
 		return type;
 	}
 
-	public int getNewWeightCost() {
-		return newWeightCost;
-	}
 
-	public int getNewVolumeCost() {
-		return newVolumeCost;
-	}
-
-	public String getDepartureDay() {
-		return departureDay;
-	}
-
-	public int getFrequency() {
-		return frequency;
-	}
-
-	public int getDuration() {
+	public double getDuration() {
 		return duration;
 	}
+
+
+	public double getCustomerPriceWeight() {
+		return customerPriceWeight;
+	}
+
+
+	public double getCustomerPriceVolume() {
+		return customerPriceVolume;
+	}
+
+
+	public double getTransportCostWeight() {
+		return transportCostWeight;
+	}
+
+
+	public double getTransportCostVolume() {
+		return transportCostVolume;
+	}
+
 
 	@Override
 	public String toString() {
@@ -72,12 +83,12 @@ public class RouteAdditionEvent extends BusinessEvent {
 		string.append("Origin: " + origin + "\n");
 		string.append("Destination: " + destination + "\n");
 		string.append("Company: " + company + "\n");
-		string.append("Type: " + type + "\n");
-		string.append("Weight Cost: " + newWeightCost + "\n");
-		string.append("Volume Cost: " + newVolumeCost);
-		string.append("Day pf Departure: " + departureDay + "\n");
-		string.append("Frequency: " + frequency + "\n");
+		string.append("Type: " + type.name() + "\n");
 		string.append("Duration: " + duration);
+		string.append("Customer price per gram: " + customerPriceWeight + "\n");
+		string.append("Customer price per cubic cm: " + customerPriceVolume + "\n");
+		string.append("Transport cost per gram: " + transportCostWeight + "\n");
+		string.append("Transport cost per cubic cm: " + transportCostVolume + "\n");
 		return string.toString();
 	}
 

@@ -8,7 +8,8 @@
     <employee>Bonnie</employee>
     <origin>Suva</origin>
     <destination>New Zealand</destination>
-    <priority>International Air</priority>
+    <company>Air Awesome</company>
+    <type>AIR</type>
     <weightcost>4</weightcost>
     <volumecost>4</volumecost>
   </price>
@@ -20,9 +21,10 @@
     <employee>Bonnie</employee>
     <origin>Suva</origin>
     <destination>New Zealand</destination>
-    <priority>International Air</priority>
-    <weightcost>4</weightcost>
-    <volumecost>4</volumecost>
+    <company>Air Awesome</company>
+    <type>AIR</type>
+    <weightcost>5</weightcost>
+    <volumecost>5</volumecost>
   </price>
   <mail>
     <day>15</day>
@@ -35,6 +37,9 @@
     <weight>100</weight>
     <volume>5</volume>
     <priority>International Air</priority>
+    <revenue>10</revenue>
+    <expenditure>3</expenditure>
+    <deliveryTime>24</deliveryTime>
   </mail>
   <add>
     <day>15</day>
@@ -45,12 +50,12 @@
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <company>Air NZ</company>
-    <type>Air</type>
-    <weightcost>6</weightcost>
-    <volumecost>6</volumecost>
-    <departure>Thursday</departure>
-    <frequency>6</frequency>
+    <type>AIR</type>
     <duration>16</duration>
+    <custPriceWeight>2.3</custPriceWeight>
+    <custPriceVolume> 33</custPriceVolume>
+    <transCostWeight>2.0 </transCostWeight>
+    <transCostVolume>38.8 </transCostVolume>
   </add>
   <discontinue>
     <day>15</day>
@@ -61,7 +66,7 @@
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <company>Kelburn Airways</company>
-    <type>Air</type>
+    <type>AIR</type>
   </discontinue>
   <cost>
     <day>15</day>
@@ -72,7 +77,7 @@
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <company>Air NZ</company>
-    <type>Air</type>
+    <type>AIR</type>
     <weightcost>6</weightcost>
     <volumecost>6</volumecost>
     <departure>Thursday</departure>

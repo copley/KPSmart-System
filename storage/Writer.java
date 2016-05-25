@@ -17,6 +17,7 @@ import model.exceptions.*;
 import model.map.Route;
 import model.map.Site;
 import model.map.SiteMap;
+import model.map.Type;
 
 /**
  * Class responsible for writing all the data into the log file and data files
@@ -103,7 +104,10 @@ public class Writer {
 		event.setName("price");
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
-		event.addContent(new Element("priority").setText(be.getPriority()));
+		//TODO:took out priority element - priority is on a package
+		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)
+		event.addContent(new Element("company").setText(be.getCompany()));
+		event.addContent(new Element("type").setText(be.getType()));
 		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
 		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
 		return event;
@@ -126,6 +130,11 @@ public class Writer {
 		event.addContent(new Element("weight").setText("" + be.getWeight()));
 		event.addContent(new Element("volume").setText("" + be.getVolume()));
 		event.addContent(new Element("priority").setText(be.getPriority()));
+
+		//TODO:we have added in 3 new events to store the revenue, expenditure, delivery time
+		event.addContent(new Element("revenue").setText("" + be.getRevenue()));
+		event.addContent(new Element("expenditure").setText("" + be.getDeliveryTime()));
+		event.addContent(new Element("deliveryTime").setText(""+be.getExpenditure()));
 		return event;
 	}
 
@@ -144,12 +153,12 @@ public class Writer {
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
 		event.addContent(new Element("company").setText(be.getCompany()));
-		event.addContent(new Element("type").setText(be.getType()));
-		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
-		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
-		event.addContent(new Element("departure").setText(be.getDepartureDay()));
-		event.addContent(new Element("frequency").setText("" + be.getFrequency()));
 		event.addContent(new Element("duration").setText("" + be.getDuration()));
+		event.addContent(new Element("type").setText(be.getType().name()));
+		event.addContent(new Element("custPriceWeight").setText("" + be.getCustomerPriceWeight()));
+		event.addContent(new Element("custPriceVolume").setText("" + be.getCustomerPriceVolume()));
+		event.addContent(new Element("transCostWeight").setText("" + be.getTransportCostWeight()));
+		event.addContent(new Element("transCostVolume").setText("" + be.getTransportCostVolume()));
 		return event;
 	}
 
@@ -168,7 +177,7 @@ public class Writer {
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
 		event.addContent(new Element("company").setText(be.getCompany()));
-		event.addContent(new Element("type").setText(be.getType()));
+		event.addContent(new Element("type").setText(be.getType().name()));
 		return event;
 	}
 
@@ -187,12 +196,9 @@ public class Writer {
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
 		event.addContent(new Element("company").setText(be.getCompany()));
-		event.addContent(new Element("type").setText(be.getType()));
+		event.addContent(new Element("type").setText(be.getType().name()));
 		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
 		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
-		event.addContent(new Element("departure").setText(be.getDepartureDay()));
-		event.addContent(new Element("frequency").setText("" + be.getFrequency()));
-		event.addContent(new Element("duration").setText("" + be.getDuration()));
 		return event;
 	}
 
