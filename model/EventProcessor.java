@@ -79,10 +79,10 @@ public class EventProcessor {
 		double deliveryTime = findDeliveryTime(compoundRoutes);
 
 		// make the event to record the action
-		BusinessEvent mailDeliveryEvent = new MailProcessEvent(day, month, year, time, employeeName, origin, destination,
+		BusinessEvent mailProcessEvent = new MailProcessEvent(day, month, year, time, employeeName, origin, destination,
 				weight, volume, priority, revenue, expenditure, deliveryTime);
 		// store the event in the data store
-		db.addEvent(mailDeliveryEvent);
+		db.addEvent(mailProcessEvent);
 		return true;
 	}
 	/*

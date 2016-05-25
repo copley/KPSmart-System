@@ -1,6 +1,5 @@
 package model.map;
 
-import java.text.Collator;
 import java.util.*;
 import model.exceptions.*;
 

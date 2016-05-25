@@ -6,9 +6,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowAdapter;
 
-import model.Input;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import model.KPSmartModel;
+import model.events.inputs.*;
 import view.KPSmartFrame;
 
 public class KPSmartController {
@@ -26,8 +32,23 @@ public class KPSmartController {
 
 	public KPSmartController() {
 		model = new KPSmartModel();
-		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), model.getSiteNames());
+		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), new ViewWindowAdapter(), model.getSiteNames());
 		System.out.println("Calling from Controller"); // debugging
+	}
+
+	public class ViewWindowAdapter extends WindowAdapter{
+		public void windowClosing(WindowEvent we) {
+			String[] options = { "YES", "Cancel" };
+			JPanel panel = new JPanel();
+			JLabel label = new JLabel("Are you sure you want to quit the system?");
+			panel.add(label);
+			int selectedOption = JOptionPane.showOptionDialog(null, panel, "Warning!!!", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+			if (selectedOption == 0) {
+				model.save();
+				System.exit(0);
+			}
+		}
 	}
 
 	public class ViewActionListener implements ActionListener {
@@ -166,14 +187,9 @@ public class KPSmartController {
 			// ==========================================
 			else if (e.getActionCommand().equals("Submit")) {
 				//System.out.println("Submit");// debugging - mc
-				// Flag to tell what panel....
-				//Input input = gui.getMailDeliveryInput();
-
-
-				//model.processMail(input);
 
 				if(mailDeliveryPanel){
-					Input input = gui.getMailDeliveryInput();
+					MailProcessInput input = gui.getMailDeliveryInput();
 					boolean done = model.processMail(input);
 					if(done){
 						System.out.println("Mail processed!!");

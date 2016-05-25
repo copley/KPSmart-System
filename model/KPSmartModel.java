@@ -5,8 +5,8 @@ import storage.DataStore;
 import java.util.List;
 
 import model.EventProcessor;
+import model.events.inputs.*;
 import model.map.*;
-import model.employees.Employee;
 
 /**
  *
@@ -54,7 +54,7 @@ public class KPSmartModel {
 	 * @param input
 	 * @return
 	 */
-	public boolean processMail(Input input) {
+	public boolean processMail(MailProcessInput input) {
 		// work out the origin and destination IDs
 		int originID = this.sitemap.getSiteIDfromLocation(input.getOrigin());
 		int destinationID = this.sitemap.getSiteIDfromLocation(input.getDestination());

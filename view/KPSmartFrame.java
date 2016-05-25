@@ -15,10 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.KPSmartController.*;
-import model.Input;
-import model.Priority;
-import view.eventsView.AddNewRoutePanel;
-import view.eventsView.CustomerPriceChangePanel;
+import model.events.inputs.*;
 import view.eventsView.MailDeliveryPanel;
 
 @SuppressWarnings("serial")
@@ -60,7 +57,7 @@ public final class KPSmartFrame extends JFrame {
 	// });
 	// }
 
-	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames) {
+	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, ViewWindowAdapter viewWindowAdapter, List<String> siteNames) {
 
 		super("KPSmart");
 
@@ -77,20 +74,7 @@ public final class KPSmartFrame extends JFrame {
 
 		setVisible(true);
 
-		this.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent we) {
-				String[] options = { "YES", "Cancel" };
-				JPanel panel = new JPanel();
-				JLabel label = new JLabel("Are you sure you want to quit the system?");
-				panel.add(label);
-				int selectedOption = JOptionPane.showOptionDialog(null, panel, "Warning!!!", JOptionPane.DEFAULT_OPTION,
-						JOptionPane.WARNING_MESSAGE, null, options, options[1]);
-				if (selectedOption == 0) {
-					System.exit(0);
-				}
-			}
-		});
+		this.addWindowListener(viewWindowAdapter);
 	}
 
 	private void createMenu() {
@@ -128,7 +112,7 @@ public final class KPSmartFrame extends JFrame {
 		repaint();
 	}
 
-	public Input getMailDeliveryInput() {
+	public MailProcessInput getMailDeliveryInput() {
 		MailDeliveryPanel panel = (MailDeliveryPanel) canvas.getMainDisplayPanel();
 
 		String originSelection = panel.getOriginComboBoxString();
@@ -137,7 +121,7 @@ public final class KPSmartFrame extends JFrame {
 		String volumeSelection = panel.getVolumeTextFieldString();
 		String prioritySelection = panel.getPriorityComboBoxString();
 
-		Input i = new Input();
+		MailProcessInput i = new MailProcessInput();
 		i.setOrigin(originSelection);
 		i.setDestination(destinationSelection);
 		i.setWeight(weightSelection);

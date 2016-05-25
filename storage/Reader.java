@@ -214,7 +214,7 @@ public class Reader {
 		String destination = route.getChild("destination").getText();
 		String origin = route.getChild("origin").getText();
 		String company = route.getChild("company").getText();
-		int duration = Integer.parseInt(route.getChild("duration").getText());
+		double duration = Double.parseDouble(route.getChild("duration").getText());
 		Type type = Type.valueOf(route.getChild("type").getText());
 		double custPriceWeight = Double.parseDouble(route.getChild("custPriceWeight").getText());
 		double custPriceVolume = Double.parseDouble(route.getChild("custPriceVolume").getText());

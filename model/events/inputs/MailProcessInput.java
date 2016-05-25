@@ -1,7 +1,6 @@
-package model;
+package model.events.inputs;
 
-public class Input {
-
+public class MailProcessInput {
 	private String origin;
 	private String destination;
 	private String weight;
@@ -47,5 +46,4 @@ public class Input {
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
-
 }

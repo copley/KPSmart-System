@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <log>
-  <price>
-    <day>21</day>
-    <month>9</month>
-    <year>2016</year>
-    <time>1300</time>
-    <employee>Bonnie</employee>
-    <origin>Suva</origin>
-    <destination>New Zealand</destination>
-    <company>Air Awesome</company>
-    <type>AIR</type>
-    <weightcost>4</weightcost>
-    <volumecost>4</volumecost>
-  </price>
-  <price>
-    <day>15</day>
-    <month>5</month>
-    <year>2016</year>
-    <time>1300</time>
-    <employee>Bonnie</employee>
-    <origin>Suva</origin>
-    <destination>New Zealand</destination>
-    <company>Air Awesome</company>
-    <type>AIR</type>
-    <weightcost>5</weightcost>
-    <volumecost>5</volumecost>
-  </price>
   <mail>
     <day>15</day>
     <month>5</month>
@@ -34,13 +8,26 @@
     <employee>Bonnie</employee>
     <origin>Rome</origin>
     <destination>Wellington</destination>
-    <weight>100</weight>
-    <volume>5</volume>
+    <weight>100.0</weight>
+    <volume>5.0</volume>
     <priority>International Air</priority>
-    <revenue>10</revenue>
-    <expenditure>3</expenditure>
-    <deliveryTime>24</deliveryTime>
+    <revenue>10.0</revenue>
+    <expenditure>3.0</expenditure>
+    <deliveryTime>24.0</deliveryTime>
   </mail>
+  <price>
+    <day>15</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>1300</time>
+    <employee>Bonnie</employee>
+    <origin>Suva</origin>
+    <destination>New Zealand</destination>
+    <company>Air Awesome</company>
+    <type>AIR</type>
+    <weightcost>5.0</weightcost>
+    <volumecost>5.0</volumecost>
+  </price>
   <add>
     <day>15</day>
     <month>5</month>
@@ -50,12 +37,12 @@
     <origin>Rome</origin>
     <destination>Wellington</destination>
     <company>Air NZ</company>
+    <duration>0.0</duration>
     <type>AIR</type>
-    <duration>16</duration>
     <custPriceWeight>2.3</custPriceWeight>
-    <custPriceVolume> 33</custPriceVolume>
-    <transCostWeight>2.0 </transCostWeight>
-    <transCostVolume>38.8 </transCostVolume>
+    <custPriceVolume>33.0</custPriceVolume>
+    <transCostWeight>38.8</transCostWeight>
+    <transCostVolume>38.8</transCostVolume>
   </add>
   <discontinue>
     <day>15</day>
@@ -78,10 +65,7 @@
     <destination>Wellington</destination>
     <company>Air NZ</company>
     <type>AIR</type>
-    <weightcost>6</weightcost>
-    <volumecost>6</volumecost>
-    <departure>Thursday</departure>
-    <frequency>6</frequency>
-    <duration>16</duration>
+    <weightcost>6.0</weightcost>
+    <volumecost>6.0</volumecost>
   </cost>
 </log>
