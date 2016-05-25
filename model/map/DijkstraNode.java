@@ -41,4 +41,13 @@ public class DijkstraNode implements Comparable<DijkstraNode>{
 		if (diffETC <0){return -1;}
 		return 0;
 	}
+
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("siteID: " + siteID + "\n");
+		string.append("previousSiteID: " + previousSiteID + "\n");
+		string.append("durationFromStart: " + durationFromStart + "\n");
+		string.append("previousRouteID: " + previousRouteID + "\n");
+		return string.toString();
+	}
 }

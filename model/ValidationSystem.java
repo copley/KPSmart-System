@@ -70,7 +70,7 @@ public class ValidationSystem {
 		}
 		return false;
 	}
-	
+
 	private static boolean validateMode(String mode) {
 		for(Type p : Type.values()){
 			if(p.toString().equals(mode)) return true;

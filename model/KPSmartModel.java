@@ -6,7 +6,6 @@ import java.util.List;
 
 import model.EventProcessor;
 import model.map.*;
-import model.Package;
 import model.employees.Employee;
 
 /**
@@ -49,23 +48,34 @@ public class KPSmartModel {
 	 * START OF Methods to process events - Called by the controller
 	 * =========================================================================
 	 */
-
+	/**
+	 * Takes in some information and does a process mail delivery. Also creates
+	 * an event and stores it into the data store
+	 * @param input
+	 * @return
+	 */
 	public boolean processMail(Input input) {
 		// work out the origin and destination IDs
-		int originSiteID = this.sitemap.getSiteIDfromLocation(input.getOrigin());
-		int destSiteID = this.sitemap.getSiteIDfromLocation(input.getDestination());
+		int originID = this.sitemap.getSiteIDfromLocation(input.getOrigin());
+		int destinationID = this.sitemap.getSiteIDfromLocation(input.getDestination());
+
 		// convert strings into a needed types
 		double weight = Double.parseDouble(input.getWeight());
 		double volume = Double.parseDouble(input.getVolume());
 		Priority priority = getPriority(input.getPriority());
 		// make sure converted data are valid - abort and return false if not!
-		if (priority == null || originSiteID == -1 || destSiteID == -1) {
+		if (priority == null || originID == -1 || destinationID == -1) {
 			return false;
 		}
 
 		// call event processor to make up the package and record the event
-		return eventProcessor.processMail(originSiteID, destSiteID, weight, volume, priority, this.loggedInStaffID);
+		return eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(), weight, volume, priority, this.loggedInStaffID);
 	}
+	/*
+	 * =========================================================================
+	 * END OF Methods to process events - Called by the controller
+	 * =========================================================================
+	 */
 
 	/**
 	 * Takes in some information and does a customer price change. Also creates
@@ -126,35 +136,6 @@ public class KPSmartModel {
 		int routeID = sitemap.findRouteID(origin, destination, carrier, type);
 		// call event processor on that route
 		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
-	}
-
-	/**
-	 * Takes in some information and does a process mail delivery. Also creates
-	 * an event and stores it into the data store
-	 *
-	 * @param origin
-	 * @param destination
-	 * @param weightString
-	 * @param volumeString
-	 * @param priorityString
-	 * @return
-	 */
-	public boolean processMail(String origin, String destination, String weightString, String volumeString,
-			String priorityString) {
-		// work out the origin and destination IDs
-		int originSiteID = this.sitemap.getSiteIDfromLocation(origin);
-		int destSiteID = this.sitemap.getSiteIDfromLocation(destination);
-		// convert strings into a needed types
-		double weight = Double.parseDouble(weightString);
-		double volume = Double.parseDouble(volumeString);
-		Priority priority = getPriority(priorityString);
-		// make sure converted data are valid - abort and return false if not!
-		if (priority == null || originSiteID == -1 || destSiteID == -1) {
-			return false;
-		}
-
-		// call event processor to make up the package and record the event
-		return eventProcessor.processMail(originSiteID, destSiteID, weight, volume, priority, this.loggedInStaffID);
 	}
 
 	/**
@@ -225,11 +206,7 @@ public class KPSmartModel {
 		return eventProcessor.disconRoute(routeID, loggedInStaffID);
 	}
 
-	/*
-	 * =========================================================================
-	 * END OF Methods to process events - Called by the controller
-	 * =========================================================================
-	 */
+
 
 	/*
 	 * =========================================================================

@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import model.employees.Employee;
 import model.events.BusinessEvent;
@@ -43,6 +44,99 @@ public class EventProcessor {
 	public EventProcessor(DataStore db) {
 		this.db = db;
 	}
+
+	/*
+	 * =========================================================================
+	 * START OF Methods to process events
+	 * =========================================================================
+	 */
+	public boolean processMail(int originID, String origin, int destinationID, String destination, double weight,
+			double volume, Priority priority, int processorStaffID) {
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour() * 10 + now.getMinute();
+		// staff that is logged in
+		Employee employee = db.getEmployees().getEmployeeFromID(processorStaffID);
+		String employeeName;
+		if (employee == null) {
+			// TODO: Change to error when log in works
+			employeeName = "no-one";
+		} else {
+			employeeName = employee.getName();
+		}
+		List<Integer> compoundRoutes = db.getSiteMap().findCompoundRoute(originID, destinationID, priority);
+		// need to check that a compound route was available - if it wasn't, the
+		// event fails! if no route was available, compound route will be null
+		if (compoundRoutes == null) {
+			return false;
+		}
+
+		// find the business figures TODO: maybe store them somewhere for the view key figures part?
+		double revenue = findRevenue(compoundRoutes, weight, volume);
+		double expenditure = findExpenditure(compoundRoutes, weight, volume);
+		double deliveryTime = findDeliveryTime(compoundRoutes);
+
+		// make the event to record the action
+		BusinessEvent mailDeliveryEvent = new MailProcessEvent(day, month, year, time, employeeName, origin, destination,
+				weight, volume, priority, revenue, expenditure, deliveryTime);
+		// store the event in the data store
+		db.addEvent(mailDeliveryEvent);
+		return true;
+	}
+	/*
+	 * =========================================================================
+	 * END OF Methods to process events
+	 * =========================================================================
+	 */
+
+
+	/*
+	 * =========================================================================
+	 * START OF Helper methods for the event processing
+	 * =========================================================================
+	 */
+	private double findRevenue(List<Integer> compoundRoutes, double weight, double volume) {
+		double total = 0;
+		for (int routeID : compoundRoutes) {
+			Route route = db.getSiteMap().getRouteFromID(routeID);
+			if (route.getType().equals(Type.AIR)) {
+				total += weight * route.getCustPriceWeight();
+			} else {
+				total += volume * route.getCustPriceVolume();
+			}
+		}
+		return total;
+	}
+
+	private double findExpenditure(List<Integer> compoundRoutes, double weight, double volume) {
+		double total = 0;
+		for (int routeID : compoundRoutes) {
+			Route route = db.getSiteMap().getRouteFromID(routeID);
+			if (route.getType().equals(Type.AIR)) {
+				total += weight * route.getTransPriceWeight();
+			} else {
+				total += volume * route.getTransPriceVolume();
+			}
+		}
+		return total;
+	}
+	private double findDeliveryTime(List<Integer> compoundRoutes) {
+		int time = 0;
+		for (int routeID : compoundRoutes){
+			time += db.getSiteMap().getRouteFromID(routeID).getDuration();
+		}
+		return time;
+	}
+	/*
+	 * =========================================================================
+	 * END OF Helper methods for the event processing
+	 * =========================================================================
+	 */
+
+
+
 
 	// the only things that can be changed on the route are the prices
 	// if changes to the carrier, mode, or duration are needed, the route should
@@ -108,7 +202,6 @@ public class EventProcessor {
 		String destination = route.getDestination();
 		String company = route.getCompany();
 		Type type = route.getType();
-
 
 		BusinessEvent ctcBusinessEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
 				destination, company, type, newTransCostWeight, newTransCostVolume);
@@ -180,52 +273,6 @@ public class EventProcessor {
 	};
 
 	// 1
-	public boolean processMail(int originSiteID, int destSiteID, double weight, double volume, model.Priority priority,
-			int processorStaffID) {
-		LocalDateTime now = LocalDateTime.now();
-		int day = now.getDayOfMonth();
-		int month = now.getMonthValue();
-		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
-		// get logged in staff name
-		Employee processor = db.getEmployees().getEmployeeFromID(processorStaffID);
-		String processorName;
-		if (processor == null) {
-			// TODO: remove this and replace with an error once log-in function
-			// is coded
-			processorName = "no-one";// should only be used while there is no
-										// proper log-in
-		} else {
-			processorName = processor.getName();
-		}
-		// try to access the other referenced objects in the model
-		String origin = db.getSiteMap().getSitefromID(originSiteID);
-		String destination = db.getSiteMap().getSitefromID(destSiteID);
-		// if any of the referenced objects don't exist in the model, the event
-		// fails, abort!
-		if (origin == null || destination == null) {
-			return false;
-		}
-		Package thepackage = new Package(originSiteID, destSiteID, weight, volume, priority, db.getSiteMap());
-		// need to check that a compound route was available - if it wasn't, the
-		// event fails! if no route was available, compound route will be null
-		if (thepackage.getCompoundRoute() == null) {
-			return false;
-		}
-		// package creation was successful - extract required event information
-		double revenue = thepackage.getPriceToCustomer();
-		double expenditure = thepackage.getTransportCost();
-		double deliveryTime = thepackage.getExpectedTravelTime();
-
-		// make the event to record the action
-
-		BusinessEvent pmBusinessEvent = new MailProcessEvent(day, month, year, time, processorName, origin, destination,
-				weight, volume, priority, revenue, expenditure, deliveryTime);
-		// store the event in the data store
-		db.addEvent(pmBusinessEvent);
-		// indicate that the event was processed successfully
-		return true;
-	}
 
 	public boolean disconRoute(int routeID, int processorStaffID) {
 		LocalDateTime now = LocalDateTime.now();

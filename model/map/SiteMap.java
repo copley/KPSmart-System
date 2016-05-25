@@ -227,19 +227,6 @@ public class SiteMap {
 			siteNames.add(site.getLocation());
 		}
 		Collections.sort(siteNames);
-
-		// //find all the names
-		// Collection<String> siteNames =
-		// new TreeSet<String>(Collator.getInstance());//got this from stack
-		// exchange -
-		// //the collator part sets up the right sort of comparator for current
-		// location
-		// //ie English.. its supposed to sort out capitals better
-		// for (Site site : sites.values()){
-		// siteNames.add(site.getLocation());
-		// }
-		// //order them alphabetically - done automatically by the treeSet!
-		// //put them in an array and return
 		return siteNames;
 	}
 	/*

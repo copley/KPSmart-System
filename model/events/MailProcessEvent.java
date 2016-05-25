@@ -1,6 +1,5 @@
 package model.events;
 
-import model.Package;
 import model.Priority;
 
 public class MailProcessEvent extends BusinessEvent {

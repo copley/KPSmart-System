@@ -49,7 +49,7 @@ public class DijkstraSearchWithPriority {
 					for (Route route : routesOn) {
 						// if the site is not the origin of the route, do not
 						// consider
-						if (route.getOrigin() != currentSite) {
+						if (!route.getOrigin().equals(currentSite)) {
 							continue;
 						}
 						// if the route is not in service, do not consider

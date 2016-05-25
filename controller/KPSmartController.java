@@ -173,9 +173,11 @@ public class KPSmartController {
 				//model.processMail(input);
 
 				if(mailDeliveryPanel){
-
 					Input input = gui.getMailDeliveryInput();
-					model.processMail(input);
+					boolean done = model.processMail(input);
+					if(done){
+						System.out.println("Mail processed!!");
+					}
 				}else if(discontinueRoutePanel){
 					discontinueRoutePanel = false;
 					System.out.println("disCon");
