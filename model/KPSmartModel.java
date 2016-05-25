@@ -2,6 +2,7 @@ package model;
 
 import storage.DataStore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.EventProcessor;
@@ -30,12 +31,15 @@ public class KPSmartModel {
 	private DataStore db;// holds links to all the permanent data, and handles
 							// the read and write to file.
 	private EventProcessor eventProcessor;// manages the production of business
+
+	private FigureGenerator fg;
 											// event records
 	private int loggedInStaffID;// currently logged in staff member id
 
 	public KPSmartModel() {
 		db = new DataStore();
 		sitemap = db.getSiteMap();
+		fg = new FigureGenerator(db);
 		eventProcessor = new EventProcessor(db);
 		loggedInStaffID = -1;// no-one is logged in initially
 	}
@@ -43,6 +47,42 @@ public class KPSmartModel {
 	public void save() {
 		db.save();
 	}
+
+
+	/***********Generate Figure Methods*******************/
+
+	public double totalRevenue(){
+		return fg.getRevenue();
+	}
+
+	public double getExpenditure() {
+		return fg.getExpenditure();
+	};
+
+
+	public double getAVGDelivery(){
+		return fg.getAVGDelivery();
+	}
+
+	public List<Route> getCriticalRoutes() {
+		return fg.generateCriticalRoutes();
+	};
+
+	public int getTotalMail() {
+		return fg.generateTotalMail();
+	};
+
+	public int getTotalEvents() {
+		return fg.generateTotalEvents();
+	};
+
+
+
+
+
+
+	/***********Event Methods***********************/
+
 
 	// called from controller class, returns a boolean to indicate success
 	// (true) or failure (false)

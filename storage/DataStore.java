@@ -67,9 +67,13 @@ public class DataStore {
 	public SiteMap getSiteMap() {
 		return map;
 		}
-	
+
 	public Employees getEmployees() {
 		return employees;
 		}
+
+	public List<BusinessEvent> getBusinessEvents(){
+		return businessEvents;
+	}
 
 }
