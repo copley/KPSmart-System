@@ -64,4 +64,15 @@
     <transCostWeight>7.0</transCostWeight>
     <transCostVolume>7.0</transCostVolume>
   </add>
+  <discontinue>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>160</time>
+    <employee>no-one</employee>
+    <origin>Auckland</origin>
+    <destination>Hastings</destination>
+    <company>something</company>
+    <type>AIR</type>
+  </discontinue>
 </log>

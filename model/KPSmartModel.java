@@ -99,6 +99,31 @@ public class KPSmartModel {
 		return eventProcessor.addRoute(input.getOrigin(), input.getDestination(), input.getCompany(), type, duration,
 				custPriceWeight, custPriceVolume, transCostWeight, transCostVolume, loggedInStaffID);
 	}
+
+	/**
+	 * Takes in some information and discontinues a route. Also creates an event
+	 * and stores it into the data store
+	 *
+	 * @param input
+	 * @return
+	 */
+	public boolean discontinueRoute(DiscontinueInput input) {
+		// convert strings into needed data types
+		Type type = getType(input.getType());
+		// make sure type is valid - abort and return false if not!
+		if (type == null) {
+			return false;
+		}
+		// identify which route
+		int routeID = sitemap.findRouteID(input.getOrigin(), input.getDestination(), input.getCompany(), type);
+		// make sure converted data is valid - abort and return false if not!
+		if (routeID == -1) {
+			return false;
+		}
+
+		// call event processor to do the discontinuation and record the event
+		return eventProcessor.disconRoute(routeID, loggedInStaffID);
+	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to process events - Called by the controller
@@ -166,34 +191,6 @@ public class KPSmartModel {
 		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
 	}
 
-	/**
-	 * Takes in some information and discontinues a route. Also creates an event
-	 * and stores it into the data store
-	 *
-	 * @param origin
-	 * @param destination
-	 * @param company
-	 * @param typeString
-	 * @return
-	 */
-	public boolean discontinueRoute(String origin, String destination, String company, String typeString) {
-		// convert strings into needed data types
-		Type type = getType(typeString);
-		// make sure type is valid - abort and return false if not!
-		if (type == null) {
-			return false;
-		}
-		// identify which route
-		int routeID = sitemap.findRouteID(origin, destination, company, type);
-		// make sure converted data is valid - abort and return false if not!
-		if (routeID == -1) {
-			return false;
-		}
-
-		// call event processor to do the discontinuation and record the event
-		return eventProcessor.disconRoute(routeID, loggedInStaffID);
-	}
-
 	/*
 	 * =========================================================================
 	 * START OF Methods to provide information to the GUI - Called by the
@@ -216,7 +213,6 @@ public class KPSmartModel {
 	public String getNewOrigin() {
 		return db.getSiteMap().getNewOrigin();
 	}
-
 
 	public String getNewDestination() {
 		return db.getSiteMap().getNewDestination();

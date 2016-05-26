@@ -28,9 +28,9 @@
   </sites>
   <routes>
     <route>
-      <id>4</id>
-      <origin>Hastings</origin>
-      <destination>Taupo</destination>
+      <id>3</id>
+      <origin>Wellington</origin>
+      <destination>Hastings</destination>
       <company>something</company>
       <duration>3.0</duration>
       <type>AIR</type>
@@ -54,9 +54,9 @@
       <inService>true</inService>
     </route>
     <route>
-      <id>3</id>
-      <origin>Wellington</origin>
-      <destination>Hastings</destination>
+      <id>4</id>
+      <origin>Hastings</origin>
+      <destination>Taupo</destination>
       <company>something</company>
       <duration>3.0</duration>
       <type>AIR</type>
@@ -77,7 +77,7 @@
       <custPriceVolume>8.0</custPriceVolume>
       <transPriceWeight>7.0</transPriceWeight>
       <transPriceVolume>7.0</transPriceVolume>
-      <inService>true</inService>
+      <inService>false</inService>
     </route>
   </routes>
 </sitemap>

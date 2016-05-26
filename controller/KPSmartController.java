@@ -207,8 +207,12 @@ public class KPSmartController {
 					}
 				} else if (discontinueRoutePanel) {
 					DiscontinueInput input = gui.getDiscontinueInput();
-
-					System.out.println("disCon");
+					if(model.discontinueRoute(input)){
+						System.out.println("Route Discontinued!!");
+						// TODO: Update the list of sites in the gui if successful
+					} else {
+						//TODO: gui should show error box here
+					}
 				} else if (customerPricePanel) {
 					customerPricePanel = false;
 					System.out.println("customeR");

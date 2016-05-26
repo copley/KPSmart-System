@@ -195,8 +195,8 @@ public class SiteMap {
 			return -1;// destination does not exist in map
 		// look through routes and find one whose details match! return first
 		// found
-		for (Route route : this.siteToRoutes.get(originID)) {
-			if (route.getCompany().equalsIgnoreCase(carrier) && route.getDestination() == destination
+		for (Route route : this.siteToRoutes.get(sites.get(originID))) {
+			if (route.getCompany().equals(carrier) && route.getDestination().equals(destination)
 					&& route.getType().equals(type)) {
 				return route.getID();
 			}
