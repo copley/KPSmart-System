@@ -105,7 +105,7 @@ public class KPSmartCanvas extends JPanel {
 		customerPriceChangePanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener, origins, destinations);
 		mailDeliveryPanel = new MailDeliveryPanel(keyAction, mouseAction, viewActionListener, origins, destinations);
 		routeDiscontinuePanel = new RouteDiscontinuePanel(keyAction, mouseAction, viewActionListener, origins, destinations, companies);
-		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener, origins, destinations);
+		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener, origins, destinations, companies);
 	}
 
 	public AbstractMainDisplayPanel getMainDisplayPanel() {
@@ -149,10 +149,10 @@ public class KPSmartCanvas extends JPanel {
 	}
 
 	public void updateSites(String origin, String destination) {
-//		customerPriceChangePanel.addSites(newSites);
+		customerPriceChangePanel.addSites(origin, destination);
 		mailDeliveryPanel.addSites(origin, destination);
 		routeDiscontinuePanel.addSites(origin, destination);
-//		transportCostChangePanel.addSites(newSites);
+		transportCostChangePanel.addSites(origin, destination);
 	}
 
 }

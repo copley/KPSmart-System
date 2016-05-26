@@ -137,40 +137,39 @@ public class KPSmartModel {
 		double newVolumeCost = Double.parseDouble(input.getVolumeCost());
 		Priority priority = getPriority(input.getPriority());
 		// event processor to change the customer price and record the event
-		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightCost, newVolumeCost, this.loggedInStaffID);
+		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightCost,
+				newVolumeCost, this.loggedInStaffID);
+	}
+
+	/**
+	 * Takes in some information and does a transport cost change. Also creates
+	 * an event and stores it into the data store
+	 *
+	 * @param input
+	 * @return
+	 */
+	public boolean changeTransportCost(TransportCostInput input) {
+		// identify which route
+		Type type = getType(input.getType());
+		// make sure type is valid - abort and return false if not!
+		if (type == null) {
+			return false;
+		}
+		double newWeightCost = Double.parseDouble(input.getWeightCost());
+		double newVolumeCost = Double.parseDouble(input.getVolumeCost());
+		int routeID = sitemap.findRouteID(input.getOrigin(), input.getDestination(), input.getCompany(), type);
+		// make sure converted data is valid - abort and return false if not!
+		if (routeID == -1) {
+			return false;
+		}
+		// call event processor on that route
+		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
 	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to process events - Called by the controller
 	 * =========================================================================
 	 */
-
-	/**
-	 * Takes in some information and does a transport cost change. Also creates
-	 * an event and stores it into the data store
-	 *
-	 * @param origin
-	 * @param destination
-	 * @param carrier
-	 * @param typeString
-	 * @param newWeightCostString
-	 * @param newVolumeCostString
-	 * @return
-	 */
-	public boolean changeTransportPrice(String origin, String destination, String carrier, String typeString,
-			String newWeightCostString, String newVolumeCostString) {
-		// identify which route
-		Type type = getType(typeString);
-		// make sure type is valid - abort and return false if not!
-		if (type == null) {
-			return false;
-		}
-		double newWeightCost = Double.parseDouble(newWeightCostString);
-		double newVolumeCost = Double.parseDouble(newVolumeCostString);
-		int routeID = sitemap.findRouteID(origin, destination, carrier, type);
-		// call event processor on that route
-		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
-	}
 
 	/*
 	 * =========================================================================

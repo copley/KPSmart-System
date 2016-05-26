@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
+import model.map.Type;
 import view.AbstractMainDisplayPanel;
 
 @SuppressWarnings("serial")
@@ -45,7 +46,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 	private JComboBox<String> transportCompanyComboBox;
 
 	public TransportCostChangePanel(KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener, List<String> origins, List<String> destinations) {
+			ViewActionListener viewActionListener, List<String> origins, List<String> destinations, List<String> companies) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -77,16 +78,27 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		newPriceWeightTextField.setColumns(10);
 		newPriceVolumeTextField = new JTextField();
 		newPriceVolumeTextField.setColumns(10);
-		frequencyTextField = new JTextField();
+		frequencyTextField = new JTextField(); //TODO: Not using this
 		frequencyTextField.setColumns(10);
-		hoursToDeliverTextField = new JTextField();
+		hoursToDeliverTextField = new JTextField();//TODO: Not using this
 		hoursToDeliverTextField.setColumns(10);
 
 		typeComboBox = new JComboBox<String>();
+		for(Type t : Type.values()){
+			typeComboBox.addItem(t.name());
+		}
 		originComboBox = new JComboBox<String>();
+		for (String site : origins) {
+			originComboBox.addItem(site);
+		}
 		destinationComboBox = new JComboBox<String>();
+		for (String site : destinations) {
+			destinationComboBox.addItem(site);
+		}
 		transportCompanyComboBox = new JComboBox<String>();
-
+		for(String c : companies){
+			transportCompanyComboBox.addItem(c);
+		}
 		initialiseLayout();
 	}
 
@@ -223,6 +235,13 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		newPriceVolumeTextField.setText("");
 		frequencyTextField.setText("");
 		hoursToDeliverTextField.setText("");
+	}
+
+	public void addSites(String origin, String destination) {
+		if (origin != null)
+			originComboBox.addItem(origin);
+		if (destination != null)
+			destinationComboBox.addItem(destination);
 	}
 
 }

@@ -15,12 +15,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.KPSmartController.*;
+import model.events.TransportCostChangeEvent;
 import model.events.inputs.*;
 import model.map.Site;
 import view.eventsView.AddNewRoutePanel;
 import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
 import view.eventsView.RouteDiscontinuePanel;
+import view.eventsView.TransportCostChangePanel;
 
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
@@ -186,6 +188,19 @@ public final class KPSmartFrame extends JFrame {
 		String volumeCost = panel.getNewVolumeCosttextFieldString();
 
 		return new CustomerPriceInput(origin, destination, priority, weightCost, volumeCost);
+	}
+
+	public TransportCostInput getTransportCostInput() {
+		TransportCostChangePanel panel = (TransportCostChangePanel) canvas.getMainDisplayPanel();
+
+		String origin = panel.getOriginComboBoxString();
+		String destination = panel.getDestinationComboBoxString();
+		String company = panel.getTransportCompanyComboBoxString();
+		String type = panel.getTypeComboBoxString();
+		String weightCost = panel.getNewPriceWeightTextFieldString();
+		String volumeCost = panel.getNewPriceVolumeTextFieldString();
+
+		return new TransportCostInput(origin, destination, company, type, weightCost, volumeCost);
 	}
 	/*
 	 * =========================================================================

@@ -104,17 +104,23 @@ public class SiteMap {
 		return true;
 	}
 
-	public boolean updateCustomerPrices(String origin, String destination, Priority priority, double newWeightCost,
-			double newVolumeCost) {
+	public boolean updateCustomerPrices(String origin, String destination, Priority priority, double newWeightPrice,
+			double newVolumePrice) {
 		int routesUpdated = 0;
 		for (Route route : routes.values()) {
 			if (route.getOrigin().equals(origin) && route.getDestination().equals(destination)
 					&& compareTypeAndPriority(route.getType(), priority)) {
-				route.updateCustomerPrices(newWeightCost, newVolumeCost);
+				route.updateCustomerPrices(newWeightPrice, newVolumePrice);
 				routesUpdated++;
 			}
 		}
 		return routesUpdated > 0;
+	}
+
+
+
+	public void updateTransportCost(int routeID, double newWeightCost, double newVolumeCost) {
+		routes.get(routeID).updateTransportCosts(newWeightCost, newVolumeCost);
 	}
 
 	// ======Dijkstra methods... for finding a compound route given from and

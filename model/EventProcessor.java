@@ -181,8 +181,8 @@ public class EventProcessor {
 		return true;
 	}
 
-	public boolean changeCustomerPrice(String origin, String destination, Priority priority, double newWeightCost, double newVolumeCost,
-			int employeeID) {
+	public boolean changeCustomerPrice(String origin, String destination, Priority priority, double newWeightCost,
+			double newVolumeCost, int employeeID) {
 		LocalDateTime now = LocalDateTime.now();
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
@@ -198,7 +198,7 @@ public class EventProcessor {
 			employeeName = employee.getName();
 		}
 
-		if(!db.getSiteMap().updateCustomerPrices(origin, destination, priority, newWeightCost, newVolumeCost)){
+		if (!db.getSiteMap().updateCustomerPrices(origin, destination, priority, newWeightCost, newVolumeCost)) {
 			return false;
 		}
 
@@ -207,6 +207,36 @@ public class EventProcessor {
 				destination, priority, newWeightCost, newVolumeCost);
 		// store the event in the data store
 		db.addEvent(cpcBusinessEvent);
+		return true;
+	}
+
+	public boolean changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume, int employeeID) {
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour() * 10 + now.getMinute();
+		// staff that is logged in
+		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
+		String employeeName;
+		if (employee == null) {
+			// TODO: Change to error when log in works
+			employeeName = "no-one";
+		} else {
+			employeeName = employee.getName();
+		}
+
+		db.getSiteMap().updateTransportCost(routeID, newTransCostWeight, newTransCostVolume);
+		Route route = db.getSiteMap().getRouteFromID(routeID);
+		// make the event to record the action
+		String origin = route.getOrigin();
+		String destination = route.getDestination();
+		String company = route.getCompany();
+		Type type = route.getType();
+
+		BusinessEvent tranportCostEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
+				destination, company, type, newTransCostWeight, newTransCostVolume);
+		db.addEvent(tranportCostEvent);
 		return true;
 	}
 	/*
@@ -264,30 +294,4 @@ public class EventProcessor {
 	// be discontinued,
 	// and a new one made
 
-	public boolean changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume,
-			int processorStaffID) {
-		LocalDateTime now = LocalDateTime.now();
-		int day = now.getDayOfMonth();
-		int month = now.getMonthValue();
-		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
-		Employee employee = db.getEmployees().getEmployeeFromID(processorStaffID);
-		Route route = db.getSiteMap().getRouteFromID(routeID);
-		// if employee or route don't exist, this even fails! do not proceed!
-		if (employee == null || route == null) {
-			return false;
-		}
-		// if we got here, employee and route are safe to call methods on..
-		String employeeName = employee.getName();
-		String origin = route.getOrigin();
-		String destination = route.getDestination();
-		String company = route.getCompany();
-		Type type = route.getType();
-
-		BusinessEvent ctcBusinessEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, newTransCostWeight, newTransCostVolume);
-		db.addEvent(ctcBusinessEvent);
-		return true;
-		// System.out.println(debuggingString + debuggingInt + 2);
-	}
 }

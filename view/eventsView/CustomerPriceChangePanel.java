@@ -59,7 +59,7 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 			destinationComboBox.addItem(site);
 		}
 		priorityComboBox = new JComboBox<String>();
-		for(Priority p : Priority.values()){
+		for (Priority p : Priority.values()) {
 			priorityComboBox.addItem(p.toString());
 		}
 		resetButton = new JButton("Reset");
@@ -154,6 +154,13 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 
 	public String getPriorityComboBoxString() {
 		return priorityComboBox.getSelectedItem().toString();
+	}
+
+	public void addSites(String origin, String destination) {
+		if (origin != null)
+			originComboBox.addItem(origin);
+		if (destination != null)
+			destinationComboBox.addItem(destination);
 	}
 
 	@Override

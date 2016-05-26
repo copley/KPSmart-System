@@ -217,13 +217,16 @@ public class KPSmartController {
 					CustomerPriceInput input = gui.getCustomerPriceInput();
 					if(model.changeCustomerPrice(input)){
 						System.out.println("Customer price updated!!");
-						// TODO: Update the list of sites in the gui if successful
 					} else {
 						//TODO: gui should show error box here
 					}
 				} else {
-					transportCostChangePanel = false;
-					System.out.println("transPor");
+					TransportCostInput input = gui.getTransportCostInput();
+					if(model.changeTransportCost(input)){
+						System.out.println("Tranport cost updated!!");
+					} else {
+						//TODO: gui should show error box here
+					}
 				}
 			}
 			// ==========================================
