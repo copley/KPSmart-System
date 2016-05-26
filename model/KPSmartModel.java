@@ -61,12 +61,19 @@ public class KPSmartModel {
 		int originID = this.sitemap.getSiteIDfromLocation(input.getOrigin());
 		int destinationID = this.sitemap.getSiteIDfromLocation(input.getDestination());
 
-		// convert strings into a needed types
-		double weight = Double.parseDouble(input.getWeight());
-		double volume = Double.parseDouble(input.getVolume());
+		// convert strings into needed types
+		double weight;
+		double volume;
+		try {
+			weight = Double.parseDouble(input.getWeight());
+			volume = Double.parseDouble(input.getVolume());
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+
 		Priority priority = getPriority(input.getPriority());
 		// make sure converted data are valid - abort and return false if not!
-		if (priority == null || originID == -1 || destinationID == -1) {
+		if (priority == null || originID == -1 || destinationID == -1 || weight <= 0 || volume <= 0) {
 			return false;
 		}
 
@@ -83,16 +90,28 @@ public class KPSmartModel {
 	 * @return
 	 */
 	public boolean addNewRoute(NewRouteInput input) {
-		Type type = getType(input.getType());
-		// make sure converted data is valid - abort and return false if not!
-		if (type == null) {
+		
+		double custPriceWeight;
+		double custPriceVolume;
+		double transCostWeight;
+		double transCostVolume;
+		double duration;
+
+		try {
+			custPriceWeight = Double.parseDouble(input.getCustomerPriceWeight());
+			custPriceVolume = Double.parseDouble(input.getCustomerPriceVolume());
+			transCostWeight = Double.parseDouble(input.getTransportPriceWeight());
+			transCostVolume = Double.parseDouble(input.getTransportPriceVolume());
+			duration = Double.parseDouble(input.getDuration());
+		} catch (NumberFormatException nfe) {
 			return false;
 		}
-		double custPriceWeight = Double.parseDouble(input.getCustomerPriceWeight());
-		double custPriceVolume = Double.parseDouble(input.getCustomerPriceVolume());
-		double transCostWeight = Double.parseDouble(input.getTransportPriceWeight());
-		double transCostVolume = Double.parseDouble(input.getTransportPriceVolume());
-		double duration = Double.parseDouble(input.getDuration());
+
+		Type type = getType(input.getType());
+		// make sure converted data is valid - abort and return false if not!
+		if (type == null || custPriceWeight <=0 || custPriceVolume <= 0 || transCostWeight <=0 || transCostVolume <=0 || duration <=0) {
+			return false;
+		}
 
 		// call event processor to do the addition and record the event
 
@@ -133,9 +152,23 @@ public class KPSmartModel {
 	 * @return
 	 */
 	public boolean changeCustomerPrice(CustomerPriceInput input) {
-		double newWeightCost = Double.parseDouble(input.getWeightCost());
-		double newVolumeCost = Double.parseDouble(input.getVolumeCost());
+		double newWeightCost;
+		double newVolumeCost;
+		
+		try{
+		newWeightCost = Double.parseDouble(input.getWeightCost());
+		newVolumeCost = Double.parseDouble(input.getVolumeCost());
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+
 		Priority priority = getPriority(input.getPriority());
+		
+		// make sure converted data is valid - abort and return false if not!
+		if (priority == null || newWeightCost <=0 || newVolumeCost <= 0 ) {
+			return false;
+		}
+	
 		// event processor to change the customer price and record the event
 		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightCost,
 				newVolumeCost, this.loggedInStaffID);
@@ -149,14 +182,24 @@ public class KPSmartModel {
 	 * @return
 	 */
 	public boolean changeTransportCost(TransportCostInput input) {
-		// identify which route
-		Type type = getType(input.getType());
-		// make sure type is valid - abort and return false if not!
-		if (type == null) {
+		double newWeightCost;
+		double newVolumeCost;
+		
+		try{
+		newWeightCost = Double.parseDouble(input.getWeightCost());
+		newVolumeCost = Double.parseDouble(input.getVolumeCost());
+		} catch (NumberFormatException nfe) {
 			return false;
 		}
-		double newWeightCost = Double.parseDouble(input.getWeightCost());
-		double newVolumeCost = Double.parseDouble(input.getVolumeCost());
+		
+		Type type = getType(input.getType());
+		
+		// make sure converted data  is valid - abort and return false if not!
+		if (type == null || newWeightCost <=0 || newVolumeCost <= 0 ) {
+			return false;
+		}
+		
+		//find the route
 		int routeID = sitemap.findRouteID(input.getOrigin(), input.getDestination(), input.getCompany(), type);
 		// make sure converted data is valid - abort and return false if not!
 		if (routeID == -1) {

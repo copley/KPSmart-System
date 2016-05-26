@@ -21,7 +21,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 
 	private JLabel lblOrigin;
 	private JLabel lblDestination;
-	private JLabel lblTranspotCompany;
+	private JLabel lblTransportCompany;
 	private JLabel lblType;
 
 	private JButton resetButton;
@@ -42,7 +42,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		lblDestination = new JLabel("Destination:");
 		lblDestination.setFont(new Font("Dialog", Font.BOLD, 15));
 
-		lblTranspotCompany = new JLabel("Transpot Company:");
+		lblTransportCompany = new JLabel("Transport Company:");
 
 		lblType = new JLabel("Type:");
 		lblType.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -93,7 +93,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 										groupLayout.createSequentialGroup().addGap(57)
 												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 														.addComponent(lblOrigin).addComponent(lblDestination)
-														.addComponent(lblTranspotCompany).addComponent(lblType))
+														.addComponent(lblTransportCompany).addComponent(lblType))
 								.addGap(4)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 										.addComponent(destinationComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,7 +113,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 						destinationComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 						GroupLayout.PREFERRED_SIZE))
 				.addGap(18)
-				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblTranspotCompany)
+				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblTransportCompany)
 						.addComponent(transportCompanyComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE))
 				.addGap(18)

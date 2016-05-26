@@ -128,4 +128,35 @@
     <weightcost>34.0</weightcost>
     <volumecost>34.0</volumecost>
   </cost>
+  <mail>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>254</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <weight>225.0</weight>
+    <volume>10.0</volume>
+    <priority>Domestic Air</priority>
+    <revenue>5175.0</revenue>
+    <expenditure>9900.0</expenditure>
+    <deliveryTime>1.0</deliveryTime>
+  </mail>
+  <add>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>255</time>
+    <employee>no-one</employee>
+    <origin>Auckland</origin>
+    <destination>Wellington</destination>
+    <company>DHL</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>10.0</custPriceWeight>
+    <custPriceVolume>1.0</custPriceVolume>
+    <transCostWeight>0.5</transCostWeight>
+    <transCostVolume>0.5</transCostVolume>
+  </add>
 </log>
