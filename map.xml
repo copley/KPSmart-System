@@ -2,8 +2,38 @@
 <sitemap>
   <sites>
     <site>
+      <id>7</id>
+      <location>New Plymouth</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
+    <site>
+      <id>8</id>
+      <location>New Plymouth</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
+    <site>
+      <id>3</id>
+      <location>Hastings</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
       <id>2</id>
       <location>Auckland</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>6</id>
+      <location>hamilton</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
+    <site>
+      <id>1</id>
+      <location>Wellington</location>
       <isOrigin>true</isOrigin>
       <isDestination>true</isDestination>
     </site>
@@ -14,95 +44,24 @@
       <isDestination>true</isDestination>
     </site>
     <site>
-      <id>1</id>
-      <location>Wellington</location>
+      <id>5</id>
+      <location>Hamilton</location>
       <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>3</id>
-      <location>Hastings</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
+      <isDestination>false</isDestination>
     </site>
   </sites>
   <routes>
     <route>
-      <id>1</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>something</company>
-      <duration>3.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>23.0</custPriceWeight>
-      <custPriceVolume>24.0</custPriceVolume>
-      <transPriceWeight>34.0</transPriceWeight>
-      <transPriceVolume>34.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>6</id>
-      <origin>Auckland</origin>
-      <destination>Wellington</destination>
-      <company>DHL</company>
-      <duration>20.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>1.0</custPriceVolume>
-      <transPriceWeight>0.5</transPriceWeight>
-      <transPriceVolume>0.5</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
       <id>2</id>
-      <origin>Auckland</origin>
-      <destination>Hastings</destination>
-      <company>something</company>
-      <duration>3.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>5.0</custPriceWeight>
-      <custPriceVolume>8.0</custPriceVolume>
-      <transPriceWeight>7.0</transPriceWeight>
-      <transPriceVolume>7.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>5</id>
-      <origin>Wellington</origin>
+      <origin>new plymouth</origin>
       <destination>Auckland</destination>
-      <company>Mail NZ</company>
+      <company>KiwiRail</company>
       <duration>1.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>23.0</custPriceWeight>
-      <custPriceVolume>24.0</custPriceVolume>
-      <transPriceWeight>44.0</transPriceWeight>
-      <transPriceVolume>44.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>3</id>
-      <origin>Wellington</origin>
-      <destination>Hastings</destination>
-      <company>something</company>
-      <duration>3.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>5.0</custPriceWeight>
-      <custPriceVolume>8.0</custPriceVolume>
-      <transPriceWeight>7.0</transPriceWeight>
-      <transPriceVolume>7.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>4</id>
-      <origin>Hastings</origin>
-      <destination>Taupo</destination>
-      <company>something</company>
-      <duration>3.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>5.0</custPriceWeight>
-      <custPriceVolume>8.0</custPriceVolume>
-      <transPriceWeight>7.0</transPriceWeight>
-      <transPriceVolume>7.0</transPriceVolume>
+      <type>LAND</type>
+      <custPriceWeight>12.0</custPriceWeight>
+      <custPriceVolume>12.0</custPriceVolume>
+      <transPriceWeight>1.0</transPriceWeight>
+      <transPriceVolume>1.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>

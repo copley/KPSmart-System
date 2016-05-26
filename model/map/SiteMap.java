@@ -1,5 +1,7 @@
 package model.map;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import model.exceptions.IllegalRouteException;
@@ -72,13 +74,21 @@ public class SiteMap {
 
 		// Make the new sites if necessary
 		if (originID == -1) {
+			// make the name be a uniform presentation
+			String originName = uniformPrint(origin);
+			// make sure the origin is allowable! If not abort and return false
+			if (!allowableOrigin(originName)) {
+				return false;
+			}
 			originID = sites.size() + 1;
-			Site originSite = new Site(originID, origin, true, false);
+			Site originSite = new Site(originID, originName, true, false);
 			addSite(originSite);
 		}
 		if (destinationID == -1) {
 			destinationID = sites.size() + 1;
-			Site destinationSite = new Site(destinationID, destination, false, true);
+			// make the name be a uniform presentation
+						String destinationName = uniformPrint(destination);
+			Site destinationSite = new Site(destinationID, destinationName, false, true);
 			addSite(destinationSite);
 		}
 
@@ -116,8 +126,6 @@ public class SiteMap {
 		}
 		return routesUpdated > 0;
 	}
-
-
 
 	public void updateTransportCost(int routeID, double newWeightCost, double newVolumeCost) {
 		routes.get(routeID).updateTransportCosts(newWeightCost, newVolumeCost);
@@ -297,11 +305,57 @@ public class SiteMap {
 	 * =========================================================================
 	 */
 	private boolean compareTypeAndPriority(Type type, Priority priority) {
-		if(type.equals(Type.AIR)){
+		if (type.equals(Type.AIR)) {
 			return priority.equals(Priority.INTERNATIONAL_AIR) || priority.equals(Priority.DOMESTIC_AIR);
 		}
 		return priority.equals(Priority.INTERNATIONAL_STANDARD) || priority.equals(Priority.DOMESTIC_STANDARD);
 	}
+
+	/*
+	 * Every origin must be an official New Zealand city or town, check against
+	 * official list!
+	 */
+	private boolean allowableOrigin(String origin) {
+		File NZtownNames = new File("NZtownNames.txt");
+		try (Scanner scanner = new Scanner(NZtownNames)) {
+			while (scanner.hasNextLine()) {
+				String town = scanner.nextLine();
+				if (town.isEmpty()) {
+					break;
+				}
+				if (town.toLowerCase().equals(origin.toLowerCase())) {
+					return true;
+				}
+			}
+			scanner.close();
+		} catch (IOException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		// if we get this far, the origin name was not in the file of allowable
+		// names
+		return false;
+	}
+
+	/*
+	 * Converts a string into a uniform format - trimmed, lowercased, then first
+	 * letter of each word capitalized
+	 */
+	private String uniformPrint(String input) {
+		String output = "";
+		String[] words = input.trim().toLowerCase().split(" ");
+		for(int i = 0; i < words.length; ++i) {
+			if(words[i].length() > 0) {
+				char[] letters = words[i].toCharArray();
+				letters[0] = Character.toUpperCase(letters[0]);
+				words[i] = new String(letters);
+			    }
+			output += words[i] + " ";
+		}
+//		System.out.println("=" + output.trim() + "="); //testing purposes
+		return output.trim();
+	}
+
 	/*
 	 * =========================================================================
 	 * END OF Helper Methods
