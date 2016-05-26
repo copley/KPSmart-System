@@ -2,28 +2,28 @@
 <sitemap>
   <sites>
     <site>
-      <id>7</id>
-      <location>New Plymouth</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
-    </site>
-    <site>
       <id>8</id>
       <location>New Plymouth</location>
       <isOrigin>true</isOrigin>
       <isDestination>false</isDestination>
     </site>
     <site>
-      <id>3</id>
-      <location>Hastings</location>
+      <id>5</id>
+      <location>Hamilton</location>
       <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
+    <site>
+      <id>4</id>
+      <location>Taupo</location>
+      <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
     <site>
-      <id>2</id>
-      <location>Auckland</location>
+      <id>7</id>
+      <location>New Plymouth</location>
       <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
+      <isDestination>false</isDestination>
     </site>
     <site>
       <id>6</id>
@@ -38,16 +38,16 @@
       <isDestination>true</isDestination>
     </site>
     <site>
-      <id>4</id>
-      <location>Taupo</location>
-      <isOrigin>false</isOrigin>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>true</isOrigin>
       <isDestination>true</isDestination>
     </site>
     <site>
-      <id>5</id>
-      <location>Hamilton</location>
+      <id>3</id>
+      <location>Hastings</location>
       <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
+      <isDestination>true</isDestination>
     </site>
   </sites>
   <routes>

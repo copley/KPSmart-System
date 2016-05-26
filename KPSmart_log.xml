@@ -140,8 +140,8 @@
     <volume>10.0</volume>
     <priority>Domestic Air</priority>
     <revenue>5175.0</revenue>
-    <expenditure>9900.0</expenditure>
-    <deliveryTime>1.0</deliveryTime>
+    <expenditure>1.0</expenditure>
+    <deliveryTime>9900.0</deliveryTime>
   </mail>
   <add>
     <day>26</day>
@@ -158,5 +158,117 @@
     <custPriceVolume>1.0</custPriceVolume>
     <transCostWeight>0.5</transCostWeight>
     <transCostVolume>0.5</transCostVolume>
+  </add>
+  <add>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>279</time>
+    <employee>no-one</employee>
+    <origin>Hong Kong</origin>
+    <destination>Auckland</destination>
+    <company>NZ Post</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>10.0</custPriceWeight>
+    <custPriceVolume>9.0</custPriceVolume>
+    <transCostWeight>3.0</transCostWeight>
+    <transCostVolume>3.0</transCostVolume>
+  </add>
+  <add>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>282</time>
+    <employee>no-one</employee>
+    <origin>Hong Kong</origin>
+    <destination>Auckland</destination>
+    <company>KiwiRail</company>
+    <duration>0.0</duration>
+    <type>SEA</type>
+    <custPriceWeight>12.0</custPriceWeight>
+    <custPriceVolume>1.0</custPriceVolume>
+    <transCostWeight>0.5</transCostWeight>
+    <transCostVolume>0.5</transCostVolume>
+  </add>
+  <add>
+    <day>27</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>21</time>
+    <employee>no-one</employee>
+    <origin>Hamilton</origin>
+    <destination>Auckland</destination>
+    <company>Air New Zealand</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>19.0</custPriceWeight>
+    <custPriceVolume>5.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
+  </add>
+  <add>
+    <day>27</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>21</time>
+    <employee>no-one</employee>
+    <origin>hamilton</origin>
+    <destination>Auckland</destination>
+    <company>Air New Zealand</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>19.0</custPriceWeight>
+    <custPriceVolume>5.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
+  </add>
+  <add>
+    <day>27</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>46</time>
+    <employee>no-one</employee>
+    <origin>Hamilton</origin>
+    <destination>Auckland</destination>
+    <company>KiwiRail</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>12.0</custPriceWeight>
+    <custPriceVolume>12.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
+  </add>
+  <add>
+    <day>27</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>47</time>
+    <employee>no-one</employee>
+    <origin>New plymouth</origin>
+    <destination>Auckland</destination>
+    <company>KiwiRail</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>12.0</custPriceWeight>
+    <custPriceVolume>12.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
+  </add>
+  <add>
+    <day>27</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>47</time>
+    <employee>no-one</employee>
+    <origin>new plymouth</origin>
+    <destination>Auckland</destination>
+    <company>KiwiRail</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>12.0</custPriceWeight>
+    <custPriceVolume>12.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
   </add>
 </log>

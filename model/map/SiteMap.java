@@ -316,11 +316,13 @@ public class SiteMap {
 	 * official list!
 	 */
 	private boolean allowableOrigin(String origin) {
-		File NZtownNames = new File("NZtownNames.txt");
+		File NZtownNames = new File("src/NZtownNames.txt");
 		try (Scanner scanner = new Scanner(NZtownNames)) {
 			while (scanner.hasNextLine()) {
 				String town = scanner.nextLine();
 				if (town.isEmpty()) {
+					//TODO: remove this print statement once everyone happy with method!
+					System.out.println("Origin okay!");
 					break;
 				}
 				if (town.toLowerCase().equals(origin.toLowerCase())) {
@@ -334,6 +336,8 @@ public class SiteMap {
 		}
 		// if we get this far, the origin name was not in the file of allowable
 		// names
+		//TODO: remove this print statement once everyone happy with method!
+		System.out.println("Origin not okay!");
 		return false;
 	}
 
@@ -352,6 +356,7 @@ public class SiteMap {
 			    }
 			output += words[i] + " ";
 		}
+//TODO: remove this testing line once everyone happy with method!	
 //		System.out.println("=" + output.trim() + "="); //testing purposes
 		return output.trim();
 	}
