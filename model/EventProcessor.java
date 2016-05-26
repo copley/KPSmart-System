@@ -134,19 +134,81 @@ public class EventProcessor {
 
 		// Tell sitemap to add the new route with the information. Fail if the
 		// route cannot be added
-		if(!db.getSiteMap().addNewRoute(origin, destination, company, type, duration, custPriceWeight, custPriceVolume,
-				transCostWeight, transCostVolume)){
+		if (!db.getSiteMap().addNewRoute(origin, destination, company, type, duration, custPriceWeight, custPriceVolume,
+				transCostWeight, transCostVolume)) {
 			return false;
 		}
 
 		// make the event to record the action
-		BusinessEvent addRouteEvent = new RouteAdditionEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, duration, custPriceWeight, custPriceVolume, transCostWeight,
-				transCostVolume);
+		BusinessEvent addRouteEvent = new RouteAdditionEvent(day, month, year, time, employeeName, origin, destination,
+				company, type, duration, custPriceWeight, custPriceVolume, transCostWeight, transCostVolume);
 		// store the event in the data store
 		db.addEvent(addRouteEvent);
 		return true;
-	};
+	}
+
+	public boolean disconRoute(int routeID, int employeeID) {
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour() * 10 + now.getMinute();
+		// staff that is logged in
+		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
+		String employeeName;
+		if (employee == null) {
+			// TODO: Change to error when log in works
+			employeeName = "no-one";
+		} else {
+			employeeName = employee.getName();
+		}
+
+		// Tell site map to discontinue route and fail if unsuccessful
+		if (!db.getSiteMap().discontinueRoute(routeID)) {
+			return false;
+		}
+
+		// make the event to record the action
+		Route route = db.getSiteMap().getRouteFromID(routeID);
+		String origin = route.getOrigin();
+		String destination = route.getDestination();
+		String company = route.getCompany();
+		Type type = route.getType();
+		BusinessEvent drBusinessEvent = new RouteDiscEvent(day, month, year, time, employeeName, origin, destination,
+				company, type);
+		// store the event in the data store
+		db.addEvent(drBusinessEvent);
+		return true;
+	}
+
+	public boolean changeCustomerPrice(String origin, String destination, Priority priority, double newWeightCost, double newVolumeCost,
+			int employeeID) {
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour() * 10 + now.getMinute();
+		// staff that is logged in
+		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
+		String employeeName;
+		if (employee == null) {
+			// TODO: Change to error when log in works
+			employeeName = "no-one";
+		} else {
+			employeeName = employee.getName();
+		}
+
+		if(!db.getSiteMap().updateCustomerPrices(origin, destination, priority, newWeightCost, newVolumeCost)){
+			return false;
+		}
+
+		// make the event to record the action
+		BusinessEvent cpcBusinessEvent = new CustPriceChangeEvent(day, month, year, time, employeeName, origin,
+				destination, priority, newWeightCost, newVolumeCost);
+		// store the event in the data store
+		db.addEvent(cpcBusinessEvent);
+		return true;
+	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to process events
@@ -202,46 +264,6 @@ public class EventProcessor {
 	// be discontinued,
 	// and a new one made
 
-	/**
-	 *
-	 * @param routeID
-	 *            --> in constructor, there is origin and destination???
-	 * @param need
-	 *            a priority for constructor as well?
-	 */
-	public boolean changeCustomerPrice(int routeID, double newCustPriceWeight, double newCustPriceVolume,
-			int processorStaffID) {
-		LocalDateTime now = LocalDateTime.now();
-		int day = now.getDayOfMonth();
-		int month = now.getMonthValue();
-		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
-		// try to access the required data
-		Employee employee = db.getEmployees().getEmployeeFromID(processorStaffID);
-		Route route = db.getSiteMap().getRouteFromID(routeID);
-		// if employee or route don't exist, this even fails! do not proceed!
-		if (employee == null || route == null) {
-			return false;
-		}
-		// if we got here, employee and route are safe to call methods on..
-		String employeeName = employee.getName();
-		String origin = route.getOrigin();
-		String destination = route.getDestination();
-		String company = route.getCompany();
-		Type type = route.getType();
-		// make the changes to the route
-		route.updateCustomerPrices(newCustPriceWeight, newCustPriceVolume);
-		// make the event to record the action
-		BusinessEvent cpcBusinessEvent = new CustPriceChangeEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, newCustPriceWeight, newCustPriceVolume);
-		// store the event in the data store
-		db.addEvent(cpcBusinessEvent);
-		// report that the change was successfully made
-		return true;
-
-		// System.out.println(debuggingString + debuggingInt + 1);
-	};
-
 	public boolean changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume,
 			int processorStaffID) {
 		LocalDateTime now = LocalDateTime.now();
@@ -267,57 +289,5 @@ public class EventProcessor {
 		db.addEvent(ctcBusinessEvent);
 		return true;
 		// System.out.println(debuggingString + debuggingInt + 2);
-	};
-
-	// 1
-
-	public boolean disconRoute(int routeID, int processorStaffID) {
-		LocalDateTime now = LocalDateTime.now();
-		int day = now.getDayOfMonth();
-		int month = now.getMonthValue();
-		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
-		// get logged in staff name
-		Employee processor = db.getEmployees().getEmployeeFromID(processorStaffID);
-		String processorName;
-		if (processor == null) {
-			// TODO: remove this and replace with an error once log-in function
-			// is coded
-			processorName = "no-one";// should only be used while there is no
-										// proper log-in
-		} else {
-			processorName = processor.getName();
-		}
-
-		// make the changes to the siteMap (discontinue route)
-		// if discontinueRoute returns false, then abort the event procession
-		// and
-		// report failure
-		if (!db.getSiteMap().discontinueRoute(routeID)) {
-			return false;
-		}
-		// get the data needed to fill out the event
-		Route route = db.getSiteMap().getRouteFromID(routeID);
-		String origin = route.getOrigin();
-		String destination = route.getDestination();
-		String company = route.getCompany();
-		Type type = route.getType();
-		// make the event to record the action
-
-		BusinessEvent drBusinessEvent = new RouteDiscEvent(day, month, year, time, processorName, origin, destination,
-				company, type);
-		// store the event in the data store
-		db.addEvent(drBusinessEvent);
-		// indicate that the event was processed successfully
-		return true;
-		// System.out.println(debuggingString + debuggingInt + 5);
-	}
-
-	public static void pushEvent() {
-		// System.out.println("BEP.pushEvent not yet implemented");
-	}
-
-	public static void createEvent() {
-		// System.out.println("BEP.createEvent not yet implemented");
 	}
 }

@@ -20,7 +20,7 @@ public class ValidationSystem {
 
 	public static boolean validateCustPriceEvent(CustPriceChangeEvent event) {
 		return validateTimestamp(event.getDay(), event.getMonth(), event.getYear(), event.getTime())
-				&& validateMode(event.getType()) && event.getNewWeightCost() > 0 && event.getNewVolumeCost() > 0;
+				&& validatePriority(event.getPriority().toString()) && event.getNewWeightCost() > 0 && event.getNewVolumeCost() > 0;
 	}
 
 	public static boolean validateMailProcessEvent(MailProcessEvent event) {
@@ -68,13 +68,6 @@ public class ValidationSystem {
 	private static boolean validatePriority(String priority) {
 		for(Priority p : Priority.values()){
 			if(p.toString().equals(priority)) return true;
-		}
-		return false;
-	}
-
-	private static boolean validateMode(String mode) {
-		for(Type p : Type.values()){
-			if(p.toString().equals(mode)) return true;
 		}
 		return false;
 	}

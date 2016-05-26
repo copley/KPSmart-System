@@ -35,7 +35,6 @@ public class SiteMap {
 		if (!routes.containsKey(toDiscontinueID)) {
 			return false;
 		}
-		;
 		// call route to say it is discontinued
 		routes.get(toDiscontinueID).discontinue();
 		return true;
@@ -105,6 +104,19 @@ public class SiteMap {
 		return true;
 	}
 
+	public boolean updateCustomerPrices(String origin, String destination, Priority priority, double newWeightCost,
+			double newVolumeCost) {
+		int routesUpdated = 0;
+		for (Route route : routes.values()) {
+			if (route.getOrigin().equals(origin) && route.getDestination().equals(destination)
+					&& compareTypeAndPriority(route.getType(), priority)) {
+				route.updateCustomerPrices(newWeightCost, newVolumeCost);
+				routesUpdated++;
+			}
+		}
+		return routesUpdated > 0;
+	}
+
 	// ======Dijkstra methods... for finding a compound route given from and
 	// to=======
 
@@ -151,13 +163,13 @@ public class SiteMap {
 		// Update the sites so we know if they are an origin and/or destination
 		origin.setIsOrigin();
 		destination.setIsDestination();
-		if(!origins.contains(origin.getLocation())){
+		if (!origins.contains(origin.getLocation())) {
 			origins.add(origin.getLocation());
 			newOrigin = origin.getLocation();
 		} else {
 			newOrigin = null;
 		}
-		if(!destinations.contains(destination.getLocation())){
+		if (!destinations.contains(destination.getLocation())) {
 			destinations.add(destination.getLocation());
 			newDestination = destination.getLocation();
 		} else {
@@ -236,7 +248,8 @@ public class SiteMap {
 	public List<String> getDestinations() {
 		List<String> siteNames = new ArrayList<String>();
 		for (Site site : sites.values()) {
-			if(site.isDestination()) siteNames.add(site.getLocation());
+			if (site.isDestination())
+				siteNames.add(site.getLocation());
 		}
 		Collections.sort(siteNames);
 		return siteNames;
@@ -245,6 +258,7 @@ public class SiteMap {
 	public String getNewOrigin() {
 		return newOrigin;
 	}
+
 	public String getNewDestination() {
 		return newDestination;
 	}
@@ -271,4 +285,20 @@ public class SiteMap {
 	 * =========================================================================
 	 */
 
+	/*
+	 * =========================================================================
+	 * START OF Helper Methods
+	 * =========================================================================
+	 */
+	private boolean compareTypeAndPriority(Type type, Priority priority) {
+		if(type.equals(Type.AIR)){
+			return priority.equals(Priority.INTERNATIONAL_AIR) || priority.equals(Priority.DOMESTIC_AIR);
+		}
+		return priority.equals(Priority.INTERNATIONAL_STANDARD) || priority.equals(Priority.DOMESTIC_STANDARD);
+	}
+	/*
+	 * =========================================================================
+	 * END OF Helper Methods
+	 * =========================================================================
+	 */
 }

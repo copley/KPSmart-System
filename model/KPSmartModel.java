@@ -124,45 +124,26 @@ public class KPSmartModel {
 		// call event processor to do the discontinuation and record the event
 		return eventProcessor.disconRoute(routeID, loggedInStaffID);
 	}
-	/*
-	 * =========================================================================
-	 * END OF Methods to process events - Called by the controller
-	 * =========================================================================
-	 */
 
 	/**
 	 * Takes in some information and does a customer price change. Also creates
 	 * an event and stores it into the data store
 	 *
-	 * @param origin
-	 * @param destination
-	 * @param carrier
-	 * @param typeString
-	 * @param newWeightCostString
-	 * @param newVolumeCostString
+	 * @param input
 	 * @return
 	 */
-	public boolean changeCustomerPrice(String origin, String destination, String carrier, String typeString,
-			String newWeightCostString, String newVolumeCostString) {
-		// convert strings into needed types
-		Type type = getType(typeString);
-		// make sure type is valid - abort and return false if not!
-		if (type == null) {
-			return false;
-		}
-		double newWeightCost = Double.parseDouble(newWeightCostString);
-		double newVolumeCost = Double.parseDouble(newVolumeCostString);
-		// identify which route
-		int routeID = sitemap.findRouteID(origin, destination, carrier, type);
-		// make sure converted data is valid - abort and return false if not!
-		if (routeID == -1) {
-			return false;
-		}
-		// call event processor on that route, event processor returns true if
-		// event was performed successfully
-		// returns false if the event was aborted
-		return eventProcessor.changeCustomerPrice(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
+	public boolean changeCustomerPrice(CustomerPriceInput input) {
+		double newWeightCost = Double.parseDouble(input.getWeightCost());
+		double newVolumeCost = Double.parseDouble(input.getVolumeCost());
+		Priority priority = getPriority(input.getPriority());
+		// event processor to change the customer price and record the event
+		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightCost, newVolumeCost, this.loggedInStaffID);
 	}
+	/*
+	 * =========================================================================
+	 * END OF Methods to process events - Called by the controller
+	 * =========================================================================
+	 */
 
 	/**
 	 * Takes in some information and does a transport cost change. Also creates
@@ -238,7 +219,7 @@ public class KPSmartModel {
 	 * START OF Helper methods for the model
 	 * =========================================================================
 	 */
-	private Priority getPriority(String priorityString) {
+	public static Priority getPriority(String priorityString) {
 		switch (priorityString) {
 		case "International Air":
 			return Priority.INTERNATIONAL_AIR;

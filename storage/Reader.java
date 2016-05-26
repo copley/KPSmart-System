@@ -316,14 +316,11 @@ public class Reader {
 			String employee) throws IllegalTypeException {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
-		//TODO:took out priority element - priority is on a package
-		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)
-		String company = event.getChild("company").getText();
-		Type type = readType(event.getChild("type").getText());
+		Priority priority = KPSmartModel.getPriority(event.getChild("priority").getText());
 		double weightcost = Double.parseDouble(event.getChild("weightcost").getText());
 		double volumecost = Double.parseDouble(event.getChild("volumecost").getText());
 
-		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, company, type, weightcost,
+		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, priority, weightcost,
 				volumecost);
 	}
 

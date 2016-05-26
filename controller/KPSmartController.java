@@ -214,8 +214,13 @@ public class KPSmartController {
 						//TODO: gui should show error box here
 					}
 				} else if (customerPricePanel) {
-					customerPricePanel = false;
-					System.out.println("customeR");
+					CustomerPriceInput input = gui.getCustomerPriceInput();
+					if(model.changeCustomerPrice(input)){
+						System.out.println("Customer price updated!!");
+						// TODO: Update the list of sites in the gui if successful
+					} else {
+						//TODO: gui should show error box here
+					}
 				} else {
 					transportCostChangePanel = false;
 					System.out.println("transPor");

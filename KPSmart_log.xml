@@ -75,4 +75,44 @@
     <company>something</company>
     <type>AIR</type>
   </discontinue>
+  <price>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>167</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <priority>International Air</priority>
+    <weightcost>45.0</weightcost>
+    <volumecost>45.0</volumecost>
+  </price>
+  <add>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>170</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>56.0</custPriceWeight>
+    <custPriceVolume>89.0</custPriceVolume>
+    <transCostWeight>44.0</transCostWeight>
+    <transCostVolume>44.0</transCostVolume>
+  </add>
+  <price>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>170</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <priority>International Air</priority>
+    <weightcost>23.0</weightcost>
+    <volumecost>24.0</volumecost>
+  </price>
 </log>

@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
+import model.map.Priority;
 import view.AbstractMainDisplayPanel;
 
 @SuppressWarnings("serial")
@@ -71,10 +72,9 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		}
 
 		priorityComboBox = new JComboBox<String>();
-		priorityComboBox.addItem("International Air");
-		priorityComboBox.addItem("International Standard");
-		priorityComboBox.addItem("Domestic Air");
-		priorityComboBox.addItem("Domestic Standard");
+		for(Priority p : Priority.values()){
+			priorityComboBox.addItem(p.toString());
+		}
 
 		weightTextField = new JTextField();
 		weightTextField.setColumns(10);

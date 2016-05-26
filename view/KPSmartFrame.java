@@ -18,6 +18,7 @@ import controller.KPSmartController.*;
 import model.events.inputs.*;
 import model.map.Site;
 import view.eventsView.AddNewRoutePanel;
+import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
 import view.eventsView.RouteDiscontinuePanel;
 
@@ -61,7 +62,8 @@ public final class KPSmartFrame extends JFrame {
 	// }
 
 	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
-			ViewWindowAdapter viewWindowAdapter, List<String> origins, List<String> destinations, List<String> companies) {
+			ViewWindowAdapter viewWindowAdapter, List<String> origins, List<String> destinations,
+			List<String> companies) {
 
 		super("KPSmart");
 
@@ -173,9 +175,22 @@ public final class KPSmartFrame extends JFrame {
 
 		return new DiscontinueInput(origin, destination, company, type);
 	}
+
+	public CustomerPriceInput getCustomerPriceInput() {
+		CustomerPriceChangePanel panel = (CustomerPriceChangePanel) canvas.getMainDisplayPanel();
+
+		String origin = panel.getOriginComboBoxString();
+		String destination = panel.getDestinationComboBoxString();
+		String priority = panel.getPriorityComboBoxString();
+		String weightCost = panel.getNewWeightCostTextFieldString();
+		String volumeCost = panel.getNewVolumeCosttextFieldString();
+
+		return new CustomerPriceInput(origin, destination, priority, weightCost, volumeCost);
+	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to get information for the model
 	 * =========================================================================
 	 */
+
 }
