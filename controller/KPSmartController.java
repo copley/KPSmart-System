@@ -33,7 +33,7 @@ public class KPSmartController {
 	public KPSmartController() {
 		model = new KPSmartModel();
 		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), new ViewWindowAdapter(),
-				model.getSiteNames());
+				model.getSiteNames(), model.getCompanies());
 		System.out.println("Calling from Controller"); // debugging
 	}
 
@@ -190,18 +190,24 @@ public class KPSmartController {
 
 				if (mailDeliveryPanel) {
 					MailProcessInput input = gui.getMailDeliveryInput();
-					boolean done = model.processMail(input);
-					if (done) {
+					if (model.processMail(input)) {
 						System.out.println("Mail processed!!");
+					} else {
+						System.out.println("Could not process mail");
+						//TODO: gui should show error box here
 					}
 				} else if (newRoutePanel) {
 					NewRouteInput input = gui.getNewRouteInput();
 					if(model.addNewRoute(input)){
 						System.out.println("Route added!!");
+						// Update the list of sites in the gui if successful
 						gui.updateSites(model.getNewSites());
+					} else {
+						//TODO: gui should show error box here
 					}
 				} else if (discontinueRoutePanel) {
-					discontinueRoutePanel = false;
+					DiscontinueInput input = gui.getDiscontinueInput();
+
 					System.out.println("disCon");
 				} else if (customerPricePanel) {
 					customerPricePanel = false;

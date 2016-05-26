@@ -96,8 +96,8 @@ public class KPSmartModel {
 
 		// call event processor to do the addition and record the event
 
-		return eventProcessor.addRoute(input.getOrigin(), input.getDestination(), input.getCompany(), type, duration, custPriceWeight, custPriceVolume,
-				transCostWeight, transCostVolume, loggedInStaffID);
+		return eventProcessor.addRoute(input.getOrigin(), input.getDestination(), input.getCompany(), type, duration,
+				custPriceWeight, custPriceVolume, transCostWeight, transCostVolume, loggedInStaffID);
 	}
 	/*
 	 * =========================================================================
@@ -203,6 +203,24 @@ public class KPSmartModel {
 	public List<String> getSiteNames() {
 		return sitemap.getSiteNames();
 	}
+
+	/**
+	 * Gets the newly added sites to update the gui
+	 *
+	 * @return
+	 */
+	public List<String> getNewSites() {
+		return db.getSiteMap().getNewSites();
+	}
+
+	/**
+	 * Gets a list of all the companies
+	 *
+	 * @return
+	 */
+	public List<String> getCompanies() {
+		return db.getSiteMap().getCompanies();
+	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to provide information to the GUI - Called by the
@@ -243,19 +261,10 @@ public class KPSmartModel {
 		}
 	}
 
-	/**
-	 * Gets the newly added sites to update the gui
-	 * @return
-	 */
-	public List<String> getNewSites() {
-		return db.getSiteMap().getNewSites();
-	}
 	/*
 	 * =========================================================================
 	 * END OF Helper methods for the model
 	 * =========================================================================
 	 */
-
-
 
 }

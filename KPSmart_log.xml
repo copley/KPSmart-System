@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <log>
-  <mail>
-    <day>15</day>
-    <month>5</month>
-    <year>2016</year>
-    <time>1330</time>
-    <employee>Bonnie</employee>
-    <origin>Rome</origin>
-    <destination>Wellington</destination>
-    <weight>100.0</weight>
-    <volume>5.0</volume>
-    <priority>International Air</priority>
-    <revenue>10.0</revenue>
-    <expenditure>3.0</expenditure>
-    <deliveryTime>24.0</deliveryTime>
-  </mail>
   <price>
     <day>15</day>
     <month>5</month>
@@ -80,8 +65,8 @@
     <volume>4.0</volume>
     <priority>Domestic Air</priority>
     <revenue>0.0</revenue>
-    <expenditure>0.0</expenditure>
-    <deliveryTime>20.0</deliveryTime>
+    <expenditure>20.0</expenditure>
+    <deliveryTime>0.0</deliveryTime>
   </mail>
   <add>
     <day>25</day>
@@ -195,4 +180,19 @@
     <transCostWeight>5.0</transCostWeight>
     <transCostVolume>5.0</transCostVolume>
   </add>
+  <mail>
+    <day>26</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>122</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <weight>4.0</weight>
+    <volume>4.0</volume>
+    <priority>Domestic Air</priority>
+    <revenue>16.0</revenue>
+    <expenditure>6.0</expenditure>
+    <deliveryTime>16.0</deliveryTime>
+  </mail>
 </log>

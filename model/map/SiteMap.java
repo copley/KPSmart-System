@@ -227,11 +227,21 @@ public class SiteMap {
 	public List<String> getNewSites() {
 		return newSites;
 	}
+
+	public List<String> getCompanies() {
+		List<String> companies = new ArrayList<String>();
+		for(Route r : routes.values()){
+			if(!companies.contains(r.getCompany())) companies.add(r.getCompany());
+		}
+		return companies;
+	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to provide information to the GUI
 	 * =========================================================================
 	 */
+
+
 
 
 }

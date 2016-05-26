@@ -13,6 +13,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
+import model.map.Type;
 import view.AbstractMainDisplayPanel;
 
 @SuppressWarnings("serial")
@@ -32,7 +33,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 	private JComboBox<String> transportCompanyComboBox;
 	private JComboBox<String> typeComboBox;
 
-	public RouteDiscontinuePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames) {
+	public RouteDiscontinuePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames, List<String> companies) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -47,9 +48,21 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		lblType.setFont(new Font("Dialog", Font.BOLD, 15));
 
 		originComboBox = new JComboBox<String>();
+		for(String s : siteNames){
+			originComboBox.addItem(s);
+		}
 		destinationComboBox = new JComboBox<String>();
+		for(String s : siteNames){
+			destinationComboBox.addItem(s);
+		}
 		transportCompanyComboBox = new JComboBox<String>();
+		for(String c : companies){
+			transportCompanyComboBox.addItem(c);
+		}
 		typeComboBox = new JComboBox<String>();
+		for(Type t : Type.values()){
+			typeComboBox.addItem(t.name());
+		}
 
 		resetButton = new JButton("Reset");
 		resetButton.addActionListener(viewActionListener);

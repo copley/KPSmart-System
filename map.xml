@@ -2,91 +2,35 @@
 <sitemap>
   <sites>
     <site>
-      <id>4</id>
-      <location>Hastings</location>
-    </site>
-    <site>
-      <id>2</id>
-      <location>Auckland</location>
-    </site>
-    <site>
-      <id>3</id>
-      <location>Sydney</location>
-    </site>
-    <site>
-      <id>6</id>
-      <location>Taupo</location>
-    </site>
-    <site>
-      <id>7</id>
-      <location>Rotorua</location>
+      <id>8</id>
+      <location>Waikanae</location>
     </site>
     <site>
       <id>5</id>
       <location>Dunedin</location>
     </site>
     <site>
-      <id>8</id>
-      <location>Waikanae</location>
-    </site>
-    <site>
       <id>1</id>
       <location>Wellington</location>
     </site>
+    <site>
+      <id>6</id>
+      <location>Taupo</location>
+    </site>
+    <site>
+      <id>2</id>
+      <location>Auckland</location>
+    </site>
+    <site>
+      <id>4</id>
+      <location>Hastings</location>
+    </site>
+    <site>
+      <id>7</id>
+      <location>Rotorua</location>
+    </site>
   </sites>
   <routes>
-    <route>
-      <id>1</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>Kelburn Airways</company>
-      <duration>20.0</duration>
-      <type>SEA</type>
-      <custPriceWeight>0.0</custPriceWeight>
-      <custPriceVolume>0.0</custPriceVolume>
-      <transPriceWeight>0.0</transPriceWeight>
-      <transPriceVolume>0.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>4</id>
-      <origin>Wellington</origin>
-      <destination>Dunedin</destination>
-      <company>Mail NZ</company>
-      <duration>2.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>3.0</custPriceWeight>
-      <custPriceVolume>45.0</custPriceVolume>
-      <transPriceWeight>8.0</transPriceWeight>
-      <transPriceVolume>8.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>9</id>
-      <origin>Wellington</origin>
-      <destination>Waikanae</destination>
-      <company>Mail NZ</company>
-      <duration>9.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>7.0</custPriceWeight>
-      <custPriceVolume>6.0</custPriceVolume>
-      <transPriceWeight>5.0</transPriceWeight>
-      <transPriceVolume>5.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>5</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>Some Company</company>
-      <duration>10.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>4.0</custPriceWeight>
-      <custPriceVolume>5.0</custPriceVolume>
-      <transPriceWeight>3.0</transPriceWeight>
-      <transPriceVolume>3.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
     <route>
       <id>7</id>
       <origin>Wellington</origin>
@@ -98,32 +42,6 @@
       <custPriceVolume>7.0</custPriceVolume>
       <transPriceWeight>9.0</transPriceWeight>
       <transPriceVolume>9.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>8</id>
-      <origin>Wellington</origin>
-      <destination>Rotorua</destination>
-      <company>Mail NZ</company>
-      <duration>9.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>7.0</custPriceWeight>
-      <custPriceVolume>6.0</custPriceVolume>
-      <transPriceWeight>5.0</transPriceWeight>
-      <transPriceVolume>5.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>6</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>Some Company</company>
-      <duration>10.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>4.0</custPriceWeight>
-      <custPriceVolume>5.0</custPriceVolume>
-      <transPriceWeight>3.0</transPriceWeight>
-      <transPriceVolume>3.0</transPriceVolume>
       <inService>true</inService>
     </route>
     <route>
@@ -140,6 +58,32 @@
       <inService>true</inService>
     </route>
     <route>
+      <id>4</id>
+      <origin>Wellington</origin>
+      <destination>Dunedin</destination>
+      <company>Mail NZ</company>
+      <duration>2.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>3.0</custPriceWeight>
+      <custPriceVolume>45.0</custPriceVolume>
+      <transPriceWeight>8.0</transPriceWeight>
+      <transPriceVolume>8.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>8</id>
+      <origin>Wellington</origin>
+      <destination>Rotorua</destination>
+      <company>Mail NZ</company>
+      <duration>9.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>7.0</custPriceWeight>
+      <custPriceVolume>6.0</custPriceVolume>
+      <transPriceWeight>5.0</transPriceWeight>
+      <transPriceVolume>5.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
       <id>3</id>
       <origin>Wellington</origin>
       <destination>Hastings</destination>
@@ -150,6 +94,58 @@
       <custPriceVolume>4.0</custPriceVolume>
       <transPriceWeight>6.0</transPriceWeight>
       <transPriceVolume>6.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>9</id>
+      <origin>Wellington</origin>
+      <destination>Waikanae</destination>
+      <company>Mail NZ</company>
+      <duration>9.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>7.0</custPriceWeight>
+      <custPriceVolume>6.0</custPriceVolume>
+      <transPriceWeight>5.0</transPriceWeight>
+      <transPriceVolume>5.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>1</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>Kelburn Airways</company>
+      <duration>20.0</duration>
+      <type>SEA</type>
+      <custPriceWeight>0.0</custPriceWeight>
+      <custPriceVolume>0.0</custPriceVolume>
+      <transPriceWeight>0.0</transPriceWeight>
+      <transPriceVolume>0.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>5</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>Some Company</company>
+      <duration>10.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>4.0</custPriceWeight>
+      <custPriceVolume>5.0</custPriceVolume>
+      <transPriceWeight>3.0</transPriceWeight>
+      <transPriceVolume>3.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>6</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>Some Company</company>
+      <duration>10.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>4.0</custPriceWeight>
+      <custPriceVolume>5.0</custPriceVolume>
+      <transPriceWeight>3.0</transPriceWeight>
+      <transPriceVolume>3.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>
