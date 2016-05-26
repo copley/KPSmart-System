@@ -45,7 +45,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 	private JComboBox<String> transportCompanyComboBox;
 
 	public TransportCostChangePanel(KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener, List<String> siteNames) {
+			ViewActionListener viewActionListener, List<String> origins, List<String> destinations) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");

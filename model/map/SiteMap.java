@@ -8,12 +8,17 @@ public class SiteMap {
 	private Map<Integer, Site> sites; // maps site to its id
 	private Map<Integer, Route> routes; // maps route to its id
 	private Map<Site, List<Route>> siteToRoutes; // maps sites to routes
-	private List<String> newSites;
+	private List<String> origins;
+	private List<String> destinations;
+	private String newOrigin;
+	private String newDestination;
 
 	public SiteMap() {
 		sites = new HashMap<Integer, Site>();
 		routes = new HashMap<Integer, Route>();
 		siteToRoutes = new HashMap<Site, List<Route>>();
+		origins = new ArrayList<String>();
+		destinations = new ArrayList<String>();
 	}
 
 	// ================ methods directly related to business events============
@@ -47,7 +52,6 @@ public class SiteMap {
 	public boolean addNewRoute(String origin, String destination, String company, Type type, double duration,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		// check all input for values in correct format
-		newSites = new ArrayList<String>();
 		if (duration <= 0 || custPriceWeight <= 0 || custPriceVolume <= 0 || transPriceWeight <= 0
 				|| transPriceVolume <= 0 || origin == null || destination == null || company == null
 				|| origin.equals("") || destination.equals("") || company.equals("") || origin.equals(destination)) {
@@ -70,20 +74,17 @@ public class SiteMap {
 		// Make the new sites if necessary
 		if (originID == -1) {
 			originID = sites.size() + 1;
-			Site originSite = new Site(originID, origin);
+			Site originSite = new Site(originID, origin, true, false);
 			addSite(originSite);
-			newSites.add(origin);
 		}
 		if (destinationID == -1) {
 			destinationID = sites.size() + 1;
-			Site destinationSite = new Site(destinationID, destination);
+			Site destinationSite = new Site(destinationID, destination, false, true);
 			addSite(destinationSite);
-			newSites.add(destination);
 		}
 
 		// Check if route exists yet. Fail if it already does
-		Set<Route> routes = getRoutes();
-		for (Route route : routes) {
+		for (Route route : routes.values()) {
 			if (route.getDestination() == destination && route.getOrigin() == origin
 					&& route.getCompany().equals(company) && route.getDuration() == duration) {
 				return false;// may need to do a price update instead
@@ -91,7 +92,7 @@ public class SiteMap {
 		}
 
 		// find the next available ID (current length of routes list!)
-		int newRouteID = routes.size() + 1;
+		int newRouteID = routes.values().size() + 1;
 		// make route object
 		Route newRoute = new Route(newRouteID, origin, destination, company, duration, type, true, custPriceWeight,
 				custPriceVolume, transPriceWeight, transPriceVolume);
@@ -136,25 +137,32 @@ public class SiteMap {
 
 	public void addRoute(Route route) throws IllegalRouteException {
 		routes.put(route.getID(), route);
-		Site s1 = sites.get(getSiteIDfromLocation(route.getOrigin()));
-		Site s2 = sites.get(getSiteIDfromLocation(route.getDestination()));
-		if (siteToRoutes.get(s1) == null || siteToRoutes.get(s2) == null) {
+		Site origin = sites.get(getSiteIDfromLocation(route.getOrigin()));
+		Site destination = sites.get(getSiteIDfromLocation(route.getDestination()));
+		if (siteToRoutes.get(origin) == null || siteToRoutes.get(destination) == null) {
 			throw new IllegalRouteException("Invalid Route! Can't find site");
 		}
-		List<Route> s1Routes = siteToRoutes.get(s1);
-		s1Routes.add(route);
-		siteToRoutes.put(s1, s1Routes);
-		List<Route> s2Routes = siteToRoutes.get(s2);
-		s2Routes.add(route);
-		siteToRoutes.put(s2, s2Routes);
-	}
-
-	public Set<Site> getSites() {
-		return new HashSet<Site>(sites.values());
-	}
-
-	public Set<Route> getRoutes() {
-		return new HashSet<Route>(routes.values());
+		List<Route> routesToOrigin = siteToRoutes.get(origin);
+		routesToOrigin.add(route);
+		siteToRoutes.put(origin, routesToOrigin);
+		List<Route> routesToDestination = siteToRoutes.get(destination);
+		routesToDestination.add(route);
+		siteToRoutes.put(destination, routesToDestination);
+		// Update the sites so we know if they are an origin and/or destination
+		origin.setIsOrigin();
+		destination.setIsDestination();
+		if(!origins.contains(origin.getLocation())){
+			origins.add(origin.getLocation());
+			newOrigin = origin.getLocation();
+		} else {
+			newOrigin = null;
+		}
+		if(!destinations.contains(destination.getLocation())){
+			destinations.add(destination.getLocation());
+			newDestination = destination.getLocation();
+		} else {
+			newDestination = null;
+		}
 	}
 
 	public List<Route> getRoutesOn(int siteID) {
@@ -163,8 +171,7 @@ public class SiteMap {
 	}
 
 	public int getSiteIDfromLocation(String location) {
-		Set<Site> sites = getSites();
-		for (Site site : sites) {
+		for (Site site : sites.values()) {
 			if (site.getLocation().equals(location)) {
 				return site.getID();
 
@@ -209,39 +216,59 @@ public class SiteMap {
 	 * START OF Methods to provide information to the GUI
 	 * =========================================================================
 	 */
+
+	public List<String> getOrigins() {
+		List<String> siteNames = new ArrayList<String>();
+		for (Site site : sites.values()) {
+			if (site.isOrigin())
+				siteNames.add(site.getLocation());
+		}
+		Collections.sort(siteNames);
+		return siteNames;
+	}
+
 	/**
 	 * Loops through the list of sites and adds the names of the sites into a
 	 * list. The list is then sorted alphabetically.
 	 *
 	 * @return a list of the site names
 	 */
-	public List<String> getSiteNames() {
+	public List<String> getDestinations() {
 		List<String> siteNames = new ArrayList<String>();
 		for (Site site : sites.values()) {
-			siteNames.add(site.getLocation());
+			if(site.isDestination()) siteNames.add(site.getLocation());
 		}
 		Collections.sort(siteNames);
 		return siteNames;
 	}
 
-	public List<String> getNewSites() {
-		return newSites;
+	public String getNewOrigin() {
+		return newOrigin;
+	}
+	public String getNewDestination() {
+		return newDestination;
 	}
 
 	public List<String> getCompanies() {
 		List<String> companies = new ArrayList<String>();
-		for(Route r : routes.values()){
-			if(!companies.contains(r.getCompany())) companies.add(r.getCompany());
+		for (Route r : routes.values()) {
+			if (!companies.contains(r.getCompany()))
+				companies.add(r.getCompany());
 		}
 		return companies;
+	}
+
+	public Set<Site> getSites() {
+		return new HashSet<Site>(sites.values());
+	}
+
+	public Set<Route> getRoutes() {
+		return new HashSet<Route>(routes.values());
 	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to provide information to the GUI
 	 * =========================================================================
 	 */
-
-
-
 
 }

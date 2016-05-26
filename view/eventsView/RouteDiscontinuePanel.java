@@ -33,7 +33,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 	private JComboBox<String> transportCompanyComboBox;
 	private JComboBox<String> typeComboBox;
 
-	public RouteDiscontinuePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames, List<String> companies) {
+	public RouteDiscontinuePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> origins, List<String> destinations, List<String> companies) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -48,11 +48,11 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		lblType.setFont(new Font("Dialog", Font.BOLD, 15));
 
 		originComboBox = new JComboBox<String>();
-		for(String s : siteNames){
+		for(String s : origins){
 			originComboBox.addItem(s);
 		}
 		destinationComboBox = new JComboBox<String>();
-		for(String s : siteNames){
+		for(String s : destinations){
 			destinationComboBox.addItem(s);
 		}
 		transportCompanyComboBox = new JComboBox<String>();
@@ -143,11 +143,9 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		return typeComboBox.getSelectedItem().toString();
 	}
 
-	public void addSites(List<String> newSites) {
-		for(String s : newSites){
-			originComboBox.addItem(s);
-			destinationComboBox.addItem(s);
-		}
+	public void addSites(String origin, String destination) {
+		if(origin != null) originComboBox.addItem(origin);
+		if(destination != null) destinationComboBox.addItem(destination);
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 	private JButton submitButton;
 
 	public CustomerPriceChangePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
-			List<String> siteNames) {
+			List<String> origins, List<String> destinations) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");

@@ -180,7 +180,9 @@ public class Reader {
 	private static Site readSite(Element site) {
 		int id = Integer.parseInt(site.getChild("id").getText());
 		String location = site.getChild("location").getText();
-		return new Site(id, location);
+		boolean isOrigin = Boolean.parseBoolean(site.getChild("isOrigin").getText());
+		boolean isDestination = Boolean.parseBoolean(site.getChild("isDestination").getText());
+		return new Site(id, location, isOrigin, isDestination);
 	}
 
 	/**

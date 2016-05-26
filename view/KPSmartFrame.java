@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import controller.KPSmartController.*;
 import model.events.inputs.*;
+import model.map.Site;
 import view.eventsView.AddNewRoutePanel;
 import view.eventsView.MailDeliveryPanel;
 import view.eventsView.RouteDiscontinuePanel;
@@ -60,7 +61,7 @@ public final class KPSmartFrame extends JFrame {
 	// }
 
 	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
-			ViewWindowAdapter viewWindowAdapter, List<String> siteNames, List<String> companies) {
+			ViewWindowAdapter viewWindowAdapter, List<String> origins, List<String> destinations, List<String> companies) {
 
 		super("KPSmart");
 
@@ -69,7 +70,7 @@ public final class KPSmartFrame extends JFrame {
 
 		setLayout(new BorderLayout());
 
-		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener, siteNames, companies);
+		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener, origins, destinations, companies);
 		add(canvas);
 
 		createMenu();
@@ -115,8 +116,8 @@ public final class KPSmartFrame extends JFrame {
 		canvas.resetTextFields();
 	}
 
-	public void updateSites(List<String> newSites) {
-		canvas.updateSites(newSites);
+	public void updateSites(String origin, String destination) {
+		canvas.updateSites(origin, destination);
 	}
 
 	public void popupMessage(boolean successful) {

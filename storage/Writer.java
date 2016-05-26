@@ -314,6 +314,8 @@ public class Writer {
 		Element s = new Element("site");
 		s.addContent(new Element("id").setText("" + site.getID()));
 		s.addContent(new Element("location").setText(site.getLocation()));
+		s.addContent(new Element("isOrigin").setText(site.isOrigin()+""));
+		s.addContent(new Element("isDestination").setText(site.isDestination()+""));
 		return s;
 	}
 

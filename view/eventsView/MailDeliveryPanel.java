@@ -38,7 +38,8 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 	private JButton cancelButton;
 	private JButton submitButton;
 
-	public MailDeliveryPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames) {
+	public MailDeliveryPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
+			List<String> origins, List<String> destinations) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblGrams = new JLabel("gram(s)");
@@ -60,12 +61,12 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		lblPriority.setFont(new Font("Dialog", Font.BOLD, 15));
 
 		originComboBox = new JComboBox<String>();
-		for(String site : siteNames){
+		for (String site : origins) {
 			originComboBox.addItem(site);
 		}
 
 		destinationComboBox = new JComboBox<String>();
-		for(String site : siteNames){
+		for (String site : destinations) {
 			destinationComboBox.addItem(site);
 		}
 
@@ -175,11 +176,9 @@ public class MailDeliveryPanel extends AbstractMainDisplayPanel {
 		return priorityComboBox.getSelectedItem().toString();
 	}
 
-	public void addSites(List<String> newSites) {
-		for(String s : newSites){
-			originComboBox.addItem(s);
-			destinationComboBox.addItem(s);
-		}
+	public void addSites(String origin, String destination) {
+		if(origin != null) originComboBox.addItem(origin);
+		if(destination != null) destinationComboBox.addItem(destination);
 	}
 
 	@Override

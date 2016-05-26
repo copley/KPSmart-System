@@ -33,7 +33,7 @@ public class KPSmartController {
 	public KPSmartController() {
 		model = new KPSmartModel();
 		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), new ViewWindowAdapter(),
-				model.getSiteNames(), model.getCompanies());
+				model.getOrigins(), model.getDestinations(), model.getCompanies());
 		System.out.println("Calling from Controller"); // debugging
 	}
 
@@ -201,7 +201,7 @@ public class KPSmartController {
 					if(model.addNewRoute(input)){
 						System.out.println("Route added!!");
 						// Update the list of sites in the gui if successful
-						gui.updateSites(model.getNewSites());
+						gui.updateSites(model.getNewOrigin(), model.getNewDestination());
 					} else {
 						//TODO: gui should show error box here
 					}

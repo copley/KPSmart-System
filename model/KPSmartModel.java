@@ -200,8 +200,12 @@ public class KPSmartModel {
 	 * controller
 	 * =========================================================================
 	 */
-	public List<String> getSiteNames() {
-		return sitemap.getSiteNames();
+	public List<String> getOrigins() {
+		return sitemap.getOrigins();
+	}
+
+	public List<String> getDestinations() {
+		return sitemap.getDestinations();
 	}
 
 	/**
@@ -209,8 +213,13 @@ public class KPSmartModel {
 	 *
 	 * @return
 	 */
-	public List<String> getNewSites() {
-		return db.getSiteMap().getNewSites();
+	public String getNewOrigin() {
+		return db.getSiteMap().getNewOrigin();
+	}
+
+
+	public String getNewDestination() {
+		return db.getSiteMap().getNewDestination();
 	}
 
 	/**
