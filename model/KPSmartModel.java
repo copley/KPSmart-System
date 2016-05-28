@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.EventProcessor;
+import model.events.BusinessEvent;
 import model.events.inputs.*;
 import model.map.*;
 
@@ -248,6 +249,14 @@ public class KPSmartModel {
 	 */
 	public List<String> getCompanies() {
 		return db.getSiteMap().getCompanies();
+	}
+	
+	/**
+	 * Gets a linked list of strings representing each recorded business event 
+	 * @return
+	 */
+	public List<String> getBusinessEventStrings() {
+		return db.getBusinessEventStrings();
 	}
 	/*
 	 * =========================================================================

@@ -1,6 +1,7 @@
 package storage;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.employees.Employee;
@@ -71,5 +72,13 @@ public class DataStore {
 	public Employees getEmployees() {
 		return employees;
 		}
+
+	public List<String> getBusinessEventStrings() {
+		List<String> eventStrings = new ArrayList<String>();
+		for(BusinessEvent be : businessEvents){
+			eventStrings.add(be.toString());
+		}
+		return eventStrings;
+	}
 
 }
