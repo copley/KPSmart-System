@@ -202,8 +202,14 @@ public class KPSmartController {
 						System.out.println("Route added!!");
 						// Update the list of sites in the gui if successful
 						gui.updateSites(model.getNewOrigin(), model.getNewDestination());
+						//Notify success and return to homescreen
+						gui.popupMessage(true);
+						gui.setMainDisplayPanel("HomepagePanel");
+						
 					} else {
-						//TODO: gui should show error box here
+						//Notify failure and return to input panel
+						gui.popupMessage(false);
+						//TODO: maybe make a more specific error message
 					}
 				} else if (discontinueRoutePanel) {
 					DiscontinueInput input = gui.getDiscontinueInput();
