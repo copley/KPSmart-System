@@ -31,12 +31,15 @@ public class KPSmartModel {
 	private DataStore db;// holds links to all the permanent data, and handles
 							// the read and write to file.
 	private EventProcessor eventProcessor;// manages the production of business
-											// event records
+
+	private FigureGenerator fg;
+	// event records
 	private int loggedInStaffID;// currently logged in staff member id
 
 	public KPSmartModel() {
 		db = new DataStore();
 		sitemap = db.getSiteMap();
+		fg = new FigureGenerator(db);
 		eventProcessor = new EventProcessor(db);
 		loggedInStaffID = -1;// no-one is logged in initially
 	}
@@ -44,6 +47,40 @@ public class KPSmartModel {
 	public void save() {
 		db.save();
 	}
+
+	/*
+	 * =========================================================================
+	 * START OF Methods to Generate Figures - Called by the controller
+	 * =========================================================================
+	 */
+	public double totalRevenue() {
+		return fg.getRevenue();
+	}
+
+	public double getExpenditure() {
+		return fg.getExpenditure();
+	};
+
+	public double getAVGDelivery() {
+		return fg.getAVGDelivery();
+	}
+
+	public List<Route> getCriticalRoutes() {
+		return fg.generateCriticalRoutes();
+	};
+
+	public int getTotalMail() {
+		return fg.generateTotalMail();
+	};
+
+	public int getTotalEvents() {
+		return fg.generateTotalEvents();
+	};
+	/*
+	 * =========================================================================
+	 * END OF Methods to Generate Figures - Called by the controller
+	 * =========================================================================
+	 */
 
 	/*
 	 * =========================================================================
@@ -61,7 +98,6 @@ public class KPSmartModel {
 		// work out the origin and destination IDs
 		int originID = this.sitemap.getSiteIDfromLocation(input.getOrigin());
 		int destinationID = this.sitemap.getSiteIDfromLocation(input.getDestination());
-
 		// convert strings into needed types
 		double weight;
 		double volume;
@@ -91,7 +127,7 @@ public class KPSmartModel {
 	 * @return
 	 */
 	public boolean addNewRoute(NewRouteInput input) {
-		
+
 		double custPriceWeight;
 		double custPriceVolume;
 		double transCostWeight;
@@ -110,7 +146,8 @@ public class KPSmartModel {
 
 		Type type = getType(input.getType());
 		// make sure converted data is valid - abort and return false if not!
-		if (type == null || custPriceWeight <=0 || custPriceVolume <= 0 || transCostWeight <=0 || transCostVolume <=0 || duration <=0) {
+		if (type == null || custPriceWeight <= 0 || custPriceVolume <= 0 || transCostWeight <= 0 || transCostVolume <= 0
+				|| duration <= 0) {
 			return false;
 		}
 
@@ -155,21 +192,21 @@ public class KPSmartModel {
 	public boolean changeCustomerPrice(CustomerPriceInput input) {
 		double newWeightCost;
 		double newVolumeCost;
-		
-		try{
-		newWeightCost = Double.parseDouble(input.getWeightCost());
-		newVolumeCost = Double.parseDouble(input.getVolumeCost());
+
+		try {
+			newWeightCost = Double.parseDouble(input.getWeightCost());
+			newVolumeCost = Double.parseDouble(input.getVolumeCost());
 		} catch (NumberFormatException nfe) {
 			return false;
 		}
 
 		Priority priority = getPriority(input.getPriority());
-		
+
 		// make sure converted data is valid - abort and return false if not!
-		if (priority == null || newWeightCost <=0 || newVolumeCost <= 0 ) {
+		if (priority == null || newWeightCost <= 0 || newVolumeCost <= 0) {
 			return false;
 		}
-	
+
 		// event processor to change the customer price and record the event
 		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightCost,
 				newVolumeCost, this.loggedInStaffID);
@@ -185,22 +222,22 @@ public class KPSmartModel {
 	public boolean changeTransportCost(TransportCostInput input) {
 		double newWeightCost;
 		double newVolumeCost;
-		
-		try{
-		newWeightCost = Double.parseDouble(input.getWeightCost());
-		newVolumeCost = Double.parseDouble(input.getVolumeCost());
+
+		try {
+			newWeightCost = Double.parseDouble(input.getWeightCost());
+			newVolumeCost = Double.parseDouble(input.getVolumeCost());
 		} catch (NumberFormatException nfe) {
 			return false;
 		}
-		
+
 		Type type = getType(input.getType());
-		
-		// make sure converted data  is valid - abort and return false if not!
-		if (type == null || newWeightCost <=0 || newVolumeCost <= 0 ) {
+
+		// make sure converted data is valid - abort and return false if not!
+		if (type == null || newWeightCost <= 0 || newVolumeCost <= 0) {
 			return false;
 		}
-		
-		//find the route
+
+		// find the route
 		int routeID = sitemap.findRouteID(input.getOrigin(), input.getDestination(), input.getCompany(), type);
 		// make sure converted data is valid - abort and return false if not!
 		if (routeID == -1) {
@@ -250,9 +287,10 @@ public class KPSmartModel {
 	public List<String> getCompanies() {
 		return db.getSiteMap().getCompanies();
 	}
-	
+
 	/**
-	 * Gets a linked list of strings representing each recorded business event 
+	 * Gets a linked list of strings representing each recorded business event
+	 *
 	 * @return
 	 */
 	public List<String> getBusinessEventStrings() {

@@ -67,18 +67,22 @@ public class DataStore {
 
 	public SiteMap getSiteMap() {
 		return map;
-		}
+	}
 
 	public Employees getEmployees() {
 		return employees;
-		}
+	}
 
 	public List<String> getBusinessEventStrings() {
 		List<String> eventStrings = new ArrayList<String>();
-		for(BusinessEvent be : businessEvents){
+		for (BusinessEvent be : businessEvents) {
 			eventStrings.add(be.toString());
 		}
 		return eventStrings;
+	}
+
+	public List<BusinessEvent> getBusinessEvents() {
+		return businessEvents;
 	}
 
 }
