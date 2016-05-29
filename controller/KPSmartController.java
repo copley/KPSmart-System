@@ -191,47 +191,51 @@ public class KPSmartController {
 				if (mailDeliveryPanel) {
 					MailProcessInput input = gui.getMailDeliveryInput();
 					if (model.processMail(input)) {
-						System.out.println("Mail processed!!");
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Mail has been successfully processed");
+						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
-						System.out.println("Could not process mail");
-						//TODO: gui should show error box here
+						gui.popupMessage(false, "Mail could not be processed");
 					}
 				} else if (newRoutePanel) {
 					NewRouteInput input = gui.getNewRouteInput();
 					if(model.addNewRoute(input)){
-						System.out.println("Route added!!");
 						// Update the list of sites in the gui if successful
 						gui.updateSites(model.getNewOrigin(), model.getNewDestination());
 						//Notify success and return to homescreen
-						gui.popupMessage(true);
+						gui.popupMessage(true, "Route has been successfully added");
 						gui.setMainDisplayPanel("HomepagePanel");
-						
+
 					} else {
 						//Notify failure and return to input panel
-						gui.popupMessage(false);
-						//TODO: maybe make a more specific error message
+						gui.popupMessage(false, "Route could not be added");
 					}
 				} else if (discontinueRoutePanel) {
 					DiscontinueInput input = gui.getDiscontinueInput();
 					if(model.discontinueRoute(input)){
-						System.out.println("Route Discontinued!!");
-						// TODO: Update the list of sites in the gui if successful
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Route has been successfully discontinued");
+						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
-						//TODO: gui should show error box here
+						gui.popupMessage(false, "Route could not be discontinued");
 					}
 				} else if (customerPricePanel) {
 					CustomerPriceInput input = gui.getCustomerPriceInput();
 					if(model.changeCustomerPrice(input)){
-						System.out.println("Customer price updated!!");
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Customer prices have been updated");
+						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
-						//TODO: gui should show error box here
+						gui.popupMessage(false, "Could not update customer prices");
 					}
 				} else {
 					TransportCostInput input = gui.getTransportCostInput();
 					if(model.changeTransportCost(input)){
-						System.out.println("Tranport cost updated!!");
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Transport costs have been updated");
+						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
-						//TODO: gui should show error box here
+						gui.popupMessage(false, "Could not update transport costs");
 					}
 				}
 			}
