@@ -11,31 +11,35 @@ import storage.DataStore;
 public class FigureGenerator {
 
 	private DataStore db;
-	private List<MailProcessEvent> mailE = new ArrayList<MailProcessEvent>();
+	private List<MailProcessEvent> mailEvents = new ArrayList<MailProcessEvent>();
 	private double totRevenue;
 	private double totExpenditure;
 	private double deliveryTimes;
-	//private List<Route> criticalRoutes = new ArrayList<Route>();
+	// private List<Route> criticalRoutes = new ArrayList<Route>();
 
 	public FigureGenerator(DataStore db) {
-		super();
-		getMailEvents();	//generates all the process mail events in the database.
+		this.db = db;
 	}
 
-
-	//need to finish this method
-	public void getMailEvents(){
-		for(BusinessEvent be:db.getBusinessEvents()){
-			if(be.getClass().equals("MailProcessEvent")){	//how to get the type of class?
-				MailProcessEvent mail = (MailProcessEvent)be;	//casting so can add to the list and store it as a Mail process event
-				mailE.add(mail);
+	// need to finish this method
+	public void getMailEvents() {
+		for (BusinessEvent be : db.getBusinessEvents()) {
+			if (be.getClass().equals("MailProcessEvent")) { // how to get the
+															// type of class?
+				MailProcessEvent mail = (MailProcessEvent) be; // casting so can
+																// add to the
+																// list and
+																// store it as a
+																// Mail process
+																// event
+				mailEvents.add(mail);
 			}
 		}
 	}
 
 	public void generateFigures() {
-		if(mailE.size()!= 0){
-			for(MailProcessEvent mail:mailE){
+		if (mailEvents.size() != 0) {
+			for (MailProcessEvent mail : mailEvents) {
 				totRevenue += mail.getRevenue();
 				totExpenditure += mail.getExpenditure();
 				deliveryTimes += mail.getDeliveryTime();
@@ -48,18 +52,18 @@ public class FigureGenerator {
 		return totExpenditure;
 	};
 
-	public double getRevenue(){
+	public double getRevenue() {
 		return totRevenue;
 	}
 
-	public double getAVGDelivery(){
-		return deliveryTimes/mailE.size();
+	public double getAVGDelivery() {
+		return deliveryTimes / mailEvents.size();
 	}
 
 	public List<Route> generateCriticalRoutes() {
 		List<Route> criticalRoutes = new ArrayList<Route>();
-		for(Route r:db.getSiteMap().getRoutes()){
-			if(r.getTransPriceVolume() > r.getCustPriceVolume() || r.getTransPriceWeight() > r.getCustPriceWeight()){
+		for (Route r : db.getSiteMap().getRoutes()) {
+			if (r.getTransPriceVolume() > r.getCustPriceVolume() || r.getTransPriceWeight() > r.getCustPriceWeight()) {
 				criticalRoutes.add(r);
 			}
 		}
@@ -67,7 +71,7 @@ public class FigureGenerator {
 	};
 
 	public int generateTotalMail() {
-		return mailE.size();
+		return mailEvents.size();
 	};
 
 	public int generateTotalEvents() {

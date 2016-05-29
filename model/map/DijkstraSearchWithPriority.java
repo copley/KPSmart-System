@@ -37,7 +37,7 @@ public class DijkstraSearchWithPriority {
 			// otherwise add all the sites that it is related to onto the stack
 			if (!visitedNodes.containsKey(currentNode.getSiteID())) {
 				int currentSiteID = currentNode.getSiteID();
-				String currentSite = siteMap.getSitefromID(currentSiteID);
+				String currentSite = siteMap.getSiteNamefromID(currentSiteID);
 				visitedNodes.put(currentSiteID, currentNode);
 				if (currentSiteID == finishSiteID) {
 					// found the shortest path yay!

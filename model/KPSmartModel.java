@@ -25,23 +25,18 @@ import model.map.*;
  *
  */
 public class KPSmartModel {
-	private SiteMap sitemap;// holds all the routes and sites and the
-							// interrelation between the two
-	// this is a link, for convenience, to the SiteMap stored in the DataStore.
-	private DataStore db;// holds links to all the permanent data, and handles
-							// the read and write to file.
-	private EventProcessor eventProcessor;// manages the production of business
-
+	private SiteMap sitemap;
+	private DataStore db;
+	private EventProcessor eventProcessor;
 	private FigureGenerator fg;
-	// event records
-	private int loggedInStaffID;// currently logged in staff member id
+	private int loggedInUserID;
 
 	public KPSmartModel() {
 		db = new DataStore();
 		sitemap = db.getSiteMap();
 		fg = new FigureGenerator(db);
 		eventProcessor = new EventProcessor(db);
-		loggedInStaffID = -1;// no-one is logged in initially
+		loggedInUserID = -1;// no-one is logged in initially
 	}
 
 	public void save() {
@@ -116,7 +111,7 @@ public class KPSmartModel {
 
 		// call event processor to make up the package and record the event
 		return eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(), weight,
-				volume, priority, this.loggedInStaffID);
+				volume, priority, this.loggedInUserID);
 	}
 
 	/**
@@ -154,7 +149,7 @@ public class KPSmartModel {
 		// call event processor to do the addition and record the event
 
 		return eventProcessor.addRoute(input.getOrigin(), input.getDestination(), input.getCompany(), type, duration,
-				custPriceWeight, custPriceVolume, transCostWeight, transCostVolume, loggedInStaffID);
+				custPriceWeight, custPriceVolume, transCostWeight, transCostVolume, loggedInUserID);
 	}
 
 	/**
@@ -179,7 +174,7 @@ public class KPSmartModel {
 		}
 
 		// call event processor to do the discontinuation and record the event
-		return eventProcessor.disconRoute(routeID, loggedInStaffID);
+		return eventProcessor.disconRoute(routeID, loggedInUserID);
 	}
 
 	/**
@@ -209,7 +204,7 @@ public class KPSmartModel {
 
 		// event processor to change the customer price and record the event
 		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightCost,
-				newVolumeCost, this.loggedInStaffID);
+				newVolumeCost, this.loggedInUserID);
 	}
 
 	/**
@@ -244,7 +239,7 @@ public class KPSmartModel {
 			return false;
 		}
 		// call event processor on that route
-		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInStaffID);
+		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInUserID);
 	}
 	/*
 	 * =========================================================================

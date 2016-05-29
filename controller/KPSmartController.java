@@ -186,8 +186,6 @@ public class KPSmartController {
 			// START OF Submit for forms
 			// ==========================================
 			else if (e.getActionCommand().equals("Submit")) {
-				// System.out.println("Submit");// debugging - mc
-
 				if (mailDeliveryPanel) {
 					MailProcessInput input = gui.getMailDeliveryInput();
 					if (model.processMail(input)) {

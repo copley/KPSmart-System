@@ -60,8 +60,8 @@
     <volume>32.0</volume>
     <priority>International Air</priority>
     <revenue>23.0</revenue>
-    <expenditure>1.0</expenditure>
-    <deliveryTime>23.0</deliveryTime>
+    <expenditure>23.0</expenditure>
+    <deliveryTime>1.0</deliveryTime>
   </mail>
   <discontinue>
     <day>29</day>
@@ -127,8 +127,8 @@
     <volume>2.0</volume>
     <priority>International Air</priority>
     <revenue>8.0</revenue>
-    <expenditure>4.0</expenditure>
-    <deliveryTime>6.0</deliveryTime>
+    <expenditure>6.0</expenditure>
+    <deliveryTime>4.0</deliveryTime>
   </mail>
   <add>
     <day>29</day>
@@ -157,4 +157,36 @@
     <company>Mail NZ</company>
     <type>AIR</type>
   </discontinue>
+  <add>
+    <day>29</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>159</time>
+    <employee>no-one</employee>
+    <origin>Queenstown</origin>
+    <destination>Wellington</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>3.0</custPriceWeight>
+    <custPriceVolume>3.0</custPriceVolume>
+    <transCostWeight>4.0</transCostWeight>
+    <transCostVolume>4.0</transCostVolume>
+  </add>
+  <add>
+    <day>29</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>163</time>
+    <employee>no-one</employee>
+    <origin>Auckland</origin>
+    <destination>Queenstown</destination>
+    <company>Mail NZ</company>
+    <duration>0.0</duration>
+    <type>SEA</type>
+    <custPriceWeight>3.0</custPriceWeight>
+    <custPriceVolume>5.0</custPriceVolume>
+    <transCostWeight>4.0</transCostWeight>
+    <transCostVolume>4.0</transCostVolume>
+  </add>
 </log>

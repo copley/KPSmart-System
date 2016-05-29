@@ -36,9 +36,6 @@ import storage.DataStore;
  */
 public class EventProcessor {
 
-	public static String debuggingString = "Class EventProcessor";
-	public static int debuggingInt = 0;
-
 	public final DataStore db;
 
 	public EventProcessor(DataStore db) {
@@ -49,6 +46,29 @@ public class EventProcessor {
 	 * =========================================================================
 	 * START OF Methods to process events
 	 * =========================================================================
+	 */
+	/**
+	 * Find a list of the routes going from the origin to the destination and
+	 * calculates the business figures. Makes a process mail event and stores it
+	 * into the database
+	 *
+	 * @param originID
+	 *            ID of the origin
+	 * @param origin
+	 *            Name of the origin
+	 * @param destinationID
+	 *            ID of the destination
+	 * @param destination
+	 *            Name of the destination
+	 * @param weight
+	 *            Weight of the package
+	 * @param volume
+	 *            Volume of the package
+	 * @param priority
+	 *            Priority of the package
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
 	 */
 	public boolean processMail(int originID, String origin, int destinationID, String destination, double weight,
 			double volume, Priority priority, int employeeID) {
@@ -89,29 +109,30 @@ public class EventProcessor {
 	}
 
 	/**
+	 * Adds a route to the site map. Makes an add route event and stores it into
+	 * the database
+	 *
 	 * @param origin
-	 *            - string
+	 *            Name of the origin
 	 * @param destination
-	 *            - string
-	 * @param carrier
-	 *            - string
+	 *            Name of the destination
+	 * @param company
+	 *            Name of the company
 	 * @param type
-	 *            - Type enum (mode of transport - AIR, SEA, LAND
+	 *            Type of the route
 	 * @param duration
-	 *            - double, hours of travel time when this route is taken
+	 *            Duration of the route
 	 * @param custPriceWeight
-	 *            - double, price charged to customer per gram of weight
+	 *            Customer weight price
 	 * @param custPriceVolume
-	 *            - double, price charged to customer per cubic cm of volume
+	 *            Customer Volume price
 	 * @param transCostWeight
-	 *            - double, cost that KPS incurs from transport company, per
-	 *            gram of weight
+	 *            Transport weight cost
 	 * @param transCostVolume
-	 *            - double, cost that KPS incurs from transport company, per
-	 *            cubic cm of volume
+	 *            Transport volume cost
 	 * @param employeeID
-	 *            - int, id of staff that was logged into the system when event
-	 *            was generated
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
 	 */
 	public boolean addRoute(String origin, String destination, String company, Type type, double duration,
 			double custPriceWeight, double custPriceVolume, double transCostWeight, double transCostVolume,
@@ -150,6 +171,16 @@ public class EventProcessor {
 		return true;
 	}
 
+	/**
+	 * Discontinues a route and makes a discontinue route event and stores it
+	 * into the database
+	 *
+	 * @param routeID
+	 *            ID of the route to be discontinued
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
+	 */
 	public boolean disconRoute(int routeID, int employeeID) {
 		LocalDateTime now = LocalDateTime.now();
 		int day = now.getDayOfMonth();
@@ -184,6 +215,24 @@ public class EventProcessor {
 		return true;
 	}
 
+	/**
+	 * Updates the customer prices in the site map. Makes a customer price
+	 * update event and stores it into the database
+	 *
+	 * @param origin
+	 *            Name of the origin
+	 * @param destination
+	 *            Name of the destination
+	 * @param priority
+	 *            Priority of the routes
+	 * @param newWeightCost
+	 *            New weight price
+	 * @param newVolumeCost
+	 *            New volume price
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
+	 */
 	public boolean changeCustomerPrice(String origin, String destination, Priority priority, double newWeightCost,
 			double newVolumeCost, int employeeID) {
 		LocalDateTime now = LocalDateTime.now();
@@ -213,7 +262,21 @@ public class EventProcessor {
 		return true;
 	}
 
-	public boolean changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume, int employeeID) {
+	/**
+	 * Updates the transport cost of a route. Makes an update transport cost
+	 * event and stores it into the database
+	 *
+	 * @param routeID
+	 *            ID of the route to be updated
+	 * @param newWeightCost
+	 *            New weight cost
+	 * @param newVolumeCost
+	 *            New volume cost
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
+	 */
+	public boolean changeTransportCost(int routeID, double newWeightCost, double newVolumeCost, int employeeID) {
 		LocalDateTime now = LocalDateTime.now();
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
@@ -229,7 +292,7 @@ public class EventProcessor {
 			employeeName = employee.getName();
 		}
 
-		db.getSiteMap().updateTransportCost(routeID, newTransCostWeight, newTransCostVolume);
+		db.getSiteMap().updateTransportCost(routeID, newWeightCost, newVolumeCost);
 		Route route = db.getSiteMap().getRouteFromID(routeID);
 		// make the event to record the action
 		String origin = route.getOrigin();
@@ -238,7 +301,7 @@ public class EventProcessor {
 		Type type = route.getType();
 
 		BusinessEvent tranportCostEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, newTransCostWeight, newTransCostVolume);
+				destination, company, type, newWeightCost, newVolumeCost);
 		db.addEvent(tranportCostEvent);
 		return true;
 	}
@@ -253,6 +316,17 @@ public class EventProcessor {
 	 * START OF Helper methods for the event processing
 	 * =========================================================================
 	 */
+	/**
+	 * Calculates the total revenue of all the routes
+	 *
+	 * @param compoundRoutes
+	 *            List of route IDs
+	 * @param weight
+	 *            Weight
+	 * @param volume
+	 *            Volume
+	 * @return The total revenue
+	 */
 	private double findRevenue(List<Integer> compoundRoutes, double weight, double volume) {
 		double total = 0;
 		for (int routeID : compoundRoutes) {
@@ -266,6 +340,17 @@ public class EventProcessor {
 		return total;
 	}
 
+	/**
+	 * Calculates the total expenditure of all the routes
+	 *
+	 * @param compoundRoutes
+	 *            List of route IDs
+	 * @param weight
+	 *            Weight
+	 * @param volume
+	 *            Volume
+	 * @return The total expenditure
+	 */
 	private double findExpenditure(List<Integer> compoundRoutes, double weight, double volume) {
 		double total = 0;
 		for (int routeID : compoundRoutes) {
@@ -279,6 +364,13 @@ public class EventProcessor {
 		return total;
 	}
 
+	/**
+	 * Calculates the total duration of all the routes
+	 *
+	 * @param compoundRoutes
+	 *            List of routes
+	 * @return Total duration
+	 */
 	private double findDeliveryTime(List<Integer> compoundRoutes) {
 		int time = 0;
 		for (int routeID : compoundRoutes) {
@@ -291,10 +383,5 @@ public class EventProcessor {
 	 * END OF Helper methods for the event processing
 	 * =========================================================================
 	 */
-
-	// the only things that can be changed on the route are the prices
-	// if changes to the carrier, mode, or duration are needed, the route should
-	// be discontinued,
-	// and a new one made
 
 }
