@@ -1,12 +1,13 @@
 package model.map;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
+import model.ValidationSystem;
 import model.exceptions.IllegalRouteException;
 
 public class SiteMap {
+	private ValidationSystem validationSystem = new ValidationSystem();
+
 	private Map<Integer, Site> sites; // maps site to its id
 	private Map<Integer, Route> routes; // maps route to its id
 	private Map<Site, List<Route>> siteToRoutes; // maps sites to routes
@@ -74,22 +75,18 @@ public class SiteMap {
 
 		// Make the new sites if necessary
 		if (originID == -1) {
-			// make the name be a uniform presentation
-			String originName = uniformPrint(origin);
-			// make sure the origin is allowable! If not abort and return false
-			if (!allowableOrigin(originName)) {
+			originID = sites.size() + 1;
+			Site originSite = new Site(originID, origin, true, false);
+			if(!addSite(originSite)){
 				return false;
 			}
-			originID = sites.size() + 1;
-			Site originSite = new Site(originID, originName, true, false);
-			addSite(originSite);
 		}
 		if (destinationID == -1) {
 			destinationID = sites.size() + 1;
-			// make the name be a uniform presentation
-						String destinationName = uniformPrint(destination);
-			Site destinationSite = new Site(destinationID, destinationName, false, true);
-			addSite(destinationSite);
+			Site destinationSite = new Site(destinationID, destination, false, true);
+			if(!addSite(destinationSite)){
+				return false;
+			}
 		}
 
 		// Check if route exists yet. Fail if it already does
@@ -156,18 +153,23 @@ public class SiteMap {
 	// ========== internal helper methods for dealing with the map
 	// structure=======
 
-	public void addSite(Site site) {
+	public boolean addSite(Site site) {
+		// make sure site is valid
+		if(!validationSystem.validateSite(site)){
+			return false;
+		}
 		sites.put(site.getID(), site);
 		siteToRoutes.put(site, new ArrayList<Route>());
+		return true;
 	}
 
 	public void addRoute(Route route) throws IllegalRouteException {
-		routes.put(route.getID(), route);
 		Site origin = sites.get(getSiteIDfromLocation(route.getOrigin()));
 		Site destination = sites.get(getSiteIDfromLocation(route.getDestination()));
 		if (siteToRoutes.get(origin) == null || siteToRoutes.get(destination) == null) {
 			throw new IllegalRouteException("Invalid Route! Can't find site");
 		}
+		routes.put(route.getID(), route);
 		List<Route> routesToOrigin = siteToRoutes.get(origin);
 		routesToOrigin.add(route);
 		siteToRoutes.put(origin, routesToOrigin);
@@ -198,7 +200,7 @@ public class SiteMap {
 
 	public int getSiteIDfromLocation(String location) {
 		for (Site site : sites.values()) {
-			if (site.getLocation().equals(location)) {
+			if (site.getLocation().toLowerCase().equals(location.toLowerCase())) {
 				return site.getID();
 
 			}
@@ -312,52 +314,22 @@ public class SiteMap {
 	}
 
 	/*
-	 * Every origin must be an official New Zealand city or town, check against
-	 * official list!
-	 */
-	private boolean allowableOrigin(String origin) {
-		File NZtownNames = new File("src/NZtownNames.txt");
-		try (Scanner scanner = new Scanner(NZtownNames)) {
-			while (scanner.hasNextLine()) {
-				String town = scanner.nextLine();
-				if (town.isEmpty()) {
-					//TODO: remove this print statement once everyone happy with method!
-					System.out.println("Origin okay!");
-					break;
-				}
-				if (town.toLowerCase().equals(origin.toLowerCase())) {
-					return true;
-				}
-			}
-			scanner.close();
-		} catch (IOException e) {
-			System.out.println(e);
-			e.printStackTrace();
-		}
-		// if we get this far, the origin name was not in the file of allowable
-		// names
-		//TODO: remove this print statement once everyone happy with method!
-		System.out.println("Origin not okay!");
-		return false;
-	}
-
-	/*
 	 * Converts a string into a uniform format - trimmed, lowercased, then first
 	 * letter of each word capitalized
 	 */
-	private String uniformPrint(String input) {
+	public static String uniformPrint(String input) {
 		String output = "";
 		String[] words = input.trim().toLowerCase().split(" ");
-		for(int i = 0; i < words.length; ++i) {
-			if(words[i].length() > 0) {
+		for (int i = 0; i < words.length; ++i) {
+			if (words[i].length() > 0) {
 				char[] letters = words[i].toCharArray();
 				letters[0] = Character.toUpperCase(letters[0]);
 				words[i] = new String(letters);
-			    }
+			}
 			output += words[i] + " ";
 		}
-//TODO: remove this testing line once everyone happy with method!	
-//		System.out.println("=" + output.trim() + "="); //testing purposes
+		// TODO: remove this testing line once everyone happy with method!
+		// System.out.println("=" + output.trim() + "="); //testing purposes
 		return output.trim();
 	}
 

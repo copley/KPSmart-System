@@ -2,34 +2,16 @@
 <sitemap>
   <sites>
     <site>
-      <id>8</id>
+      <id>4</id>
       <location>New Plymouth</location>
       <isOrigin>true</isOrigin>
       <isDestination>false</isDestination>
     </site>
     <site>
-      <id>5</id>
-      <location>Hamilton</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
-    </site>
-    <site>
-      <id>4</id>
-      <location>Taupo</location>
+      <id>2</id>
+      <location>Auckland</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>7</id>
-      <location>New Plymouth</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
-    </site>
-    <site>
-      <id>6</id>
-      <location>hamilton</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
     </site>
     <site>
       <id>1</id>
@@ -38,30 +20,63 @@
       <isDestination>true</isDestination>
     </site>
     <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
       <id>3</id>
-      <location>Hastings</location>
+      <location>Taupo</location>
       <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
+      <isDestination>false</isDestination>
     </site>
   </sites>
   <routes>
     <route>
       <id>2</id>
-      <origin>new plymouth</origin>
+      <origin>Taupo</origin>
+      <destination>Wellington</destination>
+      <company>something</company>
+      <duration>2.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>2134.0</custPriceWeight>
+      <custPriceVolume>1241.0</custPriceVolume>
+      <transPriceWeight>323.0</transPriceWeight>
+      <transPriceVolume>224.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>1</id>
+      <origin>Wellington</origin>
       <destination>Auckland</destination>
-      <company>KiwiRail</company>
+      <company>Mail NZ</company>
+      <duration>2.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>2.0</custPriceWeight>
+      <custPriceVolume>2.0</custPriceVolume>
+      <transPriceWeight>2.0</transPriceWeight>
+      <transPriceVolume>2.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>3</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>Mail NZ</company>
       <duration>1.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>12.0</custPriceWeight>
-      <custPriceVolume>12.0</custPriceVolume>
+      <type>AIR</type>
+      <custPriceWeight>1.0</custPriceWeight>
+      <custPriceVolume>1.0</custPriceVolume>
       <transPriceWeight>1.0</transPriceWeight>
       <transPriceVolume>1.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>4</id>
+      <origin>New Plymouth</origin>
+      <destination>Wellington</destination>
+      <company>Mail NZ</company>
+      <duration>3.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>2.0</custPriceWeight>
+      <custPriceVolume>3.0</custPriceVolume>
+      <transPriceWeight>2.0</transPriceWeight>
+      <transPriceVolume>2.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>

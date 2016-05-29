@@ -163,10 +163,9 @@ public class Reader {
 			Element site = sitesList.get(i);
 			// read business event and add to list
 			Site s = readSite(site);
-			if (!ValidationSystem.validateSite(s)) {
+			if(!map.addSite(s)){
 				throw new IllegalSiteException("Invalid site!");
 			}
-			map.addSite(s);
 		}
 	}
 
@@ -198,9 +197,6 @@ public class Reader {
 			Element route = routesList.get(i);
 			// read business event and add to list
 			Route r = readRoute(route);
-			if (!ValidationSystem.validateRoute(r)) {
-				throw new IllegalRouteException("Invalid route!");
-			}
 			map.addRoute(r);
 		}
 	}

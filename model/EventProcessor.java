@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.employees.Employee;
@@ -131,6 +130,10 @@ public class EventProcessor {
 		} else {
 			employeeName = employee.getName();
 		}
+
+		// capitalise the names
+		origin = SiteMap.uniformPrint(origin);
+		destination = SiteMap.uniformPrint(destination);
 
 		// Tell sitemap to add the new route with the information. Fail if the
 		// route cannot be added

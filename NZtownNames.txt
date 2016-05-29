@@ -1,5 +1,6 @@
 Akaroa
-Aoraki/Mount Cook
+Aoraki
+Aparima
 Ashburton
 Auckland
 Balclutha
@@ -10,7 +11,7 @@ Carterton
 Christchurch
 Clive
 Colac
-Colac Bay/?åraka
+Colac Bay
 Dannevirke
 Dargaville
 Dunedin
@@ -97,7 +98,7 @@ Raumati South
 Reefton
 Richmond
 Riverton
-Riverton/Aparima
+Riverton
 Rotoehu Forest Village
 Rotorua
 South Rakaia
