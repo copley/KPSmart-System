@@ -104,14 +104,14 @@ public class KPSmartController {
 				// kpsmartGui.renderCriticalRoutes();//TODO: Could pass in
 				// STRING , INT
 			} else if(e.getActionCommand().equals("Review Events")){
-				gui.displayEvent(current);
+				gui.setMainDisplayPanel("ReviewEventsPanel");
+				gui.displayEvent(model.getLatestEvent());
 
 				mailDeliveryPanel = false;
 				newRoutePanel = false;
 				customerPricePanel = false;
 				transportCostChangePanel = false;
 				discontinueRoutePanel = false;
-				//TODO: Do something with this Bobo!
 			}
 			// ==========================================
 			// END OF View Business Figures buttons
@@ -120,10 +120,10 @@ public class KPSmartController {
 			// START OF Browsing Business Events buttons
 			// ==========================================
 			else if (e.getActionCommand().equals("Previous Event")) {
-				gui.displayEvent(previous);
+				gui.displayEvent(model.getPreviousEvent());
 			}
 			else if (e.getActionCommand().equals("Next Event")) {
-				gui.displayEvent(next);
+				gui.displayEvent(model.getNextEvent());
 			}
 			// ==========================================
 			// END OF Browsing Business Events buttons

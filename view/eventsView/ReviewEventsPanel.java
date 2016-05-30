@@ -27,6 +27,9 @@ public class ReviewEventsPanel extends AbstractMainDisplayPanel {
 		previousEventButton = new JButton("Previous Event");
 		nextEventButton = new JButton("Next Event");
 
+		previousEventButton.addActionListener(viewActionListener);
+		nextEventButton.addActionListener(viewActionListener);
+
 		eventStringLabel = new JLabel("");
 
 		initialiseLayout();
