@@ -15,8 +15,10 @@ public class SiteMap {
 	// fields used to update the gui
 	private List<String> origins; // list of all the names of origins
 	private List<String> destinations; // list of all the names of destinations
+	private List<String> companies;
 	private String newOrigin; // name of the newly added origin
 	private String newDestination; // name of the newly added destination
+	private String newCompany;
 
 	public SiteMap() {
 		sites = new HashMap<Integer, Site>();
@@ -24,6 +26,7 @@ public class SiteMap {
 		siteToRoutes = new HashMap<Site, List<Route>>();
 		origins = new ArrayList<String>();
 		destinations = new ArrayList<String>();
+		companies = new ArrayList<String>();
 	}
 
 	/*
@@ -153,16 +156,17 @@ public class SiteMap {
 		if (originID == -1) {
 			originID = sites.size() + 1;
 			Site originSite = new Site(originID, origin, true, false);
+			// make sure site is valid
+			if (!validationSystem.validateOrigin(originSite)) {
+				return false;
+			}
+			addSite(originSite);
 
 		}
 		if (destinationID == -1) {
 			destinationID = sites.size() + 1;
 			Site destinationSite = new Site(destinationID, destination, false, true);
 			addSite(destinationSite);
-		}
-		// make sure site is valid
-		if (!validationSystem.validateOrigin(sites.get(originID))) {
-			return false;
 		}
 
 		// Check if route exists yet. Fail if it already does
@@ -224,6 +228,12 @@ public class SiteMap {
 			newDestination = destination.getLocation();
 		} else {
 			newDestination = null;
+		}
+		if(!companies.contains(route.getCompany())){
+			companies.add(route.getCompany());
+			newCompany = route.getCompany();
+		} else {
+			newCompany = null;
 		}
 	}
 	/*
@@ -327,6 +337,11 @@ public class SiteMap {
 		return newDestination;
 	}
 
+
+	public String getNewCompany() {
+		return newCompany;
+	}
+
 	/**
 	 * Loops through all the routes to get the names of all the companies and
 	 * adds them into a list to be returned
@@ -334,11 +349,7 @@ public class SiteMap {
 	 * @return List of all the names of the companies
 	 */
 	public List<String> getCompanies() {
-		List<String> companies = new ArrayList<String>();
-		for (Route r : routes.values()) {
-			if (!companies.contains(r.getCompany()))
-				companies.add(r.getCompany());
-		}
+		Collections.sort(companies);
 		return companies;
 	}
 
@@ -496,4 +507,5 @@ public class SiteMap {
 	 * END OF Helper Methods
 	 * =========================================================================
 	 */
+
 }

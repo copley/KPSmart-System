@@ -152,4 +152,8 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 	public void resetTextFields() {
 	}
 
+	public void addCompanies(String company) {
+		if(company != null) transportCompanyComboBox.addItem(company);
+	}
+
 }

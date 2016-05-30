@@ -165,4 +165,10 @@ public class KPSmartCanvas extends JPanel {
 		transportCostChangePanel.addSites(origin, destination);
 	}
 
+	public void updateCompanies(String company) {
+		routeDiscontinuePanel.addCompanies(company);
+		transportCostChangePanel.addCompanies(company);
+
+	}
+
 }

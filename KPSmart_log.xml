@@ -1,2 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<log />
+<log>
+  <add>
+    <day>30</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>221</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <company>DHL</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>1.0</custPriceWeight>
+    <custPriceVolume>1.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
+  </add>
+  <add>
+    <day>30</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>229</time>
+    <employee>no-one</employee>
+    <origin>Hamilton</origin>
+    <destination>Auckland</destination>
+    <company>Something</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>1.0</custPriceWeight>
+    <custPriceVolume>1.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
+  </add>
+</log>

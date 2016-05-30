@@ -129,6 +129,10 @@ public final class KPSmartFrame extends JFrame {
 		canvas.updateSites(origin, destination);
 	}
 
+	public void updateCompanies(String company) {
+		canvas.updateCompanies(company);
+	}
+
 	public void popupMessage(boolean successful, String message) {
 		if (successful) {
 			JOptionPane.showMessageDialog(this, message);

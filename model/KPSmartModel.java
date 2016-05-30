@@ -279,6 +279,10 @@ public class KPSmartModel {
 		return db.getSiteMap().getNewDestination();
 	}
 
+	public String getNewCompany() {
+		return db.getSiteMap().getNewCompany();
+	}
+
 	/**
 	 * Gets a list of all the companies
 	 *
