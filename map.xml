@@ -2,25 +2,63 @@
 <sitemap>
   <sites>
     <site>
-      <id>3</id>
-      <location>Hamilton</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
-    </site>
-    <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
       <id>1</id>
       <location>Wellington</location>
       <isOrigin>true</isOrigin>
       <isDestination>false</isDestination>
     </site>
+    <site>
+      <id>5</id>
+      <location>New York</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>4</id>
+      <location>London</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>3</id>
+      <location>Hamilton</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
   </sites>
   <routes>
+    <route>
+      <id>2</id>
+      <origin>Hamilton</origin>
+      <destination>Auckland</destination>
+      <company>Something</company>
+      <duration>1.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>20.0</custPriceVolume>
+      <transPriceWeight>1.0</transPriceWeight>
+      <transPriceVolume>1.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>3</id>
+      <origin>Wellington</origin>
+      <destination>London</destination>
+      <company>EMS</company>
+      <duration>20.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>100.0</custPriceWeight>
+      <custPriceVolume>20.0</custPriceVolume>
+      <transPriceWeight>50.0</transPriceWeight>
+      <transPriceVolume>50.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
     <route>
       <id>1</id>
       <origin>Wellington</origin>
@@ -35,16 +73,16 @@
       <inService>true</inService>
     </route>
     <route>
-      <id>2</id>
-      <origin>Hamilton</origin>
-      <destination>Auckland</destination>
-      <company>Something</company>
-      <duration>1.0</duration>
+      <id>4</id>
+      <origin>Auckland</origin>
+      <destination>New York</destination>
+      <company>DHL</company>
+      <duration>10.0</duration>
       <type>AIR</type>
-      <custPriceWeight>1.0</custPriceWeight>
-      <custPriceVolume>1.0</custPriceVolume>
-      <transPriceWeight>1.0</transPriceWeight>
-      <transPriceVolume>1.0</transPriceVolume>
+      <custPriceWeight>100.0</custPriceWeight>
+      <custPriceVolume>100.0</custPriceVolume>
+      <transPriceWeight>20.0</transPriceWeight>
+      <transPriceVolume>10.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>

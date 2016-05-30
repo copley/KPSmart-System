@@ -38,13 +38,13 @@ public class RouteDiscEvent extends BusinessEvent {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
 		string.append("<h2>ROUTE DISCONTINUED EVENT</h2><br>");
-		string.append("Date: " + day + "/" + month + "/" + year + "<br>");
-		string.append("Time: " + time + "<br>");
-		string.append("Staff responsible: " + employee + "<br>");
-		string.append("Origin: " + origin + "<br>");
-		string.append("Destination: " + destination + "<br>");
-		string.append("Company: " + company + "<br>");
-		string.append("Type: " + type);
+		string.append("Date: " + "<em>" + day + "/" + month + "/" + year + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Time: " + "<em>" + time + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Staff responsible: " + "<em>" + employee + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Origin: " + "<em>" + origin + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Destination: " + "<em>" + destination + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Company: " + "<em>" + company + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Type: " + "<em>" + type + "</em>" + "<sup>&zwnj</sup>");
 		string.append("</html>");
 		return string.toString();
 	}

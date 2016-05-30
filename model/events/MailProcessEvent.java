@@ -28,8 +28,7 @@ public class MailProcessEvent extends BusinessEvent {
 		this.deliveryTime = deliveryTime;
 	}
 
-
-	//getters
+	// getters
 
 	public double getDeliveryTime() {
 		return deliveryTime;
@@ -39,11 +38,9 @@ public class MailProcessEvent extends BusinessEvent {
 		return revenue;
 	}
 
-
 	public double getExpenditure() {
 		return expenditure;
 	}
-
 
 	public String getOriginID() {
 		return origin;
@@ -70,17 +67,18 @@ public class MailProcessEvent extends BusinessEvent {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
 		string.append("<h2>MAIL PROCESS EVENT</h2><br>");
-		string.append("Date: " + day + "/" + month + "/" + year + "<br>");
-		string.append("Time: " + time + "<br>");
-		string.append("Staff responsible: " + employee + "<br>");
-		string.append("Origin: " + origin + "<br>");
-		string.append("Destination: " + destination + "<br>");
-		string.append("Weight: " + weight + "<br>");
-		string.append("Volume: " + volume + "<br>");
-		string.append("Priority: " + priority + "<br>");
-		string.append("Revenue: " + revenue + "<br>");
-		string.append("Expenditure: " + expenditure + "<br>");
-		string.append("Delivery time: " + deliveryTime + "<br>");
+		string.append("Date: " + "<em>" + day + "</em>" + "/" + "<em>" + month + "</em>" + "/" + "<em>" + year + "</em>"
+				+ "<sup>&zwnj</sup><br>");
+		string.append("Time: " + "<em>" + time + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Staff responsible: " + "<em>" + employee + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Origin: " + "<em>" + origin + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Destination: " + "<em>" + destination + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Weight: " + "<em>" + weight + "</em>" + " grams" + "<sup>&zwnj</sup><br>");
+		string.append("Volume: " + "<em>" + volume + "</em>" + " cm<sup>3</sup>" + "<br>");
+		string.append("Priority: " + "<em>" + priority + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Revenue: $" + "<em>" + revenue + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Expenditure: $" + "<em>" + expenditure + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Delivery time: " + "<em>" + deliveryTime + "</em>" + " hours<sup>&zwnj</sup>");
 		string.append("</html>");
 		return string.toString();
 	}
