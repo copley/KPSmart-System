@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import model.KPSmartModel;
 import model.events.inputs.*;
 import view.KPSmartFrame;
+import view.eventsView.ReviewEventsPanel;
+import view.eventsView.TransportCostChangePanel;
 
 public class KPSmartController {
 
@@ -102,14 +104,30 @@ public class KPSmartController {
 				// kpsmartGui.renderCriticalRoutes();//TODO: Could pass in
 				// STRING , INT
 			} else if(e.getActionCommand().equals("Review Events")){
-				System.out.println("Review Events!!");
-				List<String> eventStrings = model.getBusinessEventStrings();
+				gui.displayEvent(current);
+
+				mailDeliveryPanel = false;
+				newRoutePanel = false;
+				customerPricePanel = false;
+				transportCostChangePanel = false;
+				discontinueRoutePanel = false;
 				//TODO: Do something with this Bobo!
 			}
 			// ==========================================
 			// END OF View Business Figures buttons
 			// ==========================================
-
+			// ==========================================
+			// START OF Browsing Business Events buttons
+			// ==========================================
+			else if (e.getActionCommand().equals("Previous Event")) {
+				gui.displayEvent(previous);
+			}
+			else if (e.getActionCommand().equals("Next Event")) {
+				gui.displayEvent(next);
+			}
+			// ==========================================
+			// END OF Browsing Business Events buttons
+			// ==========================================
 			// ==========================================
 			// START OF Business Events buttons
 			// ==========================================

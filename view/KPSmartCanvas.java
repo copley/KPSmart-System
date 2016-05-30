@@ -14,6 +14,7 @@ import model.events.TransportCostChangeEvent;
 import view.eventsView.AddNewRoutePanel;
 import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
+import view.eventsView.ReviewEventsPanel;
 import view.eventsView.RouteDiscontinuePanel;
 import view.eventsView.TransportCostChangePanel;
 
@@ -46,6 +47,7 @@ public class KPSmartCanvas extends JPanel {
 	private MailDeliveryPanel mailDeliveryPanel;
 	private RouteDiscontinuePanel routeDiscontinuePanel;
 	private TransportCostChangePanel transportCostChangePanel;
+	private ReviewEventsPanel reviewEventsPanel;
 
 	/**
 	 * construct an empty KPSmart canvas
@@ -57,7 +59,8 @@ public class KPSmartCanvas extends JPanel {
 	 * @param siteNames
 	 */
 	public KPSmartCanvas(JFrame frame, KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener, List<String> origins, List<String> destinations, List<String> companies) {
+			ViewActionListener viewActionListener, List<String> origins, List<String> destinations,
+			List<String> companies) {
 		canvasWidth = frame.getWidth();
 		canvasHeight = frame.getHeight();
 		this.frame = frame;
@@ -102,10 +105,14 @@ public class KPSmartCanvas extends JPanel {
 			List<String> origins, List<String> destinations, List<String> companies) {
 		homepagePanel = new HomepagePanel(keyAction, mouseAction, viewActionListener);
 		addNewRoutePanel = new AddNewRoutePanel(keyAction, mouseAction, viewActionListener);
-		customerPriceChangePanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener, origins, destinations);
+		customerPriceChangePanel = new CustomerPriceChangePanel(keyAction, mouseAction, viewActionListener, origins,
+				destinations);
 		mailDeliveryPanel = new MailDeliveryPanel(keyAction, mouseAction, viewActionListener, origins, destinations);
-		routeDiscontinuePanel = new RouteDiscontinuePanel(keyAction, mouseAction, viewActionListener, origins, destinations, companies);
-		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener, origins, destinations, companies);
+		routeDiscontinuePanel = new RouteDiscontinuePanel(keyAction, mouseAction, viewActionListener, origins,
+				destinations, companies);
+		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener, origins,
+				destinations, companies);
+		reviewEventsPanel = new ReviewEventsPanel(keyAction, mouseAction, viewActionListener);
 	}
 
 	public AbstractMainDisplayPanel getMainDisplayPanel() {
@@ -136,6 +143,9 @@ public class KPSmartCanvas extends JPanel {
 			break;
 		case "TransportCostChangePanel":
 			mainDisplayPanel = transportCostChangePanel;
+			break;
+		case "ReviewEventsPanel":
+			mainDisplayPanel = reviewEventsPanel;
 			break;
 		default:
 			System.out.println("Something went astray.");

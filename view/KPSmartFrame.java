@@ -21,6 +21,7 @@ import model.map.Site;
 import view.eventsView.AddNewRoutePanel;
 import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
+import view.eventsView.ReviewEventsPanel;
 import view.eventsView.RouteDiscontinuePanel;
 import view.eventsView.TransportCostChangePanel;
 
@@ -116,6 +117,10 @@ public final class KPSmartFrame extends JFrame {
 		repaint();
 	}
 
+	public JPanel getCanvas() {
+		return canvas;
+	}
+
 	public void resetTextFields() {
 		canvas.resetTextFields();
 	}
@@ -209,4 +214,11 @@ public final class KPSmartFrame extends JFrame {
 	 * =========================================================================
 	 */
 
+	public void displayEvent(String eventString) {
+		ReviewEventsPanel panel = (ReviewEventsPanel) canvas.getMainDisplayPanel();
+
+		panel.setEventStringLabel(eventString);
+		validate();
+		repaint();
+	}
 }
