@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
@@ -51,6 +52,7 @@ public class BusinessEventPanel extends AbstractPanel {
 		txtpnBusinessEvents.setEditable(false);
 		txtpnBusinessEvents.setFont(new Font("DejaVu Serif Condensed", Font.BOLD | Font.ITALIC, 13));
 		txtpnBusinessEvents.setText("Business Events");
+		txtpnBusinessEvents.setBackground(new Color(238, 238, 238));
 
 		initialiseLayout();
 	}
@@ -64,32 +66,32 @@ public class BusinessEventPanel extends AbstractPanel {
 				.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup().addGap(26)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(mailDeliveryBt, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-										.addComponent(addRouteBt, GroupLayout.DEFAULT_SIZE, 166,
+										.addComponent(mailDeliveryBt, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+										.addComponent(routeDiscontinueBt, GroupLayout.DEFAULT_SIZE, 158,
 												Short.MAX_VALUE)
-						.addComponent(routeDiscontinueBt, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+						.addComponent(customerPriceUpdateBt, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
 				.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup().addContainerGap(48, Short.MAX_VALUE)
-						.addComponent(txtpnBusinessEvents, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(42))
 				.addGroup(groupLayout.createSequentialGroup().addGap(26)
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(customerPriceUpdateBt, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 166,
+								.addComponent(addRouteBt, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 158,
 										Short.MAX_VALUE)
-								.addComponent(transportCostUpdateBt, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 166,
+								.addComponent(transportCostUpdateBt, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 158,
 										Short.MAX_VALUE))
-						.addContainerGap()));
+						.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+						.addContainerGap(48, Short.MAX_VALUE).addComponent(txtpnBusinessEvents,
+								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(34)));
 
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup().addGap(10)
 						.addComponent(txtpnBusinessEvents, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(mailDeliveryBt)
-						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(addRouteBt)
 						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(routeDiscontinueBt)
-						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(transportCostUpdateBt)
 						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(customerPriceUpdateBt)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(transportCostUpdateBt)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(addRouteBt)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
 		setLayout(groupLayout);

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
@@ -33,6 +34,7 @@ public class ViewFigurePanel extends AbstractPanel {
 		txtpnViewFigures.setEditable(false);
 		txtpnViewFigures.setText("View Figures");
 		txtpnViewFigures.setFont(new Font("DejaVu Serif Condensed", Font.BOLD | Font.ITALIC, 13));
+		txtpnViewFigures.setBackground(new Color(238, 238, 238));
 
 		totalRevenueBt = new JButton("Total Revenue");
 		totalRevenueBt.addActionListener(viewActionListener);
@@ -76,11 +78,11 @@ public class ViewFigurePanel extends AbstractPanel {
 										Short.MAX_VALUE)
 								.addComponent(totalRevenueBt, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 157,
 										GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(20, Short.MAX_VALUE))
+						.addContainerGap(14, Short.MAX_VALUE))
 				.addGroup(groupLayout
-						.createSequentialGroup().addContainerGap(62, Short.MAX_VALUE).addComponent(txtpnViewFigures,
+						.createSequentialGroup().addContainerGap(63, Short.MAX_VALUE).addComponent(txtpnViewFigures,
 								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGap(53)));
+						.addGap(46)));
 
 		groupLayout
 				.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
