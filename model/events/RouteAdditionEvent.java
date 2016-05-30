@@ -76,19 +76,21 @@ public class RouteAdditionEvent extends BusinessEvent {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("ROUTE ADDITION EVENT\n");
-		string.append("Date: " + day + ", " + month + ", " + year + "\n");
-		string.append("Time: " + time + "\n");
-		string.append("Staff responsible: " + employee + "\n");
-		string.append("Origin: " + origin + "\n");
-		string.append("Destination: " + destination + "\n");
-		string.append("Company: " + company + "\n");
-		string.append("Type: " + type.name() + "\n");
+		string.append("<html>");
+		string.append("ROUTE ADDITION EVENT<br>");
+		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("Time: " + time + "<br>");
+		string.append("Staff responsible: " + employee + "<br>");
+		string.append("Origin: " + origin + "<br>");
+		string.append("Destination: " + destination + "<br>");
+		string.append("Company: " + company + "<br>");
+		string.append("Type: " + type.name() + "<br>");
 		string.append("Duration: " + duration);
-		string.append("Customer price per gram: " + customerPriceWeight + "\n");
-		string.append("Customer price per cubic cm: " + customerPriceVolume + "\n");
-		string.append("Transport cost per gram: " + transportCostWeight + "\n");
-		string.append("Transport cost per cubic cm: " + transportCostVolume + "\n");
+		string.append("Customer price per gram: " + customerPriceWeight + "<br>");
+		string.append("Customer price per cubic cm: " + customerPriceVolume + "<br>");
+		string.append("Transport cost per gram: " + transportCostWeight + "<br>");
+		string.append("Transport cost per cubic cm: " + transportCostVolume + "<br>");
+		string.append("</html>");
 		return string.toString();
 	}
 

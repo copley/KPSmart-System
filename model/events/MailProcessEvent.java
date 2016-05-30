@@ -68,18 +68,20 @@ public class MailProcessEvent extends BusinessEvent {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("MAIL PROCESS EVENT\n");
-		string.append("Date: " + day + ", " + month + ", " + year + "\n");
-		string.append("Time: " + time + "\n");
-		string.append("Staff responsible: " + employee + "\n");
-		string.append("Origin: " + origin + "\n");
-		string.append("Destination: " + destination + "\n");
-		string.append("Weight: " + weight + "\n");
-		string.append("Volume: " + volume + "\n");
+		string.append("<html>");
+		string.append("MAIL PROCESS EVENT<br>");
+		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("Time: " + time + "<br>");
+		string.append("Staff responsible: " + employee + "<br>");
+		string.append("Origin: " + origin + "<br>");
+		string.append("Destination: " + destination + "<br>");
+		string.append("Weight: " + weight + "<br>");
+		string.append("Volume: " + volume + "<br>");
 		string.append("Priority: " + priority);
 		string.append("Revenue: " + revenue);
 		string.append("Expenditure: " + expenditure);
 		string.append("Delivery time: " + deliveryTime);
+		string.append("</html>");
 		return string.toString();
 	}
 

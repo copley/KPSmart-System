@@ -36,14 +36,16 @@ public class RouteDiscEvent extends BusinessEvent {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("ROUTE DISCONTINUED EVENT\n");
-		string.append("Date: " + day + ", " + month + ", " + year + "\n");
-		string.append("Time: " + time + "\n");
-		string.append("Staff responsible: " + employee + "\n");
-		string.append("Origin: " + origin + "\n");
-		string.append("Destination: " + destination + "\n");
-		string.append("Company: " + company + "\n");
+		string.append("<html>");
+		string.append("ROUTE DISCONTINUED EVENT<br>");
+		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("Time: " + time + "<br>");
+		string.append("Staff responsible: " + employee + "<br>");
+		string.append("Origin: " + origin + "<br>");
+		string.append("Destination: " + destination + "<br>");
+		string.append("Company: " + company + "<br>");
 		string.append("Type: " + type);
+		string.append("</html>");
 		return string.toString();
 	}
 

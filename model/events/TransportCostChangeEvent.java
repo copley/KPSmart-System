@@ -54,16 +54,18 @@ public class TransportCostChangeEvent extends BusinessEvent {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("TRANSPORT COST CHANGE EVENT\n");
-		string.append("Date: " + day + ", " + month + ", " + year + "\n");
-		string.append("Time: " + time + "\n");
-		string.append("Staff responsible: " + employee + "\n");
-		string.append("Origin: " + origin + "\n");
-		string.append("Destination: " + destination + "\n");
-		string.append("Company: " + company + "\n");
-		string.append("Type: " + type + "\n");
-		string.append("Weight Cost: " + newWeightCost + "\n");
+		string.append("<html>");
+		string.append("TRANSPORT COST CHANGE EVENT<br>");
+		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("Time: " + time + "<br>");
+		string.append("Staff responsible: " + employee + "<br>");
+		string.append("Origin: " + origin + "<br>");
+		string.append("Destination: " + destination + "<br>");
+		string.append("Company: " + company + "<br>");
+		string.append("Type: " + type + "<br>");
+		string.append("Weight Cost: " + newWeightCost + "<br>");
 		string.append("Volume Cost: " + newVolumeCost);
+		string.append("</html>");
 		return string.toString();
 	}
 

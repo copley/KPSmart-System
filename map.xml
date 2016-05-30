@@ -2,6 +2,12 @@
 <sitemap>
   <sites>
     <site>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
       <id>1</id>
       <location>Wellington</location>
       <isOrigin>true</isOrigin>
@@ -10,12 +16,6 @@
     <site>
       <id>3</id>
       <location>Melbourne</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>2</id>
-      <location>Auckland</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
