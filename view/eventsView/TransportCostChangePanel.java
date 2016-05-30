@@ -58,6 +58,8 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		lblNewWeightCostperGram.setFont(new Font("Dialog", Font.BOLD, 11));
 		lblNewVolumeCostperCm = new JLabel("<html>New Volume Cost(per cm<sup>3</sup>):</html>");
 		lblNewVolumeCostperCm.setFont(new Font("Dialog", Font.BOLD, 11));
+		lblHoursToDeliver = new JLabel("Hours to Deliver:");
+		lblHoursToDeliver.setFont(new Font("Dialog", Font.BOLD, 15));
 		label = new JLabel("$");
 		label_1 = new JLabel("$");
 
@@ -72,6 +74,8 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		newPriceWeightTextField.setColumns(10);
 		newPriceVolumeTextField = new JTextField();
 		newPriceVolumeTextField.setColumns(10);
+		hoursToDeliverTextField = new JTextField();
+		hoursToDeliverTextField.setColumns(10);
 
 		typeComboBox = new JComboBox<String>();
 		for (Type t : Type.values()) {
