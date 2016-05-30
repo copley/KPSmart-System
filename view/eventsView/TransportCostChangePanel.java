@@ -22,6 +22,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 
 	private JTextField newPriceWeightTextField;
 	private JTextField newPriceVolumeTextField;
+	private JTextField hoursToDeliverTextField;
 
 	private JLabel lblOrigin;
 	private JLabel lblDestination;
@@ -29,6 +30,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 	private JLabel lblType;
 	private JLabel lblNewWeightCostperGram;
 	private JLabel lblNewVolumeCostperCm;
+	private JLabel lblHoursToDeliver;
 	private JLabel label;
 	private JLabel label_1;
 
@@ -41,8 +43,8 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 	private JComboBox<String> destinationComboBox;
 	private JComboBox<String> transportCompanyComboBox;
 
-	public TransportCostChangePanel(KeyAction keyAction, MouseAction mouseAction,
-			ViewActionListener viewActionListener, List<String> origins, List<String> destinations, List<String> companies) {
+	public TransportCostChangePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
+			List<String> origins, List<String> destinations, List<String> companies) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -72,7 +74,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		newPriceVolumeTextField.setColumns(10);
 
 		typeComboBox = new JComboBox<String>();
-		for(Type t : Type.values()){
+		for (Type t : Type.values()) {
 			typeComboBox.addItem(t.name());
 		}
 		originComboBox = new JComboBox<String>();
@@ -84,7 +86,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 			destinationComboBox.addItem(site);
 		}
 		transportCompanyComboBox = new JComboBox<String>();
-		for(String c : companies){
+		for (String c : companies) {
 			transportCompanyComboBox.addItem(c);
 		}
 		initialiseLayout();
@@ -97,34 +99,51 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		groupLayout
 				.setHorizontalGroup(
 						groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(
-										groupLayout.createSequentialGroup().addContainerGap(174, Short.MAX_VALUE)
-												.addComponent(submitButton, GroupLayout.PREFERRED_SIZE, 83,
-														GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(resetButton)
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(cancelButton, GroupLayout.PREFERRED_SIZE, 83,
-												GroupLayout.PREFERRED_SIZE).addContainerGap())
-								.addGroup(groupLayout.createSequentialGroup().addGap(57)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblOrigin).addComponent(lblDestination)
-												.addComponent(lblTransportCompany).addComponent(lblType)
-												.addComponent(lblNewVolumeCostperCm, GroupLayout.DEFAULT_SIZE, 182,
-														Short.MAX_VALUE)
-												.addComponent(lblNewWeightCostperGram, GroupLayout.DEFAULT_SIZE,
-														GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup().addComponent(label_1)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(newPriceVolumeTextField, 0, 0, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup().addComponent(label)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(newPriceWeightTextField, 0, 0, Short.MAX_VALUE))
-								.addComponent(typeComboBox, 0, 112, Short.MAX_VALUE)
-								.addComponent(transportCompanyComboBox, 0, 112, Short.MAX_VALUE)
-								.addComponent(destinationComboBox, 0, 112, Short.MAX_VALUE)
-								.addComponent(originComboBox, 0, 112, Short.MAX_VALUE)).addGap(88)));
+								.addGroup(groupLayout.createSequentialGroup().addContainerGap(174, Short.MAX_VALUE)
+										.addComponent(submitButton, GroupLayout.PREFERRED_SIZE, 83,
+												GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(resetButton)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(cancelButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap()).addGroup(
+										groupLayout.createSequentialGroup().addGap(57)
+												.addGroup(groupLayout
+														.createParallelGroup(
+																Alignment.TRAILING)
+														.addGroup(
+																groupLayout.createSequentialGroup()
+																		.addGroup(
+																				groupLayout
+																						.createParallelGroup(
+																								Alignment.LEADING)
+																						.addComponent(lblOrigin)
+																						.addComponent(lblDestination)
+																						.addComponent(
+																								lblTransportCompany)
+																.addComponent(lblType)
+																.addComponent(lblNewVolumeCostperCm,
+																		GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+										.addComponent(lblNewWeightCostperGram, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup().addComponent(label_1)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(newPriceVolumeTextField, 0, 0, Short.MAX_VALUE))
+										.addGroup(groupLayout.createSequentialGroup().addComponent(label)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(newPriceWeightTextField, 0, 0, Short.MAX_VALUE))
+										.addComponent(typeComboBox, 0, 112, Short.MAX_VALUE)
+										.addComponent(transportCompanyComboBox, 0, 112, Short.MAX_VALUE)
+										.addComponent(destinationComboBox, 0, 112, Short.MAX_VALUE)
+										.addComponent(originComboBox, 0, 112, Short.MAX_VALUE)))
+						.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(lblHoursToDeliver, GroupLayout.PREFERRED_SIZE, 180,
+										GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(hoursToDeliverTextField, GroupLayout.PREFERRED_SIZE,
+										GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))).addGap(88)));
+
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addGap(26)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblOrigin).addComponent(
@@ -149,7 +168,11 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblNewVolumeCostperCm)
 						.addComponent(label_1).addComponent(newPriceVolumeTextField, GroupLayout.PREFERRED_SIZE,
 								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+				.addGap(18)
+				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblHoursToDeliver)
+						.addComponent(hoursToDeliverTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(submitButton)
 						.addComponent(resetButton).addComponent(cancelButton))
 				.addContainerGap()));
@@ -163,6 +186,10 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 
 	public String getNewPriceVolumeTextFieldString() {
 		return newPriceVolumeTextField.getText();
+	}
+
+	public String getHoursToDeliverTextFieldString() {
+		return hoursToDeliverTextField.getText();
 	}
 
 	public String getTypeComboBoxString() {
