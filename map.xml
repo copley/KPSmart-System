@@ -2,12 +2,6 @@
 <sitemap>
   <sites>
     <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
       <id>1</id>
       <location>Wellington</location>
       <isOrigin>true</isOrigin>
@@ -19,21 +13,14 @@
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
+    <site>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
   </sites>
   <routes>
-    <route>
-      <id>2</id>
-      <origin>Wellington</origin>
-      <destination>Melbourne</destination>
-      <company>something</company>
-      <duration>4.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>4.0</custPriceWeight>
-      <custPriceVolume>4.0</custPriceVolume>
-      <transPriceWeight>4.0</transPriceWeight>
-      <transPriceVolume>4.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
     <route>
       <id>1</id>
       <origin>Wellington</origin>
@@ -45,6 +32,19 @@
       <custPriceVolume>2.0</custPriceVolume>
       <transPriceWeight>33.0</transPriceWeight>
       <transPriceVolume>33.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>2</id>
+      <origin>Wellington</origin>
+      <destination>Melbourne</destination>
+      <company>something</company>
+      <duration>4.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>4.0</custPriceWeight>
+      <custPriceVolume>4.0</custPriceVolume>
+      <transPriceWeight>4.0</transPriceWeight>
+      <transPriceVolume>4.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>
