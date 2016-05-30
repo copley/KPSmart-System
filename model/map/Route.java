@@ -7,7 +7,7 @@ public class Route {
 	private final String origin;
 	private final String destination;
 	private final String company;
-	private final double duration;//hours
+	private double duration;//hours
 	private final Type type;
 	private double custPriceWeight;
 	private double custPriceVolume;
@@ -97,15 +97,16 @@ public class Route {
 
 
 
-	public void updateTransportCosts(double newTransPriceWeight, double newTransPriceVolume) {		
+	public void updateTransportCosts(double newTransPriceWeight, double newTransPriceVolume, double duration) {
 		this.transPriceWeight = newTransPriceWeight;
 		this.transPriceVolume = newTransPriceVolume;
+		this.duration = duration;
 	}
 
 
 
 	public void updateCustomerPrices(double newCustPriceWeight, double newCustPriceVolume) {
 		this.custPriceWeight = newCustPriceWeight;
-		this.custPriceVolume = newCustPriceVolume;	
+		this.custPriceVolume = newCustPriceVolume;
 	}
 }

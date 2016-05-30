@@ -58,7 +58,7 @@ public class ValidationSystem {
 		return true;
 	}
 
-	public boolean validateSite(Site s) {
+	public boolean validateOrigin(Site s) {
 		return cities.contains(s.getLocation());
 	}
 

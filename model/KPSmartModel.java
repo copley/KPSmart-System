@@ -217,10 +217,13 @@ public class KPSmartModel {
 	public boolean changeTransportCost(TransportCostInput input) {
 		double newWeightCost;
 		double newVolumeCost;
+		double duration;
 
 		try {
 			newWeightCost = Double.parseDouble(input.getWeightCost());
 			newVolumeCost = Double.parseDouble(input.getVolumeCost());
+			duration = Double.parseDouble(input.getDuration());
+
 		} catch (NumberFormatException nfe) {
 			return false;
 		}
@@ -239,7 +242,7 @@ public class KPSmartModel {
 			return false;
 		}
 		// call event processor on that route
-		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, this.loggedInUserID);
+		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, duration, this.loggedInUserID);
 	}
 	/*
 	 * =========================================================================

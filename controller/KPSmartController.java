@@ -101,6 +101,10 @@ public class KPSmartController {
 				// INT, STRING
 				// kpsmartGui.renderCriticalRoutes();//TODO: Could pass in
 				// STRING , INT
+			} else if(e.getActionCommand().equals("Review Events")){
+				System.out.println("Review Events!!");
+				List<String> eventStrings = model.getBusinessEventStrings();
+				//TODO: Do something with this Bobo!
 			}
 			// ==========================================
 			// END OF View Business Figures buttons

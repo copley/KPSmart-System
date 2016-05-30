@@ -9,8 +9,10 @@ public class TransportCostChangeEvent extends BusinessEvent {
 	private Type type;
 	private double newWeightCost;
 	private double newVolumeCost;
+	private double duration;
+
 	public TransportCostChangeEvent(int day, int month, int year, int time, String staff, String origin,
-			String destination, String company, Type type, double newWeightCost, double newVolumeCost) {
+			String destination, String company, Type type, double newWeightCost, double newVolumeCost, double duration) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
@@ -18,6 +20,7 @@ public class TransportCostChangeEvent extends BusinessEvent {
 		this.type = type;
 		this.newWeightCost = newWeightCost;
 		this.newVolumeCost = newVolumeCost;
+		this.duration = duration;
 	}
 
 	public String getOrigin() {
@@ -42,6 +45,10 @@ public class TransportCostChangeEvent extends BusinessEvent {
 
 	public double getNewVolumeCost() {
 		return newVolumeCost;
+	}
+
+	public double getDuration() {
+		return duration;
 	}
 
 	@Override

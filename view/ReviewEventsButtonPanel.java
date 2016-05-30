@@ -18,6 +18,7 @@ public class ReviewEventsButtonPanel extends AbstractPanel {
 		super(keyAction, mouseAction, viewActionListener);
 
 		reviewEventsButton = new JButton("Review Events");
+		reviewEventsButton.addActionListener(viewActionListener);
 
 		initialiseLayout();
 	}

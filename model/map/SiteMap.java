@@ -69,9 +69,10 @@ public class SiteMap {
 	 *            New transport weight cost
 	 * @param newVolumeCost
 	 *            New transport volume cost
+	 * @param duration
 	 */
-	public void updateTransportCost(int routeID, double newWeightCost, double newVolumeCost) {
-		routes.get(routeID).updateTransportCosts(newWeightCost, newVolumeCost);
+	public void updateTransportCost(int routeID, double newWeightCost, double newVolumeCost, double duration) {
+		routes.get(routeID).updateTransportCosts(newWeightCost, newVolumeCost, duration);
 	}
 	/*
 	 * =========================================================================
@@ -152,16 +153,16 @@ public class SiteMap {
 		if (originID == -1) {
 			originID = sites.size() + 1;
 			Site originSite = new Site(originID, origin, true, false);
-			if (!addSite(originSite)) {
-				return false;
-			}
+
 		}
 		if (destinationID == -1) {
 			destinationID = sites.size() + 1;
 			Site destinationSite = new Site(destinationID, destination, false, true);
-			if (!addSite(destinationSite)) {
-				return false;
-			}
+			addSite(destinationSite);
+		}
+		// make sure site is valid
+		if (!validationSystem.validateOrigin(sites.get(originID))) {
+			return false;
 		}
 
 		// Check if route exists yet. Fail if it already does
@@ -243,14 +244,9 @@ public class SiteMap {
 	 *            Site to be added
 	 * @return true if successful, otherwise false
 	 */
-	public boolean addSite(Site site) {
-		// make sure site is valid
-		if (!validationSystem.validateSite(site)) {
-			return false;
-		}
+	public void addSite(Site site) {
 		sites.put(site.getID(), site);
 		siteToRoutes.put(site, new ArrayList<Route>());
-		return true;
 	}
 	/*
 	 * =========================================================================

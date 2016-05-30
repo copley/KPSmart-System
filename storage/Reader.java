@@ -163,9 +163,7 @@ public class Reader {
 			Element site = sitesList.get(i);
 			// read business event and add to list
 			Site s = readSite(site);
-			if(!map.addSite(s)){
-				throw new IllegalSiteException("Invalid site!");
-			}
+			map.addSite(s);
 		}
 	}
 
@@ -438,9 +436,10 @@ public class Reader {
 
 		double weightcost = Double.parseDouble(event.getChild("weightcost").getText());
 		double volumecost = Double.parseDouble(event.getChild("volumecost").getText());
+		double duration = Double.parseDouble(event.getChild("duration").getText());
 
 		return new TransportCostChangeEvent(day, month, year, time, employee, origin, destination, company, type,
-				weightcost, volumecost);
+				weightcost, volumecost, duration);
 	}
 
 	private static Priority readPriority(String text) throws IllegalPriorityException {

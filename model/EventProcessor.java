@@ -272,11 +272,14 @@ public class EventProcessor {
 	 *            New weight cost
 	 * @param newVolumeCost
 	 *            New volume cost
+	 * @param duration
+	 *            New duration
 	 * @param employeeID
 	 *            ID of the employee logged in
 	 * @return true if successful, otherwise false
 	 */
-	public boolean changeTransportCost(int routeID, double newWeightCost, double newVolumeCost, int employeeID) {
+	public boolean changeTransportCost(int routeID, double newWeightCost, double newVolumeCost, double duration,
+			int employeeID) {
 		LocalDateTime now = LocalDateTime.now();
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
@@ -292,7 +295,7 @@ public class EventProcessor {
 			employeeName = employee.getName();
 		}
 
-		db.getSiteMap().updateTransportCost(routeID, newWeightCost, newVolumeCost);
+		db.getSiteMap().updateTransportCost(routeID, newWeightCost, newVolumeCost, duration);
 		Route route = db.getSiteMap().getRouteFromID(routeID);
 		// make the event to record the action
 		String origin = route.getOrigin();
@@ -301,7 +304,7 @@ public class EventProcessor {
 		Type type = route.getType();
 
 		BusinessEvent tranportCostEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, newWeightCost, newVolumeCost);
+				destination, company, type, newWeightCost, newVolumeCost, duration);
 		db.addEvent(tranportCostEvent);
 		return true;
 	}

@@ -196,6 +196,7 @@ public class Writer {
 		event.addContent(new Element("type").setText(be.getType().name()));
 		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
 		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
+		event.addContent(new Element("duration").setText("" + be.getDuration()));
 		return event;
 	}
 

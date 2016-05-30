@@ -8,15 +8,17 @@ public class TransportCostInput {
 	private String type;
 	private String weightCost;
 	private String volumeCost;
+	private String duration;
 
 	public TransportCostInput(String origin, String destination, String company, String type, String weightCost,
-			String volumeCost) {
+			String volumeCost, String duration) {
 		this.origin = origin;
 		this.destination = destination;
 		this.company = company;
 		this.type = type;
 		this.weightCost = weightCost;
 		this.volumeCost = volumeCost;
+		this.duration = duration;
 	}
 
 	public String getOrigin() {
@@ -41,6 +43,10 @@ public class TransportCostInput {
 
 	public String getVolumeCost() {
 		return volumeCost;
+	}
+
+	public String getDuration() {
+		return duration;
 	}
 
 }
