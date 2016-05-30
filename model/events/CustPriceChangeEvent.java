@@ -1,22 +1,21 @@
 package model.events;
 
+import model.map.Priority;
 import model.map.Type;
 
 public class CustPriceChangeEvent extends BusinessEvent {
 	private String origin;
 	private String destination;
-	private String company;
-	private Type type;
+	private Priority priority;
 	private double newWeightCost;
 	private double newVolumeCost;
 
-	public CustPriceChangeEvent(int day, int month, int year, int time, String staff, String origin,
-			String destination, String company, Type type, double newWeightCost, double newVolumeCost) {
+	public CustPriceChangeEvent(int day, int month, int year, int time, String staff, String origin, String destination,
+			Priority priority, double newWeightCost, double newVolumeCost) {
 		super(day, month, year, time, staff);
 		this.origin = origin;
 		this.destination = destination;
-		this.company = company;
-		this.type = type;
+		this.priority = priority;
 		this.newWeightCost = newWeightCost;
 		this.newVolumeCost = newVolumeCost;
 	}
@@ -30,8 +29,6 @@ public class CustPriceChangeEvent extends BusinessEvent {
 		string.append("Staff responsible: " + employee + "\n");
 		string.append("Origin: " + origin + "\n");
 		string.append("Destination: " + destination + "\n");
-		string.append("Company: " + company + "\n");
-		string.append("Type: " + type + "\n");
 		string.append("Weight Cost: " + newWeightCost + "\n");
 		string.append("Volume Cost: " + newVolumeCost);
 		return string.toString();
@@ -45,12 +42,8 @@ public class CustPriceChangeEvent extends BusinessEvent {
 		return destination;
 	}
 
-	public String getCompany() {
-		return company;
-	}
-	
-	public String getType() {
-		return type.toString();
+	public Priority getPriority() {
+		return priority;
 	}
 
 	public double getNewWeightCost() {
@@ -60,7 +53,5 @@ public class CustPriceChangeEvent extends BusinessEvent {
 	public double getNewVolumeCost() {
 		return newVolumeCost;
 	}
-
-
 
 }

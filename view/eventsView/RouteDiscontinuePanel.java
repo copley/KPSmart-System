@@ -13,6 +13,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
+import model.map.Type;
 import view.AbstractMainDisplayPanel;
 
 @SuppressWarnings("serial")
@@ -20,7 +21,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 
 	private JLabel lblOrigin;
 	private JLabel lblDestination;
-	private JLabel lblTranspotCompany;
+	private JLabel lblTransportCompany;
 	private JLabel lblType;
 
 	private JButton resetButton;
@@ -32,7 +33,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 	private JComboBox<String> transportCompanyComboBox;
 	private JComboBox<String> typeComboBox;
 
-	public RouteDiscontinuePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> siteNames) {
+	public RouteDiscontinuePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener, List<String> origins, List<String> destinations, List<String> companies) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -41,15 +42,27 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		lblDestination = new JLabel("Destination:");
 		lblDestination.setFont(new Font("Dialog", Font.BOLD, 15));
 
-		lblTranspotCompany = new JLabel("Transpot Company:");
+		lblTransportCompany = new JLabel("Transport Company:");
 
 		lblType = new JLabel("Type:");
 		lblType.setFont(new Font("Dialog", Font.BOLD, 15));
 
 		originComboBox = new JComboBox<String>();
+		for(String s : origins){
+			originComboBox.addItem(s);
+		}
 		destinationComboBox = new JComboBox<String>();
+		for(String s : destinations){
+			destinationComboBox.addItem(s);
+		}
 		transportCompanyComboBox = new JComboBox<String>();
+		for(String c : companies){
+			transportCompanyComboBox.addItem(c);
+		}
 		typeComboBox = new JComboBox<String>();
+		for(Type t : Type.values()){
+			typeComboBox.addItem(t.name());
+		}
 
 		resetButton = new JButton("Reset");
 		resetButton.addActionListener(viewActionListener);
@@ -80,7 +93,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 										groupLayout.createSequentialGroup().addGap(57)
 												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 														.addComponent(lblOrigin).addComponent(lblDestination)
-														.addComponent(lblTranspotCompany).addComponent(lblType))
+														.addComponent(lblTransportCompany).addComponent(lblType))
 								.addGap(4)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 										.addComponent(destinationComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -100,7 +113,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 						destinationComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 						GroupLayout.PREFERRED_SIZE))
 				.addGap(18)
-				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblTranspotCompany)
+				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblTransportCompany)
 						.addComponent(transportCompanyComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE))
 				.addGap(18)
@@ -130,11 +143,9 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		return typeComboBox.getSelectedItem().toString();
 	}
 
-	public void addSites(List<String> newSites) {
-		for(String s : newSites){
-			originComboBox.addItem(s);
-			destinationComboBox.addItem(s);
-		}
+	public void addSites(String origin, String destination) {
+		if(origin != null) originComboBox.addItem(origin);
+		if(destination != null) destinationComboBox.addItem(destination);
 	}
 
 	@Override

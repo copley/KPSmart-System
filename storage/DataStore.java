@@ -1,9 +1,9 @@
 package storage;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
-import model.employees.Employee;
 import model.employees.Employees;
 import model.events.BusinessEvent;
 import model.map.SiteMap;
@@ -20,6 +20,7 @@ public class DataStore {
 	public static final File EVENT_FILE = new File("src/KPSmart_log.xml");
 	public static final File MAP_FILE = new File("src/map.xml");
 	public static final File EMPLOYEE_FILE = new File("src/staff.xml");
+	public static final File CITIES_FILE = new File("src/NZtownNames.txt");
 
 	private List<BusinessEvent> businessEvents;
 	private Employees employees;
@@ -66,10 +67,22 @@ public class DataStore {
 
 	public SiteMap getSiteMap() {
 		return map;
-		}
-	
+	}
+
 	public Employees getEmployees() {
 		return employees;
+	}
+
+	public List<String> getBusinessEventStrings() {
+		List<String> eventStrings = new ArrayList<String>();
+		for (BusinessEvent be : businessEvents) {
+			eventStrings.add(be.toString());
 		}
+		return eventStrings;
+	}
+
+	public List<BusinessEvent> getBusinessEvents() {
+		return businessEvents;
+	}
 
 }

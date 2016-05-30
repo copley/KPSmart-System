@@ -15,9 +15,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.KPSmartController.*;
+import model.events.TransportCostChangeEvent;
 import model.events.inputs.*;
+import model.map.Site;
 import view.eventsView.AddNewRoutePanel;
+import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
+import view.eventsView.RouteDiscontinuePanel;
+import view.eventsView.TransportCostChangePanel;
 
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
@@ -59,7 +64,8 @@ public final class KPSmartFrame extends JFrame {
 	// }
 
 	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
-			ViewWindowAdapter viewWindowAdapter, List<String> siteNames) {
+			ViewWindowAdapter viewWindowAdapter, List<String> origins, List<String> destinations,
+			List<String> companies) {
 
 		super("KPSmart");
 
@@ -68,7 +74,7 @@ public final class KPSmartFrame extends JFrame {
 
 		setLayout(new BorderLayout());
 
-		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener, siteNames);
+		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener, origins, destinations, companies);
 		add(canvas);
 
 		createMenu();
@@ -102,10 +108,6 @@ public final class KPSmartFrame extends JFrame {
 		return new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
 	}
 
-	public KPSmartCanvas getCanvas() {
-		return canvas;
-	}
-
 	public void setMainDisplayPanel(String panelName) {
 		remove(canvas);
 		canvas.setMainDisplayPanel(panelName);
@@ -118,6 +120,23 @@ public final class KPSmartFrame extends JFrame {
 		canvas.resetTextFields();
 	}
 
+	public void updateSites(String origin, String destination) {
+		canvas.updateSites(origin, destination);
+	}
+
+	public void popupMessage(boolean successful, String message) {
+		if (successful) {
+			JOptionPane.showMessageDialog(this, message);
+		} else {
+			JOptionPane.showMessageDialog(this, message);
+		}
+	}
+
+	/*
+	 * =========================================================================
+	 * START OF Methods to get information for the model
+	 * =========================================================================
+	 */
 	public MailProcessInput getMailDeliveryInput() {
 		MailDeliveryPanel panel = (MailDeliveryPanel) canvas.getMainDisplayPanel();
 
@@ -148,35 +167,45 @@ public final class KPSmartFrame extends JFrame {
 				transportPriceWeight, transportPriceVolume);
 	}
 
-	public void updateSites(List<String> newSites) {
-		canvas.updateSites(newSites);
+	public DiscontinueInput getDiscontinueInput() {
+		RouteDiscontinuePanel panel = (RouteDiscontinuePanel) canvas.getMainDisplayPanel();
+
+		String origin = panel.getOriginComboBoxString();
+		String destination = panel.getDestinationComboBoxString();
+		String company = panel.getTransportCompanyComboBoxString();
+		String type = panel.getTypeComboBoxString();
+
+		return new DiscontinueInput(origin, destination, company, type);
 	}
 
-	public void popupMessage(boolean successful) {
-		if (successful) {
-			JOptionPane.showMessageDialog(this, "successful");
-		} else {
-			JOptionPane.showMessageDialog(this, "try again");
-		}
+	public CustomerPriceInput getCustomerPriceInput() {
+		CustomerPriceChangePanel panel = (CustomerPriceChangePanel) canvas.getMainDisplayPanel();
+
+		String origin = panel.getOriginComboBoxString();
+		String destination = panel.getDestinationComboBoxString();
+		String priority = panel.getPriorityComboBoxString();
+		String weightCost = panel.getNewWeightCostTextFieldString();
+		String volumeCost = panel.getNewVolumeCosttextFieldString();
+
+		return new CustomerPriceInput(origin, destination, priority, weightCost, volumeCost);
 	}
 
-	// public Input getAddNewRouteInput() {
-	// AddNewRoutePanel panel = (AddNewRoutePanel) canvas.getMainDisplayPanel();
-	//
-	// String originSelection = panel.getOriginComboBoxString();
-	// String destinationSelection = panel.getDestinationComboBoxString();
-	// String weightSelection = panel.getWeightTextFieldString();
-	// String volumeSelection = panel.getVolumeTextFieldString();
-	// String prioritySelection = panel.getPriorityComboBoxString();
-	//
-	// Input i = new Input();
-	// i.setOrigin(originSelection);
-	// i.setDestination(destinationSelection);
-	// i.setWeight(weightSelection);
-	// i.setVolume(volumeSelection);
-	// i.setPriority(prioritySelection);
-	//
-	// return i;
-	// }
+	public TransportCostInput getTransportCostInput() {
+		TransportCostChangePanel panel = (TransportCostChangePanel) canvas.getMainDisplayPanel();
+
+		String origin = panel.getOriginComboBoxString();
+		String destination = panel.getDestinationComboBoxString();
+		String company = panel.getTransportCompanyComboBoxString();
+		String type = panel.getTypeComboBoxString();
+		String weightCost = panel.getNewPriceWeightTextFieldString();
+		String volumeCost = panel.getNewPriceVolumeTextFieldString();
+
+		return new TransportCostInput(origin, destination, company, type, weightCost, volumeCost);
+	}
+	/*
+	 * =========================================================================
+	 * END OF Methods to get information for the model
+	 * =========================================================================
+	 */
 
 }

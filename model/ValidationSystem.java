@@ -1,8 +1,11 @@
 package model;
 
-import model.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import model.employees.Employee;
-import model.events.BusinessEvent;
 import model.events.CustPriceChangeEvent;
 import model.events.MailProcessEvent;
 import model.events.RouteAdditionEvent;
@@ -11,16 +14,28 @@ import model.events.TransportCostChangeEvent;
 import model.map.Priority;
 import model.map.Route;
 import model.map.Site;
-import model.map.Type;
+import storage.DataStore;
 
 public class ValidationSystem {
 
-	private ValidationSystem() {
+	private List<String> cities;
+
+	public ValidationSystem() {
+		cities = new ArrayList<String>();
+		try (Scanner scanner = new Scanner(DataStore.CITIES_FILE)) {
+			while (scanner.hasNextLine()) {
+				cities.add(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static boolean validateCustPriceEvent(CustPriceChangeEvent event) {
 		return validateTimestamp(event.getDay(), event.getMonth(), event.getYear(), event.getTime())
-				&& validateMode(event.getType()) && event.getNewWeightCost() > 0 && event.getNewVolumeCost() > 0;
+				&& validatePriority(event.getPriority().toString()) && event.getNewWeightCost() > 0
+				&& event.getNewVolumeCost() > 0;
 	}
 
 	public static boolean validateMailProcessEvent(MailProcessEvent event) {
@@ -43,12 +58,11 @@ public class ValidationSystem {
 		return true;
 	}
 
-	public static boolean validateSite(Site s) {
-		// TODO Auto-generated method stub
-		return true;
+	public boolean validateSite(Site s) {
+		return cities.contains(s.getLocation());
 	}
 
-	public static boolean validateRoute(Route r) {
+	public boolean validateRoute(Route r) {
 		// TODO Auto-generated method stub
 		return true;
 	}
@@ -66,15 +80,9 @@ public class ValidationSystem {
 	}
 
 	private static boolean validatePriority(String priority) {
-		for(Priority p : Priority.values()){
-			if(p.toString().equals(priority)) return true;
-		}
-		return false;
-	}
-
-	private static boolean validateMode(String mode) {
-		for(Type p : Type.values()){
-			if(p.toString().equals(mode)) return true;
+		for (Priority p : Priority.values()) {
+			if (p.toString().equals(priority))
+				return true;
 		}
 		return false;
 	}

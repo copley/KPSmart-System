@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
+import model.map.Priority;
 import view.AbstractMainDisplayPanel;
 
 @SuppressWarnings("serial")
@@ -37,7 +38,7 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 	private JButton submitButton;
 
 	public CustomerPriceChangePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
-			List<String> siteNames) {
+			List<String> origins, List<String> destinations) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		lblOrigin = new JLabel("Origin:");
@@ -50,9 +51,17 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 		lblNewLabel = new JLabel("<html>New Volume Cost(per cm<sup>3</sup>):</html>");
 
 		originComboBox = new JComboBox<String>();
+		for (String site : origins) {
+			originComboBox.addItem(site);
+		}
 		destinationComboBox = new JComboBox<String>();
+		for (String site : destinations) {
+			destinationComboBox.addItem(site);
+		}
 		priorityComboBox = new JComboBox<String>();
-
+		for (Priority p : Priority.values()) {
+			priorityComboBox.addItem(p.toString());
+		}
 		resetButton = new JButton("Reset");
 		resetButton.addActionListener(viewActionListener);
 		cancelButton = new JButton("Cancel");
@@ -145,6 +154,13 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 
 	public String getPriorityComboBoxString() {
 		return priorityComboBox.getSelectedItem().toString();
+	}
+
+	public void addSites(String origin, String destination) {
+		if (origin != null)
+			originComboBox.addItem(origin);
+		if (destination != null)
+			destinationComboBox.addItem(destination);
 	}
 
 	@Override

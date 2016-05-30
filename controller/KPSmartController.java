@@ -33,7 +33,7 @@ public class KPSmartController {
 	public KPSmartController() {
 		model = new KPSmartModel();
 		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), new ViewWindowAdapter(),
-				model.getSiteNames());
+				model.getOrigins(), model.getDestinations(), model.getCompanies());
 		System.out.println("Calling from Controller"); // debugging
 	}
 
@@ -186,28 +186,61 @@ public class KPSmartController {
 			// START OF Submit for forms
 			// ==========================================
 			else if (e.getActionCommand().equals("Submit")) {
-				// System.out.println("Submit");// debugging - mc
-
 				if (mailDeliveryPanel) {
 					MailProcessInput input = gui.getMailDeliveryInput();
-					boolean done = model.processMail(input);
-					if (done) {
-						System.out.println("Mail processed!!");
+					if (model.processMail(input)) {
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Mail has been successfully processed");
+						gui.setMainDisplayPanel("HomepagePanel");
+					} else {
+						gui.popupMessage(false, "Mail could not be processed");
 					}
 				} else if (newRoutePanel) {
 					NewRouteInput input = gui.getNewRouteInput();
+<<<<<<< HEAD
 					boolean successful = model.addNewRoute(input);
 					gui.popupMessage(successful);
 					gui.updateSites(model.getNewSites());
+=======
+					if(model.addNewRoute(input)){
+						// Update the list of sites in the gui if successful
+						gui.updateSites(model.getNewOrigin(), model.getNewDestination());
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Route has been successfully added");
+						gui.setMainDisplayPanel("HomepagePanel");
+
+					} else {
+						//Notify failure and return to input panel
+						gui.popupMessage(false, "Route could not be added");
+					}
+>>>>>>> 94637eed634edd0004aa45624e336680ffac6b3f
 				} else if (discontinueRoutePanel) {
-					discontinueRoutePanel = false;
-					System.out.println("disCon");
+					DiscontinueInput input = gui.getDiscontinueInput();
+					if(model.discontinueRoute(input)){
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Route has been successfully discontinued");
+						gui.setMainDisplayPanel("HomepagePanel");
+					} else {
+						gui.popupMessage(false, "Route could not be discontinued");
+					}
 				} else if (customerPricePanel) {
-					customerPricePanel = false;
-					System.out.println("customeR");
+					CustomerPriceInput input = gui.getCustomerPriceInput();
+					if(model.changeCustomerPrice(input)){
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Customer prices have been updated");
+						gui.setMainDisplayPanel("HomepagePanel");
+					} else {
+						gui.popupMessage(false, "Could not update customer prices");
+					}
 				} else {
-					transportCostChangePanel = false;
-					System.out.println("transPor");
+					TransportCostInput input = gui.getTransportCostInput();
+					if(model.changeTransportCost(input)){
+						//Notify success and return to homescreen
+						gui.popupMessage(true, "Transport costs have been updated");
+						gui.setMainDisplayPanel("HomepagePanel");
+					} else {
+						gui.popupMessage(false, "Could not update transport costs");
+					}
 				}
 				gui.resetTextFields();
 				gui.setMainDisplayPanel("HomepagePanel");

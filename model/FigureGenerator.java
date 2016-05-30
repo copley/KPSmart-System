@@ -1,43 +1,81 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.events.BusinessEvent;
+import model.events.MailProcessEvent;
 import model.map.Route;
+import storage.DataStore;
 
 public class FigureGenerator {
 
-	public FigureGenerator() {
-		super();
+	private DataStore db;
+	private List<MailProcessEvent> mailEvents = new ArrayList<MailProcessEvent>();
+	private double totRevenue;
+	private double totExpenditure;
+	private double deliveryTimes;
+	// private List<Route> criticalRoutes = new ArrayList<Route>();
+
+	public FigureGenerator(DataStore db) {
+		this.db = db;
 	}
 
-	public double generateRevenue() {
-		System.out.println("Figure Generator 'revenue' not yet implemented");
-		return 0;
+	// need to finish this method
+	public void getMailEvents() {
+		for (BusinessEvent be : db.getBusinessEvents()) {
+			if (be.getClass().equals("MailProcessEvent")) { // how to get the
+															// type of class?
+				MailProcessEvent mail = (MailProcessEvent) be; // casting so can
+																// add to the
+																// list and
+																// store it as a
+																// Mail process
+																// event
+				mailEvents.add(mail);
+			}
+		}
+	}
+
+	public void generateFigures() {
+		if (mailEvents.size() != 0) {
+			for (MailProcessEvent mail : mailEvents) {
+				totRevenue += mail.getRevenue();
+				totExpenditure += mail.getExpenditure();
+				deliveryTimes += mail.getDeliveryTime();
+			}
+		}
+
 	};
 
-	public double generateExpenditure() {
-		System.out.println("Figure Generator 'expenditure' not yet implemented");
-		return 0;
+	public double getExpenditure() {
+		return totExpenditure;
 	};
+
+	public double getRevenue() {
+		return totRevenue;
+	}
+
+	public double getAVGDelivery() {
+		return deliveryTimes / mailEvents.size();
+	}
 
 	public List<Route> generateCriticalRoutes() {
-		System.out.println("Figure Generator 'critical routes' not yet implemented");
-		return null;
+		List<Route> criticalRoutes = new ArrayList<Route>();
+		for (Route r : db.getSiteMap().getRoutes()) {
+			if (r.getTransPriceVolume() > r.getCustPriceVolume() || r.getTransPriceWeight() > r.getCustPriceWeight()) {
+				criticalRoutes.add(r);
+			}
+		}
+		return criticalRoutes;
 	};
 
 	public int generateTotalMail() {
-		System.out.println("Figure Generator 'total mail' not yet implemented");
-		return 0;
+		return mailEvents.size();
 	};
 
 	public int generateTotalEvents() {
-		System.out.println("Figure Generator 'total events' not yet implemented");
-		return 0;
-	};
-
-	public double generateDeliveryTimes() {
-		System.out.println("Figure Generator 'delivery times' not yet implemented");
-		return 0;
+		return db.getBusinessEvents().size();
 	};
 
 }

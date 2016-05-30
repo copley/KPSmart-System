@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.employees.Employee;
@@ -37,9 +36,6 @@ import storage.DataStore;
  */
 public class EventProcessor {
 
-	public static String debuggingString = "Class EventProcessor";
-	public static int debuggingInt = 0;
-
 	public final DataStore db;
 
 	public EventProcessor(DataStore db) {
@@ -50,6 +46,29 @@ public class EventProcessor {
 	 * =========================================================================
 	 * START OF Methods to process events
 	 * =========================================================================
+	 */
+	/**
+	 * Find a list of the routes going from the origin to the destination and
+	 * calculates the business figures. Makes a process mail event and stores it
+	 * into the database
+	 *
+	 * @param originID
+	 *            ID of the origin
+	 * @param origin
+	 *            Name of the origin
+	 * @param destinationID
+	 *            ID of the destination
+	 * @param destination
+	 *            Name of the destination
+	 * @param weight
+	 *            Weight of the package
+	 * @param volume
+	 *            Volume of the package
+	 * @param priority
+	 *            Priority of the package
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
 	 */
 	public boolean processMail(int originID, String origin, int destinationID, String destination, double weight,
 			double volume, Priority priority, int employeeID) {
@@ -90,29 +109,30 @@ public class EventProcessor {
 	}
 
 	/**
+	 * Adds a route to the site map. Makes an add route event and stores it into
+	 * the database
+	 *
 	 * @param origin
-	 *            - string
+	 *            Name of the origin
 	 * @param destination
-	 *            - string
-	 * @param carrier
-	 *            - string
+	 *            Name of the destination
+	 * @param company
+	 *            Name of the company
 	 * @param type
-	 *            - Type enum (mode of transport - AIR, SEA, LAND
+	 *            Type of the route
 	 * @param duration
-	 *            - double, hours of travel time when this route is taken
+	 *            Duration of the route
 	 * @param custPriceWeight
-	 *            - double, price charged to customer per gram of weight
+	 *            Customer weight price
 	 * @param custPriceVolume
-	 *            - double, price charged to customer per cubic cm of volume
+	 *            Customer Volume price
 	 * @param transCostWeight
-	 *            - double, cost that KPS incurs from transport company, per
-	 *            gram of weight
+	 *            Transport weight cost
 	 * @param transCostVolume
-	 *            - double, cost that KPS incurs from transport company, per
-	 *            cubic cm of volume
+	 *            Transport volume cost
 	 * @param employeeID
-	 *            - int, id of staff that was logged into the system when event
-	 *            was generated
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
 	 */
 	public boolean addRoute(String origin, String destination, String company, Type type, double duration,
 			double custPriceWeight, double custPriceVolume, double transCostWeight, double transCostVolume,
@@ -132,21 +152,159 @@ public class EventProcessor {
 			employeeName = employee.getName();
 		}
 
+		// capitalise the names
+		origin = SiteMap.uniformPrint(origin);
+		destination = SiteMap.uniformPrint(destination);
+
 		// Tell sitemap to add the new route with the information. Fail if the
 		// route cannot be added
-		if(!db.getSiteMap().addNewRoute(origin, destination, company, type, duration, custPriceWeight, custPriceVolume,
-				transCostWeight, transCostVolume)){
+		if (!db.getSiteMap().addNewRoute(origin, destination, company, type, duration, custPriceWeight, custPriceVolume,
+				transCostWeight, transCostVolume)) {
 			return false;
 		}
 
 		// make the event to record the action
-		BusinessEvent addRouteEvent = new RouteAdditionEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, duration, custPriceWeight, custPriceVolume, transCostWeight,
-				transCostVolume);
+		BusinessEvent addRouteEvent = new RouteAdditionEvent(day, month, year, time, employeeName, origin, destination,
+				company, type, duration, custPriceWeight, custPriceVolume, transCostWeight, transCostVolume);
 		// store the event in the data store
 		db.addEvent(addRouteEvent);
 		return true;
-	};
+	}
+
+	/**
+	 * Discontinues a route and makes a discontinue route event and stores it
+	 * into the database
+	 *
+	 * @param routeID
+	 *            ID of the route to be discontinued
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
+	 */
+	public boolean disconRoute(int routeID, int employeeID) {
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour() * 10 + now.getMinute();
+		// staff that is logged in
+		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
+		String employeeName;
+		if (employee == null) {
+			// TODO: Change to error when log in works
+			employeeName = "no-one";
+		} else {
+			employeeName = employee.getName();
+		}
+
+		// Tell site map to discontinue route and fail if unsuccessful
+		if (!db.getSiteMap().discontinueRoute(routeID)) {
+			return false;
+		}
+
+		// make the event to record the action
+		Route route = db.getSiteMap().getRouteFromID(routeID);
+		String origin = route.getOrigin();
+		String destination = route.getDestination();
+		String company = route.getCompany();
+		Type type = route.getType();
+		BusinessEvent drBusinessEvent = new RouteDiscEvent(day, month, year, time, employeeName, origin, destination,
+				company, type);
+		// store the event in the data store
+		db.addEvent(drBusinessEvent);
+		return true;
+	}
+
+	/**
+	 * Updates the customer prices in the site map. Makes a customer price
+	 * update event and stores it into the database
+	 *
+	 * @param origin
+	 *            Name of the origin
+	 * @param destination
+	 *            Name of the destination
+	 * @param priority
+	 *            Priority of the routes
+	 * @param newWeightCost
+	 *            New weight price
+	 * @param newVolumeCost
+	 *            New volume price
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
+	 */
+	public boolean changeCustomerPrice(String origin, String destination, Priority priority, double newWeightCost,
+			double newVolumeCost, int employeeID) {
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour() * 10 + now.getMinute();
+		// staff that is logged in
+		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
+		String employeeName;
+		if (employee == null) {
+			// TODO: Change to error when log in works
+			employeeName = "no-one";
+		} else {
+			employeeName = employee.getName();
+		}
+
+		if (!db.getSiteMap().updateCustomerPrices(origin, destination, priority, newWeightCost, newVolumeCost)) {
+			return false;
+		}
+
+		// make the event to record the action
+		BusinessEvent cpcBusinessEvent = new CustPriceChangeEvent(day, month, year, time, employeeName, origin,
+				destination, priority, newWeightCost, newVolumeCost);
+		// store the event in the data store
+		db.addEvent(cpcBusinessEvent);
+		return true;
+	}
+
+	/**
+	 * Updates the transport cost of a route. Makes an update transport cost
+	 * event and stores it into the database
+	 *
+	 * @param routeID
+	 *            ID of the route to be updated
+	 * @param newWeightCost
+	 *            New weight cost
+	 * @param newVolumeCost
+	 *            New volume cost
+	 * @param employeeID
+	 *            ID of the employee logged in
+	 * @return true if successful, otherwise false
+	 */
+	public boolean changeTransportCost(int routeID, double newWeightCost, double newVolumeCost, int employeeID) {
+		LocalDateTime now = LocalDateTime.now();
+		int day = now.getDayOfMonth();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		int time = now.getHour() * 10 + now.getMinute();
+		// staff that is logged in
+		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
+		String employeeName;
+		if (employee == null) {
+			// TODO: Change to error when log in works
+			employeeName = "no-one";
+		} else {
+			employeeName = employee.getName();
+		}
+
+		db.getSiteMap().updateTransportCost(routeID, newWeightCost, newVolumeCost);
+		Route route = db.getSiteMap().getRouteFromID(routeID);
+		// make the event to record the action
+		String origin = route.getOrigin();
+		String destination = route.getDestination();
+		String company = route.getCompany();
+		Type type = route.getType();
+
+		BusinessEvent tranportCostEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
+				destination, company, type, newWeightCost, newVolumeCost);
+		db.addEvent(tranportCostEvent);
+		return true;
+	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to process events
@@ -157,6 +315,17 @@ public class EventProcessor {
 	 * =========================================================================
 	 * START OF Helper methods for the event processing
 	 * =========================================================================
+	 */
+	/**
+	 * Calculates the total revenue of all the routes
+	 *
+	 * @param compoundRoutes
+	 *            List of route IDs
+	 * @param weight
+	 *            Weight
+	 * @param volume
+	 *            Volume
+	 * @return The total revenue
 	 */
 	private double findRevenue(List<Integer> compoundRoutes, double weight, double volume) {
 		double total = 0;
@@ -171,6 +340,17 @@ public class EventProcessor {
 		return total;
 	}
 
+	/**
+	 * Calculates the total expenditure of all the routes
+	 *
+	 * @param compoundRoutes
+	 *            List of route IDs
+	 * @param weight
+	 *            Weight
+	 * @param volume
+	 *            Volume
+	 * @return The total expenditure
+	 */
 	private double findExpenditure(List<Integer> compoundRoutes, double weight, double volume) {
 		double total = 0;
 		for (int routeID : compoundRoutes) {
@@ -184,6 +364,13 @@ public class EventProcessor {
 		return total;
 	}
 
+	/**
+	 * Calculates the total duration of all the routes
+	 *
+	 * @param compoundRoutes
+	 *            List of routes
+	 * @return Total duration
+	 */
 	private double findDeliveryTime(List<Integer> compoundRoutes) {
 		int time = 0;
 		for (int routeID : compoundRoutes) {
@@ -197,127 +384,4 @@ public class EventProcessor {
 	 * =========================================================================
 	 */
 
-	// the only things that can be changed on the route are the prices
-	// if changes to the carrier, mode, or duration are needed, the route should
-	// be discontinued,
-	// and a new one made
-
-	/**
-	 *
-	 * @param routeID
-	 *            --> in constructor, there is origin and destination???
-	 * @param need
-	 *            a priority for constructor as well?
-	 */
-	public boolean changeCustomerPrice(int routeID, double newCustPriceWeight, double newCustPriceVolume,
-			int processorStaffID) {
-		LocalDateTime now = LocalDateTime.now();
-		int day = now.getDayOfMonth();
-		int month = now.getMonthValue();
-		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
-		// try to access the required data
-		Employee employee = db.getEmployees().getEmployeeFromID(processorStaffID);
-		Route route = db.getSiteMap().getRouteFromID(routeID);
-		// if employee or route don't exist, this even fails! do not proceed!
-		if (employee == null || route == null) {
-			return false;
-		}
-		// if we got here, employee and route are safe to call methods on..
-		String employeeName = employee.getName();
-		String origin = route.getOrigin();
-		String destination = route.getDestination();
-		String company = route.getCompany();
-		Type type = route.getType();
-		// make the changes to the route
-		route.updateCustomerPrices(newCustPriceWeight, newCustPriceVolume);
-		// make the event to record the action
-		BusinessEvent cpcBusinessEvent = new CustPriceChangeEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, newCustPriceWeight, newCustPriceVolume);
-		// store the event in the data store
-		db.addEvent(cpcBusinessEvent);
-		// report that the change was successfully made
-		return true;
-
-		// System.out.println(debuggingString + debuggingInt + 1);
-	};
-
-	public boolean changeTransportCost(int routeID, double newTransCostWeight, double newTransCostVolume,
-			int processorStaffID) {
-		LocalDateTime now = LocalDateTime.now();
-		int day = now.getDayOfMonth();
-		int month = now.getMonthValue();
-		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
-		Employee employee = db.getEmployees().getEmployeeFromID(processorStaffID);
-		Route route = db.getSiteMap().getRouteFromID(routeID);
-		// if employee or route don't exist, this even fails! do not proceed!
-		if (employee == null || route == null) {
-			return false;
-		}
-		// if we got here, employee and route are safe to call methods on..
-		String employeeName = employee.getName();
-		String origin = route.getOrigin();
-		String destination = route.getDestination();
-		String company = route.getCompany();
-		Type type = route.getType();
-
-		BusinessEvent ctcBusinessEvent = new TransportCostChangeEvent(day, month, year, time, employeeName, origin,
-				destination, company, type, newTransCostWeight, newTransCostVolume);
-		db.addEvent(ctcBusinessEvent);
-		return true;
-		// System.out.println(debuggingString + debuggingInt + 2);
-	};
-
-	// 1
-
-	public boolean disconRoute(int routeID, int processorStaffID) {
-		LocalDateTime now = LocalDateTime.now();
-		int day = now.getDayOfMonth();
-		int month = now.getMonthValue();
-		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
-		// get logged in staff name
-		Employee processor = db.getEmployees().getEmployeeFromID(processorStaffID);
-		String processorName;
-		if (processor == null) {
-			// TODO: remove this and replace with an error once log-in function
-			// is coded
-			processorName = "no-one";// should only be used while there is no
-										// proper log-in
-		} else {
-			processorName = processor.getName();
-		}
-
-		// make the changes to the siteMap (discontinue route)
-		// if discontinueRoute returns false, then abort the event procession
-		// and
-		// report failure
-		if (!db.getSiteMap().discontinueRoute(routeID)) {
-			return false;
-		}
-		// get the data needed to fill out the event
-		Route route = db.getSiteMap().getRouteFromID(routeID);
-		String origin = route.getOrigin();
-		String destination = route.getDestination();
-		String company = route.getCompany();
-		Type type = route.getType();
-		// make the event to record the action
-
-		BusinessEvent drBusinessEvent = new RouteDiscEvent(day, month, year, time, processorName, origin, destination,
-				company, type);
-		// store the event in the data store
-		db.addEvent(drBusinessEvent);
-		// indicate that the event was processed successfully
-		return true;
-		// System.out.println(debuggingString + debuggingInt + 5);
-	}
-
-	public static void pushEvent() {
-		// System.out.println("BEP.pushEvent not yet implemented");
-	}
-
-	public static void createEvent() {
-		// System.out.println("BEP.createEvent not yet implemented");
-	}
 }

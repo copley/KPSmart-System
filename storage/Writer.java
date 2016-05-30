@@ -104,10 +104,7 @@ public class Writer {
 		event.setName("price");
 		event.addContent(new Element("origin").setText(be.getOrigin()));
 		event.addContent(new Element("destination").setText(be.getDestination()));
-		//TODO:took out priority element - priority is on a package
-		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)
-		event.addContent(new Element("company").setText(be.getCompany()));
-		event.addContent(new Element("type").setText(be.getType()));
+		event.addContent(new Element("priority").setText(be.getPriority().toString()));
 		event.addContent(new Element("weightcost").setText("" + be.getNewWeightCost()));
 		event.addContent(new Element("volumecost").setText("" + be.getNewVolumeCost()));
 		return event;
@@ -314,6 +311,8 @@ public class Writer {
 		Element s = new Element("site");
 		s.addContent(new Element("id").setText("" + site.getID()));
 		s.addContent(new Element("location").setText(site.getLocation()));
+		s.addContent(new Element("isOrigin").setText(site.isOrigin()+""));
+		s.addContent(new Element("isDestination").setText(site.isDestination()+""));
 		return s;
 	}
 

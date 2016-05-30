@@ -163,10 +163,9 @@ public class Reader {
 			Element site = sitesList.get(i);
 			// read business event and add to list
 			Site s = readSite(site);
-			if (!ValidationSystem.validateSite(s)) {
+			if(!map.addSite(s)){
 				throw new IllegalSiteException("Invalid site!");
 			}
-			map.addSite(s);
 		}
 	}
 
@@ -180,7 +179,9 @@ public class Reader {
 	private static Site readSite(Element site) {
 		int id = Integer.parseInt(site.getChild("id").getText());
 		String location = site.getChild("location").getText();
-		return new Site(id, location);
+		boolean isOrigin = Boolean.parseBoolean(site.getChild("isOrigin").getText());
+		boolean isDestination = Boolean.parseBoolean(site.getChild("isDestination").getText());
+		return new Site(id, location, isOrigin, isDestination);
 	}
 
 	/**
@@ -196,9 +197,6 @@ public class Reader {
 			Element route = routesList.get(i);
 			// read business event and add to list
 			Route r = readRoute(route);
-			if (!ValidationSystem.validateRoute(r)) {
-				throw new IllegalRouteException("Invalid route!");
-			}
 			map.addRoute(r);
 		}
 	}
@@ -314,14 +312,11 @@ public class Reader {
 			String employee) throws IllegalTypeException {
 		String origin = event.getChild("origin").getText();
 		String destination = event.getChild("destination").getText();
-		//TODO:took out priority element - priority is on a package
-		//TODO:added in company and type - needed to uniquely identify a particular route (if we are not using ID)
-		String company = event.getChild("company").getText();
-		Type type = readType(event.getChild("type").getText());
+		Priority priority = KPSmartModel.getPriority(event.getChild("priority").getText());
 		double weightcost = Double.parseDouble(event.getChild("weightcost").getText());
 		double volumecost = Double.parseDouble(event.getChild("volumecost").getText());
 
-		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, company, type, weightcost,
+		return new CustPriceChangeEvent(day, month, year, time, employee, origin, destination, priority, weightcost,
 				volumecost);
 	}
 

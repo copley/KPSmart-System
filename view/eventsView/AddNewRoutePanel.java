@@ -13,6 +13,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
+import model.map.Type;
 import view.AbstractMainDisplayPanel;
 
 @SuppressWarnings("serial")
@@ -41,7 +42,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 	private JLabel lblTransportPriceperGram;
 	private JLabel lblTransportPriceperCm;
 
-	private JComboBox<String> modeComboBox;
+	private JComboBox<String> typeComboBox;
 
 	private JButton resetButton;
 	private JButton cancelButton;
@@ -96,10 +97,10 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		transportPriceVolumeTextField = new JTextField();
 		transportPriceVolumeTextField.setColumns(10);
 
-		modeComboBox = new JComboBox<String>();
-		modeComboBox.addItem("LAND");
-		modeComboBox.addItem("SEA");
-		modeComboBox.addItem("AIR");
+		typeComboBox = new JComboBox<String>();
+		for(Type t : Type.values()){
+			typeComboBox.addItem(t.name());
+		}
 
 		initialiseLayout();
 
@@ -165,7 +166,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 												.addComponent(customerPriceWeightTextField, 0, 0, Short.MAX_VALUE))
 										.addComponent(originTextField).addComponent(hoursToDeliverTextField)
 										.addComponent(transportCompanyTextField)
-										.addComponent(modeComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(typeComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addComponent(DestinationTextField))).addContainerGap(157, Short.MAX_VALUE)));
 
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
@@ -187,7 +188,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 								GroupLayout.PREFERRED_SIZE))
 				.addGap(18)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblMode).addComponent(
-						modeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						typeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 				.addGap(18)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblCustomerPriceperGram)
 						.addComponent(label).addComponent(customerPriceWeightTextField, GroupLayout.PREFERRED_SIZE,
@@ -250,7 +251,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 	}
 
 	public String getModeComboBoxString() {
-		return modeComboBox.getSelectedItem().toString();
+		return typeComboBox.getSelectedItem().toString();
 	}
 
 	@Override

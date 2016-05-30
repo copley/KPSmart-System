@@ -2,70 +2,70 @@
 <sitemap>
   <sites>
     <site>
-      <id>9</id>
-      <location>Beijing</location>
+      <id>8</id>
+      <location>Waikanae</location>
     </site>
     <site>
       <id>1</id>
       <location>Wellington</location>
     </site>
     <site>
-      <id>3</id>
-      <location>Sydney</location>
-    </site>
-    <site>
       <id>6</id>
       <location>Taupo</location>
-    </site>
-    <site>
-      <id>13</id>
-      <location>Leichester</location>
-    </site>
-    <site>
-      <id>5</id>
-      <location>Dunedin</location>
-    </site>
-    <site>
-      <id>11</id>
-      <location>New York</location>
-    </site>
-    <site>
-      <id>2</id>
-      <location>Auckland</location>
-    </site>
-    <site>
-      <id>10</id>
-      <location>Shanghai</location>
     </site>
     <site>
       <id>4</id>
       <location>Hastings</location>
     </site>
     <site>
-      <id>8</id>
-      <location>Waikanae</location>
+      <id>10</id>
+      <location>Shanghai</location>
+    </site>
+    <site>
+      <id>5</id>
+      <location>Dunedin</location>
+    </site>
+    <site>
+      <id>13</id>
+      <location>Leichester</location>
+    </site>
+    <site>
+      <id>7</id>
+      <location>Rotorua</location>
     </site>
     <site>
       <id>12</id>
       <location>Xuchang</location>
     </site>
     <site>
-      <id>7</id>
-      <location>Rotorua</location>
+      <id>2</id>
+      <location>Auckland</location>
+    </site>
+    <site>
+      <id>9</id>
+      <location>Beijing</location>
+    </site>
+    <site>
+      <id>11</id>
+      <location>New York</location>
+    </site>
+    <site>
+      <id>3</id>
+      <location>Sydney</location>
     </site>
   </sites>
   <routes>
     <route>
-      <id>4</id>
+      <id>2</id>
       <origin>Wellington</origin>
-      <destination>Dunedin</destination>
+      <destination>Auckland</destination>
       <company>Mail NZ</company>
-      <duration>2.0</duration>
+      <duration>6.0</duration>
       <type>AIR</type>
-      <custPriceWeight>3.0</custPriceWeight>
-      <custPriceVolume>45.0</custPriceVolume>
-      <transPriceWeight>8.0</transPriceWeight>
-      <transPriceVolume>8.0</transPriceVolume>
+      <custPriceWeight>4.0</custPriceWeight>
+      <custPriceVolume>4.0</custPriceVolume>
+      <transPriceWeight>4.0</transPriceWeight>
+      <transPriceVolume>4.0</transPriceVolume>
       <inService>true</inService>
     </route>
     <route>
@@ -82,29 +82,16 @@
       <inService>true</inService>
     </route>
     <route>
-      <id>11</id>
-      <origin>Shanghai</origin>
-      <destination>New York</destination>
-      <company>DHL</company>
-      <duration>10.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>10.0</custPriceVolume>
-      <transPriceWeight>1.0</transPriceWeight>
-      <transPriceVolume>1.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>10</id>
+      <id>4</id>
       <origin>Wellington</origin>
-      <destination>Beijing</destination>
-      <company>DHL</company>
-      <duration>13.0</duration>
+      <destination>Dunedin</destination>
+      <company>Mail NZ</company>
+      <duration>2.0</duration>
       <type>AIR</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>20.0</custPriceVolume>
-      <transPriceWeight>40.0</transPriceWeight>
-      <transPriceVolume>40.0</transPriceVolume>
+      <custPriceWeight>3.0</custPriceWeight>
+      <custPriceVolume>45.0</custPriceVolume>
+      <transPriceWeight>8.0</transPriceWeight>
+      <transPriceVolume>8.0</transPriceVolume>
       <inService>true</inService>
     </route>
     <route>
@@ -121,16 +108,29 @@
       <inService>true</inService>
     </route>
     <route>
-      <id>5</id>
+      <id>10</id>
       <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>Some Company</company>
+      <destination>Beijing</destination>
+      <company>DHL</company>
+      <duration>13.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>20.0</custPriceVolume>
+      <transPriceWeight>40.0</transPriceWeight>
+      <transPriceVolume>40.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>11</id>
+      <origin>Shanghai</origin>
+      <destination>New York</destination>
+      <company>DHL</company>
       <duration>10.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>4.0</custPriceWeight>
-      <custPriceVolume>5.0</custPriceVolume>
-      <transPriceWeight>3.0</transPriceWeight>
-      <transPriceVolume>3.0</transPriceVolume>
+      <type>AIR</type>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>10.0</custPriceVolume>
+      <transPriceWeight>1.0</transPriceWeight>
+      <transPriceVolume>1.0</transPriceVolume>
       <inService>true</inService>
     </route>
     <route>
@@ -142,45 +142,6 @@
       <type>AIR</type>
       <custPriceWeight>10.0</custPriceWeight>
       <custPriceVolume>101.0</custPriceVolume>
-      <transPriceWeight>10.0</transPriceWeight>
-      <transPriceVolume>10.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>6</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>Some Company</company>
-      <duration>10.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>4.0</custPriceWeight>
-      <custPriceVolume>5.0</custPriceVolume>
-      <transPriceWeight>3.0</transPriceWeight>
-      <transPriceVolume>3.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>2</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>Mail NZ</company>
-      <duration>6.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>4.0</custPriceWeight>
-      <custPriceVolume>4.0</custPriceVolume>
-      <transPriceWeight>4.0</transPriceWeight>
-      <transPriceVolume>4.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>12</id>
-      <origin>Shanghai</origin>
-      <destination>Xuchang</destination>
-      <company>DHL</company>
-      <duration>20.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>10.0</custPriceVolume>
       <transPriceWeight>10.0</transPriceWeight>
       <transPriceVolume>10.0</transPriceVolume>
       <inService>true</inService>
@@ -199,19 +160,6 @@
       <inService>true</inService>
     </route>
     <route>
-      <id>14</id>
-      <origin>Wellington</origin>
-      <destination>Leichester</destination>
-      <company>DHL</company>
-      <duration>20.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>10.0</custPriceVolume>
-      <transPriceWeight>10.0</transPriceWeight>
-      <transPriceVolume>10.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
       <id>9</id>
       <origin>Wellington</origin>
       <destination>Waikanae</destination>
@@ -225,6 +173,32 @@
       <inService>true</inService>
     </route>
     <route>
+      <id>5</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>Some Company</company>
+      <duration>10.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>4.0</custPriceWeight>
+      <custPriceVolume>5.0</custPriceVolume>
+      <transPriceWeight>3.0</transPriceWeight>
+      <transPriceVolume>3.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>6</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>Some Company</company>
+      <duration>10.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>4.0</custPriceWeight>
+      <custPriceVolume>5.0</custPriceVolume>
+      <transPriceWeight>3.0</transPriceWeight>
+      <transPriceVolume>3.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
       <id>8</id>
       <origin>Wellington</origin>
       <destination>Rotorua</destination>
@@ -235,6 +209,32 @@
       <custPriceVolume>6.0</custPriceVolume>
       <transPriceWeight>5.0</transPriceWeight>
       <transPriceVolume>5.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>14</id>
+      <origin>Wellington</origin>
+      <destination>Leichester</destination>
+      <company>DHL</company>
+      <duration>20.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>10.0</custPriceVolume>
+      <transPriceWeight>10.0</transPriceWeight>
+      <transPriceVolume>10.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>12</id>
+      <origin>Shanghai</origin>
+      <destination>Xuchang</destination>
+      <company>DHL</company>
+      <duration>20.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>10.0</custPriceVolume>
+      <transPriceWeight>10.0</transPriceWeight>
+      <transPriceVolume>10.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>

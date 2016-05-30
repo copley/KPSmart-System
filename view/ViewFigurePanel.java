@@ -19,7 +19,7 @@ public class ViewFigurePanel extends AbstractPanel {
 	private JButton totalRevenueBt;
 	private JButton totalExpenditureBt;
 	private JButton totalNbEventsBt;
-	private JButton totalAmountMailsBt;
+	private JButton totalAmountMailBt;
 	private JButton averageDeleveryTimesBt;
 	private JButton criticalRoutesBt;
 
@@ -45,9 +45,9 @@ public class ViewFigurePanel extends AbstractPanel {
 		totalNbEventsBt.setFont(new Font("Dialog", Font.BOLD, 10));
 		totalNbEventsBt.addActionListener(viewActionListener);
 
-		totalAmountMailsBt = new JButton("Amount of Mails");
-		totalAmountMailsBt.setFont(new Font("Dialog", Font.BOLD, 11));
-		totalAmountMailsBt.addActionListener(viewActionListener);
+		totalAmountMailBt = new JButton("Amount of Mail");
+		totalAmountMailBt.setFont(new Font("Dialog", Font.BOLD, 11));
+		totalAmountMailBt.addActionListener(viewActionListener);
 
 		averageDeleveryTimesBt = new JButton("AVG Delivery Times");
 		averageDeleveryTimesBt.setFont(new Font("Dialog", Font.BOLD, 10));
@@ -70,7 +70,7 @@ public class ViewFigurePanel extends AbstractPanel {
 								.addComponent(criticalRoutesBt, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
 								.addComponent(averageDeleveryTimesBt, 0, 0, Short.MAX_VALUE)
-								.addComponent(totalAmountMailsBt, 0, 0, Short.MAX_VALUE)
+								.addComponent(totalAmountMailBt, 0, 0, Short.MAX_VALUE)
 								.addComponent(totalNbEventsBt, 0, 0, Short.MAX_VALUE)
 								.addComponent(totalExpenditureBt, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
@@ -90,7 +90,7 @@ public class ViewFigurePanel extends AbstractPanel {
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(totalRevenueBt)
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(totalExpenditureBt)
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(totalNbEventsBt)
-								.addPreferredGap(ComponentPlacement.RELATED).addComponent(totalAmountMailsBt)
+								.addPreferredGap(ComponentPlacement.RELATED).addComponent(totalAmountMailBt)
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(averageDeleveryTimesBt)
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(criticalRoutesBt)
 								.addContainerGap(13, Short.MAX_VALUE)));
