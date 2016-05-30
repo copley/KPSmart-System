@@ -197,11 +197,6 @@ public class KPSmartController {
 					}
 				} else if (newRoutePanel) {
 					NewRouteInput input = gui.getNewRouteInput();
-<<<<<<< HEAD
-					boolean successful = model.addNewRoute(input);
-					gui.popupMessage(successful);
-					gui.updateSites(model.getNewSites());
-=======
 					if(model.addNewRoute(input)){
 						// Update the list of sites in the gui if successful
 						gui.updateSites(model.getNewOrigin(), model.getNewDestination());
@@ -213,7 +208,6 @@ public class KPSmartController {
 						//Notify failure and return to input panel
 						gui.popupMessage(false, "Route could not be added");
 					}
->>>>>>> 94637eed634edd0004aa45624e336680ffac6b3f
 				} else if (discontinueRoutePanel) {
 					DiscontinueInput input = gui.getDiscontinueInput();
 					if(model.discontinueRoute(input)){
