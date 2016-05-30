@@ -29,7 +29,7 @@ import view.eventsView.TransportCostChangePanel;
 public final class KPSmartFrame extends JFrame {
 
 	private KPSmartCanvas canvas;
-	private static final int FRAME_WIDTH = 800;
+	private static final int FRAME_WIDTH = 855;
 	private static final int FRAME_HEIGHT = 650;
 
 	// public KPSmartFrame() {

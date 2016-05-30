@@ -5,8 +5,10 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.GroupLayout.Alignment;
 
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
@@ -15,17 +17,18 @@ import controller.KPSmartController.ViewActionListener;
 @SuppressWarnings("serial")
 public class HomepagePanel extends AbstractMainDisplayPanel {
 
-	private static final String IMG_PATH = "src/images/backgraoundIMG.png";
+	private static final String IMG_PATH = "src/images/test1.png"; //w:585, h:575
 
-	JLabel label;
+	private JLabel label;
 
 	public HomepagePanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
 		super(keyAction, mouseAction, viewActionListener);
 
 		ImageIcon icon = getImageIcon();
-        label = new JLabel(icon);
+		label = new JLabel(icon);
+		label.setMaximumSize(this.getMinimumSize());
 
-        initialiseLayout();
+		initialiseLayout();
 	}
 
 	private ImageIcon getImageIcon() {
@@ -36,14 +39,22 @@ public class HomepagePanel extends AbstractMainDisplayPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        ImageIcon icon = new ImageIcon(img);
+		ImageIcon icon = new ImageIcon(img);
 
 		return icon;
 	}
 
 	@Override
 	protected void initialiseLayout() {
-		//add(label);
+		GroupLayout groupLayout = new GroupLayout(this);
+
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addComponent(label,
+				Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE));
+
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addComponent(label,
+				GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE));
+
+		setLayout(groupLayout);
 	}
 
 	@Override
