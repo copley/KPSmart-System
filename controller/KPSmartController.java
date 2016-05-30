@@ -196,10 +196,9 @@ public class KPSmartController {
 					}
 				} else if (newRoutePanel) {
 					NewRouteInput input = gui.getNewRouteInput();
-					if(model.addNewRoute(input)){
-						System.out.println("Route added!!");
-						gui.updateSites(model.getNewSites());
-					}
+					boolean successful = model.addNewRoute(input);
+					gui.popupMessage(successful);
+					gui.updateSites(model.getNewSites());
 				} else if (discontinueRoutePanel) {
 					discontinueRoutePanel = false;
 					System.out.println("disCon");
@@ -210,6 +209,13 @@ public class KPSmartController {
 					transportCostChangePanel = false;
 					System.out.println("transPor");
 				}
+				gui.resetTextFields();
+				gui.setMainDisplayPanel("HomepagePanel");
+			} else if (e.getActionCommand().equals("Cancel")) {
+				gui.setMainDisplayPanel("HomepagePanel");
+				gui.resetTextFields();
+			} else if (e.getActionCommand().equals("Reset")) {
+				gui.resetTextFields();
 			}
 			// ==========================================
 			// END OF Submit for forms

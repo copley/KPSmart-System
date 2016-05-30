@@ -64,7 +64,7 @@ public final class KPSmartFrame extends JFrame {
 		super("KPSmart");
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 
 		setLayout(new BorderLayout());
 
