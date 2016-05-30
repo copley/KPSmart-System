@@ -116,4 +116,30 @@
     <volumecost>10.0</volumecost>
     <duration>10.0</duration>
   </cost>
+  <mail>
+    <day>31</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>90</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>London</destination>
+    <weight>10.0</weight>
+    <volume>10.0</volume>
+    <priority>International Air</priority>
+    <revenue>1000.0</revenue>
+    <expenditure>500.0</expenditure>
+    <deliveryTime>20.0</deliveryTime>
+  </mail>
+  <discontinue>
+    <day>31</day>
+    <month>5</month>
+    <year>2016</year>
+    <time>111</time>
+    <employee>no-one</employee>
+    <origin>Wellington</origin>
+    <destination>London</destination>
+    <company>EMS</company>
+    <type>AIR</type>
+  </discontinue>
 </log>

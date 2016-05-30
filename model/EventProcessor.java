@@ -197,6 +197,11 @@ public class EventProcessor {
 			employeeName = employee.getName();
 		}
 
+		// If the route is not currently active - fail - don't discontinue again!
+		if(!db.getSiteMap().getRouteFromID(routeID).isInService()){
+			return false;
+		}
+		
 		// Tell site map to discontinue route and fail if unsuccessful
 		if (!db.getSiteMap().discontinueRoute(routeID)) {
 			return false;
