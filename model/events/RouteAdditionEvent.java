@@ -77,15 +77,15 @@ public class RouteAdditionEvent extends BusinessEvent {
 	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
-		string.append("ROUTE ADDITION EVENT<br>");
-		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("<h2>ROUTE ADDITION EVENT</h2><br>");
+		string.append("Date: " + day + "/" + month + "/" + year + "<br>");
 		string.append("Time: " + time + "<br>");
 		string.append("Staff responsible: " + employee + "<br>");
 		string.append("Origin: " + origin + "<br>");
 		string.append("Destination: " + destination + "<br>");
 		string.append("Company: " + company + "<br>");
 		string.append("Type: " + type.name() + "<br>");
-		string.append("Duration: " + duration);
+		string.append("Duration: " + duration + "<br>");
 		string.append("Customer price per gram: " + customerPriceWeight + "<br>");
 		string.append("Customer price per cubic cm: " + customerPriceVolume + "<br>");
 		string.append("Transport cost per gram: " + transportCostWeight + "<br>");

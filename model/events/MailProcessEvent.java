@@ -69,18 +69,18 @@ public class MailProcessEvent extends BusinessEvent {
 	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
-		string.append("MAIL PROCESS EVENT<br>");
-		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("<h2>MAIL PROCESS EVENT</h2><br>");
+		string.append("Date: " + day + "/" + month + "/" + year + "<br>");
 		string.append("Time: " + time + "<br>");
 		string.append("Staff responsible: " + employee + "<br>");
 		string.append("Origin: " + origin + "<br>");
 		string.append("Destination: " + destination + "<br>");
 		string.append("Weight: " + weight + "<br>");
 		string.append("Volume: " + volume + "<br>");
-		string.append("Priority: " + priority);
-		string.append("Revenue: " + revenue);
-		string.append("Expenditure: " + expenditure);
-		string.append("Delivery time: " + deliveryTime);
+		string.append("Priority: " + priority + "<br>");
+		string.append("Revenue: " + revenue + "<br>");
+		string.append("Expenditure: " + expenditure + "<br>");
+		string.append("Delivery time: " + deliveryTime + "<br>");
 		string.append("</html>");
 		return string.toString();
 	}

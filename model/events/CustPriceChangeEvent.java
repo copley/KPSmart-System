@@ -24,8 +24,8 @@ public class CustPriceChangeEvent extends BusinessEvent {
 	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
-		string.append("CUSTOMER PRICE CHANGE EVENT<br>");
-		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("<h2>CUSTOMER PRICE CHANGE EVENT</h2><br>");
+		string.append("Date: " + day + "/" + month + "/" + year + "<br>");
 		string.append("Time: " + time + "<br>");
 		string.append("Staff responsible: " + employee + "<br>");
 		string.append("Origin: " + origin + "<br>");

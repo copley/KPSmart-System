@@ -30,6 +30,7 @@ public class KPSmartModel {
 	private EventProcessor eventProcessor;
 	private FigureGenerator fg;
 	private int loggedInUserID;
+	private int currentEvent;
 
 	public KPSmartModel() {
 		db = new DataStore();
@@ -37,6 +38,7 @@ public class KPSmartModel {
 		fg = new FigureGenerator(db);
 		eventProcessor = new EventProcessor(db);
 		loggedInUserID = -1;// no-one is logged in initially
+		currentEvent = db.getBusinessEventStrings().size()-1;
 	}
 
 	public void save() {
@@ -294,6 +296,25 @@ public class KPSmartModel {
 	public List<String> getBusinessEventStrings() {
 		return db.getBusinessEventStrings();
 	}
+
+	/**
+	 * Gets the latest business event (Readable format)
+	 *
+	 * @return
+	 */
+	public String getLatestEvent() {
+		return db.getBusinessEventStrings().get(db.getBusinessEventStrings().size() - 1);
+	}
+
+	public String getPreviousEvent() {
+		if(currentEvent > 0) currentEvent--;
+		return db.getBusinessEventStrings().get(currentEvent);
+	}
+
+	public String getNextEvent() {
+		if(currentEvent < (db.getBusinessEventStrings().size()-1)) currentEvent++;
+		return db.getBusinessEventStrings().get(currentEvent);
+	}
 	/*
 	 * =========================================================================
 	 * END OF Methods to provide information to the GUI - Called by the
@@ -333,7 +354,6 @@ public class KPSmartModel {
 			return null;
 		}
 	}
-
 	/*
 	 * =========================================================================
 	 * END OF Helper methods for the model

@@ -55,8 +55,8 @@ public class TransportCostChangeEvent extends BusinessEvent {
 	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
-		string.append("TRANSPORT COST CHANGE EVENT<br>");
-		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("<h2>TRANSPORT COST CHANGE EVENT</h2><br>");
+		string.append("Date: " + day + "/" + month + "/" + year + "<br>");
 		string.append("Time: " + time + "<br>");
 		string.append("Staff responsible: " + employee + "<br>");
 		string.append("Origin: " + origin + "<br>");

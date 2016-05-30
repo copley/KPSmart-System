@@ -37,8 +37,8 @@ public class RouteDiscEvent extends BusinessEvent {
 	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
-		string.append("ROUTE DISCONTINUED EVENT<br>");
-		string.append("Date: " + day + ", " + month + ", " + year + "<br>");
+		string.append("<h2>ROUTE DISCONTINUED EVENT</h2><br>");
+		string.append("Date: " + day + "/" + month + "/" + year + "<br>");
 		string.append("Time: " + time + "<br>");
 		string.append("Staff responsible: " + employee + "<br>");
 		string.append("Origin: " + origin + "<br>");
