@@ -222,6 +222,7 @@ public class KPSmartController {
 					if(model.addNewRoute(input)){
 						// Update the list of sites in the gui if successful
 						gui.updateSites(model.getNewOrigin(), model.getNewDestination());
+						gui.updateCompanies(model.getNewCompany());
 						//Notify success and return to homescreen
 						gui.popupMessage(true, "Route has been successfully added");
 						gui.setMainDisplayPanel("HomepagePanel");

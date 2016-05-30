@@ -2,11 +2,50 @@
 <sitemap>
   <sites>
     <site>
-      <id>1</id>
+      <id>3</id>
+      <location>Hamilton</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
+    <site>
+      <id>2</id>
       <location>Auckland</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
+    <site>
+      <id>1</id>
+      <location>Wellington</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
   </sites>
-  <routes />
+  <routes>
+    <route>
+      <id>1</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>DHL</company>
+      <duration>1.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>1.0</custPriceWeight>
+      <custPriceVolume>1.0</custPriceVolume>
+      <transPriceWeight>1.0</transPriceWeight>
+      <transPriceVolume>1.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>2</id>
+      <origin>Hamilton</origin>
+      <destination>Auckland</destination>
+      <company>Something</company>
+      <duration>1.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>1.0</custPriceWeight>
+      <custPriceVolume>1.0</custPriceVolume>
+      <transPriceWeight>1.0</transPriceWeight>
+      <transPriceVolume>1.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+  </routes>
 </sitemap>

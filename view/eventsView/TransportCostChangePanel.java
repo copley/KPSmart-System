@@ -225,4 +225,9 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 			destinationComboBox.addItem(destination);
 	}
 
+	public void addCompanies(String company) {
+		if (company != null)
+			transportCompanyComboBox.addItem(company);
+	}
+
 }
