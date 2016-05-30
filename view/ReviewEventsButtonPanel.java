@@ -9,19 +9,15 @@ import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 
 @SuppressWarnings("serial")
-public class LogOutPanel extends AbstractPanel {
+public class ReviewEventsButtonPanel extends AbstractPanel {
 
-	private JButton logOutButton;
+	private JButton reviewEventsButton;
 
-	public LogOutPanel(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener) {
+	public ReviewEventsButtonPanel(KeyAction keyAction, MouseAction mouseAction,
+			ViewActionListener viewActionListener) {
 		super(keyAction, mouseAction, viewActionListener);
 
-		logOutButton = new JButton("Log Out");
-
-		this.addKeyListener(keyAction);
-		this.addMouseListener(mouseAction);
-
-		logOutButton.addActionListener(viewActionListener);
+		reviewEventsButton = new JButton("Review Events");
 
 		initialiseLayout();
 	}
@@ -29,7 +25,7 @@ public class LogOutPanel extends AbstractPanel {
 	@Override
 	protected void initialiseLayout() {
 		setBackground(Color.DARK_GRAY);
-		add(logOutButton);
+		add(reviewEventsButton);
 	}
 
 }
