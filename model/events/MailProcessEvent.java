@@ -76,8 +76,8 @@ public class MailProcessEvent extends BusinessEvent {
 		string.append("Weight: " + "<em>" + weight + "</em>" + " grams" + "<sup>&zwnj</sup><br>");
 		string.append("Volume: " + "<em>" + volume + "</em>" + " cm<sup>3</sup>" + "<br>");
 		string.append("Priority: " + "<em>" + priority + "</em>" + "<sup>&zwnj</sup><br>");
-		string.append("Revenue: $" + "<em>" + revenue + "</em>" + "<sup>&zwnj</sup><br>");
-		string.append("Expenditure: $" + "<em>" + expenditure + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Customer Price: $" + "<em>" + revenue + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Transport Cost: $" + "<em>" + expenditure + "</em>" + "<sup>&zwnj</sup><br>");
 		string.append("Delivery time: " + "<em>" + deliveryTime + "</em>" + " hours<sup>&zwnj</sup>");
 		string.append("</html>");
 		return string.toString();
