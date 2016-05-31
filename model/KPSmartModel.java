@@ -2,11 +2,9 @@ package model;
 
 import storage.DataStore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.EventProcessor;
-import model.events.BusinessEvent;
 import model.events.inputs.*;
 import model.map.*;
 
@@ -38,12 +36,44 @@ public class KPSmartModel {
 		fg = new FigureGenerator(db);
 		eventProcessor = new EventProcessor(db);
 		loggedInUserID = -1;// no-one is logged in initially
-		currentEvent = db.getBusinessEventStrings().size()-1;
+		currentEvent = db.getBusinessEventStrings().size() - 1;
 	}
 
 	public void save() {
 		db.save();
 	}
+
+	/*
+	 * =========================================================================
+	 * START OF Methods to Log in and out - Called by the controller
+	 * =========================================================================
+	 */
+	public boolean logIn(String name, String password) {
+		//look up name and password in the employees
+		int id = db.getEmployees().getIdFromLoginDetails(name, password);
+		//if not found return false
+		if (id == -1){
+			return false;
+		}
+		//if found, update loggedInUserID and return true
+		this.loggedInUserID = id;
+		return true;
+	}
+
+	/*
+	 * Unlike the other controller called methods, there is no return value, this method 
+	 * always succeeds!
+	 */
+	public void logOut() {
+		//reset loggedInUserID to default (no-one logged in) value
+		this.loggedInUserID = -1;
+	}
+
+	/*
+	 * =========================================================================
+	 * END OF Methods to Log in and out - Called by the controller
+	 * =========================================================================
+	 */
 
 	/*
 	 * =========================================================================
@@ -311,12 +341,14 @@ public class KPSmartModel {
 	}
 
 	public String getPreviousEvent() {
-		if(currentEvent > 0) currentEvent--;
+		if (currentEvent > 0)
+			currentEvent--;
 		return db.getBusinessEventStrings().get(currentEvent);
 	}
 
 	public String getNextEvent() {
-		if(currentEvent < (db.getBusinessEventStrings().size()-1)) currentEvent++;
+		if (currentEvent < (db.getBusinessEventStrings().size() - 1))
+			currentEvent++;
 		return db.getBusinessEventStrings().get(currentEvent);
 	}
 	/*

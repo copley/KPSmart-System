@@ -35,7 +35,7 @@ public class Employees {
 	 * returns -1 if the login details do not match any employee
 	 * returns the id of a matching employee otherwise
 	 */
-	public int getEmployeeFromLoginDetails(String name, String Password ){
+	public int getIdFromLoginDetails(String name, String Password ){
 		//TODO: not yet implemented
 		return -1;
 	}
