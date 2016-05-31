@@ -260,8 +260,7 @@ public class KPSmartController {
 					}
 				}
 				gui.resetTextFields();
-				gui.setMainDisplayPanel("HomepagePanel");
-			} else if (e.getActionCommand().equals("Cancel")) {
+ 			} else if (e.getActionCommand().equals("Cancel")) {
 				gui.setMainDisplayPanel("HomepagePanel");
 				gui.resetTextFields();
 			} else if (e.getActionCommand().equals("Reset")) {
