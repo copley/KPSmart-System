@@ -48,16 +48,36 @@ public class KPSmartModel {
 	 * START OF Methods to Log in and out - Called by the controller
 	 * =========================================================================
 	 */
-	public boolean logIn(String name, String password) {
+	
+	/**
+	 * Controller needs to know 
+	 * (a) if the login was successful - if so 
+	 * (b) name of staff (so they pass to GUI)
+	 * (c) what type of employee (so they can set up GUI appropriately)
+	 * 
+	 * The name of the staff is already known by the controller (it is passed to this method as an argument)
+	 * The other 2 pieces of information can both be booleans (success/failure, and manager/not-manager)
+	 * 
+	 * @return a 2-ary boolean array [loginSuccessful,isManager]
+	 * 							     - first item is success of login (true) or failure of login (false)
+	 *                               - second item is manager (true) or not-manager (false)
+	 * 
+	 */
+	public Boolean[] logIn(String name, String password) {
+		
+		Boolean[] response = new Boolean[2];
 		//look up name and password in the employees
 		int id = db.getEmployees().getIdFromLoginDetails(name, password);
-		//if not found return false
+		//if not found return a set "false" response
 		if (id == -1){
-			return false;
+			response[0] = false;//other value does not matter - default of false is fine
+			return response;
 		}
-		//if found, update loggedInUserID and return true
+		//if found, update loggedInUserID and prepare found response
 		this.loggedInUserID = id;
-		return true;
+		response[0] = true;
+		response[1] = db.getEmployees().getEmployeeFromID(id).isManager();
+		return response;
 	}
 
 	/*
@@ -69,6 +89,8 @@ public class KPSmartModel {
 		this.loggedInUserID = -1;
 	}
 
+	
+	
 	/*
 	 * =========================================================================
 	 * END OF Methods to Log in and out - Called by the controller
