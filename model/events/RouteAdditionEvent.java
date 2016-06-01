@@ -69,7 +69,7 @@ public class RouteAdditionEvent extends BusinessEvent {
 		string.append("<html>");
 		string.append("<h2>ROUTE ADDITION EVENT</h2><br>");
 		string.append("Date: " + "<em>" + day + "/" + month + "/" + year + "</em>" + "<sup>&zwnj</sup><br>");
-		string.append("Time: " + "<em>" + time + "</em>" + "<sup>&zwnj</sup><br>");
+		string.append("Time: " + "<em>" + (time / 100) + ":" + (time % 100)+ "</em>" + "<sup>&zwnj</sup><br>");
 		string.append("Staff responsible: " + "<em>" + employee + "</em>" + "<sup>&zwnj</sup><br>");
 		string.append("Origin: " + "<em>" + origin + "</em>" + "<sup>&zwnj</sup><br>");
 		string.append("Destination: " + "<em>" + destination + "</em>" + "<sup>&zwnj</sup><br>");

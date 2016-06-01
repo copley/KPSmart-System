@@ -53,17 +53,17 @@ public class KPSmartModel {
 	 */
 
 	/**
-	 * Controller needs to know
-	 * (a) if the login was successful - if so
-	 * (b) name of staff (so they pass to GUI)
-	 * (c) what type of employee (so they can set up GUI appropriately)
+	 * Controller needs to know (a) if the login was successful - if so (b) name
+	 * of staff (so they pass to GUI) (c) what type of employee (so they can set
+	 * up GUI appropriately)
 	 *
-	 * The name of the staff is already known by the controller (it is passed to this method as an argument)
-	 * The other 2 pieces of information can both be booleans (success/failure, and manager/not-manager)
+	 * The name of the staff is already known by the controller (it is passed to
+	 * this method as an argument) The other 2 pieces of information can both be
+	 * booleans (success/failure, and manager/not-manager)
 	 *
-	 * @return a 2-ary boolean array [loginSuccessful,isManager]
-	 * 							     - first item is success of login (true) or failure of login (false)
-	 *                               - second item is manager (true) or not-manager (false)
+	 * @return a 2-ary boolean array [loginSuccessful,isManager] - first item is
+	 *         success of login (true) or failure of login (false) - second item
+	 *         is manager (true) or not-manager (false)
 	 *
 	 */
 	public boolean[] logIn(String name, String password) {
@@ -78,11 +78,11 @@ public class KPSmartModel {
 
 		Employee emp = db.getEmployees().getEmployeeFromID(userID);
 
-		if (emp == null || !emp.getPassword().equals(password)){
+		if (emp == null || !emp.getPassword().equals(password)) {
 			response[0] = false;
 			return response;
 		}
-		//if found, update loggedInUserID and prepare found response
+		// if found, update loggedInUserID and prepare found response
 		this.loggedInUserID = userID;
 		response[0] = true;
 		response[1] = emp.isManager();
@@ -90,16 +90,14 @@ public class KPSmartModel {
 	}
 
 	/*
-	 * Unlike the other controller called methods, there is no return value, this method
-	 * always succeeds!
+	 * Unlike the other controller called methods, there is no return value,
+	 * this method always succeeds!
 	 */
 	public void logOut() {
-		//reset loggedInUserID to default (no-one logged in) value
+		// reset loggedInUserID to default (no-one logged in) value
 		db.save();
 		this.loggedInUserID = -1;
 	}
-
-
 
 	/*
 	 * =========================================================================
@@ -174,9 +172,9 @@ public class KPSmartModel {
 		}
 
 		// call event processor to make up the package and record the event
-		MailProcessEvent be =  eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(), weight,
-				volume, priority, this.loggedInUserID);
-		if(be != null){
+		MailProcessEvent be = eventProcessor.processMail(originID, input.getOrigin(), destinationID,
+				input.getDestination(), weight, volume, priority, this.loggedInUserID);
+		if (be != null) {
 			fg.addEvent(be);
 			return true;
 		}
@@ -374,16 +372,27 @@ public class KPSmartModel {
 	 * @return
 	 */
 	public String getLatestEvent() {
+		if (db.getBusinessEventStrings().size() == 0) {
+			return "No events found";
+		}
 		return db.getBusinessEventStrings().get(db.getBusinessEventStrings().size() - 1);
 	}
 
 	public String getPreviousEvent() {
+		if (db.getBusinessEventStrings().size() == 0) {
+			return "No events found";
+		}
+
 		if (currentEvent > 0)
 			currentEvent--;
 		return db.getBusinessEventStrings().get(currentEvent);
 	}
 
 	public String getNextEvent() {
+		if (db.getBusinessEventStrings().size() == 0) {
+			return "No events found";
+		}
+
 		if (currentEvent < (db.getBusinessEventStrings().size() - 1))
 			currentEvent++;
 		return db.getBusinessEventStrings().get(currentEvent);

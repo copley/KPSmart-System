@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+  <add>
+    <day>1</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2214</time>
+    <employee>Bobo</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <company>DHL</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>10.0</custPriceWeight>
+    <custPriceVolume>10.0</custPriceVolume>
+    <transCostWeight>10.0</transCostWeight>
+    <transCostVolume>10.0</transCostVolume>
+  </add>
+</log>
