@@ -76,7 +76,7 @@ public class KPSmartModel {
 
 		Employee emp = db.getEmployees().getEmployeeFromID(userID);
 
-		if (emp == null){
+		if (emp == null || !emp.getPassword().equals(password)){
 			response[0] = false;
 			return response;
 		}
