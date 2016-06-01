@@ -110,29 +110,9 @@ public class KPSmartModel {
 	 * START OF Methods to Generate Figures - Called by the controller
 	 * =========================================================================
 	 */
-	public double totalRevenue() {
-		return fg.getRevenue();
+	public String getFigures() {
+		return fg.toString();
 	}
-
-	public double getExpenditure() {
-		return fg.getExpenditure();
-	};
-
-	public double getAVGDelivery() {
-		return fg.getAVGDelivery();
-	}
-
-	public List<Route> getCriticalRoutes() {
-		return fg.generateCriticalRoutes();
-	};
-
-	public int getTotalMail() {
-		return fg.generateTotalMail();
-	};
-
-	public int getTotalEvents() {
-		return fg.generateTotalEvents();
-	};
 	/*
 	 * =========================================================================
 	 * END OF Methods to Generate Figures - Called by the controller

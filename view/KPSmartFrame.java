@@ -219,4 +219,9 @@ public final class KPSmartFrame extends JFrame {
 		this.setVisible(false);
 		login.showWindow(true);
 	}
+
+	public void displayFigures(String figures) {
+		// TODO Auto-generated method stub
+
+	}
 }

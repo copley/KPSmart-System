@@ -63,48 +63,9 @@ public class KPSmartController {
 			// ==========================================
 			// START OF View Business Figures buttons
 			// ==========================================
-			if (e.getActionCommand().equals("Total Revenue")) {
-				System.out.println("Total Revenue"); // debugging - mc
-				// List<Double> figures = model.getTotalRevenue();
-				// gui.display(figures)
-				// kpsmartModel.getTotalRevenue(); //TODO: could this return
-				// INT, STRING
-				// kpsmartGui.renderTotalRevenue();//TODO: Could pass in STRING
-				// , INT
-			} else if (e.getActionCommand().equals("Total Expenditure")) {
-				System.out.println("Total Expenditure");// debugging - mc
-				// kpsmartModel.getTotalExpenditure(); //TODO: could this return
-				// INT, STRING
-				// kpsmartGui.renderTotalExpenditure();//TODO: Could pass in
-				// STRING , INT
-
-			} else if (e.getActionCommand().equals("Total No. of Events")) {
-				System.out.println("Total No. of Events");// debugging - mc
-				// kpsmartModel.getTotalEvents(); //TODO: could this return INT,
-				// STRING
-				// kpsmartGui.renderTotalEvents();//TODO: Could pass in STRING ,
-				// INT
-
-			} else if (e.getActionCommand().equals("Amount of Mails")) {
-				System.out.println("Amount of Mails");// debugging - mc
-				// kpsmartModel.getTotalMail(); //TODO: could this return INT,
-				// STRING
-				// kpsmartGui.renderTotalMail();//TODO: Could pass in STRING ,
-				// INT
-
-			} else if (e.getActionCommand().equals("AVG Delivery Times")) {
-				System.out.println("AVG Delivery Times");// debugging - mc
-				// kpsmartModel.getAverageTimes(); //TODO: could this return
-				// INT, STRING
-				// kpsmartGui.renderAverageTimes();//TODO: Could pass in STRING
-				// , INT
-
-			} else if (e.getActionCommand().equals("Critical Routes")) {
-				System.out.println("Critical Routes");// debugging - mc
-				// kpsmartModel.getCriticalRoutes(); //TODO: could this return
-				// INT, STRING
-				// kpsmartGui.renderCriticalRoutes();//TODO: Could pass in
-				// STRING , INT
+			if (e.getActionCommand().equals("Business Figures")) {
+				System.out.println("Business Figures");
+				gui.displayFigures(model.getFigures());
 			} else if (e.getActionCommand().equals("Review Events")) {
 				gui.setMainDisplayPanel("ReviewEventsPanel");
 				gui.displayEvent(model.getLatestEvent());
