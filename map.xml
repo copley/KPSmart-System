@@ -2,24 +2,6 @@
 <sitemap>
   <sites>
     <site>
-      <id>3</id>
-      <location>Hamilton</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
-    </site>
-    <site>
-      <id>1</id>
-      <location>Wellington</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
-    </site>
-    <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
       <id>4</id>
       <location>London</location>
       <isOrigin>false</isOrigin>
@@ -30,6 +12,24 @@
       <location>New York</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>3</id>
+      <location>Hamilton</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
+    <site>
+      <id>1</id>
+      <location>Wellington</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
     </site>
   </sites>
   <routes>

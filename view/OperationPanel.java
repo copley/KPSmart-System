@@ -39,25 +39,28 @@ public class OperationPanel extends AbstractPanel {
 
 		GroupLayout groupLayout = new GroupLayout(this);
 
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(reviewEventsButtonPanel, GroupLayout.PREFERRED_SIZE, 141,
-												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap())
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup()
 										.addComponent(logOutPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 												GroupLayout.PREFERRED_SIZE)
 										.addContainerGap())
+								.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(businessEventPanel, GroupLayout.DEFAULT_SIZE, 196,
+												Short.MAX_VALUE)
+										.addGap(14))
 								.addGroup(
 										groupLayout.createSequentialGroup()
 												.addComponent(viewFigurePanel, GroupLayout.DEFAULT_SIZE, 198,
 														Short.MAX_VALUE)
-												.addContainerGap())
-								.addGroup(groupLayout.createSequentialGroup().addComponent(businessEventPanel,
-										GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE).addGap(14))))));
+												.addContainerGap()))
+						.addGroup(Alignment.TRAILING,
+								groupLayout
+										.createSequentialGroup().addComponent(reviewEventsButtonPanel,
+												GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+										.addContainerGap()))));
 
 		groupLayout
 				.setVerticalGroup(
@@ -66,11 +69,11 @@ public class OperationPanel extends AbstractPanel {
 										.addComponent(businessEventPanel, GroupLayout.PREFERRED_SIZE, 216,
 												GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(viewFigurePanel, GroupLayout.PREFERRED_SIZE, 224,
+								.addComponent(viewFigurePanel, GroupLayout.PREFERRED_SIZE, 53,
 										GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
+				.addPreferredGap(ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
 				.addComponent(reviewEventsButtonPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-						GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+						GroupLayout.PREFERRED_SIZE).addGap(18)
 				.addComponent(logOutPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 						GroupLayout.PREFERRED_SIZE).addContainerGap()));
 
