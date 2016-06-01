@@ -76,6 +76,10 @@ public class FigureGenerator {
 
 	public int generateTotalEvents() {
 		return db.getBusinessEvents().size();
-	};
+	}
+
+	public void addEvent(MailProcessEvent be) {
+		mailEvents.add(be);
+	}
 
 }

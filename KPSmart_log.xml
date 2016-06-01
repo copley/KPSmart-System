@@ -142,4 +142,35 @@
     <company>EMS</company>
     <type>AIR</type>
   </discontinue>
+  <add>
+    <day>1</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>269</time>
+    <employee>Bonnie</employee>
+    <origin>Wellington</origin>
+    <destination>Hamilton</destination>
+    <company>Something</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>2.0</custPriceWeight>
+    <custPriceVolume>2.0</custPriceVolume>
+    <transCostWeight>2.0</transCostWeight>
+    <transCostVolume>2.0</transCostVolume>
+  </add>
+  <mail>
+    <day>1</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2201</time>
+    <employee>Bonnie</employee>
+    <origin>Wellington</origin>
+    <destination>Hamilton</destination>
+    <weight>12.0</weight>
+    <volume>12.0</volume>
+    <priority>International Air</priority>
+    <revenue>24.0</revenue>
+    <expenditure>2.0</expenditure>
+    <deliveryTime>24.0</deliveryTime>
+  </mail>
 </log>
