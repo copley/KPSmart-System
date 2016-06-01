@@ -47,4 +47,36 @@
     <expenditure>529.0</expenditure>
     <deliveryTime>5.0</deliveryTime>
   </mail>
+  <add>
+    <day>1</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2319</time>
+    <employee>Bobo</employee>
+    <origin>Wellington</origin>
+    <destination>Toronto</destination>
+    <company>DHL</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>122.0</custPriceWeight>
+    <custPriceVolume>122.0</custPriceVolume>
+    <transCostWeight>1222.0</transCostWeight>
+    <transCostVolume>1222.0</transCostVolume>
+  </add>
+  <add>
+    <day>1</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2326</time>
+    <employee>Bobo</employee>
+    <origin>Wellington</origin>
+    <destination>Beijing</destination>
+    <company>DHL</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>11.0</custPriceWeight>
+    <custPriceVolume>121.0</custPriceVolume>
+    <transCostWeight>1111.0</transCostWeight>
+    <transCostVolume>1111.0</transCostVolume>
+  </add>
 </log>

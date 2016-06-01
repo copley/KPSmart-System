@@ -76,19 +76,19 @@ public class FigureGenerator {
 	public String toString() {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
-		string.append("<h2>Total Revenue</h2><br>");
+		string.append("<h4>Total Revenue</h4>");
 		string.append("<em>" + getRevenue() + "</em><sup>&zwnj</sup><br>");
-		string.append("<h2>Total Expenditure</h2><br>");
+		string.append("<h4>Total Expenditure</h4>");
 		string.append("<em>" + getExpenditure() + "</em><sup>&zwnj</sup><br>");
-		string.append("<h2>Total Number of Events</h2><br>");
+		string.append("<h4>Total Number of Events</h4>");
 		string.append("<em>" + generateTotalEvents() + "</em><sup>&zwnj</sup><br>");
-		string.append("<h2>Total Mail</h2><br>");
+		string.append("<h4>Total Mail</h4>");
 		string.append("<em>" + generateTotalMail() + "</em><sup>&zwnj</sup><br>");
-		string.append("<h2>Average Delivery Times</h2><br>");
+		string.append("<h4>Average Delivery Times</h4>");
 		string.append("<em>" + getAVGDelivery() + "</em><sup>&zwnj</sup><br>");
-		string.append("<h2>Critical Routes</h2><br>");
+		string.append("<h4>Critical Routes</h4>");
 		for (Route r : generateCriticalRoutes()) {
-			string.append(r.toString());
+			string.append(r.toString() + "<br>");
 		}
 		string.append("</html>");
 		return string.toString();
