@@ -17,7 +17,7 @@ import controller.KPSmartController.ViewActionListener;
 @SuppressWarnings("serial")
 public class HomepagePanel extends AbstractMainDisplayPanel {
 
-	private static final String IMG_PATH = "src/images/test1.png"; //w:585, h:575
+	private static final String IMG_PATH = "src/images/bgImage.png";
 
 	private JLabel label;
 
