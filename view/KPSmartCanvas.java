@@ -41,6 +41,8 @@ public class KPSmartCanvas extends JPanel {
 	private AbstractMainDisplayPanel mainDisplayPanel;
 	private JPanel operationPanel;
 
+	private boolean isManager;
+
 	private HomepagePanel homepagePanel;
 	private AddNewRoutePanel addNewRoutePanel;
 	private CustomerPriceChangePanel customerPriceChangePanel;
@@ -169,6 +171,10 @@ public class KPSmartCanvas extends JPanel {
 		routeDiscontinuePanel.addCompanies(company);
 		transportCostChangePanel.addCompanies(company);
 
+	}
+
+	public void setManager(boolean isManager) {
+		((OperationPanel) operationPanel).setReviewEventButton(isManager);
 	}
 
 }

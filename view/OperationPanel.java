@@ -93,4 +93,10 @@ public class OperationPanel extends AbstractPanel {
 		return logOutPanel;
 	}
 
+	public void setReviewEventButton(boolean isManager) {
+		if (!isManager) {
+			reviewEventsButtonPanel.setVisible(false);
+		}
+	}
+
 }

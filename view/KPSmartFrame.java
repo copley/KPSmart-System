@@ -28,38 +28,6 @@ public final class KPSmartFrame extends JFrame {
 	private static final int FRAME_WIDTH = 855;
 	private static final int FRAME_HEIGHT = 650;
 
-	// public KPSmartFrame() {
-	// super("KPSmart");
-	// setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	// setResizable(true);
-	//
-	// setLayout(new BorderLayout());
-	//
-	// canvas = new KPSmartCanvas(this);
-	// add(canvas);
-	//
-	// createMenu();
-	// pack();
-	//
-	// setVisible(true);
-	//
-	// this.addWindowListener(new WindowAdapter() {
-	// @Override
-	// public void windowClosing(WindowEvent we) {
-	// String[] options = { "YES", "Cancel" };
-	// JPanel panel = new JPanel();
-	// JLabel label = new JLabel("Are you sure you want to quit the system?");
-	// panel.add(label);
-	// int selectedOption = JOptionPane.showOptionDialog(null, panel,
-	// "Warning!!!", JOptionPane.DEFAULT_OPTION,
-	// JOptionPane.WARNING_MESSAGE, null, options, options[1]);
-	// if (selectedOption == 0) {
-	// System.exit(0);
-	// }
-	// }
-	// });
-	// }
-
 	public KPSmartFrame(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
 			ViewWindowAdapter viewWindowAdapter, List<String> origins, List<String> destinations,
 			List<String> companies) {
@@ -234,8 +202,9 @@ public final class KPSmartFrame extends JFrame {
 		title += "Current log in: ";
 		title += name;
 		title += "(" + login.getUserID() + ") ";
-		title += isManager ? "as a clerk" : "as a manager";
+		title += isManager ? "as a manager" : "as a clerk";
 		setTitle(title);
+		canvas.setManager(isManager);
 		this.setVisible(true);
 		login.clearInputs();
 	}
