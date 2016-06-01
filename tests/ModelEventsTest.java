@@ -20,7 +20,7 @@ public class ModelEventsTest {
 	public void RouteAddition() {
 		RouteAdditionEvent route = new RouteAdditionEvent(8, 8, 2016, 1000, "Joely", "Wellington", "Auckland",
 				"KPDeliver", Type.AIR, 10, 22,23,15,15.50);
-			
+
 		String string = "";
 		string += ("ROUTE ADDITION EVENT\n");
 		string += ("Date: 8, 8, 2016\n");
@@ -35,7 +35,7 @@ public class ModelEventsTest {
 		string += ("Customer price per cubic cm: 23\n");
 		string += ("Transport cost per gram: 15\n");
 		string += ("Transport cost per cubic cm: 15.5\n");
-		
+
 
 		assertTrue("String needs to equal", string.equals(route.toString()));
 	}
@@ -43,7 +43,7 @@ public class ModelEventsTest {
 	@Test
 	public void CustPriceChange() {
 		CustPriceChangeEvent event = new CustPriceChangeEvent(8, 8, 2016, 10, "Joely", "Wellington", "Auckland",
-				"Air NewZealand",Type.AIR, 10, 15);
+				Priority.DOMESTIC_AIR, 10, 15);
 
 		StringBuilder string = new StringBuilder();
 		string.append("CUSTOMER PRICE CHANGE EVENT\n");
@@ -52,8 +52,7 @@ public class ModelEventsTest {
 		string.append("Staff responsible: Joely\n");
 		string.append("Origin: Wellington\n");
 		string.append("Destination: Auckland\n");
-		string.append("Carrier: Air NewZealand\n");		
-		string.append("Mode: AIR\n");
+		string.append("Priority: DOMESTIC_AIR\n");
 		string.append("Weight Cost: 10\n");
 		string.append("Volume Cost: 15");
 		assertTrue("String needs to equal", string.toString().equals(event.toString()));
@@ -76,8 +75,8 @@ public class ModelEventsTest {
 		string.append("Revenue: 15\n");
 		string.append("Expenditure: 15\n");
 		string.append("Deliver time: 15\n");
-		
-		
+
+
 		assertTrue("String needs to equal", string.toString().equals(event.toString()));
 	}
 
@@ -101,7 +100,7 @@ public class ModelEventsTest {
 	@Test
 	public void TransportCostChangeEvent() {
 		TransportCostChangeEvent event = new TransportCostChangeEvent(8, 8, 2016, 10, "Joely", "Wellington", "Auckland",
-				"KPDeliver", "Air", 10, 15, "Monday", 3, 10);
+				"KPDeliver", Type.AIR, 10, 15, 10);
 		String string = "";
 		string += ("TRANSPORT COST CHANGE EVENT\n");
 		string += ("Date: 8, 8, 2016\n");
@@ -115,8 +114,6 @@ public class ModelEventsTest {
 		// new line here?
 		string += ("Volume Cost: 15");
 		// spelling
-		string += ("Day pf Departure: Monday\n");
-		string += ("Frequency: 3\n");
 		string += ("Duration: 10");
 
 		assertTrue("String needs to equal", string.equals(event.toString()));

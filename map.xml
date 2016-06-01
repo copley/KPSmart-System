@@ -2,26 +2,14 @@
 <sitemap>
   <sites>
     <site>
-      <id>5</id>
-      <location>Beijing</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
+      <id>1</id>
+      <location>Wellington</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
     </site>
     <site>
       <id>4</id>
-      <location>Toronto</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>1</id>
-      <location>Wellington</location>
+      <location>Rotorua</location>
       <isOrigin>true</isOrigin>
       <isDestination>false</isDestination>
     </site>
@@ -32,26 +20,19 @@
       <isDestination>true</isDestination>
     </site>
     <site>
-      <id>4</id>
-      <location>Rotorua</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>5</id>
+      <location>Beijing</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
     </site>
   </sites>
   <routes>
-    <route>
-      <id>1</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>DHL</company>
-      <duration>2.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>10.0</custPriceVolume>
-      <transPriceWeight>10.0</transPriceWeight>
-      <transPriceVolume>10.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
     <route>
       <id>4</id>
       <origin>Wellington</origin>
@@ -66,42 +47,16 @@
       <inService>true</inService>
     </route>
     <route>
-      <id>3</id>
+      <id>1</id>
       <origin>Wellington</origin>
-      <destination>Toronto</destination>
+      <destination>Auckland</destination>
       <company>DHL</company>
-      <duration>20.0</duration>
+      <duration>2.0</duration>
       <type>AIR</type>
-      <custPriceWeight>122.0</custPriceWeight>
-      <custPriceVolume>122.0</custPriceVolume>
-      <transPriceWeight>1222.0</transPriceWeight>
-      <transPriceVolume>1222.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>2</id>
-      <origin>Wellington</origin>
-      <destination>Hamilton</destination>
-      <company>DHL</company>
-      <duration>5.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>123.0</custPriceWeight>
-      <custPriceVolume>123.0</custPriceVolume>
-      <transPriceWeight>23.0</transPriceWeight>
-      <transPriceVolume>23.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>3</id>
-      <origin>Rotorua</origin>
-      <destination>Hamilton</destination>
-      <company>DHL</company>
-      <duration>3.0</duration>
-      <type>LAND</type>
-      <custPriceWeight>3.0</custPriceWeight>
-      <custPriceVolume>3.0</custPriceVolume>
-      <transPriceWeight>5.0</transPriceWeight>
-      <transPriceVolume>5.0</transPriceVolume>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>10.0</custPriceVolume>
+      <transPriceWeight>10.0</transPriceWeight>
+      <transPriceVolume>10.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>
