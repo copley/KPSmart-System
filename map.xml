@@ -13,6 +13,12 @@
       <isOrigin>true</isOrigin>
       <isDestination>false</isDestination>
     </site>
+    <site>
+      <id>3</id>
+      <location>Hamilton</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
   </sites>
   <routes>
     <route>
@@ -26,6 +32,19 @@
       <custPriceVolume>10.0</custPriceVolume>
       <transPriceWeight>10.0</transPriceWeight>
       <transPriceVolume>10.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>2</id>
+      <origin>Wellington</origin>
+      <destination>Hamilton</destination>
+      <company>DHL</company>
+      <duration>5.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>123.0</custPriceWeight>
+      <custPriceVolume>123.0</custPriceVolume>
+      <transPriceWeight>23.0</transPriceWeight>
+      <transPriceVolume>23.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>
