@@ -226,23 +226,21 @@ public final class KPSmartFrame extends JFrame {
 	}
 
 	public String getUsername() {
-		return login.getUserName();
+		return login.getUserID();
 	}
 
 	public String getPassword() {
 		return login.getPassword();
 	}
 
-	public void setLoggedIn() {
-		// TODO Auto-generated method stub
-
+	public void setLoggedIn(boolean isManager) {
+		login.showWindow(false);
+		this.setVisible(true);
 	}
 
 	public void showLogin(ViewActionListener viewActionListener) {
 		login = new LogInPanel(viewActionListener);
-
 		// Show ourselves
-		login.showDialog();
-		login.setVisible(true);
+		login.showWindow(true);
 	}
 }

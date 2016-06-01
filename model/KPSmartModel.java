@@ -5,6 +5,7 @@ import storage.DataStore;
 import java.util.List;
 
 import model.EventProcessor;
+import model.employees.Employee;
 import model.events.inputs.*;
 import model.map.*;
 
@@ -63,20 +64,26 @@ public class KPSmartModel {
 	 *                               - second item is manager (true) or not-manager (false)
 	 *
 	 */
-	public Boolean[] logIn(String name, String password) {
+	public boolean[] logIn(String name, String password) {
+		boolean[] response = new boolean[2];
+		int userID;
+		try {
+			userID = Integer.parseInt(name);
+		} catch (NumberFormatException nfe) {
+			response[0] = false;
+			return response;
+		}
 
-		Boolean[] response = new Boolean[2];
-		//look up name and password in the employees
-		int id = db.getEmployees().getIdFromLoginDetails(name, password);
-		//if not found return a set "false" response
-		if (id == -1){
-			response[0] = false;//other value does not matter - default of false is fine
+		Employee emp = db.getEmployees().getEmployeeFromID(userID);
+
+		if (emp == null){
+			response[0] = false;
 			return response;
 		}
 		//if found, update loggedInUserID and prepare found response
-		this.loggedInUserID = id;
+		this.loggedInUserID = userID;
 		response[0] = true;
-		response[1] = db.getEmployees().getEmployeeFromID(id).isManager();
+		response[1] = emp.isManager();
 		return response;
 	}
 
@@ -417,10 +424,5 @@ public class KPSmartModel {
 	 * END OF Helper methods for the model
 	 * =========================================================================
 	 */
-
-	public boolean validate(String username, String password) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

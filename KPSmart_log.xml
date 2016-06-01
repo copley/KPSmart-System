@@ -56,8 +56,8 @@
     <volume>2.0</volume>
     <priority>International Air</priority>
     <revenue>10000.0</revenue>
-    <expenditure>1.0</expenditure>
-    <deliveryTime>1000.0</deliveryTime>
+    <expenditure>1000.0</expenditure>
+    <deliveryTime>1.0</deliveryTime>
   </mail>
   <add>
     <day>30</day>
@@ -128,8 +128,8 @@
     <volume>10.0</volume>
     <priority>International Air</priority>
     <revenue>1000.0</revenue>
-    <expenditure>500.0</expenditure>
-    <deliveryTime>20.0</deliveryTime>
+    <expenditure>20.0</expenditure>
+    <deliveryTime>500.0</deliveryTime>
   </mail>
   <discontinue>
     <day>31</day>

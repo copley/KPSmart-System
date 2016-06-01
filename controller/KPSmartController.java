@@ -271,10 +271,13 @@ public class KPSmartController {
 					gui.popupMessage(false, "Please enter a username");
 				} else if (gui.getPassword().length() == 0) {
 					gui.popupMessage(false, "Please enter a password");
-				} else if (model.validate(gui.getUsername(), gui.getPassword())) {
-					gui.setLoggedIn();
 				} else {
-					gui.popupMessage(false, "Incorrect Login");
+					boolean[] loggedIn = model.logIn(gui.getUsername(), gui.getPassword());
+					if (loggedIn[0] == true){
+						gui.setLoggedIn(loggedIn[1]);
+					}else {
+						gui.popupMessage(false, "Incorrect Login");
+					}
 				}
 			}
 			// ==========================================
