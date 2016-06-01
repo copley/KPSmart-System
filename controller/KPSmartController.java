@@ -65,7 +65,14 @@ public class KPSmartController {
 			// ==========================================
 			if (e.getActionCommand().equals("Business Figures")) {
 				System.out.println("Business Figures");
+				gui.setMainDisplayPanel("BusinessFiguresPanel");
 				gui.displayFigures(model.getFigures());
+
+				mailDeliveryPanel = false;
+				newRoutePanel = false;
+				customerPricePanel = false;
+				transportCostChangePanel = false;
+				discontinueRoutePanel = false;
 			} else if (e.getActionCommand().equals("Review Events")) {
 				gui.setMainDisplayPanel("ReviewEventsPanel");
 				gui.displayEvent(model.getLatestEvent());

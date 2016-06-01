@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import controller.KPSmartController.*;
 import model.events.inputs.*;
 import view.eventsView.AddNewRoutePanel;
+import view.eventsView.BusinessFiguresPanel;
 import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
 import view.eventsView.ReviewEventsPanel;
@@ -221,7 +222,10 @@ public final class KPSmartFrame extends JFrame {
 	}
 
 	public void displayFigures(String figures) {
-		// TODO Auto-generated method stub
+		BusinessFiguresPanel panel = (BusinessFiguresPanel) canvas.getMainDisplayPanel();
 
+		panel.setFiguresLabel(figures);
+		validate();
+		repaint();
 	}
 }

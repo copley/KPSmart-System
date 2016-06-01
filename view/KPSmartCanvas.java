@@ -12,6 +12,7 @@ import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 import model.events.TransportCostChangeEvent;
 import view.eventsView.AddNewRoutePanel;
+import view.eventsView.BusinessFiguresPanel;
 import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
 import view.eventsView.ReviewEventsPanel;
@@ -50,6 +51,7 @@ public class KPSmartCanvas extends JPanel {
 	private RouteDiscontinuePanel routeDiscontinuePanel;
 	private TransportCostChangePanel transportCostChangePanel;
 	private ReviewEventsPanel reviewEventsPanel;
+	private BusinessFiguresPanel businessFiguresPanel;
 
 	/**
 	 * construct an empty KPSmart canvas
@@ -115,6 +117,7 @@ public class KPSmartCanvas extends JPanel {
 		transportCostChangePanel = new TransportCostChangePanel(keyAction, mouseAction, viewActionListener, origins,
 				destinations, companies);
 		reviewEventsPanel = new ReviewEventsPanel(keyAction, mouseAction, viewActionListener);
+		businessFiguresPanel = new BusinessFiguresPanel(keyAction, mouseAction, viewActionListener);
 	}
 
 	public AbstractMainDisplayPanel getMainDisplayPanel() {
@@ -148,6 +151,9 @@ public class KPSmartCanvas extends JPanel {
 			break;
 		case "ReviewEventsPanel":
 			mainDisplayPanel = reviewEventsPanel;
+			break;
+		case "BusinessFiguresPanel":
+			mainDisplayPanel = businessFiguresPanel;
 			break;
 		default:
 			System.out.println("Something went astray.");

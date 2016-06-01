@@ -45,4 +45,8 @@ public class BusinessFiguresPanel extends AbstractMainDisplayPanel {
 	public void resetTextFields() {
 	}
 
+	public void setFiguresLabel(String figures) {
+		label.setText(figures);
+	}
+
 }
