@@ -13,6 +13,7 @@ import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 import view.AbstractMainDisplayPanel;
+import view.KPSmartFrame;
 
 @SuppressWarnings("serial")
 public class BusinessFiguresPanel extends AbstractMainDisplayPanel {
@@ -26,9 +27,9 @@ public class BusinessFiguresPanel extends AbstractMainDisplayPanel {
 		label = new JLabel("");
 		scrollPane = new JScrollPane(label);
 
-		label.setBackground(new Color(131, 176, 255));
+		label.setBackground(KPSmartFrame.THEME_COLOR);
 		label.setOpaque(true);
-		scrollPane.setBackground(new Color(131, 176, 255));
+		scrollPane.setBackground(KPSmartFrame.THEME_COLOR);
 		scrollPane.setOpaque(true);
 
 		setAutoscrolls(true);

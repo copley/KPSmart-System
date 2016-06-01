@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.List;
 
@@ -23,6 +24,8 @@ import view.eventsView.TransportCostChangePanel;
 
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
+
+	public static final Color THEME_COLOR = new Color(220, 255, 255);
 
 	private KPSmartCanvas canvas;
 	private LogInPanel login;

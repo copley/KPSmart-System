@@ -12,7 +12,7 @@ public abstract class AbstractMainDisplayPanel extends AbstractPanel {
 	public AbstractMainDisplayPanel(KeyAction keyAction, MouseAction mouseAction,
 			ViewActionListener viewActionListener) {
 		super(keyAction, mouseAction, viewActionListener);
-		setBackground(new Color(131, 176, 255));
+		setBackground(KPSmartFrame.THEME_COLOR);
 	}
 
 	public abstract void resetTextFields();
