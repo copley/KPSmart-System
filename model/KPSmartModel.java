@@ -6,6 +6,8 @@ import java.util.List;
 
 import model.EventProcessor;
 import model.employees.Employee;
+import model.events.BusinessEvent;
+import model.events.MailProcessEvent;
 import model.events.inputs.*;
 import model.map.*;
 
@@ -93,6 +95,7 @@ public class KPSmartModel {
 	 */
 	public void logOut() {
 		//reset loggedInUserID to default (no-one logged in) value
+		db.save();
 		this.loggedInUserID = -1;
 	}
 
@@ -171,8 +174,13 @@ public class KPSmartModel {
 		}
 
 		// call event processor to make up the package and record the event
-		return eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(), weight,
+		MailProcessEvent be =  eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(), weight,
 				volume, priority, this.loggedInUserID);
+		if(be != null){
+			fg.addEvent(be);
+			return true;
+		}
+		return false;
 	}
 
 	/**

@@ -70,13 +70,13 @@ public class EventProcessor {
 	 *            ID of the employee logged in
 	 * @return true if successful, otherwise false
 	 */
-	public boolean processMail(int originID, String origin, int destinationID, String destination, double weight,
+	public MailProcessEvent processMail(int originID, String origin, int destinationID, String destination, double weight,
 			double volume, Priority priority, int employeeID) {
 		LocalDateTime now = LocalDateTime.now();
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
 		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
+		int time = now.getHour() * 100 + now.getMinute();
 		// staff that is logged in
 		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
 		String employeeName;
@@ -91,7 +91,7 @@ public class EventProcessor {
 		// need to check that a compound route was available - if it wasn't, the
 		// event fails! if no route was available, compound route will be null
 		if (compoundRoutes == null) {
-			return false;
+			return null;
 		}
 
 		// find the business figures TODO: maybe store them somewhere for the
@@ -101,11 +101,11 @@ public class EventProcessor {
 		double deliveryTime = findDeliveryTime(compoundRoutes);
 
 		// make the event to record the action
-		BusinessEvent mailProcessEvent = new MailProcessEvent(day, month, year, time, employeeName, origin, destination,
+		MailProcessEvent mailProcessEvent = new MailProcessEvent(day, month, year, time, employeeName, origin, destination,
 				weight, volume, priority, revenue, expenditure, deliveryTime);
 		// store the event in the data store
 		db.addEvent(mailProcessEvent);
-		return true;
+		return mailProcessEvent;
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class EventProcessor {
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
 		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
+		int time = now.getHour() * 100 + now.getMinute();
 		// staff that is logged in
 		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
 		String employeeName;
@@ -186,7 +186,7 @@ public class EventProcessor {
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
 		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
+		int time = now.getHour() * 100 + now.getMinute();
 		// staff that is logged in
 		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
 		String employeeName;
@@ -201,7 +201,7 @@ public class EventProcessor {
 		if(!db.getSiteMap().getRouteFromID(routeID).isInService()){
 			return false;
 		}
-		
+
 		// Tell site map to discontinue route and fail if unsuccessful
 		if (!db.getSiteMap().discontinueRoute(routeID)) {
 			return false;
@@ -244,7 +244,7 @@ public class EventProcessor {
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
 		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
+		int time = now.getHour() * 100 + now.getMinute();
 		// staff that is logged in
 		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
 		String employeeName;
@@ -289,7 +289,7 @@ public class EventProcessor {
 		int day = now.getDayOfMonth();
 		int month = now.getMonthValue();
 		int year = now.getYear();
-		int time = now.getHour() * 10 + now.getMinute();
+		int time = now.getHour() * 100 + now.getMinute();
 		// staff that is logged in
 		Employee employee = db.getEmployees().getEmployeeFromID(employeeID);
 		String employeeName;
