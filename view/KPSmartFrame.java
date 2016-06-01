@@ -29,6 +29,7 @@ import view.eventsView.TransportCostChangePanel;
 public final class KPSmartFrame extends JFrame {
 
 	private KPSmartCanvas canvas;
+	private LogInPanel login;
 	private static final int FRAME_WIDTH = 855;
 	private static final int FRAME_HEIGHT = 650;
 
@@ -80,8 +81,6 @@ public final class KPSmartFrame extends JFrame {
 
 		createMenu();
 		pack();
-
-		setVisible(true);
 
 		this.addWindowListener(viewWindowAdapter);
 	}
@@ -224,5 +223,26 @@ public final class KPSmartFrame extends JFrame {
 		panel.setEventStringLabel(eventString);
 		validate();
 		repaint();
+	}
+
+	public String getUsername() {
+		return login.getUserName();
+	}
+
+	public String getPassword() {
+		return login.getPassword();
+	}
+
+	public void setLoggedIn() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void showLogin(ViewActionListener viewActionListener) {
+		login = new LogInPanel(viewActionListener);
+
+		// Show ourselves
+		login.showDialog();
+		login.setVisible(true);
 	}
 }

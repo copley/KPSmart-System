@@ -1,5 +1,8 @@
 package controller;
 
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,8 +20,6 @@ import javax.swing.JPanel;
 import model.KPSmartModel;
 import model.events.inputs.*;
 import view.KPSmartFrame;
-import view.eventsView.ReviewEventsPanel;
-import view.eventsView.TransportCostChangePanel;
 
 public class KPSmartController {
 
@@ -36,6 +37,7 @@ public class KPSmartController {
 		model = new KPSmartModel();
 		gui = new KPSmartFrame(new KeyAction(), new MouseAction(), new ViewActionListener(), new ViewWindowAdapter(),
 				model.getOrigins(), model.getDestinations(), model.getCompanies());
+		gui.showLogin(new ViewActionListener());
 		System.out.println("Calling from Controller"); // debugging
 	}
 
@@ -103,7 +105,7 @@ public class KPSmartController {
 				// INT, STRING
 				// kpsmartGui.renderCriticalRoutes();//TODO: Could pass in
 				// STRING , INT
-			} else if(e.getActionCommand().equals("Review Events")){
+			} else if (e.getActionCommand().equals("Review Events")) {
 				gui.setMainDisplayPanel("ReviewEventsPanel");
 				gui.displayEvent(model.getLatestEvent());
 
@@ -121,8 +123,7 @@ public class KPSmartController {
 			// ==========================================
 			else if (e.getActionCommand().equals("Previous Event")) {
 				gui.displayEvent(model.getPreviousEvent());
-			}
-			else if (e.getActionCommand().equals("Next Event")) {
+			} else if (e.getActionCommand().equals("Next Event")) {
 				gui.displayEvent(model.getNextEvent());
 			}
 			// ==========================================
@@ -211,7 +212,7 @@ public class KPSmartController {
 				if (mailDeliveryPanel) {
 					MailProcessInput input = gui.getMailDeliveryInput();
 					if (model.processMail(input)) {
-						//Notify success and return to homescreen
+						// Notify success and return to homescreen
 						gui.popupMessage(true, "Mail has been successfully processed");
 						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
@@ -219,22 +220,22 @@ public class KPSmartController {
 					}
 				} else if (newRoutePanel) {
 					NewRouteInput input = gui.getNewRouteInput();
-					if(model.addNewRoute(input)){
+					if (model.addNewRoute(input)) {
 						// Update the list of sites in the gui if successful
 						gui.updateSites(model.getNewOrigin(), model.getNewDestination());
 						gui.updateCompanies(model.getNewCompany());
-						//Notify success and return to homescreen
+						// Notify success and return to homescreen
 						gui.popupMessage(true, "Route has been successfully added");
 						gui.setMainDisplayPanel("HomepagePanel");
 
 					} else {
-						//Notify failure and return to input panel
+						// Notify failure and return to input panel
 						gui.popupMessage(false, "Route could not be added");
 					}
 				} else if (discontinueRoutePanel) {
 					DiscontinueInput input = gui.getDiscontinueInput();
-					if(model.discontinueRoute(input)){
-						//Notify success and return to homescreen
+					if (model.discontinueRoute(input)) {
+						// Notify success and return to homescreen
 						gui.popupMessage(true, "Route has been successfully discontinued");
 						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
@@ -242,8 +243,8 @@ public class KPSmartController {
 					}
 				} else if (customerPricePanel) {
 					CustomerPriceInput input = gui.getCustomerPriceInput();
-					if(model.changeCustomerPrice(input)){
-						//Notify success and return to homescreen
+					if (model.changeCustomerPrice(input)) {
+						// Notify success and return to homescreen
 						gui.popupMessage(true, "Customer prices have been updated");
 						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
@@ -251,8 +252,8 @@ public class KPSmartController {
 					}
 				} else {
 					TransportCostInput input = gui.getTransportCostInput();
-					if(model.changeTransportCost(input)){
-						//Notify success and return to homescreen
+					if (model.changeTransportCost(input)) {
+						// Notify success and return to homescreen
 						gui.popupMessage(true, "Transport costs have been updated");
 						gui.setMainDisplayPanel("HomepagePanel");
 					} else {
@@ -260,11 +261,21 @@ public class KPSmartController {
 					}
 				}
 				gui.resetTextFields();
- 			} else if (e.getActionCommand().equals("Cancel")) {
+			} else if (e.getActionCommand().equals("Cancel")) {
 				gui.setMainDisplayPanel("HomepagePanel");
 				gui.resetTextFields();
 			} else if (e.getActionCommand().equals("Reset")) {
 				gui.resetTextFields();
+			} else if (e.getActionCommand().equals("OK")) {
+				if (gui.getUsername().length() == 0) {
+					gui.popupMessage(false, "Please enter a username");
+				} else if (gui.getPassword().length() == 0) {
+					gui.popupMessage(false, "Please enter a password");
+				} else if (model.validate(gui.getUsername(), gui.getPassword())) {
+					gui.setLoggedIn();
+				} else {
+					gui.popupMessage(false, "Incorrect Login");
+				}
 			}
 			// ==========================================
 			// END OF Submit for forms

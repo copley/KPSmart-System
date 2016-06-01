@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.KPSmartController.ViewActionListener;
+
 import static javax.swing.BoxLayout.X_AXIS;
 import static javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
@@ -29,34 +31,23 @@ import static javax.swing.KeyStroke.getKeyStroke;
 @SuppressWarnings("serial")
 public class LogInPanel extends JFrame {
 
-	private String userName;
-	private String password;
+	private AuthDialog ad;
 
-	public LogInPanel() {
+	public LogInPanel(ViewActionListener viewActionListener) {
 		super("KPSmart Log In");
 
 		setSize(600, 600);
 
 		// Show Authentication dialog
-		AuthDialog ad = new AuthDialog(this, "Authentication");
-		ad.setVisible(true);
-		userName = ad.getUserName();
-		password = ad.getDatabasePassword();
-
-		// Show ourselves
-		setVisible(true);
+		ad = new AuthDialog(this, "Authentication", viewActionListener);
 	}
 
 	public String getUserName() {
-		return userName;
+		return ad.getUserName();
 	}
 
 	public String getPassword() {
-		return password;
-	}
-
-	public static void main(String[] args) {
-		new LogInPanel();
+		return ad.getDatabasePassword();
 	}
 
 	class AuthDialog extends JDialog {
@@ -68,19 +59,11 @@ public class LogInPanel extends JFrame {
 		private JTextField usernameTf = new JTextField(20);
 		private JPasswordField passwdTf = new JPasswordField(20);
 
-		public AuthDialog() {
-			this(null, "Authentication", false);
+		public AuthDialog(JFrame parent, String title, ViewActionListener viewActionListener) {
+			this(parent, title, true, viewActionListener);
 		}
 
-		public AuthDialog(JFrame parent) {
-			this(parent, "Authentication", true);
-		}
-
-		public AuthDialog(JFrame parent, String title) {
-			this(parent, title, true);
-		}
-
-		public AuthDialog(final JFrame parent, String title, boolean modal) {
+		public AuthDialog(final JFrame parent, String title, boolean modal, ViewActionListener viewActionListener) {
 			super(parent, title, modal);
 
 			// Set up close behaviour
@@ -94,26 +77,16 @@ public class LogInPanel extends JFrame {
 
 			// Set up OK button behaviour
 			JButton okButton = new JButton("OK");
-			okButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if (getUserName().length() == 0) {
-						showMessageDialog(AuthDialog.this,
-								"Please enter a username", "Format Error",
-								ERROR_MESSAGE);
-						return;
-					}
-					if (getDatabasePassword().length() == 0) {
-						showMessageDialog(AuthDialog.this,
-								"Please enter a password", "Format Error",
-								ERROR_MESSAGE);
-						return;
-					}
-					okButtonClicked = true;
-					setVisible(false);
-				}
-			});
+			okButton.addActionListener(viewActionListener);
 
 			JButton cancelButton = new JButton("Cancel");
+			cancelButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
 
 			// Set up dialog contents
 			labelPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 5, 5));
@@ -170,5 +143,9 @@ public class LogInPanel extends JFrame {
 			return new String(passwdTf.getPassword());
 		}
 
+	}
+
+	public void showDialog() {
+		ad.setVisible(true);
 	}
 }
