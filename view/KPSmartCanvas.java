@@ -175,6 +175,8 @@ public class KPSmartCanvas extends JPanel {
 
 	public void setManager(boolean isManager) {
 		((OperationPanel) operationPanel).setReviewEventButton(isManager);
+		validate();
+		repaint();
 	}
 
 }

@@ -94,7 +94,9 @@ public class OperationPanel extends AbstractPanel {
 	}
 
 	public void setReviewEventButton(boolean isManager) {
-		if (!isManager) {
+		if (isManager) {
+			reviewEventsButtonPanel.setVisible(true);
+		} else {
 			reviewEventsButtonPanel.setVisible(false);
 		}
 	}
