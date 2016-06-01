@@ -56,8 +56,8 @@ public class LogInPanel extends JFrame {
 		String introText = "Please enter your username and database password";
 		private JPanel labelPanel = new JPanel();
 		private JPanel inputPanel = new JPanel();
-		private JTextField userIDTf = new JTextField(20);
-		private JPasswordField passwdTf = new JPasswordField(20);
+		private JTextField userIDTextField = new JTextField(20);
+		private JPasswordField passwdTextField = new JPasswordField(20);
 
 		public AuthDialog(JFrame parent, String title, ViewActionListener viewActionListener) {
 			this(parent, title, true, viewActionListener);
@@ -96,8 +96,8 @@ public class LogInPanel extends JFrame {
 			labelPanel.add(new JLabel("User ID: "));
 			labelPanel.add(new JLabel("Password:"));
 			inputPanel.setLayout(new GridLayout(2, 1));
-			inputPanel.add(userIDTf);
-			inputPanel.add(passwdTf);
+			inputPanel.add(userIDTextField);
+			inputPanel.add(passwdTextField);
 
 			Box buttonPane = new Box(X_AXIS);
 			buttonPane.add(Box.createHorizontalGlue());
@@ -136,16 +136,25 @@ public class LogInPanel extends JFrame {
 		}
 
 		public String getUserID() {
-			return userIDTf.getText();
+			return userIDTextField.getText();
 		}
 
 		public String getDatabasePassword() {
-			return new String(passwdTf.getPassword());
+			return new String(passwdTextField.getPassword());
+		}
+
+		public void clearInput() {
+			this.userIDTextField.setText("");
+			this.passwdTextField.setText("");
 		}
 
 	}
 
 	public void showWindow(boolean b) {
 		ad.setVisible(b);
+	}
+
+	public void clearInputs() {
+		ad.clearInput();
 	}
 }
