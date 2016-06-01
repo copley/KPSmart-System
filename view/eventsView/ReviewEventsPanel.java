@@ -1,7 +1,5 @@
 package view.eventsView;
 
-import java.util.List;
-
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;

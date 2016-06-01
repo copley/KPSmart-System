@@ -2,12 +2,9 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,9 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.KPSmartController.*;
-import model.events.TransportCostChangeEvent;
 import model.events.inputs.*;
-import model.map.Site;
 import view.eventsView.AddNewRoutePanel;
 import view.eventsView.CustomerPriceChangePanel;
 import view.eventsView.MailDeliveryPanel;
@@ -233,14 +228,26 @@ public final class KPSmartFrame extends JFrame {
 		return login.getPassword();
 	}
 
-	public void setLoggedIn(boolean isManager) {
+	public void setLoggedIn(boolean isManager, String name) {
 		login.showWindow(false);
+		String title = "KPSmart - ";
+		title += "Current log in: ";
+		title += name;
+		title += "(" + login.getUserID() + ") ";
+		title += isManager ? "as a clerk" : "as a manager";
+		setTitle(title);
 		this.setVisible(true);
+		login.clearInputs();
 	}
 
 	public void showLogin(ViewActionListener viewActionListener) {
 		login = new LogInPanel(viewActionListener);
 		// Show ourselves
+		login.showWindow(true);
+	}
+
+	public void setLoggedOut() {
+		this.setVisible(false);
 		login.showWindow(true);
 	}
 }

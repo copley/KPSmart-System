@@ -425,4 +425,8 @@ public class KPSmartModel {
 	 * =========================================================================
 	 */
 
+	public String getCurrentUser() {
+		return db.getEmployees().getEmployeeFromID(loggedInUserID).getName();
+	}
+
 }

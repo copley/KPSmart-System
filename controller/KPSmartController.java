@@ -274,11 +274,14 @@ public class KPSmartController {
 				} else {
 					boolean[] loggedIn = model.logIn(gui.getUsername(), gui.getPassword());
 					if (loggedIn[0] == true){
-						gui.setLoggedIn(loggedIn[1]);
+						gui.setLoggedIn(loggedIn[1], model.getCurrentUser());
 					}else {
 						gui.popupMessage(false, "Incorrect Login");
 					}
 				}
+			} else if (e.getActionCommand().equals("Log Out")) {
+				model.logOut();
+				gui.setLoggedOut();
 			}
 			// ==========================================
 			// END OF Submit for forms
