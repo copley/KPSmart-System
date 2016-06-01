@@ -130,8 +130,8 @@ public class Writer {
 
 		//TODO:we have added in 3 new events to store the revenue, expenditure, delivery time
 		event.addContent(new Element("revenue").setText("" + be.getRevenue()));
-		event.addContent(new Element("expenditure").setText("" + be.getDeliveryTime()));
-		event.addContent(new Element("deliveryTime").setText(""+be.getExpenditure()));
+		event.addContent(new Element("expenditure").setText(""+be.getExpenditure()));
+		event.addContent(new Element("deliveryTime").setText("" + be.getDeliveryTime()));
 		return event;
 	}
 
