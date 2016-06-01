@@ -79,13 +79,13 @@ public class Route {
 
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("ID: " + ID + "\n");
-		string.append("Origin: " + origin + "\n");
-		string.append("Destination: " + destination + "\n");
-		string.append("Company: " + company + "\n");
-		string.append("duration: " + duration + "\n");
-		string.append("Type: " + type.name() + "\n");
-		string.append("In service: " + inService);
+		string.append("ID: " + ID + " ");
+		string.append("Origin: " + origin + " ");
+		string.append("Destination: " + destination + " ");
+		string.append("Company: " + company + "<br>");
+		string.append("duration: " + duration + " ");
+		string.append("Type: " + type.name() + " ");
+		string.append("In service: " + inService + " ");
 		return string.toString();
 	}
 
