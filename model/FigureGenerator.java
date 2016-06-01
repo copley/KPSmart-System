@@ -12,51 +12,42 @@ public class FigureGenerator {
 
 	private DataStore db;
 	private List<MailProcessEvent> mailEvents = new ArrayList<MailProcessEvent>();
-	private double totRevenue;
-	private double totExpenditure;
-	private double deliveryTimes;
-	// private List<Route> criticalRoutes = new ArrayList<Route>();
 
 	public FigureGenerator(DataStore db) {
 		this.db = db;
+		getMailEvents();
 	}
 
-	// need to finish this method
 	public void getMailEvents() {
 		for (BusinessEvent be : db.getBusinessEvents()) {
-			if (be.getClass().equals("MailProcessEvent")) { // how to get the
-															// type of class?
-				MailProcessEvent mail = (MailProcessEvent) be; // casting so can
-																// add to the
-																// list and
-																// store it as a
-																// Mail process
-																// event
+			if (be instanceof MailProcessEvent) {
+				MailProcessEvent mail = (MailProcessEvent) be;
 				mailEvents.add(mail);
 			}
 		}
 	}
 
-	public void generateFigures() {
-		if (mailEvents.size() != 0) {
-			for (MailProcessEvent mail : mailEvents) {
-				totRevenue += mail.getRevenue();
-				totExpenditure += mail.getExpenditure();
-				deliveryTimes += mail.getDeliveryTime();
-			}
-		}
-
-	};
-
 	public double getExpenditure() {
+		int totExpenditure = 0;
+		for (MailProcessEvent mail : mailEvents) {
+			totExpenditure += mail.getExpenditure();
+		}
 		return totExpenditure;
-	};
+	}
 
 	public double getRevenue() {
+		int totRevenue = 0;
+		for (MailProcessEvent mail : mailEvents) {
+			totRevenue += mail.getRevenue();
+		}
 		return totRevenue;
 	}
 
 	public double getAVGDelivery() {
+		int deliveryTimes = 0;
+		for (MailProcessEvent mail : mailEvents) {
+			deliveryTimes += mail.getDeliveryTime();
+		}
 		return deliveryTimes / mailEvents.size();
 	}
 
@@ -96,7 +87,7 @@ public class FigureGenerator {
 		string.append("<h2>Average Delivery Times</h2><br>");
 		string.append("<em>" + getAVGDelivery() + "</em><sup>&zwnj</sup><br>");
 		string.append("<h2>Critical Routes</h2><br>");
-		for(Route r : generateCriticalRoutes()){
+		for (Route r : generateCriticalRoutes()) {
 			string.append(r.toString());
 		}
 		string.append("</html>");
