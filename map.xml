@@ -19,6 +19,12 @@
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
+    <site>
+      <id>4</id>
+      <location>Rotorua</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
   </sites>
   <routes>
     <route>
@@ -45,6 +51,19 @@
       <custPriceVolume>123.0</custPriceVolume>
       <transPriceWeight>23.0</transPriceWeight>
       <transPriceVolume>23.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>3</id>
+      <origin>Rotorua</origin>
+      <destination>Hamilton</destination>
+      <company>DHL</company>
+      <duration>3.0</duration>
+      <type>LAND</type>
+      <custPriceWeight>3.0</custPriceWeight>
+      <custPriceVolume>3.0</custPriceVolume>
+      <transPriceWeight>5.0</transPriceWeight>
+      <transPriceVolume>5.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>

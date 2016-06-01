@@ -44,7 +44,23 @@
     <volume>23.0</volume>
     <priority>International Standard</priority>
     <revenue>2829.0</revenue>
-    <expenditure>529.0</expenditure>
-    <deliveryTime>5.0</deliveryTime>
+    <expenditure>5.0</expenditure>
+    <deliveryTime>529.0</deliveryTime>
   </mail>
+  <add>
+    <day>1</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2330</time>
+    <employee>Bonnie</employee>
+    <origin>Rotorua</origin>
+    <destination>Hamilton</destination>
+    <company>DHL</company>
+    <duration>0.0</duration>
+    <type>LAND</type>
+    <custPriceWeight>3.0</custPriceWeight>
+    <custPriceVolume>3.0</custPriceVolume>
+    <transCostWeight>5.0</transCostWeight>
+    <transCostVolume>5.0</transCostVolume>
+  </add>
 </log>
