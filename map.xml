@@ -34,19 +34,6 @@
   </sites>
   <routes>
     <route>
-      <id>4</id>
-      <origin>Wellington</origin>
-      <destination>Beijing</destination>
-      <company>DHL</company>
-      <duration>23.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>11.0</custPriceWeight>
-      <custPriceVolume>121.0</custPriceVolume>
-      <transPriceWeight>1111.0</transPriceWeight>
-      <transPriceVolume>1111.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
       <id>1</id>
       <origin>Wellington</origin>
       <destination>Auckland</destination>
@@ -57,6 +44,19 @@
       <custPriceVolume>10.0</custPriceVolume>
       <transPriceWeight>10.0</transPriceWeight>
       <transPriceVolume>10.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>4</id>
+      <origin>Wellington</origin>
+      <destination>Beijing</destination>
+      <company>DHL</company>
+      <duration>23.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>11.0</custPriceWeight>
+      <custPriceVolume>121.0</custPriceVolume>
+      <transPriceWeight>1111.0</transPriceWeight>
+      <transPriceVolume>1111.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>

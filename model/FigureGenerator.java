@@ -77,9 +77,9 @@ public class FigureGenerator {
 		StringBuilder string = new StringBuilder();
 		string.append("<html>");
 		string.append("<h4>Total Revenue</h4>");
-		string.append("<em>" + getRevenue() + "</em><sup>&zwnj</sup><br>");
+		string.append("$ <em>" + getRevenue() + "</em><sup>&zwnj</sup><br>");
 		string.append("<h4>Total Expenditure</h4>");
-		string.append("<em>" + getExpenditure() + "</em><sup>&zwnj</sup><br>");
+		string.append("$ <em>" + getExpenditure() + "</em><sup>&zwnj</sup><br>");
 		string.append("<h4>Total Number of Events</h4>");
 		string.append("<em>" + generateTotalEvents() + "</em><sup>&zwnj</sup><br>");
 		string.append("<h4>Total Mail</h4>");

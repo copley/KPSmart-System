@@ -64,7 +64,6 @@ public class KPSmartController {
 			// START OF View Business Figures buttons
 			// ==========================================
 			if (e.getActionCommand().equals("Business Figures")) {
-				System.out.println("Business Figures");
 				gui.setMainDisplayPanel("BusinessFiguresPanel");
 				gui.displayFigures(model.getFigures());
 
@@ -242,6 +241,7 @@ public class KPSmartController {
 				} else {
 					boolean[] loggedIn = model.logIn(gui.getUsername(), gui.getPassword());
 					if (loggedIn[0] == true){
+						gui.setMainDisplayPanel("HomepagePanel");
 						gui.setLoggedIn(loggedIn[1], model.getCurrentUser());
 					}else {
 						gui.popupMessage(false, "Incorrect Login");
