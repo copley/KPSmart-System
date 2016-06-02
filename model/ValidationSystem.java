@@ -14,6 +14,7 @@ import model.events.TransportCostChangeEvent;
 import model.map.Priority;
 import model.map.Route;
 import model.map.Site;
+import model.map.Type;
 import storage.DataStore;
 
 public class ValidationSystem {
@@ -61,8 +62,12 @@ public class ValidationSystem {
 	public boolean validateOrigin(Site s) {
 		return cities.contains(s.getLocation());
 	}
+	
+	public boolean validateOrigin(String originName) {
+		return cities.contains(originName);
+	}
 
-	public boolean validateRoute(Route r) {
+	public static boolean validateRoute(Route r) {
 		// TODO Auto-generated method stub
 		return true;
 	}
@@ -86,5 +91,32 @@ public class ValidationSystem {
 		}
 		return false;
 	}
+	
+	@SuppressWarnings("unused")
+	public static boolean validateType(String type) {
+		for (Type t : Type.values()) {
+			if (t.toString().equals(type))
+				return true;
+		}
+		return false;
+	}
+	
+	public static boolean validatePositiveDoubleString(String shouldBePlusDouble){
+		try {
+			double num = Double.parseDouble(shouldBePlusDouble);
+			if(num <=0){
+				return false;
+			}
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
+	}
 
+	public static boolean validateNonEmptyString(String shouldBeNonEmpty){
+		if (shouldBeNonEmpty == null || shouldBeNonEmpty == ""){
+			return false;
+		}
+		return true;
+	}
 }

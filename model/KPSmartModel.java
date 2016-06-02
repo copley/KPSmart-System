@@ -131,34 +131,30 @@ public class KPSmartModel {
 	 * @param input
 	 * @return
 	 */
-	public boolean processMail(MailProcessInput input) {
-		// work out the origin and destination IDs
+	public String processMail(MailProcessInput input) {
+		// check the input for errors
+		String errorString = input.findInputErrors();
+		// if there are errors, abort at this stage returning the error string
+		if (errorString != null) {
+			return errorString;
+		}
+		// otherwise proceed! It is safe to convert the strings into their
+		// needed types! as the findInputErrors would have found any errors.
 		int originID = this.sitemap.getSiteIDfromLocation(input.getOrigin());
 		int destinationID = this.sitemap.getSiteIDfromLocation(input.getDestination());
-		// convert strings into needed types
-		double weight;
-		double volume;
-		try {
-			weight = Double.parseDouble(input.getWeight());
-			volume = Double.parseDouble(input.getVolume());
-		} catch (NumberFormatException nfe) {
-			return false;
-		}
-
+		double weight = Double.parseDouble(input.getWeight());
+		double volume = Double.parseDouble(input.getVolume());
 		Priority priority = getPriority(input.getPriority());
-		// make sure converted data are valid - abort and return false if not!
-		if (priority == null || originID == -1 || destinationID == -1 || weight <= 0 || volume <= 0) {
-			return false;
-		}
 
 		// call event processor to make up the package and record the event
-		MailProcessEvent be = eventProcessor.processMail(originID, input.getOrigin(), destinationID,
-				input.getDestination(), weight, volume, priority, this.loggedInUserID);
-		if (be != null) {
-			fg.addEvent(be);
-			return true;
+		String errors = eventProcessor.processMail(originID, input.getOrigin(), destinationID, input.getDestination(),
+				weight, volume, priority, this.loggedInUserID);
+		if (errors.isEmpty()) {
+			// event was successfully processed
+			// stimulate figure generator to re-read the data
+			fg.getMailEvents();
 		}
-		return false;
+		return errors;
 	}
 
 	/**
@@ -168,33 +164,23 @@ public class KPSmartModel {
 	 * @param input
 	 * @return
 	 */
-	public boolean addNewRoute(NewRouteInput input) {
-
-		double custPriceWeight;
-		double custPriceVolume;
-		double transCostWeight;
-		double transCostVolume;
-		double duration;
-
-		try {
-			custPriceWeight = Double.parseDouble(input.getCustomerPriceWeight());
-			custPriceVolume = Double.parseDouble(input.getCustomerPriceVolume());
-			transCostWeight = Double.parseDouble(input.getTransportPriceWeight());
-			transCostVolume = Double.parseDouble(input.getTransportPriceVolume());
-			duration = Double.parseDouble(input.getDuration());
-		} catch (NumberFormatException nfe) {
-			return false;
+	public String addNewRoute(NewRouteInput input) {
+		// check the input for errors
+		String errorString = input.findInputErrors();
+		// if there are errors, abort at this stage returning the error string
+		if (errorString != null) {
+			return errorString;
 		}
-
+		// otherwise proceed! It is safe to convert the strings into their
+		// needed types! as the findInputErrors would have found any errors.
+		double custPriceWeight = Double.parseDouble(input.getCustomerPriceWeight());
+		double custPriceVolume = Double.parseDouble(input.getCustomerPriceVolume());
+		double transCostWeight = Double.parseDouble(input.getTransportPriceWeight());
+		double transCostVolume = Double.parseDouble(input.getTransportPriceVolume());
+		double duration = Double.parseDouble(input.getDuration());
 		Type type = getType(input.getType());
-		// make sure converted data is valid - abort and return false if not!
-		if (type == null || custPriceWeight <= 0 || custPriceVolume <= 0 || transCostWeight <= 0 || transCostVolume <= 0
-				|| duration <= 0) {
-			return false;
-		}
-
 		// call event processor to do the addition and record the event
-
+		// and return the error message (null if no errors)
 		return eventProcessor.addRoute(input.getOrigin(), input.getDestination(), input.getCompany(), type, duration,
 				custPriceWeight, custPriceVolume, transCostWeight, transCostVolume, loggedInUserID);
 	}
@@ -206,18 +192,19 @@ public class KPSmartModel {
 	 * @param input
 	 * @return
 	 */
-	public boolean discontinueRoute(DiscontinueInput input) {
-		// convert strings into needed data types
+	public String discontinueRoute(DiscontinueInput input) {
+		// no need to check the input for errors - all components are found from
+		// drop-downs of valid input
+		// Proceed! It is safe to convert the strings into their needed types!
 		Type type = getType(input.getType());
-		// make sure type is valid - abort and return false if not!
-		if (type == null) {
-			return false;
-		}
-		// identify which route
+
+		// Although the sites, company, and type are definitely valid, they may
+		// not
+		// correspond to an actual route
 		int routeID = sitemap.findRouteID(input.getOrigin(), input.getDestination(), input.getCompany(), type);
 		// make sure converted data is valid - abort and return false if not!
 		if (routeID == -1) {
-			return false;
+			return "There is no route corresponding to the given input";
 		}
 
 		// call event processor to do the discontinuation and record the event
@@ -231,27 +218,23 @@ public class KPSmartModel {
 	 * @param input
 	 * @return
 	 */
-	public boolean changeCustomerPrice(CustomerPriceInput input) {
-		double newWeightCost;
-		double newVolumeCost;
-
-		try {
-			newWeightCost = Double.parseDouble(input.getWeightCost());
-			newVolumeCost = Double.parseDouble(input.getVolumeCost());
-		} catch (NumberFormatException nfe) {
-			return false;
+	public String changeCustomerPrice(CustomerPriceInput input) {
+		// check the input for errors
+		String errorString = input.findInputErrors();
+		// if there are errors, abort at this stage returning the error string
+		if (errorString != null) {
+			return errorString;
 		}
-
+		// otherwise proceed! It is safe to convert the strings into their
+		// needed types! as the findInputErrors would have found any errors.
+		double newWeightPrice = Double.parseDouble(input.getWeightPrice());
+		double newVolumePrice = Double.parseDouble(input.getVolumePrice());
 		Priority priority = getPriority(input.getPriority());
 
-		// make sure converted data is valid - abort and return false if not!
-		if (priority == null || newWeightCost <= 0 || newVolumeCost <= 0) {
-			return false;
-		}
-
-		// event processor to change the customer price and record the event
-		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightCost,
-				newVolumeCost, this.loggedInUserID);
+		// call event processor to change the customer price and record the
+		// event
+		return eventProcessor.changeCustomerPrice(input.getOrigin(), input.getDestination(), priority, newWeightPrice,
+				newVolumePrice, this.loggedInUserID);
 	}
 
 	/**
@@ -261,32 +244,25 @@ public class KPSmartModel {
 	 * @param input
 	 * @return
 	 */
-	public boolean changeTransportCost(TransportCostInput input) {
-		double newWeightCost;
-		double newVolumeCost;
-		double duration;
-
-		try {
-			newWeightCost = Double.parseDouble(input.getWeightCost());
-			newVolumeCost = Double.parseDouble(input.getVolumeCost());
-			duration = Double.parseDouble(input.getDuration());
-
-		} catch (NumberFormatException nfe) {
-			return false;
+	public String changeTransportCost(TransportCostInput input) {
+		// check the input for errors
+		String errorString = input.findInputErrors();
+		// if there are errors, abort at this stage returning the error string
+		if (!errorString.isEmpty()) {
+			return errorString;
 		}
-
+		// otherwise proceed! It is safe to convert the strings into their
+		// needed types! as the findInputErrors would have found any errors.
+		double newWeightCost = Double.parseDouble(input.getWeightCost());
+		double newVolumeCost = Double.parseDouble(input.getVolumeCost());
+		double duration = Double.parseDouble(input.getDuration());
 		Type type = getType(input.getType());
-
-		// make sure converted data is valid - abort and return false if not!
-		if (type == null || newWeightCost <= 0 || newVolumeCost <= 0) {
-			return false;
-		}
-
+		
 		// find the route
 		int routeID = sitemap.findRouteID(input.getOrigin(), input.getDestination(), input.getCompany(), type);
 		// make sure converted data is valid - abort and return false if not!
 		if (routeID == -1) {
-			return false;
+			return "There is no route corresponding to the given input";
 		}
 		// call event processor on that route
 		return eventProcessor.changeTransportCost(routeID, newWeightCost, newVolumeCost, duration, this.loggedInUserID);

@@ -1,5 +1,7 @@
 package model.events.inputs;
 
+import model.ValidationSystem;
+
 public class TransportCostInput {
 
 	private String origin;
@@ -21,6 +23,26 @@ public class TransportCostInput {
 		this.duration = duration;
 	}
 
+	/*
+	 * Checks each field and makes sure it meets requirements to be processed,
+	 * Returns a string specifying errors.
+	 */
+	public String findInputErrors(){
+		String errors = "";
+		//no need to check origin, destination, or priority, these are all 
+		//chosen by picklists of valid values from the model
+		
+		//check weightCost - has to be a positive double type
+		if(!ValidationSystem.validatePositiveDoubleString(weightCost)){
+			errors += "Cost per weight must be a positive number \n";
+		}
+		//check volumeCost - has to be a positive double type
+		if(!ValidationSystem.validatePositiveDoubleString(volumeCost)){
+			errors += "Cost per volume must be a positive number \n";
+		}
+		return errors;
+	}
+	
 	public String getOrigin() {
 		return origin;
 	}

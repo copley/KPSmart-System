@@ -79,4 +79,19 @@
     <transCostWeight>1111.0</transCostWeight>
     <transCostVolume>1111.0</transCostVolume>
   </add>
+  <mail>
+    <day>2</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2020</time>
+    <employee>Bonnie</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <weight>10.0</weight>
+    <volume>10.0</volume>
+    <priority>International Air</priority>
+    <revenue>100.0</revenue>
+    <expenditure>100.0</expenditure>
+    <deliveryTime>2.0</deliveryTime>
+  </mail>
 </log>
