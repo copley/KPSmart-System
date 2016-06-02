@@ -21,7 +21,7 @@ public class NewRouteInput {
 		this.customerPriceWeight = customerPriceWeight;
 		this.customerPriceVolume = customerPriceVolume;
 		this.transportPriceWeight = transportPriceWeight;
-		this.transportPriceVolume = transportPriceWeight;
+		this.transportPriceVolume = transportPriceVolume;
 	}
 
 	public String getOrigin() {
