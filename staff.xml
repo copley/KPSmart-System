@@ -7,14 +7,14 @@
     <isManager>false</isManager>
   </employee>
   <employee>
-    <id>3</id>
-    <name>Julian</name>
+    <id>2</id>
+    <name>Bobo</name>
     <password>1234</password>
     <isManager>true</isManager>
   </employee>
   <employee>
-    <id>2</id>
-    <name>Bobo</name>
+    <id>3</id>
+    <name>Julian</name>
     <password>1234</password>
     <isManager>true</isManager>
   </employee>

@@ -124,4 +124,32 @@
     <volumecost>8.0</volumecost>
     <duration>8.0</duration>
   </cost>
+  <price>
+    <day>2</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2257</time>
+    <employee>Julian</employee>
+    <origin>Auckland</origin>
+    <destination>Kuwait</destination>
+    <priority>International Air</priority>
+    <weightcost>1.0</weightcost>
+    <volumecost>1.0</volumecost>
+  </price>
+  <add>
+    <day>2</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2303</time>
+    <employee>Julian</employee>
+    <origin>Wellington</origin>
+    <destination>Nelson</destination>
+    <company>Blue Ferry Service</company>
+    <duration>0.0</duration>
+    <type>SEA</type>
+    <custPriceWeight>10.0</custPriceWeight>
+    <custPriceVolume>10.0</custPriceVolume>
+    <transCostWeight>1.0</transCostWeight>
+    <transCostVolume>1.0</transCostVolume>
+  </add>
 </log>

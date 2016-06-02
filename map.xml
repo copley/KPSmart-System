@@ -2,22 +2,10 @@
 <sitemap>
   <sites>
     <site>
-      <id>4</id>
-      <location>Rotorua</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
-    </site>
-    <site>
-      <id>6</id>
-      <location>Kuwait</location>
+      <id>5</id>
+      <location>Beijing</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>1</id>
-      <location>Wellington</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
     </site>
     <site>
       <id>2</id>
@@ -32,39 +20,31 @@
       <isDestination>true</isDestination>
     </site>
     <site>
-      <id>5</id>
-      <location>Beijing</location>
+      <id>7</id>
+      <location>Nelson</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
+    <site>
+      <id>1</id>
+      <location>Wellington</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
+    <site>
+      <id>6</id>
+      <location>Kuwait</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>4</id>
+      <location>Rotorua</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
+    </site>
   </sites>
   <routes>
-    <route>
-      <id>3</id>
-      <origin>Auckland</origin>
-      <destination>Kuwait</destination>
-      <company>DHL</company>
-      <duration>8.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>23.0</custPriceWeight>
-      <custPriceVolume>23.0</custPriceVolume>
-      <transPriceWeight>8.0</transPriceWeight>
-      <transPriceVolume>8.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
-      <id>4</id>
-      <origin>Wellington</origin>
-      <destination>Beijing</destination>
-      <company>DHL</company>
-      <duration>23.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>11.0</custPriceWeight>
-      <custPriceVolume>121.0</custPriceVolume>
-      <transPriceWeight>1111.0</transPriceWeight>
-      <transPriceVolume>1111.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
     <route>
       <id>1</id>
       <origin>Wellington</origin>
@@ -76,6 +56,32 @@
       <custPriceVolume>10.0</custPriceVolume>
       <transPriceWeight>10.0</transPriceWeight>
       <transPriceVolume>10.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>4</id>
+      <origin>Wellington</origin>
+      <destination>Nelson</destination>
+      <company>Blue Ferry Service</company>
+      <duration>6.0</duration>
+      <type>SEA</type>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>10.0</custPriceVolume>
+      <transPriceWeight>1.0</transPriceWeight>
+      <transPriceVolume>1.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>3</id>
+      <origin>Auckland</origin>
+      <destination>Kuwait</destination>
+      <company>DHL</company>
+      <duration>8.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>1.0</custPriceWeight>
+      <custPriceVolume>1.0</custPriceVolume>
+      <transPriceWeight>8.0</transPriceWeight>
+      <transPriceVolume>8.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>
