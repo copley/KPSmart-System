@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <employees>
   <employee>
-    <id>2</id>
-    <name>Bobo</name>
+    <id>1</id>
+    <name>Bonnie</name>
     <password>1234</password>
-    <isManager>true</isManager>
+    <isManager>false</isManager>
   </employee>
   <employee>
     <id>3</id>
@@ -13,9 +13,9 @@
     <isManager>true</isManager>
   </employee>
   <employee>
-    <id>1</id>
-    <name>Bonnie</name>
+    <id>2</id>
+    <name>Bobo</name>
     <password>1234</password>
-    <isManager>false</isManager>
+    <isManager>true</isManager>
   </employee>
 </employees>

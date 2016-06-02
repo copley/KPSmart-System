@@ -2,20 +2,14 @@
 <sitemap>
   <sites>
     <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
+      <id>4</id>
+      <location>Rotorua</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>false</isDestination>
     </site>
     <site>
-      <id>5</id>
-      <location>Beijing</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>3</id>
-      <location>Hamilton</location>
+      <id>6</id>
+      <location>Kuwait</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
@@ -26,13 +20,38 @@
       <isDestination>false</isDestination>
     </site>
     <site>
-      <id>4</id>
-      <location>Rotorua</location>
+      <id>2</id>
+      <location>Auckland</location>
       <isOrigin>true</isOrigin>
-      <isDestination>false</isDestination>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>3</id>
+      <location>Hamilton</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>5</id>
+      <location>Beijing</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
     </site>
   </sites>
   <routes>
+    <route>
+      <id>3</id>
+      <origin>Auckland</origin>
+      <destination>Kuwait</destination>
+      <company>DHL</company>
+      <duration>8.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>23.0</custPriceWeight>
+      <custPriceVolume>23.0</custPriceVolume>
+      <transPriceWeight>8.0</transPriceWeight>
+      <transPriceVolume>8.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
     <route>
       <id>4</id>
       <origin>Wellington</origin>

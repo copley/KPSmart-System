@@ -79,4 +79,49 @@
     <transCostWeight>1111.0</transCostWeight>
     <transCostVolume>1111.0</transCostVolume>
   </add>
+  <mail>
+    <day>2</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>1354</time>
+    <employee>Bonnie</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <weight>32.0</weight>
+    <volume>100.0</volume>
+    <priority>Domestic Air</priority>
+    <revenue>320.0</revenue>
+    <expenditure>320.0</expenditure>
+    <deliveryTime>2.0</deliveryTime>
+  </mail>
+  <add>
+    <day>2</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>1354</time>
+    <employee>Bonnie</employee>
+    <origin>Auckland</origin>
+    <destination>Kuwait</destination>
+    <company>DHL</company>
+    <duration>0.0</duration>
+    <type>AIR</type>
+    <custPriceWeight>23.0</custPriceWeight>
+    <custPriceVolume>23.0</custPriceVolume>
+    <transCostWeight>23.0</transCostWeight>
+    <transCostVolume>23.0</transCostVolume>
+  </add>
+  <cost>
+    <day>2</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>1355</time>
+    <employee>Bonnie</employee>
+    <origin>Auckland</origin>
+    <destination>Kuwait</destination>
+    <company>DHL</company>
+    <type>AIR</type>
+    <weightcost>8.0</weightcost>
+    <volumecost>8.0</volumecost>
+    <duration>8.0</duration>
+  </cost>
 </log>
