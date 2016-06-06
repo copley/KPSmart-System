@@ -10,11 +10,6 @@ import model.map.Type;
 
 // need to add JUnit4 library
 public class ModelEventsTest {
-	@Test
-	public void invalidNumberOfPlayers() {
-		int i = 1;
-		assert(i == 1);
-	}
 
 	@Test
 	public void RouteAddition() {

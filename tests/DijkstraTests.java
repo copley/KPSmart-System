@@ -43,6 +43,7 @@ public class DijkstraTests {
 		correct.add(4);
 		List<Integer> compoundRoute = testMap.findCompoundRoute(testMap.getSiteIDfromLocation("A"),
 				testMap.getSiteIDfromLocation("D"), Priority.DOMESTIC_AIR);
+		System.out.println(compoundRoute);
 		assertTrue("The compound route should be air A to C to D", compoundRoute.equals(correct));
 	}
 
