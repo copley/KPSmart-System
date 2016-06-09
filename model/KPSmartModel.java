@@ -135,7 +135,7 @@ public class KPSmartModel {
 		// check the input for errors
 		String errorString = input.findInputErrors();
 		// if there are errors, abort at this stage returning the error string
-		if (errorString != null) {
+		if (!errorString.isEmpty()) {
 			return errorString;
 		}
 		// otherwise proceed! It is safe to convert the strings into their
@@ -168,7 +168,7 @@ public class KPSmartModel {
 		// check the input for errors
 		String errorString = input.findInputErrors();
 		// if there are errors, abort at this stage returning the error string
-		if (errorString != null) {
+		if (!errorString.isEmpty()) {
 			return errorString;
 		}
 		// otherwise proceed! It is safe to convert the strings into their
@@ -180,7 +180,7 @@ public class KPSmartModel {
 		double duration = Double.parseDouble(input.getDuration());
 		Type type = getType(input.getType());
 		// call event processor to do the addition and record the event
-		// and return the error message (null if no errors)
+		// and return the error message ("" if no errors)
 		return eventProcessor.addRoute(input.getOrigin(), input.getDestination(), input.getCompany(), type, duration,
 				custPriceWeight, custPriceVolume, transCostWeight, transCostVolume, loggedInUserID);
 	}
@@ -219,12 +219,14 @@ public class KPSmartModel {
 	 * @return
 	 */
 	public String changeCustomerPrice(CustomerPriceInput input) {
+		
 		// check the input for errors
 		String errorString = input.findInputErrors();
 		// if there are errors, abort at this stage returning the error string
-		if (errorString != null) {
+		if (!errorString.isEmpty()) {
 			return errorString;
 		}
+		
 		// otherwise proceed! It is safe to convert the strings into their
 		// needed types! as the findInputErrors would have found any errors.
 		double newWeightPrice = Double.parseDouble(input.getWeightPrice());
@@ -402,4 +404,19 @@ public class KPSmartModel {
 		return db.getEmployees().getEmployeeFromID(loggedInUserID).getName();
 	}
 
+	/*
+	 * =========================================================================
+	 * START OF Helper methods for testing
+	 * =========================================================================
+	 */
+	
+	public SiteMap getSiteMap(){
+		return db.getSiteMap();
+	}
+	
+	/*
+	 * =========================================================================
+	 * END OF Helper methods for testing
+	 * =========================================================================
+	 */
 }

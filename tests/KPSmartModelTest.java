@@ -15,6 +15,7 @@ public class KPSmartModelTest {
 	@Test
 	public void processMail1() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		MailProcessInput mail = new MailProcessInput("Wellington","Auckland", "4","4","International Air");
 		assertTrue(model.processMail(mail).isEmpty());//empty value signals success
 	}
@@ -22,6 +23,7 @@ public class KPSmartModelTest {
 	@Test
 	public void processMail2() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		MailProcessInput mail = new MailProcessInput("123","Auckland", "4","4","International Air");
 		assertFalse(model.processMail(mail).isEmpty());//empty value signals success
 	}
@@ -29,6 +31,7 @@ public class KPSmartModelTest {
 	@Test
 	public void processMail3() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		MailProcessInput mail = new MailProcessInput("Wellington","Auckland", "Four","4","International Air");
 		assertFalse(model.processMail(mail).isEmpty());//empty value signals success
 	}
@@ -36,6 +39,7 @@ public class KPSmartModelTest {
 	@Test
 	public void processMail4() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		MailProcessInput mail = new MailProcessInput("Wellington","Auckland", "4","Four","International Air");
 		assertFalse(model.processMail(mail).isEmpty());//empty value signals success
 	}
@@ -47,6 +51,7 @@ public class KPSmartModelTest {
 	@Test
 	public void addRoute1() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput route = new NewRouteInput("Wellington","Auckland","DHL","10","AIR","4","4","4","4");
 		assertTrue(model.addNewRoute(route).isEmpty());
 	}
@@ -54,6 +59,7 @@ public class KPSmartModelTest {
 	@Test
 	public void addRoute2() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput route = new NewRouteInput("Wellington","Auckland","DHL","10","AIR","Four","4","4","4");
 		assertFalse(model.addNewRoute(route).isEmpty());
 	}
@@ -61,18 +67,21 @@ public class KPSmartModelTest {
 	@Test
 	public void addRoute3() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput route = new NewRouteInput("Wellington","Auckland","DHL","10","AIR","4","Four","4","4");
 		assertFalse(model.addNewRoute(route).isEmpty());
 	}
 	@Test
 	public void addRoute4() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput route = new NewRouteInput("Wellington","Auckland","DHL","10","AIR","4","4","Four","4");
 		assertFalse(model.addNewRoute(route).isEmpty());
 	}
 	@Test
 	public void addRoute5() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput route = new NewRouteInput("Wellington","Auckland","DHL","10","AIR","4","4","4","Four");
 		assertFalse(model.addNewRoute(route).isEmpty());
 	}
@@ -80,6 +89,7 @@ public class KPSmartModelTest {
 	@Test
 	public void addRoute6() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput route = new NewRouteInput("Wellington","Auckland","DHL","10","123","4","4","4","4");
 		assertFalse(model.addNewRoute(route).isEmpty());
 	}
@@ -87,6 +97,7 @@ public class KPSmartModelTest {
 	@Test
 	public void addRoute7() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput route = new NewRouteInput("Wellington","Auckland","DHL","Ten","AIR","4","4","4","4");
 		assertFalse(model.addNewRoute(route).isEmpty());
 	}
@@ -96,8 +107,9 @@ public class KPSmartModelTest {
 	 */
 	
 	@Test
-	public void disRoute1() {
+	public void disRouteSuccessScenario() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		DiscontinueInput disRoute = new DiscontinueInput("Wellington","Auckland","company","AIR");
@@ -105,8 +117,9 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void disRoute2() {
+	public void disRouteBadTransportType() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		DiscontinueInput disRoute = new DiscontinueInput("Wellington","Auckland","company","LOL");
@@ -114,8 +127,9 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void disRoute3() {
+	public void disRouteNonexistantCompanyName() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		DiscontinueInput disRoute = new DiscontinueInput("Wellington","Auckland","comp","AIR");
@@ -127,8 +141,9 @@ public class KPSmartModelTest {
 	 */
 	
 	@Test
-	public void changePrice1() {
+	public void changePriceSuccessScenario() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		CustomerPriceInput price = new CustomerPriceInput("Wellington","Auckland","International Air","5","5");
@@ -136,17 +151,20 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void changePrice2() {
+	public void changePriceNonexistantDestination() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		CustomerPriceInput price = new CustomerPriceInput("Wellington","Auck","International Air","5","5");
+		System.out.println("about to call changeCustomerPrice from model");		
 		assertFalse(model.changeCustomerPrice(price).isEmpty());
 	}
 	
 	@Test
-	public void changePrice3() {
+	public void changePriceBadNumberFormat() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		CustomerPriceInput price = new CustomerPriceInput("Wellington","Auckland","International Air","five","5");
@@ -154,42 +172,41 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void changePrice4() {
+	public void changePriceBadNumberFormat2() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		CustomerPriceInput price = new CustomerPriceInput("Wellington","Auckland","International Air","5","five");
 		assertFalse(model.changeCustomerPrice(price).isEmpty());
 	}
 	
-	@Test
-	public void changePrice5() {
-		KPSmartModel model = new KPSmartModel();
-		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
-		DiscontinueInput disRoute = new DiscontinueInput("Wellington","Auckland","company","AIR");
-		model.addNewRoute(newRoute);
-		model.discontinueRoute(disRoute);
-		//able to change a route that doesn't exist???
-		CustomerPriceInput price = new CustomerPriceInput("Wellington","Auckland","International Air","5","5");
-		assertFalse(model.changeCustomerPrice(price).isEmpty());
-	}
+	//we had a test to try to update customer price on a discontinued route, but new
+	//factorisation updates customer prices on all routes origin to destination same type
+	//could be multiples, can't isolate a single route.
 	
 	/**
 	 * Change transport cost
 	 */
 	@Test
-	public void changeTransPrice1() {
+	public void changeTransPriceSuccessScenario() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
-		model.addNewRoute(newRoute);
+		String routeError = model.addNewRoute(newRoute);
+		System.out.println(routeError);
+		
 		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","AIR","5","5","10");
-		assertTrue(model.changeTransportCost(cost).isEmpty());
+		String errorMessage = model.changeTransportCost(cost);
+		System.out.println(errorMessage);
+		assertTrue(errorMessage.isEmpty());
 	}
 	
 	
 	@Test
-	public void changeTransPrice2() {
+	public void changeTransPriceBadNumberFormat() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","AIR","Five","5","10");
@@ -197,8 +214,9 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void changeTransPrice3() {
+	public void changeTransPriceBadNumberFormat2() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","AIR","5","five","10");
@@ -206,8 +224,9 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void changeTransPrice4() {
+	public void changeTransPriceBadNumberFormat3() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","AIR","5","5","ten");
@@ -215,8 +234,9 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void changeTransPrice5() {
+	public void changeTransPriceNegativeNumber() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","AIR","-1","5","10");
@@ -224,16 +244,18 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void changeTransPrice6() {
+	public void changeTransPriceNegativeNumber2() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","AIR","5","-1","10");
 		assertFalse(model.changeTransportCost(cost).isEmpty());
 	}
 	@Test
-	public void changeTransPrice7() {
+	public void changeTransPriceBadTransportType() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","LOL","5","5","10");
@@ -241,8 +263,9 @@ public class KPSmartModelTest {
 	}
 	
 	@Test
-	public void changeTransPrice8() {
+	public void changeTransPriceNonexistantDestination() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 		model.addNewRoute(newRoute);
 		TransportCostInput cost = new TransportCostInput("Wellington","Auck","company","AIR","5","5","10");
@@ -253,6 +276,7 @@ public class KPSmartModelTest {
 //	@Test
 //	public void changeTransPrice9() {
 //		KPSmartModel model = new KPSmartModel();
+//  	model.logIn("1", "1234");
 //		NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","AIR","4","4","4","4");
 //		model.addNewRoute(newRoute);
 //		TransportCostInput cost = new TransportCostInput("Wellington","Auckland","company","AIR","4","4","10");

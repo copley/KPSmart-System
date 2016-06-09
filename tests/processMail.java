@@ -14,6 +14,7 @@ public class processMail {
 	@Test
 	public void PM1() {
 		KPSmartModel model = new KPSmartModel();
+		model.logIn("1", "1234");
 		MailProcessInput mail = new MailProcessInput("Wellington","Auckland", "4","4","INTERNATIONAL_AIR");
 		model.processMail(mail);
 	}
