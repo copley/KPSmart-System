@@ -18,7 +18,7 @@ import model.map.Type;
 public class RouteTests {
 	//test creation
 	@Test
-	public void testCreate() {
+	public void testCreateSuccess() {
 		//test route creation positive
 		int routeID = 0;
 		String origin = "Wellington";
@@ -38,25 +38,6 @@ public class RouteTests {
 		
 	}
 
-	//test route creation fail scenarios
-	@Test(expected=Exception.class)
-	public void testBadClassNUllCompany() throws Exception {
-				int routeID = 0;
-				String origin = "Wellington";
-				String destination = "Auckland";
-
-				String company = null;
-				int duration = 10;
-				Type mode = Type.AIR;
-				double custWeightPrice = 2.30;
-				double custVolPrice = 3.00;
-				double transWeightPrice = 1;
-				double transVolPrice =35.99;
-				boolean inService = true;
-
-				Route newRoute =  new Route(routeID, origin, destination, company, duration, mode, inService,
-						custWeightPrice, custVolPrice, transWeightPrice, transVolPrice);
-	}
 
 	//test changeCustomerPrice
 

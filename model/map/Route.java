@@ -15,7 +15,22 @@ public class Route {
 	private double transPriceVolume;
 	private boolean inService;
 
-
+/**
+ * Inputs are required to be pre-verified before calling this method, internal validation is not applied
+ * Within the KPSmart system, validation is performed by model.ValidationSystem
+ * 
+ * @param id - a non-negative integer
+ * @param origin - a non-null, non-empty string, must be an official New Zealand town
+ * @param destination - a non-null, non-empty string
+ * @param company - a non-null, non-empty string
+ * @param duration - a non-negative double, the target decimal hours to deliver
+ * @param type - Type enum, LAND, SEA, AIR
+ * @param inService - boolean, specifying whether or not the route is currently able to be used
+ * @param custPriceWeight - a non-negative double, price per gram that will be charged to customer
+ * @param custPriceVolume - a non-negative double, price per cubic cm that will be charged to customer
+ * @param transPriceWeight - a non-negative double, cost per gram that transport company charges KPS
+ * @param transPriceVolume - a non-negative double, cost per cubic cm that transport company charges KPS
+ */
 	public Route(int id, String origin, String destination, String company, double duration, Type type, boolean inService,
 			double custPriceWeight, double custPriceVolume, double transPriceWeight, double transPriceVolume) {
 		this.ID = id;
