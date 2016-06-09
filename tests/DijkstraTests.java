@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import model.map.DijkstraNode;
 import model.map.Priority;
 import model.map.Site;
 import model.map.SiteMap;
@@ -67,6 +68,29 @@ public class DijkstraTests {
 				testMap.getSiteIDfromLocation("Dunedin"), Priority.DOMESTIC_STANDARD);
 		assertTrue("The compound route should be null", compoundRoute == null);
 	}
+	
+	@Test
+	public void testNodeToString() {
+		// should be able to convert to string!
+		DijkstraNode node = new DijkstraNode(1,1,2,120);
+		String shouldBe = "siteID: 1\n"+"previousSiteID: 1\n"+
+		"durationFromStart: 120.0\n"+"previousRouteID: 2\n";
+		assertTrue("Strings should be equal", node.toString().equals(shouldBe));
+	}
+	
+	@Test
+	public void testNodeCompare() {
+		DijkstraNode nodeSmaller = new DijkstraNode(1,1,2,100);
+		DijkstraNode nodeBigger = new DijkstraNode(1,1,2,200);
+		assertTrue("nodeSmaller.compareTo(nodeBigger) should return -1", 
+			nodeSmaller.compareTo(nodeBigger) == -1);
+		assertTrue("nodeBigger.compareTo(nodeSmaller) should return 1", 
+				nodeBigger.compareTo(nodeSmaller) == 1);
+		assertTrue("nodeSmaller.compareTo(nodeSmaller) should return 0", 
+				nodeSmaller.compareTo(nodeSmaller) == 0);
+	}
+	
+	//==========helper methods
 
 	private SiteMap makeTestMap() {
 		// make a new site map:
