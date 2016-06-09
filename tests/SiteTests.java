@@ -9,7 +9,8 @@ import model.map.Site;
 
 /*
  * Site should be able to be created, information retrieved via getters, print to string
- * should be able to set isOrigin or isDestination to true (in use elsewher one should be false on creation)
+ * should be able to set isOrigin or isDestination to true 
+ * (in use elsewhere one should be false on creation)
  */
 public class SiteTests {
 	Site testSite;
@@ -19,51 +20,31 @@ public class SiteTests {
 	
 	// test creation success
 	@Test
-	public void testCreate() {
+	public void testSuccessfulCreate() {
 		int siteID = 0;
 		String location = "Wellington";
 		Site goodSite = new Site(siteID, location, true, false);
 	}
 
-	// test creation fail scenarios
-	@Test(expected = Exception.class)
-	public void testNullString() throws Exception {
-		int siteID = 0;
-		String location = null;// should fail if string null
-		Site badSite = new Site(siteID, location, true, false);
-	}
-
-	@Test(expected = Exception.class)
-	public void testEmptyString() throws Exception {
-		int siteID = 0;
-		String location = "";// should fail if empty string
-		Site badSite = new Site(siteID, location,true, false);
-	} 
-
-	@Test(expected = Exception.class)
-	public void testBadID() throws Exception {
-		int siteID = -1;// ID should only be a positive integer
-		String location = "Wellington";
-		Site badSite = new Site(siteID, location, true, false);
-	}
-	// getters too simple to bother testing
 
 	// test toString
 	@Test
 	public void testToString() {
-	String correct = "ID: 0\nLocation: Wellington";
+	String correct = "ID: 1\nLocation: Wellington";
 	assertTrue(testSite.toString().equals(correct));
 	}
 
 	// test setIsOrigin
-	public void testSetIsOrigin(){
+	@Test
+	public void testSetIsOriginSuccess(){
 		assertTrue(testSite.isOrigin() == false);
 		testSite.setIsOrigin();
 		assertTrue(testSite.isOrigin() == true);
 	} 
 	
 	// test setIsDestination
-		public void testSetIsDestination(){
+	@Test
+	public void testSetIsDestinationSuccess(){
 			assertTrue(testSite.isDestination() == false);
 			testSite.setIsDestination();
 			assertTrue(testSite.isDestination() == true);

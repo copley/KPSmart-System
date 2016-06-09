@@ -6,6 +6,12 @@ public class Site {
 	private boolean isOrigin;
 	private boolean isDestination;
 
+	/*
+	 * Requires:
+	 * id non-negative integer
+	 * location non-null, non-empty string
+	 * these requirements should be checked by calling methods before class creation is called!
+	 */
 	public Site(int id, String location, boolean isOrigin, boolean isDestination) {
 		this.ID = id;
 		this.location = location;
