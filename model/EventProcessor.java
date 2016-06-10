@@ -230,7 +230,7 @@ public class EventProcessor {
 		int time = now.getHour() * 100 + now.getMinute();
 		// staff that is logged in
 		String employeeName = db.getEmployees().getEmployeeFromID(employeeID).getName();
-
+		
 		if (!db.getSiteMap().updateCustomerPrices(origin, destination, priority, newWeightCost, newVolumeCost)) {
 			return "There was a problem, the Customer Price was unable to be updated.\n";
 		}

@@ -98,7 +98,7 @@ public class Route {
 		string.append("Origin: " + origin + " ");
 		string.append("Destination: " + destination + " ");
 		string.append("Company: " + company + "<br>");
-		string.append("duration: " + duration + " ");
+		string.append("Duration: " + duration + " ");
 		string.append("Type: " + type.name() + " ");
 		string.append("In service: " + inService + " ");
 		return string.toString();
