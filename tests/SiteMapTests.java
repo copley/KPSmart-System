@@ -47,6 +47,21 @@ public class SiteMapTests {
 		test.addNewRoute("Wellington", "Nelson", "test", Type.LAND, 1, 1, 1, 1,1);
 		assertTrue("Route should now exist", test.findRouteID("Wellington", "Nelson", "test", Type.LAND)!= -1 );
 		assertTrue("Nelson site should now exist", test.getSiteIDfromLocation("Nelson") != -1 );
+		//try out failure scenarios
+		assertFalse("duration must be positive", test.addNewRoute("Wellington", "Nelson", "test", Type.LAND, -1, 1, 1, 1,1));
+		assertFalse("custWeightPrice must be positive", test.addNewRoute("Wellington", "Nelson", "test", Type.LAND, 1, -1, 1, 1,1));
+		assertFalse("custVolPrice must be positive", test.addNewRoute("Wellington", "Nelson", "test", Type.LAND, 1, 1, -1, 1,1));
+		assertFalse("transWeightCost must be positive", test.addNewRoute("Wellington", "Nelson", "test", Type.LAND, 1, 1, 1, -1,1));
+		assertFalse("transVolCost must be positive", test.addNewRoute("Wellington", "Nelson", "test", Type.LAND, 1, 1, 1, 1,-1));
+		assertFalse("origin can't be null", test.addNewRoute(null, "Nelson", "test", Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("origin can't be empty string", test.addNewRoute("", "Nelson", "test", Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("destination can't be null", test.addNewRoute("Wellington", null, "test", Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("destination can't be empty string", test.addNewRoute("Wellington", "", "test", Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("company can't be null", test.addNewRoute("Wellington", "Nelson", null, Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("company can't be empty string", test.addNewRoute("Wellington","Nelson", "", Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("origin and destination can't be the same", test.addNewRoute("Nelson", "Nelson", "test", Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("origin has to be a valid NZ town", test.addNewRoute("NicLand", "Nelson", "test", Type.LAND, 1, 1, 1, 1,1));
+		assertFalse("can't add a route that already exists", test.addNewRoute("Wellington", "Nelson", "test", Type.LAND, 1, 1, 1, 1,1));
 		}
 
 	//positive addRoute is covered by addNewRoute.... need to test attempt to add a bad route separately
@@ -81,8 +96,7 @@ public class SiteMapTests {
 				test.getSiteIDfromLocation("Wellington")!= -1 &&
 				test.getSiteIDfromLocation("Auckland")!= -1 &&
 				test.getSiteIDfromLocation("Wellington")!= test.getSiteIDfromLocation("Auckland")		
-				);
-		
+				);		
 		//Nelson should not exist, and return -1 
 		assertTrue("Nelson should not exist, and return -1", 
 				test.getSiteIDfromLocation("Nelson")== -1);
@@ -106,8 +120,8 @@ public class SiteMapTests {
 		SiteMap test = makeTestMap();
 		assertTrue("AIR Route Wellington to Auckland should exist and return a positive number", 
 				test.findRouteID("Wellington", "Auckland", "test", Type.AIR)!= -1);
-		assertTrue("AIR Route Auckland to Wellington should not exist and return -1", 
-				test.findRouteID("Auckland", "Wellington", "test", Type.AIR)== -1);
+		assertTrue("AIR Route Timbuktu to Berlin should not exist and return -1", 
+				test.findRouteID("Timbuktu", "Berlin", "test", Type.AIR)== -1);
 		}
 
 	@Test

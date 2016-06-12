@@ -132,7 +132,7 @@ public class SiteMap {
 	 */
 	public boolean addNewRoute(String origin, String destination, String company, Type type, double duration,
 			double custWeightPrice, double custVolumePrice, double transWeightCost, double transVolumeCost) {
-		// check all input for values in correct format
+		// check all input for values in correct format - should have been done at preprocessing stage!
 		if (duration <= 0 || custWeightPrice <= 0 || custVolumePrice <= 0 || transWeightCost <= 0
 				|| transVolumeCost <= 0 || origin == null || destination == null || company == null || origin.equals("")
 				|| destination.equals("") || company.equals("") || origin.equals(destination)) {
