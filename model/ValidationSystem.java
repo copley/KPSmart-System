@@ -19,7 +19,7 @@ import storage.DataStore;
 
 public class ValidationSystem {
 
-	private List<String> cities;
+	private static List<String> cities;
 
 	public ValidationSystem() {
 		cities = new ArrayList<String>();
@@ -34,9 +34,16 @@ public class ValidationSystem {
 	}
 
 	public static boolean validateCustPriceEvent(CustPriceChangeEvent event) {
-		return validateTimestamp(event.getDay(), event.getMonth(), event.getYear(), event.getTime())
-				&& validatePriority(event.getPriority().toString()) && event.getNewWeightCost() > 0
-				&& event.getNewVolumeCost() > 0;
+		return (
+				validateTimestamp(event.getDay(), event.getMonth(), event.getYear(), event.getTime())
+				&& validateNonEmptyString(event.getEmployee())
+				&& validateOrigin(event.getOrigin())
+				&& validateNonEmptyString(event.getDestination())
+				&& (event.getPriority() != null)
+				&& validatePriority(event.getPriority().toString()) 
+				&& event.getNewWeightCost() > 0
+				&& event.getNewVolumeCost() > 0
+				);
 	}
 
 	public static boolean validateMailProcessEvent(MailProcessEvent event) {
@@ -63,7 +70,7 @@ public class ValidationSystem {
 		return cities.contains(s.getLocation());
 	}
 	
-	public boolean validateOrigin(String originName) {
+	public static boolean validateOrigin(String originName) {
 		return cities.contains(originName);
 	}
 
@@ -77,14 +84,27 @@ public class ValidationSystem {
 		return true;
 	}
 
+	
+	
 	private static boolean validateTimestamp(int day, int month, int year, int time) {
-		return year > 0 && month > 0 && month <= 12 && day > 0
-				&& ((month == 2 && day <= 28) || (((month <= 7 && month % 2 == 1) || month % 2 == 0) && day <= 31)
-						|| (((month <= 6 && month % 2 == 0) || month % 2 == 1) && day <= 30))
-				&& time >= 0000 || time <= 2359;
+		return (
+				year > 0 
+				&& month > 0 
+				&& month <= 12 
+				&& day > 0
+				&& ((month == 2 && day <= 28) 
+						|| (((month <= 7 && month % 2 == 1) || month % 2 == 0) && day <= 31)
+						|| (((month <= 6 && month % 2 == 0) || month % 2 == 1) && day <= 30)
+						)
+				&& (time >= 0000 && time <= 2359)
+				);
 	}
 
 	private static boolean validatePriority(String priority) {
+		if (priority == null){
+			System.out.println("was null");
+			return false;
+			}
 		for (Priority p : Priority.values()) {
 			if (p.toString().equals(priority))
 				return true;
