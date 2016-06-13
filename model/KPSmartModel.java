@@ -414,6 +414,14 @@ public class KPSmartModel {
 		return db.getSiteMap();
 	}
 	
+	public FigureGenerator getFG(){
+		return fg;
+	}
+	
+	public EventProcessor getEP(){
+		return eventProcessor;
+	}
+	
 	/*
 	 * =========================================================================
 	 * END OF Helper methods for testing
