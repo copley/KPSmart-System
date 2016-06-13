@@ -48,6 +48,7 @@ public class FigureGenerator {
 		for (MailProcessEvent mail : mailEvents) {
 			deliveryTimes += mail.getDeliveryTime();
 		}
+		if (mailEvents.size() == 0){return 0;}
 		return deliveryTimes / mailEvents.size();
 	}
 
