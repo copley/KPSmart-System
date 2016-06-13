@@ -122,11 +122,11 @@ public class Writer {
 	 */
 	private static Element writeMailProcessEvent(MailProcessEvent be, Element event) {
 		event.setName("mail");
-		event.addContent(new Element("origin").setText("" + be.getOriginID()));
-		event.addContent(new Element("destination").setText("" + be.getDestinationID()));
+		event.addContent(new Element("origin").setText("" + be.getOrigin()));
+		event.addContent(new Element("destination").setText("" + be.getDestination()));
 		event.addContent(new Element("weight").setText("" + be.getWeight()));
 		event.addContent(new Element("volume").setText("" + be.getVolume()));
-		event.addContent(new Element("priority").setText(be.getPriority()));
+		event.addContent(new Element("priority").setText(be.getPriority().toString()));
 
 		//TODO:we have added in 3 new events to store the revenue, expenditure, delivery time
 		event.addContent(new Element("revenue").setText("" + be.getRevenue()));

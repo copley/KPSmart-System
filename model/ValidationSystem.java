@@ -1,6 +1,8 @@
 package model;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -47,8 +49,19 @@ public class ValidationSystem {
 	}
 
 	public static boolean validateMailProcessEvent(MailProcessEvent event) {
-		return validateTimestamp(event.getDay(), event.getMonth(), event.getYear(), event.getTime())
-				&& validatePriority(event.getPriority()) && event.getWeight() > 0 && event.getVolume() > 0;
+		return (
+				validateTimestamp(event.getDay(), event.getMonth(), event.getYear(), event.getTime())
+				&& validateNonEmptyString(event.getEmployee())
+				&& validateOrigin(event.getOrigin())
+				&& validateNonEmptyString(event.getDestination())
+				&& (event.getPriority() != null)
+				&& validatePriority(event.getPriority().toString()) 
+				&& event.getWeight() > 0 
+				&& event.getVolume() > 0
+				&& event.getRevenue() > 0
+				&& event.getExpenditure() > 0
+				&& event.getDeliveryTime() > 0
+				);
 	}
 
 	public static boolean validateRouteAdditionEvent(RouteAdditionEvent event) {
@@ -66,10 +79,17 @@ public class ValidationSystem {
 		return true;
 	}
 
-	public boolean validateOrigin(Site s) {
+	public static boolean validateOrigin(Site s) {
+		if(s == null){
+			return false;
+		}
 		return cities.contains(s.getLocation());
 	}
 	
+	/**
+	 * @param originName
+	 * @return true if non-null, non-empty, valid NZ placename, and in correct camel-case format
+	 */
 	public static boolean validateOrigin(String originName) {
 		return cities.contains(originName);
 	}
@@ -87,7 +107,8 @@ public class ValidationSystem {
 	
 	
 	private static boolean validateTimestamp(int day, int month, int year, int time) {
-		return (
+		//make sure the time is a valid time
+		boolean validTime = (
 				year > 0 
 				&& month > 0 
 				&& month <= 12 
@@ -98,11 +119,28 @@ public class ValidationSystem {
 						)
 				&& (time >= 0000 && time <= 2359)
 				);
+		//now make sure the time is not in the future
+		LocalDateTime now = LocalDateTime.now();
+		boolean notFuture = true;
+		if(now.getYear() < year){
+			notFuture = false;
+		}
+		else if(now.getYear() == year){
+				if(now.getMonth().getValue() < month){
+					notFuture = false;
+				}
+				else if(now.getMonth().getValue() == month){
+					if(now.getHour()*100+now.getMinute() < time){
+						notFuture = false;
+					}			
+				}
+		}
+		
+		return validTime && notFuture;
 	}
 
 	private static boolean validatePriority(String priority) {
 		if (priority == null){
-			System.out.println("was null");
 			return false;
 			}
 		for (Priority p : Priority.values()) {
@@ -122,6 +160,9 @@ public class ValidationSystem {
 	}
 	
 	public static boolean validatePositiveDoubleString(String shouldBePlusDouble){
+		if(shouldBePlusDouble == null){
+			return false;
+		}
 		try {
 			double num = Double.parseDouble(shouldBePlusDouble);
 			if(num <=0){

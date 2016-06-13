@@ -42,11 +42,11 @@ public class MailProcessEvent extends BusinessEvent {
 		return expenditure;
 	}
 
-	public String getOriginID() {
+	public String getOrigin() {
 		return origin;
 	}
 
-	public String getDestinationID() {
+	public String getDestination() {
 		return destination;
 	}
 
@@ -58,8 +58,8 @@ public class MailProcessEvent extends BusinessEvent {
 		return volume;
 	}
 
-	public String getPriority() {
-		return priority.toString();
+	public Priority getPriority() {
+		return priority;
 	}
 
 	@Override
