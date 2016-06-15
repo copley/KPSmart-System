@@ -2,6 +2,30 @@
 <sitemap>
   <sites>
     <site>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>3</id>
+      <location>Hamilton</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>5</id>
+      <location>Beijing</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>7</id>
+      <location>Nelson</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
       <id>1</id>
       <location>Wellington</location>
       <isOrigin>true</isOrigin>
@@ -16,30 +40,6 @@
     <site>
       <id>6</id>
       <location>Kuwait</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>7</id>
-      <location>Nelson</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>5</id>
-      <location>Beijing</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>3</id>
-      <location>Hamilton</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
@@ -62,14 +62,14 @@
       <id>4</id>
       <origin>Wellington</origin>
       <destination>Nelson</destination>
-      <company>Blue Ferry Service</company>
-      <duration>6.0</duration>
+      <company>BlueBridge</company>
+      <duration>28.0</duration>
       <type>SEA</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>10.0</custPriceVolume>
-      <transPriceWeight>1.0</transPriceWeight>
-      <transPriceVolume>1.0</transPriceVolume>
-      <inService>false</inService>
+      <custPriceWeight>5.0</custPriceWeight>
+      <custPriceVolume>5.0</custPriceVolume>
+      <transPriceWeight>3.0</transPriceWeight>
+      <transPriceVolume>2.0</transPriceVolume>
+      <inService>true</inService>
     </route>
     <route>
       <id>3</id>

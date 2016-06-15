@@ -106,7 +106,7 @@ public class ValidationSystem {
 
 	
 	
-	private static boolean validateTimestamp(int day, int month, int year, int time) {
+	public static boolean validateTimestamp(int day, int month, int year, int time) {
 		//make sure the time is a valid time
 		boolean validTime = (
 				year > 0 
@@ -123,15 +123,24 @@ public class ValidationSystem {
 		LocalDateTime now = LocalDateTime.now();
 		boolean notFuture = true;
 		if(now.getYear() < year){
+			//System.out.println("in future by year");
 			notFuture = false;
 		}
 		else if(now.getYear() == year){
 				if(now.getMonth().getValue() < month){
+					//System.out.println("in future by month");					
 					notFuture = false;
 				}
 				else if(now.getMonth().getValue() == month){
-					if(now.getHour()*100+now.getMinute() < time){
+					if(now.getDayOfMonth() < day){
+						//System.out.println("in future by day");
 						notFuture = false;
+					}
+					else if (now.getDayOfMonth() == day){
+						if(now.getHour()*100+now.getMinute() < time){
+							//System.out.println("in future by time");
+							notFuture = false;
+						}
 					}			
 				}
 		}
@@ -139,7 +148,7 @@ public class ValidationSystem {
 		return validTime && notFuture;
 	}
 
-	private static boolean validatePriority(String priority) {
+	public static boolean validatePriority(String priority) {
 		if (priority == null){
 			return false;
 			}

@@ -80,4 +80,35 @@
     <company>Blue Ferry Service</company>
     <type>SEA</type>
   </discontinue>
+  <add>
+    <day>16</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>24</time>
+    <employee>Julian</employee>
+    <origin>Wellington</origin>
+    <destination>Nelson</destination>
+    <company>BlueBridge</company>
+    <duration>0.0</duration>
+    <type>SEA</type>
+    <custPriceWeight>5.0</custPriceWeight>
+    <custPriceVolume>5.0</custPriceVolume>
+    <transCostWeight>2.0</transCostWeight>
+    <transCostVolume>2.0</transCostVolume>
+  </add>
+  <mail>
+    <day>16</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>24</time>
+    <employee>Julian</employee>
+    <origin>Wellington</origin>
+    <destination>Nelson</destination>
+    <weight>1.0</weight>
+    <volume>1.0</volume>
+    <priority>Domestic Air</priority>
+    <revenue>5.0</revenue>
+    <expenditure>2.0</expenditure>
+    <deliveryTime>28.0</deliveryTime>
+  </mail>
 </log>
