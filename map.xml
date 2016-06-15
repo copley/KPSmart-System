@@ -2,12 +2,6 @@
 <sitemap>
   <sites>
     <site>
-      <id>5</id>
-      <location>Beijing</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
       <id>2</id>
       <location>Auckland</location>
       <isOrigin>true</isOrigin>
@@ -16,6 +10,12 @@
     <site>
       <id>3</id>
       <location>Hamilton</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>5</id>
+      <location>Beijing</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
@@ -32,32 +32,19 @@
       <isDestination>false</isDestination>
     </site>
     <site>
-      <id>6</id>
-      <location>Kuwait</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
       <id>4</id>
       <location>Rotorua</location>
       <isOrigin>true</isOrigin>
       <isDestination>false</isDestination>
     </site>
+    <site>
+      <id>6</id>
+      <location>Kuwait</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
   </sites>
   <routes>
-    <route>
-      <id>1</id>
-      <origin>Wellington</origin>
-      <destination>Auckland</destination>
-      <company>DHL</company>
-      <duration>2.0</duration>
-      <type>AIR</type>
-      <custPriceWeight>10.0</custPriceWeight>
-      <custPriceVolume>10.0</custPriceVolume>
-      <transPriceWeight>10.0</transPriceWeight>
-      <transPriceVolume>10.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
     <route>
       <id>4</id>
       <origin>Wellington</origin>
@@ -82,6 +69,19 @@
       <custPriceVolume>1.0</custPriceVolume>
       <transPriceWeight>8.0</transPriceWeight>
       <transPriceVolume>8.0</transPriceVolume>
+      <inService>true</inService>
+    </route>
+    <route>
+      <id>1</id>
+      <origin>Wellington</origin>
+      <destination>Auckland</destination>
+      <company>DHL</company>
+      <duration>2.0</duration>
+      <type>AIR</type>
+      <custPriceWeight>10.0</custPriceWeight>
+      <custPriceVolume>10.0</custPriceVolume>
+      <transPriceWeight>10.0</transPriceWeight>
+      <transPriceVolume>10.0</transPriceVolume>
       <inService>true</inService>
     </route>
   </routes>

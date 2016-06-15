@@ -33,123 +33,18 @@
     <transCostVolume>23.0</transCostVolume>
   </add>
   <mail>
-    <day>1</day>
+    <day>15</day>
     <month>6</month>
     <year>2016</year>
-    <time>2217</time>
-    <employee>Bobo</employee>
-    <origin>Wellington</origin>
-    <destination>Hamilton</destination>
-    <weight>23.0</weight>
-    <volume>23.0</volume>
-    <priority>International Standard</priority>
-    <revenue>2829.0</revenue>
-    <expenditure>529.0</expenditure>
-    <deliveryTime>5.0</deliveryTime>
-  </mail>
-  <add>
-    <day>1</day>
-    <month>6</month>
-    <year>2016</year>
-    <time>2319</time>
-    <employee>Bobo</employee>
-    <origin>Wellington</origin>
-    <destination>Toronto</destination>
-    <company>DHL</company>
-    <duration>0.0</duration>
-    <type>AIR</type>
-    <custPriceWeight>122.0</custPriceWeight>
-    <custPriceVolume>122.0</custPriceVolume>
-    <transCostWeight>1222.0</transCostWeight>
-    <transCostVolume>1222.0</transCostVolume>
-  </add>
-  <add>
-    <day>1</day>
-    <month>6</month>
-    <year>2016</year>
-    <time>2326</time>
-    <employee>Bobo</employee>
-    <origin>Wellington</origin>
-    <destination>Beijing</destination>
-    <company>DHL</company>
-    <duration>0.0</duration>
-    <type>AIR</type>
-    <custPriceWeight>11.0</custPriceWeight>
-    <custPriceVolume>121.0</custPriceVolume>
-    <transCostWeight>1111.0</transCostWeight>
-    <transCostVolume>1111.0</transCostVolume>
-  </add>
-  <mail>
-    <day>2</day>
-    <month>6</month>
-    <year>2016</year>
-    <time>1354</time>
-    <employee>Bonnie</employee>
-    <origin>Wellington</origin>
-    <destination>Auckland</destination>
-    <weight>32.0</weight>
-    <volume>100.0</volume>
-    <priority>Domestic Air</priority>
-    <revenue>320.0</revenue>
-    <expenditure>320.0</expenditure>
-    <deliveryTime>2.0</deliveryTime>
-  </mail>
-  <add>
-    <day>2</day>
-    <month>6</month>
-    <year>2016</year>
-    <time>1354</time>
-    <employee>Bonnie</employee>
-    <origin>Auckland</origin>
-    <destination>Kuwait</destination>
-    <company>DHL</company>
-    <duration>0.0</duration>
-    <type>AIR</type>
-    <custPriceWeight>23.0</custPriceWeight>
-    <custPriceVolume>23.0</custPriceVolume>
-    <transCostWeight>23.0</transCostWeight>
-    <transCostVolume>23.0</transCostVolume>
-  </add>
-  <cost>
-    <day>2</day>
-    <month>6</month>
-    <year>2016</year>
-    <time>1355</time>
-    <employee>Bonnie</employee>
-    <origin>Auckland</origin>
-    <destination>Kuwait</destination>
-    <company>DHL</company>
-    <type>AIR</type>
-    <weightcost>8.0</weightcost>
-    <volumecost>8.0</volumecost>
-    <duration>8.0</duration>
-  </cost>
-  <price>
-    <day>2</day>
-    <month>6</month>
-    <year>2016</year>
-    <time>2257</time>
+    <time>2215</time>
     <employee>Julian</employee>
     <origin>Auckland</origin>
     <destination>Kuwait</destination>
+    <weight>1.0</weight>
+    <volume>1.0</volume>
     <priority>International Air</priority>
-    <weightcost>1.0</weightcost>
-    <volumecost>1.0</volumecost>
-  </price>
-  <add>
-    <day>2</day>
-    <month>6</month>
-    <year>2016</year>
-    <time>2303</time>
-    <employee>Julian</employee>
-    <origin>Wellington</origin>
-    <destination>Nelson</destination>
-    <company>Blue Ferry Service</company>
-    <duration>0.0</duration>
-    <type>SEA</type>
-    <custPriceWeight>10.0</custPriceWeight>
-    <custPriceVolume>10.0</custPriceVolume>
-    <transCostWeight>1.0</transCostWeight>
-    <transCostVolume>1.0</transCostVolume>
-  </add>
+    <revenue>1.0</revenue>
+    <expenditure>8.0</expenditure>
+    <deliveryTime>8.0</deliveryTime>
+  </mail>
 </log>

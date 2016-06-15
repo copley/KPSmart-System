@@ -62,7 +62,7 @@ public class figureGeneratorTests {
 		SiteMap sitemap = model.getSiteMap();
 		double currentMailSize = fg.generateTotalMail();
 		double currentAVGDelivery = fg.getAVGDelivery();
-		double totalDeliveryTime = currentAVGDelivery * currentMailSize;
+		double currentTotDT = currentAVGDelivery * currentMailSize;
 		
 		String origin = "Wellington";
 		String dest = "Auckland";
@@ -74,8 +74,12 @@ public class figureGeneratorTests {
 		model.logIn("1", "1234");
 		MailProcessInput mail = new MailProcessInput(origin,dest,weight,volume,prior);
 		model.processMail(mail);
+		double updatedMailSize = fg.generateTotalMail();
 		double updatedAVGDelivery = fg.getAVGDelivery();
-		//getting the average delivery time of mail
+		double updatedTotDT = updatedAVGDelivery * updatedMailSize;
+		
+		
+		//getting the expected total delivery time of mail
 		int originID = sitemap.getSiteIDfromLocation(origin);
 		int destID = sitemap.getSiteIDfromLocation(dest);
 		Priority priority = model.getPriority(prior);		
@@ -87,11 +91,8 @@ public class figureGeneratorTests {
 			time += sitemap.getRouteFromID(routeID).getDuration();
 		}
 		
-		double expectedDT = 0;
-		double updatedTotDT = totalDeliveryTime + time;		
-		expectedDT = updatedTotDT/(currentMailSize + 1);
-		assertTrue(currentAVGDelivery==expectedDT);
-		
+		double expectedTotDT = currentTotDT + time;	
+		assertTrue(expectedTotDT == updatedTotDT);		
 	}
 
 }
