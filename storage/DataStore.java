@@ -35,9 +35,9 @@ public class DataStore {
 	 * Loads all the data into the data store
 	 */
 	public void load() {
-		businessEvents = Reader.readBusinessEvents();
 		employees = Reader.readEmployee();
 		map = Reader.readMap();
+		businessEvents = Reader.readBusinessEvents();
 		System.out.println("All data has been loaded");
 	}
 
