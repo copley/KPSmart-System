@@ -19,6 +19,7 @@ public class FigureGenerator {
 	}
 
 	public void getMailEvents() {
+		mailEvents = new ArrayList<MailProcessEvent>();
 		for (BusinessEvent be : db.getBusinessEvents()) {
 			if (be instanceof MailProcessEvent) {
 				MailProcessEvent mail = (MailProcessEvent) be;
@@ -44,7 +45,7 @@ public class FigureGenerator {
 	}
 
 	public double getAVGDelivery() {
-		int deliveryTimes = 0;
+		double deliveryTimes = 0;
 		for (MailProcessEvent mail : mailEvents) {
 			deliveryTimes += mail.getDeliveryTime();
 		}
