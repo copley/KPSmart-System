@@ -43,7 +43,7 @@ public class Route {
 		this.custPriceVolume = custPriceVolume;
 		this.transPriceWeight = transPriceWeight;
 		this.transPriceVolume = transPriceVolume;
-		this.inService = true;
+		this.inService = inService;
 	}
 
 

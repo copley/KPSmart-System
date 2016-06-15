@@ -481,7 +481,9 @@ public class SiteMap {
 		// look through routes and find one whose details match! return first
 		// found
 		for (Route route : this.siteToRoutes.get(sites.get(originID))) {
-			if (route.getCompany().equals(company) && route.getDestination().equals(destination)
+			if (route.getCompany().equals(company) 
+					&& route.getOrigin().equals(origin)
+					&& route.getDestination().equals(destination)
 					&& route.getType().equals(type)) {
 				return route.getID();
 			}
