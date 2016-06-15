@@ -47,4 +47,37 @@
     <expenditure>8.0</expenditure>
     <deliveryTime>8.0</deliveryTime>
   </mail>
+  <discontinue>
+    <day>15</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2312</time>
+    <employee>Julian</employee>
+    <origin>Wellington</origin>
+    <destination>Auckland</destination>
+    <company>DHL</company>
+    <type>AIR</type>
+  </discontinue>
+  <discontinue>
+    <day>15</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2312</time>
+    <employee>Julian</employee>
+    <origin>Auckland</origin>
+    <destination>Kuwait</destination>
+    <company>DHL</company>
+    <type>AIR</type>
+  </discontinue>
+  <discontinue>
+    <day>15</day>
+    <month>6</month>
+    <year>2016</year>
+    <time>2313</time>
+    <employee>Julian</employee>
+    <origin>Wellington</origin>
+    <destination>Nelson</destination>
+    <company>Blue Ferry Service</company>
+    <type>SEA</type>
+  </discontinue>
 </log>

@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.*;
 import model.events.inputs.MailProcessInput;
+import model.events.inputs.NewRouteInput;
 import model.map.Priority;
 import model.map.Route;
 import model.map.SiteMap;
@@ -17,7 +18,7 @@ public class figureGeneratorTests {
 	
 	@Test
 	public void checkExpenditure() {
-		KPSmartModel model = new KPSmartModel();
+		KPSmartModel model = setUpModel();
 		FigureGenerator fg = model.getFG();
 		SiteMap sitemap = model.getSiteMap();
 		double currentExp = fg.getExpenditure();
@@ -57,7 +58,7 @@ public class figureGeneratorTests {
 	//average delivery time test
 	@Test
 	public void checkAvgDT() {
-		KPSmartModel model = new KPSmartModel();
+		KPSmartModel model = setUpModel();
 		FigureGenerator fg = model.getFG();
 		SiteMap sitemap = model.getSiteMap();
 		double currentMailSize = fg.generateTotalMail();
@@ -87,6 +88,7 @@ public class figureGeneratorTests {
 		double vol = Double.parseDouble(volume);		
 		List<Integer> compoundRoutes = sitemap.findCompoundRoute(originID, destID, priority);
 		int time = 0;
+		if(compoundRoutes == null){System.out.println("routes null");}
 		for (int routeID : compoundRoutes) {
 			time += sitemap.getRouteFromID(routeID).getDuration();
 		}
@@ -95,4 +97,13 @@ public class figureGeneratorTests {
 		assertTrue(expectedTotDT == updatedTotDT);		
 	}
 
+	//===helper methods==========
+	
+		private KPSmartModel setUpModel(){
+			KPSmartModel model = new KPSmartModel();
+			model.logIn("1", "1234");
+			NewRouteInput newRoute = new NewRouteInput("Wellington","Auckland","company","10","LAND","1","1","1","1");
+			model.addNewRoute(newRoute);
+			return model;
+		}
 }
