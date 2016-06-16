@@ -12,6 +12,7 @@ public class KPSmartModelTest {
 	
 	/**
 	 * Process mail tests
+	 * @author Joely
 	 */
 	
 	@Test
