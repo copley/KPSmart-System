@@ -2,26 +2,8 @@
 <sitemap>
   <sites>
     <site>
-      <id>2</id>
-      <location>Auckland</location>
-      <isOrigin>true</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
       <id>3</id>
       <location>Hamilton</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>5</id>
-      <location>Beijing</location>
-      <isOrigin>false</isOrigin>
-      <isDestination>true</isDestination>
-    </site>
-    <site>
-      <id>7</id>
-      <location>Nelson</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
@@ -32,6 +14,18 @@
       <isDestination>false</isDestination>
     </site>
     <site>
+      <id>2</id>
+      <location>Auckland</location>
+      <isOrigin>true</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>5</id>
+      <location>Beijing</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
       <id>4</id>
       <location>Rotorua</location>
       <isOrigin>true</isOrigin>
@@ -40,6 +34,12 @@
     <site>
       <id>6</id>
       <location>Kuwait</location>
+      <isOrigin>false</isOrigin>
+      <isDestination>true</isDestination>
+    </site>
+    <site>
+      <id>7</id>
+      <location>Nelson</location>
       <isOrigin>false</isOrigin>
       <isDestination>true</isDestination>
     </site>
@@ -59,19 +59,6 @@
       <inService>false</inService>
     </route>
     <route>
-      <id>4</id>
-      <origin>Wellington</origin>
-      <destination>Nelson</destination>
-      <company>BlueBridge</company>
-      <duration>28.0</duration>
-      <type>SEA</type>
-      <custPriceWeight>5.0</custPriceWeight>
-      <custPriceVolume>5.0</custPriceVolume>
-      <transPriceWeight>3.0</transPriceWeight>
-      <transPriceVolume>2.0</transPriceVolume>
-      <inService>true</inService>
-    </route>
-    <route>
       <id>3</id>
       <origin>Auckland</origin>
       <destination>Kuwait</destination>
@@ -83,6 +70,19 @@
       <transPriceWeight>8.0</transPriceWeight>
       <transPriceVolume>8.0</transPriceVolume>
       <inService>false</inService>
+    </route>
+    <route>
+      <id>4</id>
+      <origin>Wellington</origin>
+      <destination>Nelson</destination>
+      <company>BlueBridge</company>
+      <duration>28.0</duration>
+      <type>SEA</type>
+      <custPriceWeight>5.0</custPriceWeight>
+      <custPriceVolume>5.0</custPriceVolume>
+      <transPriceWeight>3.0</transPriceWeight>
+      <transPriceVolume>2.0</transPriceVolume>
+      <inService>true</inService>
     </route>
   </routes>
 </sitemap>

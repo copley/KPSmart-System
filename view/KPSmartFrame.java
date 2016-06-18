@@ -46,7 +46,7 @@ public final class KPSmartFrame extends JFrame {
 		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener, origins, destinations, companies);
 		add(canvas);
 
-		createMenu();
+		//createMenu();
 		pack();
 
 		this.addWindowListener(viewWindowAdapter);

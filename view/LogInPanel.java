@@ -39,7 +39,7 @@ public class LogInPanel extends JFrame {
 		setSize(600, 600);
 
 		// Show Authentication dialog
-		ad = new AuthDialog(this, "Authentication", viewActionListener);
+		ad = new AuthDialog(this, "KPSmart Login", viewActionListener);
 	}
 
 	public String getUserID() {
@@ -53,7 +53,7 @@ public class LogInPanel extends JFrame {
 	class AuthDialog extends JDialog {
 		private boolean okButtonClicked = false;
 
-		String introText = "Please enter your username and database password";
+		String introText = "Please enter your user ID and password";
 		private JPanel labelPanel = new JPanel();
 		private JPanel inputPanel = new JPanel();
 		private JTextField userIDTextField = new JTextField(20);
