@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.*;
 import org.jdom2.*;
 import org.jdom2.input.*;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 import model.*;
 import model.employees.Employee;
@@ -57,7 +59,11 @@ public class Reader {
 				businessEvents.add(readEvent(event));
 			}
 		} catch (JDOMException | IOException e) {
-			e.printStackTrace();
+			try {
+				new XMLOutputter(Format.getPrettyFormat()).output(new Document(), new FileOutputStream(DataStore.EVENT_FILE));
+			} catch (IOException ie) {
+				e.printStackTrace();
+			}
 		} catch (IllegalEventException e) {
 			e.printStackTrace();
 		} catch (IllegalPriorityException e) {
@@ -92,7 +98,11 @@ public class Reader {
 				employees.addEmployee(readEmployee(event));
 			}
 		} catch (JDOMException | IOException e) {
-			e.printStackTrace();
+			try {
+				new XMLOutputter(Format.getPrettyFormat()).output(new Document(), new FileOutputStream(DataStore.EMPLOYEE_FILE));
+			} catch (IOException ie) {
+				e.printStackTrace();
+			}
 		} catch (IllegalEmployeeException e) {
 			e.printStackTrace();
 		}
@@ -139,7 +149,11 @@ public class Reader {
 			readRoutes(map, routesList);
 
 		} catch (JDOMException | IOException e) {
-			e.printStackTrace();
+			try {
+				new XMLOutputter(Format.getPrettyFormat()).output(new Document(), new FileOutputStream(DataStore.MAP_FILE));
+			} catch (IOException ie) {
+				e.printStackTrace();
+			}
 		} catch (IllegalSiteException e) {
 			e.printStackTrace();
 		} catch (IllegalRouteException e) {

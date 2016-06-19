@@ -18,7 +18,7 @@ public class Route {
 /**
  * Inputs are required to be pre-verified before calling this method, internal validation is not applied
  * Within the KPSmart system, validation is performed by model.ValidationSystem
- * 
+ *
  * @param id - a non-negative integer
  * @param origin - a non-null, non-empty string, must be an official New Zealand town
  * @param destination - a non-null, non-empty string
@@ -94,13 +94,13 @@ public class Route {
 
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("ID: " + ID + " ");
-		string.append("Origin: " + origin + " ");
-		string.append("Destination: " + destination + " ");
-		string.append("Company: " + company + "<br>");
-		string.append("Duration: " + duration + " ");
-		string.append("Type: " + type.name() + " ");
-		string.append("In service: " + inService + " ");
+		string.append("&emsp ID: " + ID + "<br>");
+		string.append("&emsp Origin: " + origin + "<br>");
+		string.append("&emsp Destination: " + destination + "<br>");
+		string.append("&emsp Company: " + company + "<br>");
+		string.append("&emsp Duration: " + duration + "<br>");
+		string.append("&emsp Type: " + type.name() + "<br>");
+		string.append("&emsp In service: " + inService + "<br><br>");
 		return string.toString();
 	}
 

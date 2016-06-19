@@ -188,7 +188,7 @@ public class KPSmartController {
 					}
 				} else if (newRoutePanel) {
 					NewRouteInput input = gui.getNewRouteInput();
-					
+
 					String modelReturn = model.addNewRoute(input);
 					if (modelReturn.isEmpty()) {
 						// Update the list of sites in the gui if successful
@@ -239,7 +239,7 @@ public class KPSmartController {
 				gui.resetTextFields();
 			} else if (e.getActionCommand().equals("Reset")) {
 				gui.resetTextFields();
-			} else if (e.getActionCommand().equals("OK")) {
+			} else if (e.getActionCommand().equals("Log In")) {
 				if (gui.getUsername().length() == 0) {
 					gui.popupMessage(false, "Please enter a username");
 				} else if (gui.getPassword().length() == 0) {

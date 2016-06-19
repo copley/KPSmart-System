@@ -1,13 +1,9 @@
 package view.eventsView;
 
-import java.awt.Color;
-
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;

@@ -51,7 +51,7 @@ public class LogInPanel extends JFrame {
 	}
 
 	class AuthDialog extends JDialog {
-		private boolean okButtonClicked = false;
+		private boolean loginButtonClicked = false;
 
 		String introText = "Please enter your user ID and password";
 		private JPanel labelPanel = new JPanel();
@@ -70,14 +70,14 @@ public class LogInPanel extends JFrame {
 			setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
-					if (!okButtonClicked)
+					if (!loginButtonClicked)
 						System.exit(0);
 				}
 			});
 
 			// Set up OK button behaviour
-			JButton okButton = new JButton("OK");
-			okButton.addActionListener(viewActionListener);
+			JButton loginButton = new JButton("Log In");
+			loginButton.addActionListener(viewActionListener);
 
 			JButton cancelButton = new JButton("Cancel");
 			cancelButton.addActionListener(new ActionListener() {
@@ -101,7 +101,7 @@ public class LogInPanel extends JFrame {
 
 			Box buttonPane = new Box(X_AXIS);
 			buttonPane.add(Box.createHorizontalGlue());
-			buttonPane.add(okButton);
+			buttonPane.add(loginButton);
 			buttonPane.add(Box.createHorizontalStrut(5));
 			buttonPane.add(cancelButton);
 			buttonPane.add(Box.createHorizontalGlue());
@@ -115,7 +115,7 @@ public class LogInPanel extends JFrame {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 			// Ensure the enter key triggers the OK button
-			getRootPane().setDefaultButton(okButton);
+			getRootPane().setDefaultButton(loginButton);
 
 			// And that the escape key exits
 			InputMap inputMap = getRootPane().getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);

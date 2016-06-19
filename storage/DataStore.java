@@ -18,9 +18,9 @@ import model.map.SiteMap;
  */
 public class DataStore {
 
-	public static final File EVENT_FILE = new File("src/KPSmart_log.xml");
-	public static final File MAP_FILE = new File("src/map.xml");
-	public static final File EMPLOYEE_FILE = new File("src/staff.xml");
+	public static final File EVENT_FILE = new File("data/KPSmart_log.xml");
+	public static final File MAP_FILE = new File("data/map.xml");
+	public static final File EMPLOYEE_FILE = new File("data/staff.xml");
 	public static final File CITIES_FILE = new File("src/NZtownNames.txt");
 
 	private List<BusinessEvent> businessEvents;
@@ -35,6 +35,7 @@ public class DataStore {
 	 * Loads all the data into the data store
 	 */
 	public void load() {
+		createDirectory();
 		employees = Reader.readEmployee();
 		map = Reader.readMap();
 		businessEvents = Reader.readBusinessEvents();
@@ -51,6 +52,17 @@ public class DataStore {
 		System.out.println("All data has been saved");
 	}
 
+	private void createDirectory() {
+		File directory = new File("data");
+		if (!directory.exists()) {
+			try {
+				directory.mkdir();
+			} catch (SecurityException se) {
+				System.out.println("Could not create folder");
+			}
+		}
+	}
+
 	/**
 	 * Adds the business event 'be' to the database (businessEvents)
 	 *
@@ -60,10 +72,6 @@ public class DataStore {
 	 */
 	public boolean addEvent(BusinessEvent be) {
 		return businessEvents.add(be);
-	}
-
-	public static void main(String[] args) {
-		new DataStore();
 	}
 
 	public SiteMap getSiteMap() {

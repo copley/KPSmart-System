@@ -135,8 +135,8 @@ public final class KPSmartFrame extends JFrame {
 		String type = panel.getModeComboBoxString();
 		String customerPriceWeight = panel.getCustomerPriceWeightTextFieldString();
 		String customerPriceVolume = panel.getCustomerPriceVolumeTextFieldString();
-		String transportPriceWeight = panel.getTransportPriceVolumeTextFieldString();
-		String transportPriceVolume = panel.getTransportPriceWeightTextFieldString();
+		String transportPriceWeight = panel.getTransportPriceWeightTextFieldString();
+		String transportPriceVolume = panel.getTransportPriceVolumeTextFieldString();
 
 		return new NewRouteInput(origin, destination, company, duration, type, customerPriceWeight, customerPriceVolume,
 				transportPriceWeight, transportPriceVolume);
