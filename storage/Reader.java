@@ -98,11 +98,7 @@ public class Reader {
 				employees.addEmployee(readEmployee(event));
 			}
 		} catch (JDOMException | IOException e) {
-			try {
-				new XMLOutputter(Format.getPrettyFormat()).output(new Document(), new FileOutputStream(DataStore.EMPLOYEE_FILE));
-			} catch (IOException ie) {
-				e.printStackTrace();
-			}
+			e.printStackTrace();
 		} catch (IllegalEmployeeException e) {
 			e.printStackTrace();
 		}

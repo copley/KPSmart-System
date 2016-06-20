@@ -20,7 +20,7 @@ public class DataStore {
 
 	public static final File EVENT_FILE = new File("data/KPSmart_log.xml");
 	public static final File MAP_FILE = new File("data/map.xml");
-	public static final File EMPLOYEE_FILE = new File("data/staff.xml");
+	public static final File EMPLOYEE_FILE = new File("src/staff.xml");
 	public static final File CITIES_FILE = new File("src/NZtownNames.txt");
 
 	private List<BusinessEvent> businessEvents;

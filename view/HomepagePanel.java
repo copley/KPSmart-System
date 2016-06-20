@@ -17,7 +17,7 @@ import controller.KPSmartController.ViewActionListener;
 @SuppressWarnings("serial")
 public class HomepagePanel extends AbstractMainDisplayPanel {
 
-	private static final String IMG_PATH = "src/images/bgImage.png";
+	private static final String IMG_PATH = "/resources/bgImage.png";
 
 	private JLabel label;
 
@@ -35,7 +35,7 @@ public class HomepagePanel extends AbstractMainDisplayPanel {
 
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File(IMG_PATH));
+			img = ImageIO.read(getClass().getResource(IMG_PATH));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
