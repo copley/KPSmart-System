@@ -77,7 +77,7 @@ public class Reader {
 		return businessEvents;
 	}
 
-	public static Employees readEmployee() {
+	public static Employees readEmployee(InputStream inputStream) {
 		System.out.println("Reading Employees...");
 		Employees employees = new Employees();
 
@@ -85,7 +85,7 @@ public class Reader {
 			// create the SAX builder
 			SAXBuilder saxBuilder = new SAXBuilder();
 			// create jdom document
-			Document document = saxBuilder.build(DataStore.EMPLOYEE_FILE);
+			Document document = saxBuilder.build(inputStream);
 			// get root element
 			Element systemElement = document.getRootElement();
 
