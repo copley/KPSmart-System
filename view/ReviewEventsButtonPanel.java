@@ -8,6 +8,12 @@ import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 
+/**
+ * The panel that contains the review event button.
+ * @author xuanshen
+ *
+ */
+
 @SuppressWarnings("serial")
 public class ReviewEventsButtonPanel extends AbstractPanel {
 

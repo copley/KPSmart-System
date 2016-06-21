@@ -17,6 +17,13 @@ import controller.KPSmartController.ViewActionListener;
 import model.map.Type;
 import view.AbstractMainDisplayPanel;
 
+/**
+ * A panel that is used to change the transport cost in the system.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 
@@ -98,8 +105,11 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 
 	@Override
 	protected void initialiseLayout() {
+
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout
 				.setHorizontalGroup(
 						groupLayout.createParallelGroup(Alignment.LEADING)
@@ -148,6 +158,7 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 								.addComponent(hoursToDeliverTextField, GroupLayout.PREFERRED_SIZE,
 										GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))).addGap(88)));
 
+		// set up the vertical group
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addGap(26)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblOrigin).addComponent(
@@ -184,30 +195,65 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * Return the string in new weight cost text field
+	 *
+	 * @return
+	 */
 	public String getNewPriceWeightTextFieldString() {
 		return newPriceWeightTextField.getText();
 	}
 
+	/**
+	 * Return the string in new volume cost text field
+	 *
+	 * @return
+	 */
 	public String getNewPriceVolumeTextFieldString() {
 		return newPriceVolumeTextField.getText();
 	}
 
+	/**
+	 * Return the string in hours to deliver text field
+	 *
+	 * @return
+	 */
 	public String getHoursToDeliverTextFieldString() {
 		return hoursToDeliverTextField.getText();
 	}
 
+	/**
+	 * Return the selected string in type combobox
+	 *
+	 * @return
+	 */
 	public String getTypeComboBoxString() {
 		return typeComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in origin combobox
+	 *
+	 * @return
+	 */
 	public String getOriginComboBoxString() {
 		return originComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in destination combobox
+	 *
+	 * @return
+	 */
 	public String getDestinationComboBoxString() {
 		return destinationComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in transport company combobox
+	 *
+	 * @return
+	 */
 	public String getTransportCompanyComboBoxString() {
 		return transportCompanyComboBox.getSelectedItem().toString();
 	}
@@ -218,6 +264,11 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 		newPriceVolumeTextField.setText("");
 	}
 
+	/**
+	 * Add sites to the origin and destination dropdown lists
+	 * @param origin
+	 * @param destination
+	 */
 	public void addSites(String origin, String destination) {
 		if (origin != null)
 			originComboBox.addItem(origin);
@@ -225,6 +276,10 @@ public class TransportCostChangePanel extends AbstractMainDisplayPanel {
 			destinationComboBox.addItem(destination);
 	}
 
+	/**
+	 * Add company to the company combobox
+	 * @param company
+	 */
 	public void addCompanies(String company) {
 		if (company != null)
 			transportCompanyComboBox.addItem(company);

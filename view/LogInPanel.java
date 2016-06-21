@@ -26,6 +26,13 @@ import static javax.swing.BoxLayout.X_AXIS;
 import static javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT;
 import static javax.swing.KeyStroke.getKeyStroke;
 
+/**
+ * The log in panel of KPSmart. Where users to enter their ID and password.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class LogInPanel extends JFrame {
 
@@ -40,14 +47,28 @@ public class LogInPanel extends JFrame {
 		ad = new AuthDialog(this, "KPSmart Login", viewActionListener);
 	}
 
+	/**
+	 * Return the user id.
+	 * @return
+	 */
 	public String getUserID() {
 		return ad.getUserID();
 	}
 
+	/**
+	 * Return the user password.
+	 * @return
+	 */
 	public String getPassword() {
 		return ad.getDatabasePassword();
 	}
 
+	/**
+	 * the login dialog.
+	 *
+	 * @author Shenbo Xuan
+	 *
+	 */
 	class AuthDialog extends JDialog {
 		private boolean loginButtonClicked = false;
 

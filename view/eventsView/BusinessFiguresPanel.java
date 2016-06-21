@@ -11,6 +11,13 @@ import controller.KPSmartController.ViewActionListener;
 import view.AbstractMainDisplayPanel;
 import view.KPSmartFrame;
 
+/**
+ * A panel that is used to review the business figures.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class BusinessFiguresPanel extends AbstractMainDisplayPanel {
 
@@ -35,14 +42,18 @@ public class BusinessFiguresPanel extends AbstractMainDisplayPanel {
 
 	@Override
 	protected void initialiseLayout() {
+
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout
 				.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup().addContainerGap()
 								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
 								.addContainerGap()));
 
+		// set up the vertical group
 		groupLayout
 				.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup().addContainerGap()
@@ -56,6 +67,11 @@ public class BusinessFiguresPanel extends AbstractMainDisplayPanel {
 	public void resetTextFields() {
 	}
 
+	/**
+	 * Set the text of figures label.
+	 *
+	 * @param figures
+	 */
 	public void setFiguresLabel(String figures) {
 		label.setText(figures);
 	}

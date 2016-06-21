@@ -19,9 +19,19 @@ import view.eventsView.ReviewEventsPanel;
 import view.eventsView.RouteDiscontinuePanel;
 import view.eventsView.TransportCostChangePanel;
 
+/**
+ * The outside frame of KPSmart.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public final class KPSmartFrame extends JFrame {
 
+	/**
+	 * The theme colour for the system.
+	 */
 	public static final Color THEME_COLOR = new Color(220, 255, 255);
 
 	private KPSmartCanvas canvas;
@@ -53,6 +63,11 @@ public final class KPSmartFrame extends JFrame {
 		return new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
 	}
 
+	/**
+	 * Set the main display panel.
+	 *
+	 * @param panelName
+	 */
 	public void setMainDisplayPanel(String panelName) {
 		remove(canvas);
 		canvas.setMainDisplayPanel(panelName);
@@ -138,7 +153,7 @@ public final class KPSmartFrame extends JFrame {
 		String destination = panel.getDestinationComboBoxString();
 		String priority = panel.getPriorityComboBoxString();
 		String weightCost = panel.getNewWeightCostTextFieldString();
-		String volumeCost = panel.getNewVolumeCosttextFieldString();
+		String volumeCost = panel.getNewVolumeCostTextFieldString();
 
 		return new CustomerPriceInput(origin, destination, priority, weightCost, volumeCost);
 	}
@@ -186,7 +201,7 @@ public final class KPSmartFrame extends JFrame {
 		title += "(" + login.getUserID() + ") ";
 		title += isManager ? "as a manager" : "as a clerk";
 		setTitle(title);
-		canvas.setManager(isManager);
+		canvas.displayReviewEventButton(isManager);
 		this.setVisible(true);
 		login.clearInputs();
 	}

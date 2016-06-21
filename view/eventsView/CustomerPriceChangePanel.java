@@ -17,6 +17,13 @@ import controller.KPSmartController.ViewActionListener;
 import model.map.Priority;
 import view.AbstractMainDisplayPanel;
 
+/**
+ * A panel that is used to change the customer price in the system.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 
@@ -79,8 +86,11 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 
 	@Override
 	protected void initialiseLayout() {
+
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout
 				.setHorizontalGroup(
 						groupLayout.createParallelGroup(Alignment.LEADING)
@@ -107,6 +117,7 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 								.addComponent(originComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addContainerGap(27, Short.MAX_VALUE)));
 
+		// set up the vertical group
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addGap(26)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblOrigin).addComponent(
@@ -136,26 +147,56 @@ public class CustomerPriceChangePanel extends AbstractMainDisplayPanel {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * Return the string in new weight cost text field
+	 *
+	 * @return
+	 */
 	public String getNewWeightCostTextFieldString() {
 		return newWeightCostTextField.getText();
 	}
 
-	public String getNewVolumeCosttextFieldString() {
+	/**
+	 * Return the string in new volume cost text field
+	 *
+	 * @return
+	 */
+	public String getNewVolumeCostTextFieldString() {
 		return newVolumeCosttextField.getText();
 	}
 
+	/**
+	 * Return the selected string in origin combobox
+	 *
+	 * @return
+	 */
 	public String getOriginComboBoxString() {
 		return originComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in destination combobox
+	 *
+	 * @return
+	 */
 	public String getDestinationComboBoxString() {
 		return destinationComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in priority combobox
+	 *
+	 * @return
+	 */
 	public String getPriorityComboBoxString() {
 		return priorityComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Add sites to the origin and destination dropdown lists
+	 * @param origin
+	 * @param destination
+	 */
 	public void addSites(String origin, String destination) {
 		if (origin != null)
 			originComboBox.addItem(origin);

@@ -8,6 +8,13 @@ import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 
+/**
+ * A panel that contains the logout button.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class LogOutPanel extends AbstractPanel {
 

@@ -16,6 +16,13 @@ import controller.KPSmartController.ViewActionListener;
 import model.map.Type;
 import view.AbstractMainDisplayPanel;
 
+/**
+ * A panel that is used to discontinue a route from the system.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 
@@ -76,8 +83,11 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 
 	@Override
 	protected void initialiseLayout() {
+
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout
 				.setHorizontalGroup(
 						groupLayout.createParallelGroup(Alignment.LEADING)
@@ -103,6 +113,7 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 										originComboBox, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(125, Short.MAX_VALUE)));
 
+		// set up the vertical group
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addGap(26)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblOrigin).addComponent(
@@ -127,22 +138,47 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * Return the selected string in origin combobox
+	 *
+	 * @return
+	 */
 	public String getOriginComboBoxString() {
 		return originComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in destination combobox
+	 *
+	 * @return
+	 */
 	public String getDestinationComboBoxString() {
 		return destinationComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in company combobox
+	 *
+	 * @return
+	 */
 	public String getTransportCompanyComboBoxString() {
 		return transportCompanyComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Return the selected string in type combobox
+	 *
+	 * @return
+	 */
 	public String getTypeComboBoxString() {
 		return typeComboBox.getSelectedItem().toString();
 	}
 
+	/**
+	 * Add sites to the origin and destination dropdown lists
+	 * @param origin
+	 * @param destination
+	 */
 	public void addSites(String origin, String destination) {
 		if(origin != null) originComboBox.addItem(origin);
 		if(destination != null) destinationComboBox.addItem(destination);
@@ -152,6 +188,10 @@ public class RouteDiscontinuePanel extends AbstractMainDisplayPanel {
 	public void resetTextFields() {
 	}
 
+	/**
+	 * Add company to the company combobox
+	 * @param company
+	 */
 	public void addCompanies(String company) {
 		if(company != null) transportCompanyComboBox.addItem(company);
 	}

@@ -11,6 +11,13 @@ import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 import view.AbstractMainDisplayPanel;
 
+/**
+ * A panel that is used to review the business events.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class ReviewEventsPanel extends AbstractMainDisplayPanel {
 
@@ -35,8 +42,11 @@ public class ReviewEventsPanel extends AbstractMainDisplayPanel {
 
 	@Override
 	protected void initialiseLayout() {
+
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout
 				.setHorizontalGroup(
 						groupLayout.createParallelGroup(Alignment.LEADING)
@@ -51,6 +61,7 @@ public class ReviewEventsPanel extends AbstractMainDisplayPanel {
 										GroupLayout.PREFERRED_SIZE, 403, GroupLayout.PREFERRED_SIZE)))
 				.addContainerGap()));
 
+		// set up the vertical group
 		groupLayout
 				.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup().addGap(23)
@@ -67,6 +78,11 @@ public class ReviewEventsPanel extends AbstractMainDisplayPanel {
 	public void resetTextFields() {
 	}
 
+	/**
+	 * Set the string for event string label.
+	 *
+	 * @param eventString
+	 */
 	public void setEventStringLabel(String eventString) {
 		eventStringLabel.setText(eventString);
 		validate();

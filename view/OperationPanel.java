@@ -11,6 +11,13 @@ import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 
+/**
+ * The panel that contains the navigation bar of KPSmart.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class OperationPanel extends AbstractPanel {
 
@@ -34,11 +41,12 @@ public class OperationPanel extends AbstractPanel {
 	@Override
 	protected void initialiseLayout() {
 
-		// debug
 		setBackground(Color.DARK_GRAY);
 
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addContainerGap()
 				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -62,6 +70,7 @@ public class OperationPanel extends AbstractPanel {
 												GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
 										.addContainerGap()))));
 
+		// set up the vertical group
 		groupLayout
 				.setVerticalGroup(
 						groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -80,22 +89,39 @@ public class OperationPanel extends AbstractPanel {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * Return the business event panel.
+	 *
+	 * @return
+	 */
 	public JPanel getBusinessEventPanel() {
 		return businessEventPanel;
 	}
 
+	/**
+	 * Return the view figure panel.
+	 *
+	 * @return
+	 */
 	public JPanel getViewFigurePanel() {
 		return viewFigurePanel;
 	}
 
-	public JPanel getEmptyPanel() {
-		return emptyPanel;
-	}
-
+	/**
+	 * Return the logout panel.
+	 *
+	 * @return
+	 */
 	public JPanel getLogOutPanel() {
 		return logOutPanel;
 	}
 
+	/**
+	 * Determine whether we display the review event button by the login type.
+	 * If manager, display it. Otherwise do not display.
+	 *
+	 * @param isManager
+	 */
 	public void setReviewEventButton(boolean isManager) {
 		if (isManager) {
 			reviewEventsButtonPanel.setVisible(true);

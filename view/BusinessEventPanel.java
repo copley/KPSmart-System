@@ -14,6 +14,13 @@ import controller.KPSmartController.ViewActionListener;
 
 import javax.swing.JButton;
 
+/**
+ * A panel contains all buttons for business events.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class BusinessEventPanel extends AbstractPanel {
 
@@ -60,8 +67,10 @@ public class BusinessEventPanel extends AbstractPanel {
 	@Override
 	protected void initialiseLayout() {
 
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout
 				.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup().addGap(26)
@@ -83,6 +92,7 @@ public class BusinessEventPanel extends AbstractPanel {
 								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGap(34)));
 
+		// set up the vertical group
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup().addGap(10)
 						.addComponent(txtpnBusinessEvents, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,

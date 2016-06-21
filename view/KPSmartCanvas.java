@@ -20,6 +20,13 @@ import view.eventsView.TransportCostChangePanel;
 
 import javax.swing.GroupLayout.Alignment;
 
+/**
+ * The canvas on the frame of KPSmart contains all other GUI elements.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class KPSmartCanvas extends JPanel {
 
@@ -40,8 +47,6 @@ public class KPSmartCanvas extends JPanel {
 
 	private AbstractMainDisplayPanel mainDisplayPanel;
 	private JPanel operationPanel;
-
-	private boolean isManager;
 
 	private HomepagePanel homepagePanel;
 	private AddNewRoutePanel addNewRoutePanel;
@@ -80,18 +85,24 @@ public class KPSmartCanvas extends JPanel {
 		initialiseLayout();
 	}
 
+	/**
+	 * Initialise the layout of the canvas
+	 */
 	protected void initialiseLayout() {
 
 		removeAll();
 
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set up the horizontal group
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
 						.addComponent(mainDisplayPanel, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE).addGap(18)
 						.addComponent(operationPanel, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
 
+		// set up the vertical group
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -104,6 +115,7 @@ public class KPSmartCanvas extends JPanel {
 		setLayout(groupLayout);
 	}
 
+	// initilise all the panels inside the canvas
 	private void initialisePanels(KeyAction keyAction, MouseAction mouseAction, ViewActionListener viewActionListener,
 			List<String> origins, List<String> destinations, List<String> companies) {
 		homepagePanel = new HomepagePanel(keyAction, mouseAction, viewActionListener);
@@ -119,14 +131,26 @@ public class KPSmartCanvas extends JPanel {
 		businessFiguresPanel = new BusinessFiguresPanel(keyAction, mouseAction, viewActionListener);
 	}
 
+	/**
+	 * Returns the Main Display Panel.
+	 * @return
+	 */
 	public AbstractMainDisplayPanel getMainDisplayPanel() {
 		return mainDisplayPanel;
 	}
 
+	/**
+	 * Returns the operation panel.
+	 * @return
+	 */
 	public JPanel getOperationPanel() {
 		return operationPanel;
 	}
 
+	/**
+	 * Set the main display panel.
+	 * @param panelName
+	 */
 	public void setMainDisplayPanel(String panelName) {
 
 		switch (panelName) {
@@ -161,10 +185,19 @@ public class KPSmartCanvas extends JPanel {
 		initialiseLayout();
 	}
 
+	/**
+	 * Reset all text fields in the main display panel
+	 */
 	public void resetTextFields() {
 		mainDisplayPanel.resetTextFields();
 	}
 
+	/**
+	 * Update the sites dropdown lists in main display panel.
+	 *
+	 * @param origin
+	 * @param destination
+	 */
 	public void updateSites(String origin, String destination) {
 		customerPriceChangePanel.addSites(origin, destination);
 		mailDeliveryPanel.addSites(origin, destination);
@@ -172,13 +205,24 @@ public class KPSmartCanvas extends JPanel {
 		transportCostChangePanel.addSites(origin, destination);
 	}
 
+	/**
+	 * Update the company dropdown list in main display panel.
+	 *
+	 * @param company
+	 */
 	public void updateCompanies(String company) {
 		routeDiscontinuePanel.addCompanies(company);
 		transportCostChangePanel.addCompanies(company);
 
 	}
 
-	public void setManager(boolean isManager) {
+	/**
+	 * Determine whether we display the review event button by the login type.
+	 * if manager, display. Otherwise do not display.
+	 *
+	 * @param isManager
+	 */
+	public void displayReviewEventButton(boolean isManager) {
 		((OperationPanel) operationPanel).setReviewEventButton(isManager);
 		validate();
 		repaint();

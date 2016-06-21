@@ -13,6 +13,13 @@ import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
 
+/**
+ * The homepage for KPSmart.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class HomepagePanel extends AbstractMainDisplayPanel {
 

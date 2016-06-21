@@ -16,6 +16,13 @@ import controller.KPSmartController.ViewActionListener;
 import model.map.Type;
 import view.AbstractMainDisplayPanel;
 
+/**
+ * A panel that is used to add a new route to the system.
+ *
+ * @author Shenbo Xuan
+ *
+ */
+
 @SuppressWarnings("serial")
 public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 
@@ -108,8 +115,11 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 
 	@Override
 	protected void initialiseLayout() {
+
+		// utilise the group layout
 		GroupLayout groupLayout = new GroupLayout(this);
 
+		// set the horizontal group
 		groupLayout
 				.setHorizontalGroup(
 						groupLayout.createParallelGroup(Alignment.LEADING)
@@ -169,6 +179,7 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 										.addComponent(typeComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addComponent(DestinationTextField))).addContainerGap(157, Short.MAX_VALUE)));
 
+		// set up the vertical layout
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addGap(26)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblOrigin).addComponent(
@@ -218,38 +229,83 @@ public class AddNewRoutePanel extends AbstractMainDisplayPanel {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * Return the string in destination text field
+	 *
+	 * @return
+	 */
 	public String getDestinationTextFieldString() {
 		return DestinationTextField.getText();
 	}
 
+	/**
+	 * Return the string in origin text field
+	 *
+	 * @return
+	 */
 	public String getOriginTextFieldString() {
 		return originTextField.getText();
 	}
 
+	/**
+	 * Return the string in transport company text field
+	 *
+	 * @return
+	 */
 	public String getTransportCompanyTextFieldString() {
 		return transportCompanyTextField.getText();
 	}
 
+	/**
+	 * Return the string in hours to deliver text field
+	 *
+	 * @return
+	 */
 	public String getHoursToDeliverTextFieldString() {
 		return hoursToDeliverTextField.getText();
 	}
 
+	/**
+	 * Return the string in customer price weight text field
+	 *
+	 * @return
+	 */
 	public String getCustomerPriceWeightTextFieldString() {
 		return customerPriceWeightTextField.getText();
 	}
 
+	/**
+	 * Return the string in customer price volume text field
+	 *
+	 * @return
+	 */
 	public String getCustomerPriceVolumeTextFieldString() {
 		return customerPriceVolumeTextField.getText();
 	}
 
+	/**
+	 * Return the string in transport price weight text field
+	 *
+	 * @return
+	 */
 	public String getTransportPriceWeightTextFieldString() {
 		return transportPriceWeightTextField.getText();
 	}
 
+	/**
+	 * Return the string in transport price volume text field
+	 *
+	 * @return
+	 */
 	public String getTransportPriceVolumeTextFieldString() {
 		return transportPriceVolumeTextField.getText();
 	}
 
+	/**
+	 * Return the selected string in the mode combobox
+	 *
+	 * @return
+	 */
 	public String getModeComboBoxString() {
 		return typeComboBox.getSelectedItem().toString();
 	}
