@@ -20,8 +20,8 @@ public class DataStore {
 
 	public static final File EVENT_FILE = new File("data/KPSmart_log.xml");
 	public static final File MAP_FILE = new File("data/map.xml");
-	public static final File EMPLOYEE_FILE = new File("data/staff.xml");
-	public static final File CITIES_FILE = new File("src/NZtownNames.txt");
+	public static final String EMPLOYEE_FILE = "/resources/staff.xml";
+	public static final String CITIES_FILE = "/resources/NZtownNames.txt";
 
 	private List<BusinessEvent> businessEvents;
 	private Employees employees;
@@ -36,7 +36,7 @@ public class DataStore {
 	 */
 	public void load() {
 		createDirectory();
-		employees = Reader.readEmployee();
+		employees = Reader.readEmployee(getClass().getResourceAsStream(EMPLOYEE_FILE));
 		map = Reader.readMap();
 		businessEvents = Reader.readBusinessEvents();
 		System.out.println("All data has been loaded");
@@ -47,7 +47,6 @@ public class DataStore {
 	 */
 	public void save() {
 		Writer.writeBusinessEvents(businessEvents);
-		Writer.writeEmployees(employees);
 		Writer.writeMap(map);
 		System.out.println("All data has been saved");
 	}
