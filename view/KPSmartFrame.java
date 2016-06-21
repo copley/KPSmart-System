@@ -6,9 +6,6 @@ import java.awt.Dimension;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -46,28 +43,9 @@ public final class KPSmartFrame extends JFrame {
 		canvas = new KPSmartCanvas(this, keyAction, mouseAction, viewActionListener, origins, destinations, companies);
 		add(canvas);
 
-		//createMenu();
 		pack();
 
 		this.addWindowListener(viewWindowAdapter);
-	}
-
-	private void createMenu() {
-		// set up the menu bar
-		JMenuBar menu = new JMenuBar();
-
-		final JMenu file = new JMenu("File");
-
-		final JMenuItem quit = new JMenuItem("Quit");
-
-		file.setMnemonic('F');
-		quit.setMnemonic('Q');
-
-		menu.add(file);
-		file.add(quit);
-
-		setJMenuBar(menu);
-
 	}
 
 	@Override

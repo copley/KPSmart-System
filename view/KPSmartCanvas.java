@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import controller.KPSmartController.KeyAction;
 import controller.KPSmartController.MouseAction;
 import controller.KPSmartController.ViewActionListener;
-import model.events.TransportCostChangeEvent;
 import view.eventsView.AddNewRoutePanel;
 import view.eventsView.BusinessFiguresPanel;
 import view.eventsView.CustomerPriceChangePanel;

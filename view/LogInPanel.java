@@ -24,8 +24,6 @@ import controller.KPSmartController.ViewActionListener;
 
 import static javax.swing.BoxLayout.X_AXIS;
 import static javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
 import static javax.swing.KeyStroke.getKeyStroke;
 
 @SuppressWarnings("serial")

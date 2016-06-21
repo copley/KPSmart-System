@@ -11,6 +11,6 @@ The code makes use of an external jar,  jdom-2.0.6.jar, which must be added to t
 Source code freely available from www.jdom.org.
 
 The application is included in the repository. To run the application, use the following command:
-	$ java -jar KPSmart.jar
+	java -jar KPSmart.jar
 
 There are three logins available in the system. The user IDs are 1, 2 and 3. The password is 1234 for all of them. ID 1 is a clerk and ID 2 and 3 are managers.
